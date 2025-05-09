@@ -17,7 +17,7 @@ const routes: AppRouteRecordRaw[] = [
 		handle: {
 			icon: "OutsidePageIcon",
 			title: $t("common.menu.outside"),
-			order: outside,
+			order: outside
 		},
 		children: [
 			{
@@ -25,7 +25,7 @@ const routes: AppRouteRecordRaw[] = [
 				Component: Outlet,
 				handle: {
 					icon: "EmbeddedIcon",
-					title: $t("common.menu.embedded"),
+					title: $t("common.menu.embedded")
 				},
 				children: [
 					{
@@ -34,8 +34,8 @@ const routes: AppRouteRecordRaw[] = [
 						handle: {
 							icon: createElement(AntDesignOutlined),
 							title: $t("common.menu.antd"),
-							iframeLink: "https://ant.design/",
-						},
+							iframeLink: "https://ant.design/"
+						}
 					},
 					{
 						path: "/outside/embedded/project-docs",
@@ -43,17 +43,18 @@ const routes: AppRouteRecordRaw[] = [
 						handle: {
 							icon: createElement(ContainerOutlined),
 							title: $t("common.menu.projectDocs"),
-							iframeLink: "https://condorheroblog.github.io/react-antd-admin/docs/",
-						},
-					},
-				],
+							iframeLink:
+								"https://condorheroblog.github.io/react-antd-admin/docs/"
+						}
+					}
+				]
 			},
 			{
 				path: "/outside/external-link",
 				Component: Outlet,
 				handle: {
 					icon: "ExternalIcon",
-					title: $t("common.menu.externalLink"),
+					title: $t("common.menu.externalLink")
 				},
 				children: [
 					{
@@ -62,13 +63,13 @@ const routes: AppRouteRecordRaw[] = [
 						handle: {
 							icon: createElement(ReactLogoIcon),
 							title: $t("common.menu.reactDocs"),
-							externalLink: "https://react.dev/",
-						},
-					},
-				],
-			},
-		],
-	},
+							externalLink: "https://react.dev/"
+						}
+					}
+				]
+			}
+		]
+	}
 ];
 
 export default routes;

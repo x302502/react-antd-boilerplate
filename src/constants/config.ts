@@ -17,9 +17,13 @@ export const TIME_FORMAT = "YYYY-MM-DD hh:mm:ss";
 // 初始化分页数据
 export const INITIAL_PAGINATION = {
 	current: 1,
-	pageSize: 20,
+	pageSize: 20
 };
 
 // 新增/编辑标题
-export const ADD_TITLE = (t: TFunction, title?: string) => t("public.createTitle", { title: title ?? "" });
-export const EDIT_TITLE = (t: TFunction, name: string, title?: string) => `${t("public.editTitle", { title: title ?? "" })}${name ? `(${name})` : ""}`;
+export function ADD_TITLE(t: TFunction, title?: string) {
+	return t("public.createTitle", { title: title ?? "" });
+}
+export function EDIT_TITLE(t: TFunction, name: string, title?: string) {
+	return `${t("public.editTitle", { title: title ?? "" })}${name ? `(${name})` : ""}`;
+}

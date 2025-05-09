@@ -22,56 +22,54 @@ export interface LayoutHeaderProps {
 
 const buttonProps: ButtonProps = {
 	size: "large",
-	className: "px-[11px]",
+	className: "px-[11px]"
 };
 
-export default function LayoutHeader({ className, children }: LayoutHeaderProps) {
+export default function LayoutHeader({
+	className,
+	children
+}: LayoutHeaderProps) {
 	const {
-		token: { Menu },
+		token: { Menu }
 	} = theme.useToken();
-	const {
-		sidebarCollapsed,
-		setPreferences,
-		isDark,
-		sidebarTheme,
-	} = usePreferences();
+	const { sidebarCollapsed, setPreferences, isDark, sidebarTheme } =
+		usePreferences();
 	const { isMobile } = useDeviceType();
-	const isMaximize = useTabsStore(state => state.isMaximize);
+	const isMaximize = useTabsStore((state) => state.isMaximize);
 	const { isTopNav, isMixedNav } = useLayout();
-	const isFixedDarkTheme = isDark || (sidebarTheme === "dark" && (isMixedNav || isTopNav));
+	const isFixedDarkTheme =
+		isDark || (sidebarTheme === "dark" && (isMixedNav || isTopNav));
 
 	return (
 		<ConfigProvider
 			theme={{
 				algorithm: isFixedDarkTheme
 					? antdTheme.darkAlgorithm
-					: antdTheme.defaultAlgorithm,
+					: antdTheme.defaultAlgorithm
 			}}
 		>
 			<header
 				className={cn(
 					"flex-shrink-0 flex gap-5 justify-between items-center transition-all md:px-4",
 					{ "overflow-hidden": isMaximize },
-					className,
+					className
 				)}
 				style={{
 					background: isFixedDarkTheme ? Menu?.darkItemBg : Menu?.itemBg,
-					height: isMaximize ? 0 : headerHeight,
+					height: isMaximize ? 0 : headerHeight
 				}}
 			>
-
-				{
-					isMobile
-						? (
-							<Button
-								type="text"
-								icon={sidebarCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-								onClick={() => setPreferences("sidebarCollapsed", !sidebarCollapsed)}
-								className="h-full"
-							/>
-						)
-						: null
-				}
+				{isMobile ? (
+					<Button
+						type="text"
+						icon={
+							sidebarCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />
+						}
+						onClick={() =>
+							setPreferences("sidebarCollapsed", !sidebarCollapsed)}
+						className="h-full"
+					/>
+				) : null}
 
 				<div className="flex items-center flex-grow h-full overflow-hidden">
 					{children}
@@ -82,7 +80,10 @@ export default function LayoutHeader({ className, children }: LayoutHeaderProps)
 					<Preferences {...buttonProps} />
 					<ThemeButton {...buttonProps} />
 					<LanguageButton {...buttonProps} />
-					<FullscreenButton {...buttonProps} target={document.documentElement} />
+					<FullscreenButton
+						{...buttonProps}
+						target={document.documentElement}
+					/>
 					<NotificationContainer {...buttonProps} />
 					<UserMenu {...buttonProps} />
 				</div>

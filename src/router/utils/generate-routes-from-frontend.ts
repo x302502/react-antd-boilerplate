@@ -7,7 +7,7 @@ import { filterTree } from "#src/utils";
  */
 export function generateRoutesByFrontend(
 	routes: AppRouteRecordRaw[],
-	roles: string[],
+	roles: string[]
 ) {
 	// 根据角色标识过滤路由表，判断当前用户是否拥有指定权限
 	const finalRoutes = filterTree(routes, (route) => {
@@ -27,5 +27,5 @@ function hasAuthority(route: AppRouteRecordRaw, accesses: string[]) {
 	if (!authority) {
 		return true;
 	}
-	return accesses.some(value => authority.includes(value));
+	return accesses.some((value) => authority.includes(value));
 }

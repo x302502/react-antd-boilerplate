@@ -13,47 +13,46 @@ const useStyles = createUseStyles({
 		"& .ant-drawer-body": {
 			"padding": 0,
 			"&>ul": {
-				paddingTop: "1em",
-			},
+				paddingTop: "1em"
+			}
 		},
 		"& .ant-drawer-header": {
-			display: "none",
-		},
-	},
+			display: "none"
+		}
+	}
 });
 
 export default function LayoutMobileMenu() {
 	const classes = useStyles();
-	const { token: { Menu } } = antdTheme.useToken();
-	const { sidebarCollapsed, setPreferences, isDark, sidebarTheme } = usePreferences();
+	const {
+		token: { Menu }
+	} = antdTheme.useToken();
+	const { sidebarCollapsed, setPreferences, isDark, sidebarTheme } =
+		usePreferences();
 	const { isMobile } = useDeviceType();
 	const { sideNavItems, handleMenuSelect } = useMenu();
 	const isFixedDarkTheme = isDark || sidebarTheme === "dark";
 
-	return (
-		isMobile
-			? (
-				<Drawer
-					styles={{
-						body: {
-							backgroundColor: isFixedDarkTheme ? Menu?.darkItemBg : Menu?.itemBg,
-						},
-					}}
-					open={sidebarCollapsed}
-					placement="left"
-					width="clamp(200px, 50vw, 210px)"
-					className={cn(classes.drawerStyles)}
-					onClose={() => setPreferences("sidebarCollapsed", false)}
-				>
-					<Scrollbar>
-						<LayoutMenu
-							autoOpenMenu
-							menus={sideNavItems}
-							handleMenuSelect={handleMenuSelect}
-						/>
-					</Scrollbar>
-				</Drawer>
-			)
-			: null
-	);
+	return isMobile ? (
+		<Drawer
+			styles={{
+				body: {
+					backgroundColor: isFixedDarkTheme ? Menu?.darkItemBg : Menu?.itemBg
+				}
+			}}
+			open={sidebarCollapsed}
+			placement="left"
+			width="clamp(200px, 50vw, 210px)"
+			className={cn(classes.drawerStyles)}
+			onClose={() => setPreferences("sidebarCollapsed", false)}
+		>
+			<Scrollbar>
+				<LayoutMenu
+					autoOpenMenu
+					menus={sideNavItems}
+					handleMenuSelect={handleMenuSelect}
+				/>
+			</Scrollbar>
+		</Drawer>
+	) : null;
 }

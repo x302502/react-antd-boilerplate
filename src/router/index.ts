@@ -53,30 +53,24 @@ export const rootRoute: RouteObject[] = [
 				loadedPaths.add(nextUrl.pathname);
 			}
 			return false;
-		},
-	},
+		}
+	}
 ];
 
 function createRouter() {
 	if (import.meta.env.VITE_ROUTER_MODE === "hash") {
-		return createHashRouter(
-			rootRoute,
-			{
-				/**
-				 * @zh 路由模式为 hash 时，不需要设置 basename 属性，如果设置 basename 为 `/app`，根路由 `/` 则会变为 `/#/app`
-				 * @en When the routing mode is hash, you don't need to set the basename property. If you set it as `/app`, the root route `/` will become `/#/app`.
-				 * @see https://reactrouter.com/6.30.0/router-components/hash-router#basename
-				 */
-				// basename: import.meta.env.BASE_URL,
-			},
-		);
+		return createHashRouter(rootRoute, {
+			/**
+			 * @zh 路由模式为 hash 时，不需要设置 basename 属性，如果设置 basename 为 `/app`，根路由 `/` 则会变为 `/#/app`
+			 * @en When the routing mode is hash, you don't need to set the basename property. If you set it as `/app`, the root route `/` will become `/#/app`.
+			 * @see https://reactrouter.com/6.30.0/router-components/hash-router#basename
+			 */
+			// basename: import.meta.env.BASE_URL,
+		});
 	}
-	return createBrowserRouter(
-		rootRoute,
-		{
-			basename: import.meta.env.BASE_URL,
-		},
-	);
+	return createBrowserRouter(rootRoute, {
+		basename: import.meta.env.BASE_URL
+	});
 }
 
 export const router = createRouter();

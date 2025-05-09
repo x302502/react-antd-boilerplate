@@ -1,6 +1,9 @@
 import type { AppRouteRecordRaw } from "#src/router/types";
 
-export function searchRoute(routes: AppRouteRecordRaw[], path: string): AppRouteRecordRaw | null {
+export function searchRoute(
+	routes: AppRouteRecordRaw[],
+	path: string
+): AppRouteRecordRaw | null {
 	for (const routeItem of routes) {
 		if (routeItem.path === path) {
 			return routeItem;

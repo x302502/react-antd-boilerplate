@@ -7,7 +7,7 @@ import {
 	message as antdMessage,
 	Modal as antdModal,
 	notification as antdNotification,
-	App,
+	App
 } from "antd";
 
 let message: MessageInstance = antdMessage;
@@ -36,8 +36,4 @@ export function StaticAntd() {
 	return null;
 }
 
-export {
-	message,
-	modal,
-	notification,
-};
+export { message, modal, notification };

@@ -5,7 +5,7 @@ import {
 	MOBILE_PHONE_REGEXP,
 	TELEPHONE_REGEXP,
 	UNIFIED_SOCIAL_CREDIT_CODE_REGEXP,
-	USERNAME_REGEXP,
+	USERNAME_REGEXP
 } from "./regular-expressions";
 
 export const FORM_REQUIRED = [{ required: true }]; // 表单必填校验
@@ -17,12 +17,12 @@ export function USERNAME_RULES(t: TFunction<"translation", undefined>) {
 	return [
 		{
 			required: true,
-			message: t("form.username.required"),
+			message: t("form.username.required")
 		},
 		{
 			pattern: USERNAME_REGEXP,
-			message: t("form.username.invalid"),
-		},
+			message: t("form.username.invalid")
+		}
 	];
 }
 
@@ -34,12 +34,12 @@ export function PASSWORD_RULES(t: TFunction<"translation", undefined>) {
 	return [
 		{
 			required: true,
-			message: t("form.password.required"),
+			message: t("form.password.required")
 		},
 		{
 			pattern: /^(?=.*\d)(?=.*[a-z])[\w~!@#$%^&*+.\-]{8,16}$/i,
-			message: t("form.password.invalid"),
-		},
+			message: t("form.password.invalid")
+		}
 	];
 }
 
@@ -47,16 +47,18 @@ export function PASSWORD_RULES(t: TFunction<"translation", undefined>) {
  * 仅允许字母和数字的规则函数
  *
  */
-export function ALPHA_NUMERIC_ONLY_RULES(t: TFunction<"translation", undefined>) {
+export function ALPHA_NUMERIC_ONLY_RULES(
+	t: TFunction<"translation", undefined>
+) {
 	return [
 		{
 			required: true,
-			message: t("form.alphanumeric.required"),
+			message: t("form.alphanumeric.required")
 		},
 		{
 			pattern: ALPHA_NUMERIC_ONLY_REGEXP,
-			message: t("form.alphanumeric.invalid"),
-		},
+			message: t("form.alphanumeric.invalid")
+		}
 	];
 }
 
@@ -64,16 +66,18 @@ export function ALPHA_NUMERIC_ONLY_RULES(t: TFunction<"translation", undefined>)
  * 获取统一社会信用代码校验规则
  *
  */
-export function UNIFIED_SOCIAL_CREDIT_CODE_RULES(t: TFunction<"translation", undefined>) {
+export function UNIFIED_SOCIAL_CREDIT_CODE_RULES(
+	t: TFunction<"translation", undefined>
+) {
 	return [
 		{
 			required: true,
-			message: t("form.unifiedSocialCreditCode.required"),
+			message: t("form.unifiedSocialCreditCode.required")
 		},
 		{
 			pattern: UNIFIED_SOCIAL_CREDIT_CODE_REGEXP,
-			message: t("form.unifiedSocialCreditCode.invalid"),
-		},
+			message: t("form.unifiedSocialCreditCode.invalid")
+		}
 	];
 }
 
@@ -85,12 +89,12 @@ export function MOBILE_PHONE_RULES(t: TFunction<"translation", undefined>) {
 	return [
 		{
 			required: true,
-			message: t("form.mobile.required"),
+			message: t("form.mobile.required")
 		},
 		{
 			pattern: MOBILE_PHONE_REGEXP,
-			message: t("form.mobile.invalid"),
-		},
+			message: t("form.mobile.invalid")
+		}
 	];
 }
 
@@ -98,12 +102,12 @@ export function TELEPHONE_RULES(t: TFunction<"translation", undefined>) {
 	return [
 		{
 			required: true,
-			message: t("form.telephone.required"),
+			message: t("form.telephone.required")
 		},
 		{
 			pattern: TELEPHONE_REGEXP,
-			message: t("form.telephone.invalid"),
-		},
+			message: t("form.telephone.invalid")
+		}
 	];
 }
 
@@ -121,6 +125,6 @@ export function PHONE_RULE(t: TFunction<"translation", undefined>) {
 			else {
 				return Promise.reject(t("form.mobile.invalid"));
 			}
-		},
+		}
 	};
 }

@@ -3,7 +3,7 @@ import {
 	MIXED_NAVIGATION,
 	SIDE_NAVIGATION,
 	TOP_NAVIGATION,
-	TWO_COLUMN_NAVIGATION,
+	TWO_COLUMN_NAVIGATION
 } from "#src/layout/widgets/preferences/blocks/layout/constants";
 import { usePreferencesStore } from "#src/store";
 
@@ -22,17 +22,21 @@ import { useMemo } from "react";
 export function useLayout() {
 	const { isMobile } = useDeviceType();
 	// LayoutType
-	const navigationStyle = usePreferencesStore(state => state.navigationStyle);
-	const sidebarWidth = usePreferencesStore(state => state.sidebarWidth);
-	const sideCollapsedWidth = usePreferencesStore(state => state.sideCollapsedWidth);
-	const firstColumnWidthInTwoColumnNavigation = usePreferencesStore(state => state.firstColumnWidthInTwoColumnNavigation);
+	const navigationStyle = usePreferencesStore((state) => state.navigationStyle);
+	const sidebarWidth = usePreferencesStore((state) => state.sidebarWidth);
+	const sideCollapsedWidth = usePreferencesStore(
+		(state) => state.sideCollapsedWidth
+	);
+	const firstColumnWidthInTwoColumnNavigation = usePreferencesStore(
+		(state) => state.firstColumnWidthInTwoColumnNavigation
+	);
 
 	/**
 	 * 当前导航类型
 	 */
 	const currentLayout = useMemo(
-		() => isMobile ? SIDE_NAVIGATION : navigationStyle,
-		[isMobile, navigationStyle],
+		() => (isMobile ? SIDE_NAVIGATION : navigationStyle),
+		[isMobile, navigationStyle]
 	);
 
 	/**
@@ -40,7 +44,7 @@ export function useLayout() {
 	 */
 	const isSideNav = useMemo(
 		() => currentLayout === SIDE_NAVIGATION,
-		[currentLayout],
+		[currentLayout]
 	);
 
 	/**
@@ -48,7 +52,7 @@ export function useLayout() {
 	 */
 	const isTopNav = useMemo(
 		() => currentLayout === TOP_NAVIGATION,
-		[currentLayout],
+		[currentLayout]
 	);
 
 	/**
@@ -56,7 +60,7 @@ export function useLayout() {
 	 */
 	const isTwoColumnNav = useMemo(
 		() => currentLayout === TWO_COLUMN_NAVIGATION,
-		[currentLayout],
+		[currentLayout]
 	);
 
 	/**
@@ -64,7 +68,7 @@ export function useLayout() {
 	 */
 	const isMixedNav = useMemo(
 		() => currentLayout === MIXED_NAVIGATION,
-		[currentLayout],
+		[currentLayout]
 	);
 
 	return {
@@ -75,6 +79,6 @@ export function useLayout() {
 		isTwoColumnNav,
 		sidebarWidth,
 		sideCollapsedWidth,
-		firstColumnWidthInTwoColumnNavigation,
+		firstColumnWidthInTwoColumnNavigation
 	};
 }

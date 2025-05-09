@@ -1,5 +1,16 @@
 import { BasicContent } from "#src/components";
-import { Card, Col, Row, Typography, Divider, Space, Button, Alert, Tag, theme } from "antd";
+import {
+	Alert,
+	Button,
+	Card,
+	Col,
+	Divider,
+	Row,
+	Space,
+	Tag,
+	theme,
+	Typography
+} from "antd";
 import { useTranslation } from "react-i18next";
 import { demoItems } from "./constants";
 
@@ -8,7 +19,7 @@ const { Title, Paragraph, Text } = Typography;
 export default function Demo() {
 	const { t } = useTranslation();
 	const {
-		token: { colorBgLayout },
+		token: { colorBgLayout }
 	} = theme.useToken();
 
 	return (
@@ -18,28 +29,28 @@ export default function Demo() {
 					<Card title={t("demo.title")}>
 						<Typography>
 							<Title level={2}>{t("demo.welcome")}</Title>
-							<Paragraph>
-								{t("demo.description")}
-							</Paragraph>
+							<Paragraph>{t("demo.description")}</Paragraph>
 							<Divider />
 							<Title level={3}>{t("demo.features")}</Title>
-							<Space direction="vertical" style={{ width: '100%' }}>
+							<Space direction="vertical" style={{ width: "100%" }}>
 								{demoItems.map((item) => (
 									<Card key={item.key} size="small">
 										<Space>
 											<Tag color={item.color}>{item.tag}</Tag>
 											<Text strong>{item.title}</Text>
 										</Space>
-										<Paragraph style={{ marginTop: 8 }}>{item.description}</Paragraph>
+										<Paragraph style={{ marginTop: 8 }}>
+											{item.description}
+										</Paragraph>
 									</Card>
 								))}
 							</Space>
 							<Divider />
-							<Alert 
-								message={t("demo.infoTitle")} 
-								description={t("demo.infoDescription")} 
-								type="info" 
-								showIcon 
+							<Alert
+								message={t("demo.infoTitle")}
+								description={t("demo.infoDescription")}
+								type="info"
+								showIcon
 								style={{ marginBottom: 16 }}
 							/>
 							<Row justify="center">

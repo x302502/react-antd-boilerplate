@@ -1,0 +1,113 @@
+{
+	"title": "Tùy chỉnh",
+	"copyPreferences": "Sao chép Tùy chỉnh",
+	"copyPreferencesSuccessTitle": "Sao chép thành công",
+	"copyPreferencesSuccess": "Sao chép thành công, vui lòng ghi đè trong `src/store/preferences/index.ts`",
+	"clearAndLogout": "Xóa bộ nhớ đệm & Đăng xuất",
+	"theme": {
+		"title": "Giao diện",
+		"followSystem": "Theo hệ thống",
+		"light": "Sáng",
+		"dark": "Tối",
+		"colorBlindMode": "Chế độ mù màu",
+		"grayMode": "Chế độ xám",
+		"radius": "Bo tròn",
+		"builtin": {
+			"title": "Có sẵn",
+			"red": "Đỏ bụi",
+			"volcano": "Núi lửa",
+			"orange": "Cam hoàng hôn",
+			"gold": "Vàng kim",
+			"yellow": "Vàng bình minh",
+			"lime": "Chanh",
+			"green": "Xanh lá",
+			"cyan": "Xanh lơ",
+			"blue": "Xanh dương",
+			"geekblue": "Xanh công nghệ",
+			"purple": "Tím",
+			"magenta": "Hồng tím",
+			"gray": "Xám",
+			"custom": "Tùy chỉnh"
+		}
+	},
+	"layout": {
+		"title": "Bố cục",
+		"topNavigation": "Điều hướng trên cùng",
+		"topNavigationTip": "Menu ở vị trí trên cùng",
+		"sideNavigation": "Điều hướng bên cạnh",
+		"sideNavigationTip": "Menu ở vị trí bên cạnh",
+		"twoColumnNavigation": "Điều hướng hai cột",
+		"twoColumnNavigationTip": "Menu hai cột dọc ở vị trí bên cạnh",
+		"mixedNavigation": "Điều hướng hỗn hợp",
+		"mixedNavigationTip": "Điều hướng chính ở trên cùng, điều hướng phụ ở bên cạnh"
+	},
+	"sidebar": {
+		"title": "Thanh bên",
+		"width": "Chiều rộng",
+		"enable": "Hiển thị thanh bên",
+		"collapsedWidth": "Chiều rộng menu thu gọn",
+		"collapsed": "Thu gọn menu",
+		"collapsedShowTitle": "Hiển thị tiêu đề menu",
+		"firstColumnWidthInTwoColumnNavigation": "Chiều rộng cột đầu tiên trong điều hướng hai cột",
+		"sidebarTheme": "Giao diện thanh bên",
+		"autoActivateChild": "Tự động kích hoạt menu con",
+		"autoActivateChildTip": "`Bật` để tự động kích hoạt menu con khi nhấp vào menu.",
+		"expandOnHover": "Mở rộng khi di chuột",
+		"expandOnHoverTip": "Khi di chuột qua menu, \n `Bật` để mở rộng menu con \n `Tắt` để mở rộng toàn bộ thanh bên."
+	},
+	"tabbar": {
+		"title": "Thanh tab",
+		"enable": "Bật thanh tab",
+		"icon": "Hiển thị biểu tượng tab",
+		"showMore": "Hiển thị nút Thêm",
+		"showMaximize": "Hiển thị nút Phóng to",
+		"persist": "Lưu trữ tab",
+		"draggable": "Bật sắp xếp kéo thả",
+		"styleType": {
+			"title": "Kiểu tab",
+			"chrome": "Chrome",
+			"card": "Thẻ",
+			"plain": "Đơn giản",
+			"brisk": "Nhanh"
+		},
+		"contextMenu": {
+			"refresh": "Làm mới",
+			"close": "Đóng",
+			"pin": "Ghim",
+			"unpin": "Bỏ ghim",
+			"closeLeft": "Đóng tab bên trái",
+			"closeRight": "Đóng tab bên phải",
+			"closeOthers": "Đóng tab khác",
+			"closeAll": "Đóng tất cả tab",
+			"openInNewWindow": "Mở trong cửa sổ mới",
+			"maximize": "Phóng to",
+			"restoreMaximize": "Khôi phục"
+		}
+	},
+	"animation": {
+		"title": "Hiệu ứng",
+		"loading": "Tải trang",
+		"transition": "Chuyển trang",
+		"progress": "Tiến trình trang"
+	},
+	"general": {
+		"title": "Chung",
+		"language": "Ngôn ngữ",
+		"dynamicTitle": "Tiêu đề động",
+		"watermark": "Hình mờ",
+		"watermarkTip": "Hình mờ tên người dùng trên trang web, không khuyến khích",
+		"watermarkContent": "Nội dung hình mờ",
+		"enableCheckUpdate": "Kiểm tra cập nhật",
+		"enableBackTopButton": "Nút lên đầu trang"
+	},
+	"footer": {
+		"title": "Chân trang",
+		"showFooter": "Hiển thị chân trang",
+		"fixedFooter": "Cố định chân trang",
+		"companyName": "Tên công ty",
+		"companyWebsite": "Trang web công ty",
+		"copyrightDate": "Ngày bản quyền",
+		"ICPNumber": "Số ICP",
+		"ICPLink": "Liên kết ICP"
+	}
+}

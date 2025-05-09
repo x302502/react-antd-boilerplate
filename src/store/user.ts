@@ -10,7 +10,7 @@ const initialState = {
 	email: "",
 	phoneNumber: "",
 	description: "",
-	roles: [],
+	roles: []
 	// menus: [],
 };
 
@@ -19,27 +19,22 @@ type UserState = UserInfoType;
 interface UserAction {
 	getUserInfo: () => Promise<UserInfoType>
 	reset: () => void
-};
+}
 
-export const useUserStore = create<UserState & UserAction>()(
+export const useUserStore = create<UserState & UserAction>()((set) => ({
+	...initialState,
 
-	set => ({
-		...initialState,
+	getUserInfo: async () => {
+		const response = await fetchUserInfo();
+		set({
+			...response.result
+		});
+		return response.result;
+	},
 
-		getUserInfo: async () => {
-			const response = await fetchUserInfo();
-			set({
-				...response.result,
-			});
-			return response.result;
-		},
-
-		reset: () => {
-			return set({
-				...initialState,
-			});
-		},
-
-	}),
-
-);
+	reset: () => {
+		return set({
+			...initialState
+		});
+	}
+}));

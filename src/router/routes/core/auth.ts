@@ -13,9 +13,9 @@ const routes: AppRouteRecordRaw[] = [
 		Component: Login,
 		handle: {
 			hideInMenu: true,
-			title: $t("authority.login"),
-		},
-	},
+			title: $t("authority.login")
+		}
+	}
 ];
 
 export default routes;

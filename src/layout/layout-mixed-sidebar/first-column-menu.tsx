@@ -26,10 +26,10 @@ const useStyles = createUseStyles(({ token }) => {
 				"& .ant-menu-title-content": {
 					lineHeight: "initial",
 					margin: "0px !important",
-					fontSize: token.fontSizeIcon,
-				},
-			},
-		},
+					fontSize: token.fontSizeIcon
+				}
+			}
+		}
 	};
 });
 
@@ -41,32 +41,41 @@ interface FirstColumnMenuProps {
 const emptyArray: MenuItemType[] = [];
 export default function FirstColumnMenu({
 	handleMenuSelect,
-	menus = emptyArray,
+	menus = emptyArray
 }: FirstColumnMenuProps) {
 	const classes = useStyles();
 	const { pathname } = useCurrentRoute();
-	const wholeMenus = useAccessStore(state => state.wholeMenus);
-	const { firstColumnWidthInTwoColumnNavigation, isDark, sidebarTheme } = usePreferences();
+	const wholeMenus = useAccessStore((state) => state.wholeMenus);
+	const { firstColumnWidthInTwoColumnNavigation, isDark, sidebarTheme } =
+		usePreferences();
 
-	const { rootMenuPath } = findRootMenuByPath(wholeMenus, removeTrailingSlash(pathname));
+	const { rootMenuPath } = findRootMenuByPath(
+		wholeMenus,
+		removeTrailingSlash(pathname)
+	);
 
 	return (
-
 		<div
 			style={{
-				width: firstColumnWidthInTwoColumnNavigation,
+				width: firstColumnWidthInTwoColumnNavigation
 			}}
-			className={clsx("border-r h-full", sidebarTheme === "dark" ? "border-r-[#303030]" : "border-r-colorBorderSecondary")}
+			className={clsx(
+				"border-r h-full",
+				sidebarTheme === "dark"
+					? "border-r-[#303030]"
+					: "border-r-colorBorderSecondary"
+			)}
 		>
 			<Logo sidebarCollapsed />
 			<Scrollbar style={{ height: `calc(100% - ${headerHeight}px)` }}>
-				<ConfigProvider theme={{
-					components: {
-						Menu: {
-							collapsedWidth: firstColumnWidthInTwoColumnNavigation - 1,
-						},
-					},
-				}}
+				<ConfigProvider
+					theme={{
+						components: {
+							Menu: {
+								collapsedWidth: firstColumnWidthInTwoColumnNavigation - 1
+							}
+						}
+					}}
 				>
 					<Menu
 						mode="vertical"

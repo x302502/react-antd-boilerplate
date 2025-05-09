@@ -5,7 +5,7 @@ import {
 	ProForm,
 	ProFormDigit,
 	ProFormText,
-	ProFormTextArea,
+	ProFormTextArea
 } from "@ant-design/pro-components";
 import { Form, Input } from "antd";
 
@@ -34,7 +34,7 @@ export default function Profile() {
 				onFinish={handleFinish}
 				initialValues={{
 					...currentUser,
-					avatar: getAvatarURL(),
+					avatar: getAvatarURL()
 				}}
 				requiredMark
 			>
@@ -44,8 +44,8 @@ export default function Profile() {
 					rules={[
 						{
 							required: true,
-							message: "请输入您的昵称!",
-						},
+							message: "请输入您的昵称!"
+						}
 					]}
 				>
 					<FormAvatarItem />
@@ -56,8 +56,8 @@ export default function Profile() {
 					rules={[
 						{
 							required: true,
-							message: "请输入您的用户名!",
-						},
+							message: "请输入您的用户名!"
+						}
 					]}
 				/>
 				<ProFormText
@@ -66,8 +66,8 @@ export default function Profile() {
 					rules={[
 						{
 							required: true,
-							message: "请输入您的邮箱!",
-						},
+							message: "请输入您的邮箱!"
+						}
 					]}
 				/>
 				<ProFormDigit
@@ -76,8 +76,8 @@ export default function Profile() {
 					rules={[
 						{
 							required: true,
-							message: "请输入您的联系电话!",
-						},
+							message: "请输入您的联系电话!"
+						}
 					]}
 				>
 					<Input type="tel" allowClear />
@@ -91,4 +91,4 @@ export default function Profile() {
 			</ProForm>
 		</BasicContent>
 	);
-};
+}

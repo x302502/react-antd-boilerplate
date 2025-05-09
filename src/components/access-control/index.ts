@@ -4,6 +4,7 @@ import { useAccess } from "#src/hooks";
 
 interface AccessControlProps {
 	// 权限类型，默认为 code
+
 	type?: "code" | "role"
 	// 权限值，可以是字符串或字符串数组
 	codes?: string | string[]
@@ -18,7 +19,12 @@ interface AccessControlProps {
  * @param AccessControlProps 权限验证组件的属性
  * @returns 若子组件存在，并且传入的权限值有效，则返回子组件；否则返回 null
  */
-export function AccessControl({ type = "code", codes, children, fallback }: AccessControlProps) {
+export function AccessControl({
+	type = "code",
+	codes,
+	children,
+	fallback
+}: AccessControlProps) {
 	const { hasAccessByCodes, hasAccessByRoles } = useAccess();
 
 	if (!children)

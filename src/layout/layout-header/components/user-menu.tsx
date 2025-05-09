@@ -16,8 +16,8 @@ import { useNavigate } from "react-router";
 export function UserMenu({ ...restProps }: ButtonProps) {
 	const navigate = useNavigate();
 	const { t } = useTranslation();
-	const avatar = useUserStore(state => state.avatar);
-	const logout = useAuthStore(state => state.logout);
+	const avatar = useUserStore((state) => state.avatar);
+	const logout = useAuthStore((state) => state.logout);
 
 	const onClick: MenuProps["onClick"] = async ({ key }) => {
 		if (key === "logout") {
@@ -29,20 +29,20 @@ export function UserMenu({ ...restProps }: ButtonProps) {
 		}
 	};
 
-	const altView = useMemo(() => isWindowsOs() ? "Alt" : "⌥", [isWindowsOs]);
+	const altView = useMemo(() => (isWindowsOs() ? "Alt" : "⌥"), [isWindowsOs]);
 	const items: MenuProps["items"] = [
 		{
 			label: t("common.menu.personalCenter"),
 			key: "personal-center",
 			icon: <UserCircleIcon />,
-			extra: `${altView}P`,
+			extra: `${altView}P`
 		},
 		{
 			label: t("authority.logout"),
 			key: "logout",
 			icon: <LogoutOutlined />,
-			extra: `${altView}Q`,
-		},
+			extra: `${altView}Q`
+		}
 	];
 
 	useKeyPress(["alt.P"], () => {

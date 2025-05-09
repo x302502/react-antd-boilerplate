@@ -2,13 +2,7 @@ import { BasicButton } from "#src/components";
 
 import { LeftOutlined } from "@ant-design/icons";
 import { useCountDown } from "ahooks";
-import {
-	Button,
-	Form,
-	Input,
-	Space,
-	Typography,
-} from "antd";
+import { Button, Form, Input, Space, Typography } from "antd";
 import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FormModeContext } from "../form-mode-context";
@@ -16,7 +10,7 @@ import { FormModeContext } from "../form-mode-context";
 const { Title } = Typography;
 
 const FORM_INITIAL_VALUES = {
-	email: "",
+	email: ""
 };
 export type ForgotPasswordFormType = typeof FORM_INITIAL_VALUES;
 
@@ -27,7 +21,7 @@ export function ForgotPassword() {
 		targetDate,
 		onEnd: () => {
 			setTargetDate(0);
-		},
+		}
 	});
 
 	const [loading, setLoading] = useState(false);
@@ -46,9 +40,7 @@ export function ForgotPassword() {
 	return (
 		<>
 			<Space direction="vertical">
-				<Title level={3}>
-					{t("authority.forgotPassword")}
-				</Title>
+				<Title level={3}>{t("authority.forgotPassword")}</Title>
 				<p className="text-xs opacity-80">
 					{t("authority.forgotPasswordSubtitle")}
 				</p>
@@ -66,12 +58,12 @@ export function ForgotPassword() {
 					name="email"
 					rules={[
 						{
-							required: true,
+							required: true
 						},
 						{
 							type: "email",
-							message: t("form.email.invalid"),
-						},
+							message: t("form.email.invalid")
+						}
 					]}
 				>
 					<Input placeholder={t("form.email.required")} />
@@ -86,7 +78,9 @@ export function ForgotPassword() {
 						disabled={countdown > 0}
 					>
 						{countdown > 0
-							? t("authority.retryAfterText", { count: Math.floor(countdown / 1000) })
+							? t("authority.retryAfterText", {
+								count: Math.floor(countdown / 1000)
+							})
 							: t("authority.sendResetLink")}
 					</Button>
 				</Form.Item>

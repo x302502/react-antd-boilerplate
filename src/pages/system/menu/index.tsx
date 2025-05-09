@@ -1,5 +1,9 @@
 import type { MenuItemType } from "#src/api/system";
-import type { ActionType, ProColumns, ProCoreActionType } from "@ant-design/pro-components";
+import type {
+	ActionType,
+	ProColumns,
+	ProCoreActionType
+} from "@ant-design/pro-components";
 import { fetchDeleteMenuItem, fetchMenuList } from "#src/api/system/menu";
 import { BasicButton, BasicContent, BasicTable } from "#src/components";
 import { accessControlCodes, useAccess } from "#src/hooks";
@@ -24,10 +28,15 @@ export default function Menu() {
 
 	const actionRef = useRef<ActionType>(null);
 
-	const handleDeleteRow = async (id: number, action?: ProCoreActionType<object>) => {
+	const handleDeleteRow = async (
+		id: number,
+		action?: ProCoreActionType<object>
+	) => {
 		const responseData = await fetchDeleteMenuItem(id);
 		await action?.reload?.();
-		window.$message?.success(`${t("common.deleteSuccess")} id = ${responseData.result}`);
+		window.$message?.success(
+			`${t("common.deleteSuccess")} id = ${responseData.result}`
+		);
 	};
 
 	const columns: ProColumns<MenuItemType>[] = [
@@ -60,11 +69,17 @@ export default function Menu() {
 						okText={t("common.confirm")}
 						cancelText={t("common.cancel")}
 					>
-						<BasicButton type="link" size="small" disabled={!hasAccessByCodes(accessControlCodes.delete)}>{t("common.delete")}</BasicButton>
-					</Popconfirm>,
+						<BasicButton
+							type="link"
+							size="small"
+							disabled={!hasAccessByCodes(accessControlCodes.delete)}
+						>
+							{t("common.delete")}
+						</BasicButton>
+					</Popconfirm>
 				];
-			},
-		},
+			}
+		}
 	];
 
 	const onCloseChange = () => {
@@ -87,19 +102,17 @@ export default function Menu() {
 					const menuTree = handleTree(responseData.result.list);
 					setFlatParentMenus(
 						responseData.result.list
-							.filter(
-								item => Number(item.menuType) === 0,
-							).map(item => ({ ...item, name: t(item.name) })),
+							.filter((item) => Number(item.menuType) === 0)
+							.map((item) => ({ ...item, name: t(item.name) }))
 					);
 					return {
 						...responseData,
 						data: menuTree,
-						total: responseData.result.total,
+						total: responseData.result.total
 					};
 				}}
 				headerTitle={`${t("common.menu.menu")} （${t("common.demoOnly")}）`}
 				toolBarRender={() => [
-
 					<Button
 						key="add-role"
 						icon={<PlusCircleOutlined />}
@@ -111,8 +124,7 @@ export default function Menu() {
 						}}
 					>
 						{t("common.add")}
-					</Button>,
-
+					</Button>
 				]}
 			/>
 			<Detail
@@ -125,4 +137,4 @@ export default function Menu() {
 			/>
 		</BasicContent>
 	);
-};
+}

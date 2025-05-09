@@ -1,7 +1,7 @@
 /// <reference types="vitest/config" />
 
 import process from "node:process";
-import react from "@vitejs/plugin-react";
+import reactSWC from "@vitejs/plugin-react-swc";
 import { codeInspectorPlugin } from "code-inspector-plugin";
 import dayjs from "dayjs";
 import { defineConfig } from "vite";
@@ -9,7 +9,14 @@ import { checker } from "vite-plugin-checker";
 import { vitePluginFakeServer } from "vite-plugin-fake-server";
 import svgrPlugin from "vite-plugin-svgr";
 
-import { author, dependencies, devDependencies, license, name, version } from "./package.json";
+import {
+	author,
+	dependencies,
+	devDependencies,
+	license,
+	name,
+	version,
+} from "./package.json";
 
 const __APP_INFO__ = {
 	pkg: { dependencies, devDependencies, name, version, license, author },
@@ -20,10 +27,9 @@ const isDev = process.env.NODE_ENV === "development";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-
 	base: isDev ? "/" : "/react-antd-admin/",
 	plugins: [
-		react(),
+		reactSWC(),
 		vitePluginFakeServer({
 			basename: "/api",
 			enableProd: true,

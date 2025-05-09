@@ -24,7 +24,7 @@ export default function LayoutMenu({
 	mode = "inline",
 	autoOpenMenu,
 	handleMenuSelect,
-	menus = emptyArray,
+	menus = emptyArray
 }: LayoutMenuProps) {
 	const matches = useMatches();
 	const { sidebarCollapsed, sidebarTheme, isDark } = usePreferences();
@@ -32,24 +32,21 @@ export default function LayoutMenu({
 	const { isMobile } = useDeviceType();
 
 	const getSelectedKeys = useMemo(
-		() => matches.map(item => item.id),
-		[matches],
+		() => matches.map((item) => item.id),
+		[matches]
 	);
 
-	const menuInlineCollapsedProp = useMemo(
-		() => {
-			/* inlineCollapsed 只在 inline 模式可用 */
-			if (mode === "inline") {
-				return { inlineCollapsed: isMobile ? false : sidebarCollapsed };
-			}
-			return {};
-		},
-		[mode, isMobile, sidebarCollapsed],
-	);
+	const menuInlineCollapsedProp = useMemo(() => {
+		/* inlineCollapsed 只在 inline 模式可用 */
+		if (mode === "inline") {
+			return { inlineCollapsed: isMobile ? false : sidebarCollapsed };
+		}
+		return {};
+	}, [mode, isMobile, sidebarCollapsed]);
 
 	const handleOpenChange: MenuProps["onOpenChange"] = (keys) => {
 		// eslint-disable-next-line unicorn/prefer-includes
-		const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1);
+		const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
 		const isExistChildren = latestOpenKey
 			? findChildrenLen(menus, latestOpenKey)
 			: false;
@@ -61,24 +58,21 @@ export default function LayoutMenu({
 		});
 	};
 
-	const menuOpenProps = useMemo(
-		() => {
-			/* inlineCollapsed 只在 inline 模式可用 */
-			if (autoOpenMenu) {
-				return {
-					openKeys,
-					onOpenChange: handleOpenChange,
-				};
-			}
-			return {};
-		},
-		[autoOpenMenu, openKeys],
-	);
+	const menuOpenProps = useMemo(() => {
+		/* inlineCollapsed 只在 inline 模式可用 */
+		if (autoOpenMenu) {
+			return {
+				openKeys,
+				onOpenChange: handleOpenChange
+			};
+		}
+		return {};
+	}, [autoOpenMenu, openKeys]);
 
 	useEffect(() => {
 		/* 如果菜单是收起的，则不需要自动展开，防止子路由激活，菜单自动弹出 */
 		if (!sidebarCollapsed) {
-			setOpenKeys(matches.map(item => item.id));
+			setOpenKeys(matches.map((item) => item.id));
 		}
 	}, [matches]);
 

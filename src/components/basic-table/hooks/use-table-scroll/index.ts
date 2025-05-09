@@ -12,11 +12,11 @@ export function useTableScroll(scrollX: number = 702) {
 
 	const scrollConfig = {
 		y: result,
-		x: scrollX,
+		x: scrollX
 	};
 
 	return {
 		tableWrapperRef,
-		scrollConfig,
+		scrollConfig
 	};
 }

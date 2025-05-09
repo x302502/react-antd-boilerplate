@@ -23,6 +23,6 @@ export function usePreferences() {
 		...preferences,
 		isDefault,
 		isDark: isDarkTheme(theme),
-		isLight: isLightTheme(theme),
+		isLight: isLightTheme(theme)
 	};
 }

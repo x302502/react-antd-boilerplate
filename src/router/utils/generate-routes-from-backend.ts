@@ -5,7 +5,9 @@ import { lazy } from "react";
 import { Outlet } from "react-router";
 import { addRouteIdByPath } from "./add-route-id-by-path";
 
-const ExceptionUnknownComponent = lazy(() => import("#src/pages/exception/unknown-component"));
+const ExceptionUnknownComponent = lazy(
+	() => import("#src/pages/exception/unknown-component")
+);
 
 /**
  * @zh 异步获取页面组件
@@ -14,14 +16,16 @@ const ExceptionUnknownComponent = lazy(() => import("#src/pages/exception/unknow
 const pageModules = import.meta.glob([
 	"/src/pages/**/*.tsx",
 	// Exclude exception pages from lazy loading
-	"!/src/pages/exception/**/*.tsx",
+	"!/src/pages/exception/**/*.tsx"
 ]);
 
 /**
  * @zh 根据后端路由配置生成前端路由
  * @en Generate frontend routes based on backend route configurations
  */
-export async function generateRoutesFromBackend(backendRoutes: Array<AppRouteRecordRaw>) {
+export async function generateRoutesFromBackend(
+	backendRoutes: Array<AppRouteRecordRaw>
+) {
 	const pageModulePaths = Object.keys(pageModules);
 	if (!backendRoutes?.length)
 		return [];
@@ -32,9 +36,14 @@ export async function generateRoutesFromBackend(backendRoutes: Array<AppRouteRec
 	 * @param route 路由配置对象
 	 * @param componentPath 组件文件路径
 	 */
-	const loadRouteComponent = async (route: AppRouteRecordRaw, componentPath: string) => {
+	const loadRouteComponent = async (
+		route: AppRouteRecordRaw,
+		componentPath: string
+	) => {
 		const modulePath = `/src/pages${componentPath}/index.tsx`;
-		const moduleIndex = pageModulePaths.findIndex(path => path === modulePath);
+		const moduleIndex = pageModulePaths.findIndex(
+			(path) => path === modulePath
+		);
 
 		if (moduleIndex !== -1) {
 			const lazyComponent = pageModules[pageModulePaths[moduleIndex]];
@@ -52,13 +61,16 @@ export async function generateRoutesFromBackend(backendRoutes: Array<AppRouteRec
 	 * @param parentPath 父级路径（用于嵌套路由）
 	 * @returns 转换后的路由配置
 	 */
-	const transformRoute = async (route: AppRouteRecordRaw, parentPath?: string): Promise<AppRouteRecordRaw> => {
+	const transformRoute = async (
+		route: AppRouteRecordRaw,
+		parentPath?: string
+	): Promise<AppRouteRecordRaw> => {
 		const transformedRoute: AppRouteRecordRaw = {
 			...route,
 			handle: {
 				...route.handle,
-				backstage: true,
-			},
+				backstage: true
+			}
 		};
 
 		// 处理 index 路由（继承父级路径）
@@ -85,9 +97,9 @@ export async function generateRoutesFromBackend(backendRoutes: Array<AppRouteRec
 		// 递归处理子路由
 		if (transformedRoute.children?.length) {
 			transformedRoute.children = await Promise.all(
-				transformedRoute.children.map(child =>
-					transformRoute(child, transformedRoute.path),
-				),
+				transformedRoute.children.map((child) =>
+					transformRoute(child, transformedRoute.path)
+				)
 			);
 		}
 
@@ -97,14 +109,18 @@ export async function generateRoutesFromBackend(backendRoutes: Array<AppRouteRec
 	/**
 	 * 标准化路由配置，确保每个路由都有子路由
 	 */
-	const normalizeRouteStructure = (route: AppRouteRecordRaw): AppRouteRecordRaw => {
+	const normalizeRouteStructure = (
+		route: AppRouteRecordRaw
+	): AppRouteRecordRaw => {
 		if (!route.children?.length) {
 			return {
 				...route,
-				children: [{
-					index: true,
-					handle: { ...route.handle },
-				}],
+				children: [
+					{
+						index: true,
+						handle: { ...route.handle }
+					}
+				]
 			} as AppRouteRecordRaw;
 		}
 		return route;
@@ -113,7 +129,7 @@ export async function generateRoutesFromBackend(backendRoutes: Array<AppRouteRec
 	// 处理路由配置
 	const normalizedRoutes = backendRoutes.map(normalizeRouteStructure);
 	const transformedRoutes = await Promise.all(
-		normalizedRoutes.map(route => transformRoute(route)),
+		normalizedRoutes.map((route) => transformRoute(route))
 	);
 
 	return addRouteIdByPath(transformedRoutes);

@@ -13,19 +13,17 @@ export function Iframe() {
 		isValidElement(routeTitle) ? t(routeTitle?.props.children) : routeTitle
 	) as string;
 
-	return iframeLink
-		? (
-			/**
-			 * use this tool https://iframegenerator.top/ to generate the iframe code
-			 */
-			<iframe
-				src={iframeLink}
-				title={title}
-				width="100%"
-				height="100%"
-				loading="lazy"
-				className="p-4 rounded-sm"
-			/>
-		)
-		: null;
+	return iframeLink ? (
+		/**
+		 * use this tool https://iframegenerator.top/ to generate the iframe code
+		 */
+		<iframe
+			src={iframeLink}
+			title={title}
+			width="100%"
+			height="100%"
+			loading="lazy"
+			className="p-4 rounded-sm"
+		/>
+	) : null;
 }

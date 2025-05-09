@@ -11,9 +11,9 @@ const routes: RouteObject[] = [
 		Component: NotFound,
 		handle: {
 			title: "404",
-			hideInMenu: true,
-		},
-	},
+			hideInMenu: true
+		}
+	}
 ];
 
 export default routes;

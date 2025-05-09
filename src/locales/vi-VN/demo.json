@@ -1,0 +1,10 @@
+{
+	"title": "Trang Demo",
+	"welcome": "Chào mừng đến với Trang Demo",
+	"description": "Đây là trang trình diễn giới thiệu các tính năng và thành phần khác nhau của mẫu React Antd Admin. Bạn có thể sử dụng trang này làm tham khảo để xây dựng các trang tùy chỉnh của riêng bạn.",
+	"features": "Tính năng chính",
+	"infoTitle": "Bắt đầu",
+	"infoDescription": "Khám phá các tính năng trên và sử dụng trang demo này làm mẫu để tạo các trang tùy chỉnh của riêng bạn trong bảng quản trị.",
+	"primaryButton": "Hành động Chính",
+	"secondaryButton": "Hành động Phụ"
+}

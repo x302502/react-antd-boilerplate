@@ -1,5 +1,5 @@
 import { SmileOutlined } from "@ant-design/icons";
-import { Button, Result } from "antd";
+import { Result } from "antd";
 import { useTranslation } from "react-i18next";
 
 export default function CommonVisible() {

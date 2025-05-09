@@ -8,7 +8,7 @@ export default function BarChart() {
 	const option: EChartsOption = {
 		title: {
 			text: "",
-			subtext: "",
+			subtext: ""
 		},
 		xAxis: {
 			type: "category",
@@ -16,11 +16,11 @@ export default function BarChart() {
 				t("home.directAccess"),
 				t("home.emailMarketing"),
 				t("home.affiliateAdvertise"),
-				t("home.videoAdvertise"),
-			],
+				t("home.videoAdvertise")
+			]
 		},
 		yAxis: {
-			type: "value",
+			type: "value"
 		},
 		tooltip: {},
 		series: [
@@ -30,10 +30,10 @@ export default function BarChart() {
 					{ value: 335, name: t("home.directAccess") },
 					{ value: 310, name: t("home.emailMarketing") },
 					{ value: 234, name: t("home.affiliateAdvertise") },
-					{ value: 135, name: t("home.videoAdvertise") },
-				],
-			},
-		],
+					{ value: 135, name: t("home.videoAdvertise") }
+				]
+			}
+		]
 	};
 	return (
 		<Card title={t("home.views")}>

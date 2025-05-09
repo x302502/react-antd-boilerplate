@@ -31,7 +31,6 @@ export default function UnknownComponent() {
 						{t("common.backHome")}
 					</Button>
 				</div>
-
 			)}
 		/>
 	);

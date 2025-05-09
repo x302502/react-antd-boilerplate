@@ -1,6 +1,15 @@
 import { BasicContent } from "#src/components";
 
-import { Badge, Card, Col, Descriptions, Row, Tag, theme, Typography } from "antd";
+import {
+	Badge,
+	Card,
+	Col,
+	Descriptions,
+	Row,
+	Tag,
+	theme,
+	Typography
+} from "antd";
 import { useTranslation } from "react-i18next";
 
 import { dependenciesItems, devDependenciesItems } from "./constants";
@@ -13,24 +22,24 @@ const { Text, Link } = Typography;
 export default function About() {
 	const { t } = useTranslation();
 	const {
-		token: { colorBgLayout },
+		token: { colorBgLayout }
 	} = theme.useToken();
 
 	const projectMessageItems = [
 		{
 			key: 1,
 			label: t("about.version"),
-			children: <Text code>{version}</Text>,
+			children: <Text code>{version}</Text>
 		},
 		{
 			key: 2,
 			label: t("about.lastBuildTime"),
-			children: <Tag color="#55acee">{lastBuildTime}</Tag>,
+			children: <Tag color="#55acee">{lastBuildTime}</Tag>
 		},
 		{
 			key: 3,
 			label: t("about.license"),
-			children: <Tag color="green">{__APP_INFO__.pkg.license}</Tag>,
+			children: <Tag color="green">{__APP_INFO__.pkg.license}</Tag>
 		},
 		{
 			key: 4,
@@ -44,7 +53,7 @@ export default function About() {
 				>
 					{t("common.view")}
 				</Link>
-			),
+			)
 		},
 		{
 			key: 5,
@@ -58,21 +67,21 @@ export default function About() {
 				>
 					{t("common.view")}
 				</Link>
-			),
+			)
 		},
 		{
 			key: 6,
 			label: "Github",
 			children: (
 				<Link
-				rel="noreferrer noopener"
-				copyable
-				target="_blank"
-				href="https://github.com/condorheroblog/react-antd-admin"
+					rel="noreferrer noopener"
+					copyable
+					target="_blank"
+					href="https://github.com/condorheroblog/react-antd-admin"
 				>
 					{import.meta.env.VITE_GLOB_APP_TITLE}
 				</Link>
-			),
+			)
 		},
 		{
 			key: 7,
@@ -85,8 +94,8 @@ export default function About() {
 				>
 					{__APP_INFO__.pkg.author}
 				</Link>
-			),
-		},
+			)
+		}
 	];
 
 	return (
@@ -100,8 +109,8 @@ export default function About() {
 									items={[
 										{
 											key: 1,
-											children: t("about.descriptions"),
-										},
+											children: t("about.descriptions")
+										}
 									]}
 								/>
 							</Card>

@@ -18,7 +18,8 @@ export function useDeviceType() {
 	 * }
 	 */
 	const responsive = useResponsive();
-	const isMobile = (responsive.xs && !responsive.sm) || (responsive.sm && !responsive.md);
+	const isMobile =
+		(responsive.xs && !responsive.sm) || (responsive.sm && !responsive.md);
 	const isIpad = responsive.md && !responsive.xl;
 	const isPC = responsive.xl;
 

@@ -3,13 +3,7 @@ import { MOBILE_PHONE_RULES } from "#src/constants";
 
 import { LeftOutlined } from "@ant-design/icons";
 import { ProFormCaptcha } from "@ant-design/pro-components";
-import {
-	Button,
-	Form,
-	InputNumber,
-	Space,
-	Typography,
-} from "antd";
+import { Button, Form, InputNumber, Space, Typography } from "antd";
 import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -19,7 +13,7 @@ const { Title } = Typography;
 
 const FORM_INITIAL_VALUES = {
 	phoneNumber: "",
-	captcha: "",
+	captcha: ""
 };
 export type CodeLoginFormType = typeof FORM_INITIAL_VALUES;
 
@@ -40,9 +34,7 @@ export function CodeLogin() {
 	return (
 		<>
 			<Space direction="vertical">
-				<Title level={3}>
-					{t("authority.codeLogin")}
-				</Title>
+				<Title level={3}>{t("authority.codeLogin")}</Title>
 			</Space>
 
 			<Form
@@ -52,20 +44,25 @@ export function CodeLogin() {
 				initialValues={FORM_INITIAL_VALUES}
 				onFinish={handleFinish}
 			>
-
 				<Form.Item
 					label={t("authority.mobile")}
 					name="phoneNumber"
 					rules={MOBILE_PHONE_RULES(t)}
 				>
-					<InputNumber controls={false} className="w-full" placeholder={t("form.mobile.required")} />
+					<InputNumber
+						controls={false}
+						className="w-full"
+						placeholder={t("form.mobile.required")}
+					/>
 				</Form.Item>
 
 				<ProFormCaptcha
 					label={t("authority.code")}
 					placeholder={t("form.code.required")}
 					captchaTextRender={(timing, count) => {
-						return timing ? t("authority.sendText", { second: count }) : t("authority.sendCode");
+						return timing
+							? t("authority.sendText", { second: count })
+							: t("authority.sendCode");
 					}}
 					// onGetCaptcha={(phone) => {
 					onGetCaptcha={() => {
@@ -78,20 +75,15 @@ export function CodeLogin() {
 					// }}
 					rules={[
 						{
-							required: true,
-						},
+							required: true
+						}
 					]}
 					phoneName="phoneNumber"
 					name="captcha"
 				/>
 
 				<Form.Item>
-					<Button
-						block
-						type="primary"
-						htmlType="submit"
-						loading={loading}
-					>
+					<Button block type="primary" htmlType="submit" loading={loading}>
 						{t("authority.login")}
 					</Button>
 				</Form.Item>

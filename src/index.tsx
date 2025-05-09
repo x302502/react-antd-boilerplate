@@ -19,17 +19,16 @@ async function setupApp() {
 	setupLoading();
 
 	const rootElement = document.getElementById("root");
-	if (!rootElement)
+	if (!rootElement) {
 		return;
-	const root = createRoot(
-		rootElement,
-	);
+	}
+	const root = createRoot(rootElement);
 
 	root.render(
 		// <StrictMode>
 		<TanstackQuery>
 			<App />
-		</TanstackQuery>,
+		</TanstackQuery>
 		// </StrictMode>,
 	);
 }

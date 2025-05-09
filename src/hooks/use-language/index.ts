@@ -16,14 +16,14 @@ export function useLanguage() {
 			await i18n.changeLanguage(locale);
 			// If you need to reload the page, please delete `key={lng}` in other files
 		},
-		[changeLanguage, i18n],
+		[changeLanguage, i18n]
 	);
 
 	return useMemo(
 		() => ({
 			language: i18n.language as LanguageType,
-			setLanguage: handleChangeLanguage,
+			setLanguage: handleChangeLanguage
 		}),
-		[handleChangeLanguage, i18n.language],
+		[handleChangeLanguage, i18n.language]
 	);
 }

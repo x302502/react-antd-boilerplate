@@ -13,7 +13,7 @@ type LanguageFileMap = Record<string, LanguageModule<LanguageFileMap>>;
 export function getZhCnLang() {
 	const langFiles = import.meta.glob<LanguageFileMap>("./zh-CN/**/*.json", {
 		import: "default",
-		eager: true,
+		eager: true
 	});
 	const result = organizeLanguageFiles(langFiles);
 	return result;
@@ -22,7 +22,16 @@ export function getZhCnLang() {
 export function getEnUsLang() {
 	const langFiles = import.meta.glob<LanguageFileMap>("./en-US/**/*.json", {
 		import: "default",
-		eager: true,
+		eager: true
+	});
+	const result = organizeLanguageFiles(langFiles);
+	return result;
+}
+
+export function getViVnLang() {
+	const langFiles = import.meta.glob<LanguageFileMap>("./vi-VN/**/*.json", {
+		import: "default",
+		eager: true
 	});
 	const result = organizeLanguageFiles(langFiles);
 	return result;

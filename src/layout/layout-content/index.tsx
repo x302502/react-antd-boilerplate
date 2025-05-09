@@ -9,23 +9,25 @@ import { useEffect, useMemo } from "react";
 
 import { useLocation, useOutlet } from "react-router";
 
-export interface LayoutContentProps { }
+export interface LayoutContentProps {}
 
 export default function LayoutContent() {
 	const {
-		token: { colorBgLayout },
+		token: { colorBgLayout }
 	} = theme.useToken();
 	const { pathname, search } = useLocation();
 	const outlet = useOutlet();
 	const aliveRef = useKeepAliveRef();
-	const isRefresh = useTabsStore(state => state.isRefresh);
-	const openTabs = useTabsStore(state => state.openTabs);
-	const tabbarEnable = usePreferencesStore(state => state.tabbarEnable);
-	const flatRouteList = useAccessStore(state => state.flatRouteList);
-	const transitionName = usePreferencesStore(state => state.transitionName);
-	const transitionEnable = usePreferencesStore(state => state.transitionEnable);
-	const enableFooter = usePreferencesStore(state => state.enableFooter);
-	const fixedFooter = usePreferencesStore(state => state.fixedFooter);
+	const isRefresh = useTabsStore((state) => state.isRefresh);
+	const openTabs = useTabsStore((state) => state.openTabs);
+	const tabbarEnable = usePreferencesStore((state) => state.tabbarEnable);
+	const flatRouteList = useAccessStore((state) => state.flatRouteList);
+	const transitionName = usePreferencesStore((state) => state.transitionName);
+	const transitionEnable = usePreferencesStore(
+		(state) => state.transitionEnable
+	);
+	const enableFooter = usePreferencesStore((state) => state.enableFooter);
+	const fixedFooter = usePreferencesStore((state) => state.fixedFooter);
 
 	/**
 	 * to distinguish different pages to cache
@@ -78,23 +80,24 @@ export default function LayoutContent() {
 		if (!tabbarEnable) {
 			return Object.keys(flatRouteList);
 		}
-		return Object.entries(flatRouteList).reduce<string[]>((acc, [key, value]) => {
-			if (value.handle.keepAlive === false) {
-				acc.push(key);
-			}
-			return acc;
-		}, []);
+		return Object.entries(flatRouteList).reduce<string[]>(
+			(acc, [key, value]) => {
+				if (value.handle.keepAlive === false) {
+					acc.push(key);
+				}
+				return acc;
+			},
+			[]
+		);
 	}, [flatRouteList, tabbarEnable]);
 
 	return (
 		<main
 			id={ELEMENT_ID_MAIN_CONTENT}
 			className="relative overflow-y-auto overflow-x-hidden flex-grow"
-			style={
-				{
-					backgroundColor: colorBgLayout,
-				}
-			}
+			style={{
+				backgroundColor: colorBgLayout
+			}}
 		>
 			<Scrollbar>
 				<GlobalSpin>
@@ -104,7 +107,9 @@ export default function LayoutContent() {
 								max={20}
 								transition
 								duration={300}
-								cacheNodeClassName={transitionEnable ? `keepalive-${transitionName}` : undefined}
+								cacheNodeClassName={
+									transitionEnable ? `keepalive-${transitionName}` : undefined
+								}
 								exclude={keepAliveExclude}
 								activeCacheKey={cacheKey}
 								aliveRef={aliveRef}
@@ -116,7 +121,6 @@ export default function LayoutContent() {
 					</div>
 				</GlobalSpin>
 			</Scrollbar>
-
 		</main>
 	);
 }

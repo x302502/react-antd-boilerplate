@@ -7,7 +7,7 @@ import {
 	DrawerForm,
 	ProFormRadio,
 	ProFormText,
-	ProFormTextArea,
+	ProFormTextArea
 } from "@ant-design/pro-components";
 import { useMutation } from "@tanstack/react-query";
 import { Form } from "antd";
@@ -23,15 +23,22 @@ interface DetailProps {
 	refreshTable?: () => void
 }
 
-export function Detail({ title, open, onCloseChange, detailData, treeData, refreshTable }: DetailProps) {
+export function Detail({
+	title,
+	open,
+	onCloseChange,
+	detailData,
+	treeData,
+	refreshTable
+}: DetailProps) {
 	const { t } = useTranslation();
 	const [form] = Form.useForm<RoleItemType>();
 
 	const addRoleItemMutation = useMutation({
-		mutationFn: fetchAddRoleItem,
+		mutationFn: fetchAddRoleItem
 	});
 	const updateRoleItemMutation = useMutation({
-		mutationFn: fetchUpdateRoleItem,
+		mutationFn: fetchUpdateRoleItem
 	});
 
 	const onFinish = async (values: RoleItemType) => {
@@ -71,7 +78,7 @@ export function Detail({ title, open, onCloseChange, detailData, treeData, refre
 					// console.log('resize!');
 				},
 				maxWidth: window.innerWidth * 0.8,
-				minWidth: 500,
+				minWidth: 500
 			}}
 			labelCol={{ span: 6 }}
 			wrapperCol={{ span: 24 }}
@@ -79,21 +86,20 @@ export function Detail({ title, open, onCloseChange, detailData, treeData, refre
 			form={form}
 			autoFocusFirstInput
 			drawerProps={{
-				destroyOnClose: true,
+				destroyOnClose: true
 			}}
 			onFinish={onFinish}
 			initialValues={{
 				status: 1,
-				menus: [],
+				menus: []
 			}}
 		>
-
 			<ProFormText
 				allowClear
 				rules={[
 					{
-						required: true,
-					},
+						required: true
+					}
 				]}
 				width="md"
 				name="name"
@@ -105,8 +111,8 @@ export function Detail({ title, open, onCloseChange, detailData, treeData, refre
 				allowClear
 				rules={[
 					{
-						required: true,
-					},
+						required: true
+					}
 				]}
 				width="md"
 				name="code"
@@ -120,12 +126,12 @@ export function Detail({ title, open, onCloseChange, detailData, treeData, refre
 				options={[
 					{
 						label: t("common.enabled"),
-						value: 1,
+						value: 1
 					},
 					{
 						label: t("common.deactivated"),
-						value: 0,
-					},
+						value: 0
+					}
 				]}
 			/>
 
@@ -141,4 +147,4 @@ export function Detail({ title, open, onCloseChange, detailData, treeData, refre
 			</Form.Item>
 		</DrawerForm>
 	);
-};
+}

@@ -6,9 +6,7 @@ import { request } from "#src/utils";
 export * from "./types";
 
 export function fetchLogin(data: PasswordLoginFormType) {
-	return request
-		.post("login", { json: data })
-		.json<ApiResponse<AuthType>>();
+	return request.post("login", { json: data }).json<ApiResponse<AuthType>>();
 }
 
 export function fetchLogout() {
@@ -16,7 +14,9 @@ export function fetchLogout() {
 }
 
 export function fetchAsyncRoutes() {
-	return request.get("get-async-routes").json<ApiResponse<AppRouteRecordRaw[]>>();
+	return request
+		.get("get-async-routes")
+		.json<ApiResponse<AppRouteRecordRaw[]>>();
 }
 
 export function fetchUserInfo() {
@@ -30,5 +30,7 @@ export interface RefreshTokenResult {
 
 export const refreshTokenPath = "refresh-token";
 export function fetchRefreshToken(data: { readonly refreshToken: string }) {
-	return request.post(refreshTokenPath, { json: data }).json<ApiResponse<RefreshTokenResult>>();
+	return request
+		.post(refreshTokenPath, { json: data })
+		.json<ApiResponse<RefreshTokenResult>>();
 }

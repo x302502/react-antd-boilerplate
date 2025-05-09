@@ -6,7 +6,12 @@
  * @param children 子节点字段，默认children
  * @returns 追加字段后的树
  */
-export function handleTree(data: any[], id?: string, parentId?: string, children?: string): any {
+export function handleTree(
+	data: any[],
+	id?: string,
+	parentId?: string,
+	children?: string
+): any {
 	if (!Array.isArray(data)) {
 		console.warn("data must be an array");
 		return [];
@@ -14,7 +19,7 @@ export function handleTree(data: any[], id?: string, parentId?: string, children
 	const config = {
 		id: id || "id",
 		parentId: parentId || "parentId",
-		childrenList: children || "children",
+		childrenList: children || "children"
 	};
 
 	const childrenListMap: any = {};
@@ -69,11 +74,11 @@ export interface TreeConfigOptions {
 export function traverseTreeValues<T, V>(
 	tree: T[],
 	getValue: (node: T) => V,
-	options?: TreeConfigOptions,
+	options?: TreeConfigOptions
 ): V[] {
 	const result: V[] = [];
 	const { childProps } = options || {
-		childProps: "children",
+		childProps: "children"
 	};
 
 	const dfs = (treeNode: T) => {
@@ -106,10 +111,10 @@ export function traverseTreeValues<T, V>(
 export function filterTree<T extends Record<string, any>>(
 	tree: T[],
 	filter: (node: T) => boolean,
-	options?: TreeConfigOptions,
+	options?: TreeConfigOptions
 ): T[] {
 	const { childProps } = options || {
-		childProps: "children",
+		childProps: "children"
 	};
 
 	const _filterTree = (nodes: T[]): T[] => {
@@ -136,10 +141,10 @@ export function filterTree<T extends Record<string, any>>(
 export function mapTree<T, V extends Record<string, any>>(
 	tree: T[],
 	mapper: (node: T) => V,
-	options?: TreeConfigOptions,
+	options?: TreeConfigOptions
 ): V[] {
 	const { childProps } = options || {
-		childProps: "children",
+		childProps: "children"
 	};
 	return tree.map((node) => {
 		const mapperNode: Record<string, any> = mapper(node);

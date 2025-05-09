@@ -1,14 +1,7 @@
 import { BasicButton } from "#src/components";
 import { PASSWORD_RULES, USERNAME_RULES } from "#src/constants";
 
-import {
-	Button,
-	Checkbox,
-	Form,
-	Input,
-	Space,
-	Typography,
-} from "antd";
+import { Button, Checkbox, Form, Input, Space, Typography } from "antd";
 import { useContext, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 
@@ -20,7 +13,7 @@ const { Title } = Typography;
 const FORM_INITIAL_VALUES = {
 	username: "",
 	password: "",
-	confirmPassword: "",
+	confirmPassword: ""
 };
 export type RegisterPasswordFormType = typeof FORM_INITIAL_VALUES;
 
@@ -37,9 +30,7 @@ export function RegisterPassword() {
 	return (
 		<>
 			<Space direction="vertical">
-				<Title level={3}>
-					Hello, Welcome to
-				</Title>
+				<Title level={3}>Hello, Welcome to</Title>
 				<Title className="mt-0" level={5}>
 					{import.meta.env.VITE_GLOB_APP_TITLE}
 				</Title>
@@ -76,16 +67,18 @@ export function RegisterPassword() {
 					rules={[
 						{
 							required: true,
-							message: t("form.confirmPassword.required"),
+							message: t("form.confirmPassword.required")
 						},
 						({ getFieldValue }) => ({
 							validator(_, value) {
 								if (!value || getFieldValue("password") === value) {
 									return Promise.resolve();
 								}
-								return Promise.reject(new Error(t("form.confirmPassword.invalid")));
-							},
-						}),
+								return Promise.reject(
+									new Error(t("form.confirmPassword.invalid"))
+								);
+							}
+						})
 					]}
 				>
 					<Input.Password placeholder={t("form.confirmPassword.required")} />
@@ -95,9 +88,11 @@ export function RegisterPassword() {
 					rules={[
 						() => ({
 							validator(_, value) {
-								return value !== true ? Promise.reject(new Error(t("form.agree.required"))) : Promise.resolve();
-							},
-						}),
+								return value !== true
+									? Promise.reject(new Error(t("form.agree.required")))
+									: Promise.resolve();
+							}
+						})
 					]}
 					name="termsAgreement"
 					valuePropName="checked"
@@ -108,7 +103,7 @@ export function RegisterPassword() {
 								i18nKey="authority.agree"
 								components={[
 									<Link key={0} to="/terms-of-service" target="_blank" />,
-									<Link key={1} to="/privacy-policy" target="_blank" />,
+									<Link key={1} to="/privacy-policy" target="_blank" />
 								]}
 							/>
 						</div>

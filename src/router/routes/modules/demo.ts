@@ -15,7 +15,7 @@ const routes: AppRouteRecordRaw[] = [
 		handle: {
 			order: demo,
 			title: $t("common.menu.demo"),
-			icon: createElement(ExperimentOutlined),
+			icon: createElement(ExperimentOutlined)
 		},
 		children: [
 			{
@@ -23,11 +23,11 @@ const routes: AppRouteRecordRaw[] = [
 				Component: Demo,
 				handle: {
 					title: $t("common.menu.demo"),
-					icon: createElement(ExperimentOutlined),
-				},
-			},
-		],
-	},
+					icon: createElement(ExperimentOutlined)
+				}
+			}
+		]
+	}
 ];
 
 export default routes;

@@ -12,18 +12,18 @@ const routes: AppRouteRecordRaw[] = [
 		Component: Outlet,
 		handle: {
 			hideInMenu: true,
-			title: $t("authority.termsOfService"),
+			title: $t("authority.termsOfService")
 		},
 		children: [
 			{
 				index: true,
 				Component: TermsOfService,
 				handle: {
-					title: $t("authority.termsOfService"),
-				},
-			},
-		],
-	},
+					title: $t("authority.termsOfService")
+				}
+			}
+		]
+	}
 ];
 
 export default routes;

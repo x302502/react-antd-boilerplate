@@ -5,8 +5,20 @@ import { useDeviceType, usePreferences } from "#src/hooks";
 import { loginPath } from "#src/router/extra-info";
 import { useAuthStore, usePreferencesStore } from "#src/store";
 
-import { CopyOutlined, RedoOutlined, SettingOutlined, RocketOutlined } from "@ant-design/icons";
-import { theme as antdTheme, Badge, ConfigProvider, Divider, Drawer, FloatButton } from "antd";
+import {
+	CopyOutlined,
+	RedoOutlined,
+	RocketOutlined,
+	SettingOutlined
+} from "@ant-design/icons";
+import {
+	theme as antdTheme,
+	Badge,
+	ConfigProvider,
+	Divider,
+	Drawer,
+	FloatButton
+} from "antd";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
@@ -19,10 +31,10 @@ import {
 	PreferencesLayout,
 	Sidebar,
 	SiteTheme,
-	Tabbar,
+	Tabbar
 } from "./blocks";
 
-const preferencesContentId = "__react-antd-admin__preferences_drawer__"
+const preferencesContentId = "__react-antd-admin__preferences_drawer__";
 export function Preferences({ ...restProps }: ButtonProps) {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
@@ -30,7 +42,7 @@ export function Preferences({ ...restProps }: ButtonProps) {
 	const { isMobile } = useDeviceType();
 	const { reset, isDefault, isDark } = usePreferences();
 	const preferences = usePreferencesStore();
-	const logout = useAuthStore(state => state.logout);
+	const logout = useAuthStore((state) => state.logout);
 
 	const clearAndLogout = async () => {
 		await logout();
@@ -43,7 +55,7 @@ export function Preferences({ ...restProps }: ButtonProps) {
 		await navigator.clipboard.writeText(data);
 		window.$modal?.success?.({
 			title: t("preferences.copyPreferencesSuccessTitle"),
-			content: t("preferences.copyPreferencesSuccess"),
+			content: t("preferences.copyPreferencesSuccess")
 		});
 	};
 
@@ -66,10 +78,9 @@ export function Preferences({ ...restProps }: ButtonProps) {
 					 */
 					algorithm: isDark
 						? antdTheme.darkAlgorithm
-						: antdTheme.defaultAlgorithm,
+						: antdTheme.defaultAlgorithm
 				}}
 			>
-
 				<Drawer
 					title={t("preferences.title")}
 					placement="right"
@@ -98,17 +109,14 @@ export function Preferences({ ...restProps }: ButtonProps) {
 							>
 								{t("preferences.copyPreferences")}
 							</BasicButton>
-							<BasicButton
-								type="text"
-								onPointerDown={clearAndLogout}
-							>
+							<BasicButton type="text" onPointerDown={clearAndLogout}>
 								{t("preferences.clearAndLogout")}
 							</BasicButton>
 						</div>
 					)}
 					{...(isMobile
 						? {
-							width: "100vw",
+							width: "100vw"
 						}
 						: {})}
 					open={isOpen}
@@ -118,7 +126,7 @@ export function Preferences({ ...restProps }: ButtonProps) {
 						style={{
 							display: "flex",
 							flexDirection: "column",
-							alignItems: "center",
+							alignItems: "center"
 						}}
 					>
 						<Divider>{t("preferences.general.title")}</Divider>
@@ -140,7 +148,10 @@ export function Preferences({ ...restProps }: ButtonProps) {
 					</div>
 					<FloatButton.BackTop
 						icon={<RocketOutlined />}
-						target={() => document.querySelector(`#${preferencesContentId} .ant-drawer-body`) as HTMLElement}
+						target={() =>
+							document.querySelector(
+								`#${preferencesContentId} .ant-drawer-body`
+							) as HTMLElement}
 					/>
 				</Drawer>
 			</ConfigProvider>

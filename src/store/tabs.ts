@@ -36,7 +36,7 @@ const initialState = {
 	// 标签页是否处于刷新状态
 	isRefresh: false,
 	// 是否处于最大化
-	isMaximize: false,
+	isMaximize: false
 };
 
 type TabsState = typeof initialState;
@@ -57,14 +57,14 @@ interface TabsAction {
 	resetTabs: () => void
 	changeTabOrder: (from: number, to: number) => void
 	toggleMaximize: (state: boolean) => void
-};
+}
 
 /**
  * 标签页状态管理
  */
 export const useTabsStore = create<TabsState & TabsAction>()(
 	persist(
-		set => ({
+		(set) => ({
 			...initialState,
 
 			/**
@@ -292,8 +292,7 @@ export const useTabsStore = create<TabsState & TabsAction>()(
 				set(() => {
 					return { ...initialState };
 				});
-			},
-
+			}
 		}),
 		{
 			name: "tabbar",
@@ -307,7 +306,7 @@ export const useTabsStore = create<TabsState & TabsAction>()(
 			 */
 			partialize: (state) => {
 				return Object.fromEntries(
-					Object.entries(state).filter(([key]) => !["activeKey"].includes(key)),
+					Object.entries(state).filter(([key]) => !["activeKey"].includes(key))
 				);
 			},
 			/**
@@ -327,8 +326,8 @@ export const useTabsStore = create<TabsState & TabsAction>()(
 						...existingValue,
 						state: {
 							...existingValue.state,
-							openTabs: new Map(existingValue.state.openTabs),
-						},
+							openTabs: new Map(existingValue.state.openTabs)
+						}
 					};
 				},
 				setItem: (name, newValue) => {
@@ -337,14 +336,13 @@ export const useTabsStore = create<TabsState & TabsAction>()(
 						...newValue,
 						state: {
 							...newValue.state,
-							openTabs: Array.from(newValue.state.openTabs.entries()),
-						},
+							openTabs: Array.from(newValue.state.openTabs.entries())
+						}
 					});
 					sessionStorage.setItem(name, str);
 				},
-				removeItem: name => sessionStorage.removeItem(name),
-			},
-		},
-	),
-
+				removeItem: (name) => sessionStorage.removeItem(name)
+			}
+		}
+	)
 );

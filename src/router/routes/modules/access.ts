@@ -1,9 +1,9 @@
 import type { AppRouteRecordRaw } from "#src/router/types";
 
+import { accessControlCodes } from "#src/hooks/use-access/constants";
 import { ContainerLayout } from "#src/layout";
 import { $t } from "#src/locales";
 import { access } from "#src/router/extra-info";
-import { accessControlCodes } from "#src/hooks/use-access/constants";
 
 import { lazy } from "react";
 
@@ -19,7 +19,7 @@ const routes: AppRouteRecordRaw[] = [
 		handle: {
 			icon: "SafetyOutlined",
 			title: $t("common.menu.access"),
-			order: access,
+			order: access
 		},
 		children: [
 			{
@@ -28,18 +28,16 @@ const routes: AppRouteRecordRaw[] = [
 				handle: {
 					icon: "FileTextOutlined",
 					title: $t("common.menu.pageControl"),
-					permissions: [
-						accessControlCodes.get,
-					]
-				},
+					permissions: [accessControlCodes.get]
+				}
 			},
 			{
 				path: "/access/button-control",
 				Component: ButtonControl,
 				handle: {
 					icon: "LockOutlined",
-					title: $t("common.menu.buttonControl"),
-				},
+					title: $t("common.menu.buttonControl")
+				}
 			},
 			{
 				path: "/access/admin-visible",
@@ -47,8 +45,8 @@ const routes: AppRouteRecordRaw[] = [
 				handle: {
 					icon: "EyeOutlined",
 					title: $t("common.menu.adminVisible"),
-					roles: ["admin"],
-				},
+					roles: ["admin"]
+				}
 			},
 			{
 				path: "/access/common-visible",
@@ -56,11 +54,11 @@ const routes: AppRouteRecordRaw[] = [
 				handle: {
 					icon: "EyeOutlined",
 					title: $t("common.menu.commonVisible"),
-					roles: ["common"],
-				},
-			},
-		],
-	},
+					roles: ["common"]
+				}
+			}
+		]
+	}
 ];
 
 export default routes;

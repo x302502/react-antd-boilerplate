@@ -32,14 +32,16 @@ export function FormAvatarItem({ value, onChange }: FormAvatarItemProps) {
 						name="file"
 						action={`${import.meta.env.VITE_API_BASE_URL}/upload`}
 						headers={{
-							authorization: "authorization-text",
+							authorization: "authorization-text"
 						}}
 						onChange={(info) => {
 							// if (info.file.status !== 'uploading') {
 							// 	console.log(info.file, info.fileList);
 							// }
 							if (info.file.status === "done") {
-								window.$message?.success(`${info.file.name} file uploaded successfully`);
+								window.$message?.success(
+									`${info.file.name} file uploaded successfully`
+								);
 								onChange?.(info.file.response?.result);
 							}
 							else if (info.file.status === "error") {
@@ -47,9 +49,7 @@ export function FormAvatarItem({ value, onChange }: FormAvatarItemProps) {
 							}
 						}}
 					>
-						<Button icon={<UploadOutlined />}>
-							更换头像
-						</Button>
+						<Button icon={<UploadOutlined />}>更换头像</Button>
 					</Upload>
 				</ImgCrop>
 			</div>

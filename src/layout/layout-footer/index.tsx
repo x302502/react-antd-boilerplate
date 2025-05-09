@@ -11,7 +11,7 @@ export default function LayoutFooter({ className }: LayoutFooterProps) {
 		companyWebsite,
 		copyrightDate,
 		ICPNumber,
-		ICPLink,
+		ICPLink
 	} = usePreferencesStore();
 	if (!enableFooter)
 		return null;
@@ -20,34 +20,28 @@ export default function LayoutFooter({ className }: LayoutFooterProps) {
 		<footer
 			className={cn(
 				"h-10 flex flex-wrap items-center justify-center text-xs md:text-sm text-colorTextSecondary",
-				className,
+				className
 			)}
 		>
-			{
-				ICPNumber
-					? (
-						<span>
-							<a href={ICPLink} rel="noreferrer noopener" target="_blank">{ICPNumber}</a>
-							&nbsp;
-						</span>
-					)
-					: null
-			}
+			{ICPNumber ? (
+				<span>
+					<a href={ICPLink} rel="noreferrer noopener" target="_blank">
+						{ICPNumber}
+					</a>
+					&nbsp;
+				</span>
+			) : null}
 			Copyright &copy;&nbsp;
 			{copyrightDate}
 			{copyrightDate ? <>&nbsp;</> : ""}
-			{
-				companyName
-					? (
-						<span>
-							<a href={companyWebsite} rel="noreferrer noopener" target="_blank">
-								{companyName}
-								&nbsp;
-							</a>
-						</span>
-					)
-					: null
-			}
+			{companyName ? (
+				<span>
+					<a href={companyWebsite} rel="noreferrer noopener" target="_blank">
+						{companyName}
+						&nbsp;
+					</a>
+				</span>
+			) : null}
 			All right reserved
 		</footer>
 	);

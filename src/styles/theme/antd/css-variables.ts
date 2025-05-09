@@ -1,4 +1,10 @@
-import { colorPaletteNumbers, colors, neutralColorPalettes, neutralColors, productLevelColorSystem } from "#src/components/antd-app/constants";
+import {
+	colorPaletteNumbers,
+	colors,
+	neutralColorPalettes,
+	neutralColors,
+	productLevelColorSystem
+} from "#src/components/antd-app/constants";
 import { hexToRGB } from "#src/components/antd-app/utils";
 
 /**
@@ -11,7 +17,7 @@ function createColorPalettes() {
 		inherit: "inherit",
 		current: "currentColor",
 		white: "rgb(255 255 255)",
-		black: "rgb(0 0 0)",
+		black: "rgb(0 0 0)"
 	};
 
 	/**
@@ -22,7 +28,8 @@ function createColorPalettes() {
 	colors.forEach((color) => {
 		colorPaletteNumbers.forEach((number, index) => {
 			const colorCount = index === 0 ? "" : `-${index}`;
-			colorPaletteVar[`${color}-${number}`] = `rgb(var(--oo-${color}${colorCount}))`;
+			colorPaletteVar[`${color}-${number}`] =
+				`rgb(var(--oo-${color}${colorCount}))`;
 		});
 	});
 

@@ -18,11 +18,11 @@ export const accessControlCodes = {
 	get: `${permissionPrefix}:get`,
 	update: `${permissionPrefix}:update`,
 	delete: `${permissionPrefix}:delete`,
-	add: `${permissionPrefix}:add`,
+	add: `${permissionPrefix}:add`
 };
 
 export const AccessControlRoles = {
 	admin: "admin",
-	common: "common",
+	common: "common"
 	// user: "user",
 };

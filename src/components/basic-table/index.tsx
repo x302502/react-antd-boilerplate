@@ -3,7 +3,7 @@ import type { ParamsType, ProTableProps } from "@ant-design/pro-components";
 import type { TablePaginationConfig } from "antd";
 
 import { cn } from "#src/utils/cn";
-import { DownOutlined, LoadingOutlined, RightOutlined } from "@ant-design/icons";
+import { LoadingOutlined } from "@ant-design/icons";
 import { ProTable } from "@ant-design/pro-components";
 import { useSize } from "ahooks";
 import { useEffect, useRef, useState } from "react";
@@ -32,10 +32,8 @@ export interface BasicTableProps<D, U, V> extends ProTableProps<D, U, V> {
 export function BasicTable<
 	DataType extends Record<string, any>,
 	Params extends ParamsType = ParamsType,
-	ValueType = "text",
->(
-	props: BasicTableProps<DataType, Params, ValueType>,
-) {
+	ValueType = "text"
+>(props: BasicTableProps<DataType, Params, ValueType>) {
 	const classes = useStyles();
 	const { t } = useTranslation();
 	const { autoHeight = true, offsetBottom } = props;
@@ -52,7 +50,9 @@ export function BasicTable<
 		const isPaginationDisabled = props.pagination === false;
 		if (autoHeight && tableWrapperRef.current && size?.height) {
 			const tableWrapperHeight = size.height;
-			const basicTable = tableWrapperRef.current.getElementsByClassName(BASIC_TABLE_ROOT_CLASS_NAME)[0];
+			const basicTable = tableWrapperRef.current.getElementsByClassName(
+				BASIC_TABLE_ROOT_CLASS_NAME
+			)[0];
 
 			if (!basicTable)
 				return;
@@ -88,11 +88,17 @@ export function BasicTable<
 			const paginationHeight = isPaginationDisabled ? 16 : 24 + 16 + 16;
 			const realOffsetBottom = offsetBottom || paginationHeight;
 
-			const bodyHeight = Math.max(400, tableWrapperHeight - tableHeaderHeight - realOffsetBottom);
+			const bodyHeight = Math.max(
+				400,
+				tableWrapperHeight - tableHeaderHeight - realOffsetBottom
+			);
 			if (bodyHeight - tableBodyRect.height <= 10) {
 				return;
 			}
-			tableBody.setAttribute("style", `overflow-y: auto;min-height: ${bodyHeight}px;max-height: ${bodyHeight}px;`);
+			tableBody.setAttribute(
+				"style",
+				`overflow-y: auto;min-height: ${bodyHeight}px;max-height: ${bodyHeight}px;`
+			);
 		}
 	}, [size, autoHeight, offsetBottom, props.pagination]);
 
@@ -105,7 +111,7 @@ export function BasicTable<
 		}
 		return {
 			indicator: <LoadingOutlined spin />,
-			...props.loading,
+			...props.loading
 		};
 	};
 
@@ -119,8 +125,8 @@ export function BasicTable<
 			defaultPageSize: 10,
 			showQuickJumper: true,
 			showSizeChanger: true,
-			showTotal: total => t("common.pagination", { total }),
-			...props.pagination,
+			showTotal: (total) => t("common.pagination", { total }),
+			...props.pagination
 		} satisfies TablePaginationConfig;
 	};
 
@@ -133,7 +139,7 @@ export function BasicTable<
 				{...props}
 				options={{
 					fullScreen: true,
-					...props.options,
+					...props.options
 				}}
 				rootClassName={cn(BASIC_TABLE_ROOT_CLASS_NAME, props.rootClassName)}
 				className={cn(classes.basicTable, props.className)}
@@ -151,7 +157,7 @@ export function BasicTable<
 					// 			<DownOutlined onClick={e => onExpand(record, e)} />
 					// 		);
 					// },
-					...props.expandable,
+					...props.expandable
 				}}
 			/>
 		</div>

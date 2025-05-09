@@ -15,7 +15,7 @@ interface ScrollToHashOptions {
  */
 export function useScrollToHash(
 	trigger?: unknown,
-	{ behavior = "smooth", interval = 200 }: ScrollToHashOptions = {},
+	{ behavior = "smooth", interval = 200 }: ScrollToHashOptions = {}
 ) {
 	useEffect(() => {
 		const { hash } = window.location;
@@ -25,7 +25,7 @@ export function useScrollToHash(
 			const element = document.getElementById(id);
 			if (element) {
 				element.scrollIntoView({
-					behavior,
+					behavior
 				});
 			}
 		};

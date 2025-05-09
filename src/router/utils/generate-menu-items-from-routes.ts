@@ -35,13 +35,11 @@ export function generateMenuItemsFromRoutes(routeList: AppRouteRecordRaw[]) {
 						},
 						to: externalLink,
 						target: "_blank",
-						rel: "noopener noreferrer",
+						rel: "noopener noreferrer"
 					},
-					label,
-				)
-				: (
 					label
-				),
+				)
+				: label
 		};
 		if (iconName) {
 			menuItem.icon = iconName;
@@ -54,14 +52,16 @@ export function generateMenuItemsFromRoutes(routeList: AppRouteRecordRaw[]) {
 				}
 				else {
 					console.warn(
-						`iconName: ${iconName} is not found in allAntdIcons or allBasicIcons`,
+						`iconName: ${iconName} is not found in allAntdIcons or allBasicIcons`
 					);
 				}
 			}
 		}
 		if (Array.isArray(item.children) && item.children.length > 0) {
 			// 过滤掉非首页，且不显示在菜单中的路由
-			const noIndexRoute = item.children.filter(route => !route.index && !route?.handle?.hideInMenu);
+			const noIndexRoute = item.children.filter(
+				(route) => !route.index && !route?.handle?.hideInMenu
+			);
 			if (noIndexRoute.length > 0) {
 				menuItem.children = generateMenuItemsFromRoutes(noIndexRoute);
 			}

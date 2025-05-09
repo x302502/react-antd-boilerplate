@@ -17,7 +17,7 @@ export const DEFAULT_PREFERENCES = {
 	pageLayout: "layout-right",
 	enableBackendAccess: true,
 	enableFrontendAceess: false,
-	language: "zh-CN",
+	language: "vi-VN",
 	enableDynamicTitle: true,
 	enableCheckUpdates: true,
 	checkUpdatesInterval: 1,
@@ -65,7 +65,7 @@ export const DEFAULT_PREFERENCES = {
 	companyWebsite: "http://github.com/condorheroblog/",
 	copyrightDate: "2023",
 	ICPNumber: "",
-	ICPLink: "",
+	ICPLink: ""
 } satisfies PreferencesState;
 
 /**
@@ -90,7 +90,7 @@ export const usePreferencesStore = create<
 	PreferencesState & PreferencesAction
 >()(
 	persist(
-		set => ({
+		(set) => ({
 			...DEFAULT_PREFERENCES,
 
 			/**
@@ -136,8 +136,8 @@ export const usePreferencesStore = create<
 				set(() => {
 					return { ...DEFAULT_PREFERENCES };
 				});
-			},
+			}
 		}),
-		{ name: "preferences" },
-	),
+		{ name: "preferences" }
+	)
 );

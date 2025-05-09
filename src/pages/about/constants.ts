@@ -5,7 +5,7 @@ export const dependenciesItems = Object.keys(dependencies).map((dep) => {
 	return {
 		key: dep,
 		label: dep,
-		children: value,
+		children: value
 	};
 });
 
@@ -14,6 +14,6 @@ export const devDependenciesItems = Object.keys(devDependencies).map((dep) => {
 	return {
 		key: dep,
 		label: dep,
-		children: value,
+		children: value
 	};
 });

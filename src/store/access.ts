@@ -4,7 +4,11 @@ import type { AppRouteRecordRaw } from "#src/router/types";
 import { rootRoute, router } from "#src/router";
 import { ROOT_ROUTE_ID } from "#src/router/constants";
 import { baseRoutes } from "#src/router/routes";
-import { ascending, flattenRoutes, generateMenuItemsFromRoutes } from "#src/router/utils";
+import {
+	ascending,
+	flattenRoutes,
+	generateMenuItemsFromRoutes
+} from "#src/router/utils";
 
 import { create } from "zustand";
 
@@ -23,15 +27,15 @@ const initialState: AccessState = {
 	wholeMenus: generateMenuItemsFromRoutes(baseRoutes),
 	routeList: baseRoutes,
 	flatRouteList: flattenRoutes(baseRoutes),
-	isAccessChecked: false,
+	isAccessChecked: false
 };
 
 interface AccessAction {
 	setAccessStore: (routes: AppRouteRecordRaw[]) => AccessState
 	reset: () => void
-};
+}
 
-export const useAccessStore = create<AccessState & AccessAction>(set => ({
+export const useAccessStore = create<AccessState & AccessAction>((set) => ({
 	...initialState,
 
 	setAccessStore: (routes) => {
@@ -44,7 +48,7 @@ export const useAccessStore = create<AccessState & AccessAction>(set => ({
 			wholeMenus,
 			routeList: newRoutes,
 			flatRouteList,
-			isAccessChecked: true,
+			isAccessChecked: true
 		};
 		set(() => newState);
 		return newState;
@@ -54,5 +58,5 @@ export const useAccessStore = create<AccessState & AccessAction>(set => ({
 		/* 移除动态路由 */
 		router._internalSetRoutes(rootRoute);
 		set(initialState);
-	},
+	}
 }));

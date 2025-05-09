@@ -2,11 +2,16 @@ import type { TabItemProps } from "#src/store";
 import type { DragEndEvent } from "@dnd-kit/core";
 import type { MenuProps, TabsProps } from "antd";
 import { useTabsStore } from "#src/store";
-import { closestCenter, DndContext, PointerSensor, useSensor } from "@dnd-kit/core";
+import {
+	closestCenter,
+	DndContext,
+	PointerSensor,
+	useSensor
+} from "@dnd-kit/core";
 import {
 	horizontalListSortingStrategy,
 	SortableContext,
-	useSortable,
+	useSortable
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
@@ -18,17 +23,33 @@ interface DraggableTabPaneProps extends React.HTMLAttributes<HTMLElement> {
 	"children": React.ReactElement
 }
 
-export function DraggableTabNode({ className, children, ...props }: DraggableTabPaneProps) {
-	const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
-		id: props["data-node-key"],
+export function DraggableTabNode({
+	className,
+	children,
+	...props
+}: DraggableTabPaneProps) {
+	const {
+		attributes,
+		listeners,
+		setNodeRef,
+		transform,
+		transition,
+		isDragging
+	} = useSortable({
+		id: props["data-node-key"]
 		// transition: null,
 	});
 
 	const style: React.CSSProperties = {
 		...props.style,
-		transform: CSS.Translate.toString({ x: transform?.x || 0, y: 0, scaleX: 1, scaleY: 1 }),
+		transform: CSS.Translate.toString({
+			x: transform?.x || 0,
+			y: 0,
+			scaleX: 1,
+			scaleY: 1
+		}),
 		transition,
-		cursor: isDragging ? "move" : "pointer",
+		cursor: isDragging ? "move" : "pointer"
 	};
 
 	return cloneElement(children, {
@@ -37,7 +58,7 @@ export function DraggableTabNode({ className, children, ...props }: DraggableTab
 		style,
 		className,
 		...attributes,
-		...listeners,
+		...listeners
 		// draggable: "true",
 	});
 }
@@ -49,14 +70,25 @@ interface DraggableTabBarProps {
 	onClickMenu: (menuKey: string, nodeKey: string) => void
 }
 
-export function DraggableTabBar({ tabBarProps, DefaultTabBar, tabItems, items, onClickMenu }: DraggableTabBarProps) {
+export function DraggableTabBar({
+	tabBarProps,
+	DefaultTabBar,
+	tabItems,
+	items,
+	onClickMenu
+}: DraggableTabBarProps) {
 	// activationConstraint 设置拖拽传感器，激活条件为指针移动至少 5 像素
-	const sensor = useSensor(PointerSensor, { activationConstraint: { distance: 5 } });
-	const changeTabOrder = useTabsStore(state => state.changeTabOrder);
+	const sensor = useSensor(PointerSensor, {
+		activationConstraint: { distance: 5 }
+	});
+	const changeTabOrder = useTabsStore((state) => state.changeTabOrder);
 
 	const onDragEnd = ({ active, over }: DragEndEvent) => {
 		if (active.id !== over?.id) {
-			changeTabOrder(active?.data?.current?.sortable?.index, over?.data?.current?.sortable?.index);
+			changeTabOrder(
+				active?.data?.current?.sortable?.index,
+				over?.data?.current?.sortable?.index
+			);
 		}
 	};
 
@@ -67,7 +99,7 @@ export function DraggableTabBar({ tabBarProps, DefaultTabBar, tabItems, items, o
 			onDragEnd={onDragEnd}
 		>
 			<SortableContext
-				items={tabItems.map(i => i.key)}
+				items={tabItems.map((i) => i.key)}
 				strategy={horizontalListSortingStrategy}
 			>
 				<DefaultTabBar {...tabBarProps}>
@@ -77,11 +109,18 @@ export function DraggableTabBar({ tabBarProps, DefaultTabBar, tabItems, items, o
 								key={node.key}
 								menu={{
 									items: items(node.key!),
-									onClick: ({ key: menuKey }) => onClickMenu(menuKey, node.key!),
+									onClick: ({ key: menuKey }) => onClickMenu(menuKey, node.key!)
 								}}
 								trigger={["contextMenu"]}
 							>
-								{tabItems.some(tabItem => tabItem.key === node.key && tabItem.draggable === false) ? node : <DraggableTabNode {...node.props}>{node}</DraggableTabNode>}
+								{tabItems.some(
+									(tabItem) =>
+										tabItem.key === node.key && tabItem.draggable === false
+								) ? (
+										node
+									) : (
+										<DraggableTabNode {...node.props}>{node}</DraggableTabNode>
+									)}
 							</Dropdown>
 						);
 					}}

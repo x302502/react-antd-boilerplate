@@ -20,36 +20,36 @@ export default function LineChart() {
 			t("home.thursday"),
 			t("home.friday"),
 			t("home.saturday"),
-			t("home.sunday"),
-		],
+			t("home.sunday")
+		]
 	};
 
 	const option: EChartsOption = {
 		dataZoom: {
-			type: value === "week" ? "inside" : "slider",
+			type: value === "week" ? "inside" : "slider"
 		},
 		title: {
 			text: "",
-			subtext: "",
+			subtext: ""
 		},
 		xAxis: {
 			type: "category",
 			// @ts-expect-error: xxx
-			data: DATA_KEYS[value],
+			data: DATA_KEYS[value]
 		},
 		yAxis: {
-			type: "value",
+			type: "value"
 		},
 		tooltip: {
 			trigger: "axis",
-			axisPointer: { type: "cross" },
+			axisPointer: { type: "cross" }
 		},
 		series: [
 			{
 				type: "line",
-				data,
-			},
-		],
+				data
+			}
+		]
 	};
 
 	useEffect(() => {
@@ -68,7 +68,7 @@ export default function LineChart() {
 					defaultValue="week"
 					buttonStyle="solid"
 					value={value}
-					onChange={e => setValue(e.target.value)}
+					onChange={(e) => setValue(e.target.value)}
 				>
 					<Radio.Button value="week">{t("home.thisWeek")}</Radio.Button>
 					<Radio.Button value="month">{t("home.thisMonth")}</Radio.Button>
@@ -76,10 +76,7 @@ export default function LineChart() {
 				</Radio.Group>
 			)}
 		>
-			<ReactECharts
-				opts={{ height: "auto", width: "auto" }}
-				option={option}
-			/>
+			<ReactECharts opts={{ height: "auto", width: "auto" }} option={option} />
 		</Card>
 	);
 }

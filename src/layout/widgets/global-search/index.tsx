@@ -21,7 +21,10 @@ import { SearchPanel } from "./components/search-panel";
  * @zh 偏平化可跳转的菜单项
  * @en Flat menu item that can be jumped
  */
-function transformMenuToFlatMenu(menus: MenuItemType[], flatMap: MenuItemType[] = []) {
+function transformMenuToFlatMenu(
+	menus: MenuItemType[],
+	flatMap: MenuItemType[] = []
+) {
 	if (menus && menus.length === 0)
 		return [];
 	return menus.reduce((acc, cur) => {
@@ -38,7 +41,7 @@ function transformMenuToFlatMenu(menus: MenuItemType[], flatMap: MenuItemType[] 
 const searchHistoryLocalStorageKey = `__search-history-${location.hostname}__`;
 
 export function GlobalSearch() {
-	const wholeMenus = useAccessStore(state => state.wholeMenus);
+	const wholeMenus = useAccessStore((state) => state.wholeMenus);
 	const { isMobile } = useDeviceType();
 	const [open, setOpen] = useState(false);
 	const navigate = useNavigate();
@@ -48,11 +51,17 @@ export function GlobalSearch() {
 	const { t } = useTranslation();
 	const inputRef = useRef<InputRef>(null);
 	const listRef = useRef<HTMLUListElement>(null);
-	const [searchHistory = [], setSearchHistory] = useLocalStorageState<string[]>(searchHistoryLocalStorageKey, {
-		defaultValue: [],
-	});
+	const [searchHistory = [], setSearchHistory] = useLocalStorageState<string[]>(
+		searchHistoryLocalStorageKey,
+		{
+			defaultValue: []
+		}
+	);
 
-	const searchMenuList = useMemo(() => transformMenuToFlatMenu(wholeMenus), [wholeMenus]);
+	const searchMenuList = useMemo(
+		() => transformMenuToFlatMenu(wholeMenus),
+		[wholeMenus]
+	);
 
 	function onClose() {
 		setOpen(false);
@@ -74,7 +83,7 @@ export function GlobalSearch() {
 			const item = listRef.current.children[index] as HTMLElement;
 			item?.scrollIntoView({
 				behavior: "smooth",
-				block: "nearest",
+				block: "nearest"
 			});
 		}
 	}
@@ -84,11 +93,11 @@ export function GlobalSearch() {
 	 * @en Remove the specified record from search history
 	 */
 	function removeHistoryItem(key: string) {
-		setSearchHistory(prev => prev!.filter(item => item !== key));
+		setSearchHistory((prev) => prev!.filter((item) => item !== key));
 	}
 
 	function getActivePathIndex() {
-		return resultOptions.findIndex(item => item.key === activeKey);
+		return resultOptions.findIndex((item) => item.key === activeKey);
 	}
 
 	function handleKeyPress(direction: 1 | -1) {
@@ -107,30 +116,36 @@ export function GlobalSearch() {
 		scrollSelectedIntoView(activeIndex);
 	}
 
-	const { run: setSearch } = useDebounceFn((e) => {
-		const inputValue = e.target.value?.trim()?.toLocaleLowerCase();
-		if (!inputValue) {
-			setResultOptions([]);
-			setActiveKey("");
-			return;
-		}
-		const matchRoutes = searchMenuList.filter((menuItem) => {
-			let labelText = "";
-			if (isValidElement(menuItem.label)) {
-				labelText = menuItem.label.props.children;
+	const { run: setSearch } = useDebounceFn(
+		(e) => {
+			const inputValue = e.target.value?.trim()?.toLocaleLowerCase();
+			if (!inputValue) {
+				setResultOptions([]);
+				setActiveKey("");
+				return;
 			}
-			if (isString(menuItem.label)) {
-				labelText = menuItem.label;
-			}
-			const translatedLowerCaseLabel = t(labelText)?.toLocaleLowerCase();
-			const containsInputValue = translatedLowerCaseLabel?.includes(inputValue);
+			const matchRoutes = searchMenuList.filter((menuItem) => {
+				let labelText = "";
+				if (isValidElement(menuItem.label)) {
+					labelText = menuItem.label.props.children;
+				}
+				if (isString(menuItem.label)) {
+					labelText = menuItem.label;
+				}
+				const translatedLowerCaseLabel = t(labelText)?.toLocaleLowerCase();
+				const containsInputValue =
+					translatedLowerCaseLabel?.includes(inputValue);
 
-			return containsInputValue || match(translatedLowerCaseLabel, inputValue);
-		});
-		const activeName = matchRoutes[0]?.key ?? "";
-		setActiveKey(activeName);
-		setResultOptions(matchRoutes);
-	}, { wait: 100 });
+				return (
+					containsInputValue || match(translatedLowerCaseLabel, inputValue)
+				);
+			});
+			const activeName = matchRoutes[0]?.key ?? "";
+			setActiveKey(activeName);
+			setResultOptions(matchRoutes);
+		},
+		{ wait: 100 }
+	);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const inputValue = e.target.value?.trim();
@@ -180,14 +195,16 @@ export function GlobalSearch() {
 
 	useEffect(() => {
 		if (!keyword.length && Array.isArray(searchHistory)) {
-			setResultOptions(searchMenuList.filter(item => searchHistory?.includes(item.key)));
+			setResultOptions(
+				searchMenuList.filter((item) => searchHistory?.includes(item.key))
+			);
 		}
 	}, [keyword, searchHistory]);
 
 	return (
 		<>
 			<div
-				onClick={() => setOpen(open => !open)}
+				onClick={() => setOpen((open) => !open)}
 				className="group flex justify-center items-center gap-2 md:bg-colorBgLayout px-3 py-1.5 rounded-full cursor-pointer text-colorTextSecondary hover:text-colorText md:mr-2.5"
 			>
 				<SearchOutlined />
@@ -226,53 +243,68 @@ export function GlobalSearch() {
 						<Divider className="my-4" />
 					</div>
 				)}
-				footer={isMobile ? null : <SearchFooter searchItems={resultOptions.length} />}
-				style={isMobile ? { margin: 0, maxWidth: "100%", top: 0, paddingBottom: 0 } : undefined}
+				footer={
+					isMobile ? null : <SearchFooter searchItems={resultOptions.length} />
+				}
+				style={
+					isMobile
+						? { margin: 0, maxWidth: "100%", top: 0, paddingBottom: 0 }
+						: undefined
+				}
 				styles={{
 					body: {
 						flexGrow: "1",
-						overflow: "hidden",
+						overflow: "hidden"
 					},
 					content: {
 						padding: 0,
 						height: isMobile ? "100vh" : undefined,
 						display: isMobile ? "flex" : "block",
-						flexDirection: isMobile ? "column" : "row",
-					},
+						flexDirection: isMobile ? "column" : "row"
+					}
 				}}
 				width={isMobile ? "100%" : 580}
 			>
-				<Scrollbar style={{
-					maxHeight: isMobile ? "100%" : "450px",
-				}}
+				<Scrollbar
+					style={{
+						maxHeight: isMobile ? "100%" : "450px"
+					}}
 				>
-					<ul
-						className="px-4 pb-4 md:pb-0"
-						ref={listRef}
-					>
-						{resultOptions.length === 0
-							? (
-								<Empty
-									className="my-8"
-									styles={{ image: { height: 40 } }}
-									image={keyword.length ? <SearchOutlined className="text-colorTextTertiary" style={{ fontSize: 40 }} /> : Empty.PRESENTED_IMAGE_SIMPLE}
-									description={keyword.length ? `${t("widgets.search.noResults")} ${JSON.stringify(keyword)}` : t("widgets.search.noRecent")}
-								>
-								</Empty>
-							)
-							: (
-								resultOptions.map(item => (
-									<SearchPanel
-										key={item.key}
-										active={item.key === activeKey}
-										enter={handleEnter}
-										removeHistoryItem={removeHistoryItem}
-										setActiveKey={setActiveKey}
-										menuItem={item}
-										showCloseButton={keyword.length === 0}
-									/>
-								))
-							)}
+					<ul className="px-4 pb-4 md:pb-0" ref={listRef}>
+						{resultOptions.length === 0 ? (
+							<Empty
+								className="my-8"
+								styles={{ image: { height: 40 } }}
+								image={
+									keyword.length ? (
+										<SearchOutlined
+											className="text-colorTextTertiary"
+											style={{ fontSize: 40 }}
+										/>
+									) : (
+										Empty.PRESENTED_IMAGE_SIMPLE
+									)
+								}
+								description={
+									keyword.length
+										? `${t("widgets.search.noResults")} ${JSON.stringify(keyword)}`
+										: t("widgets.search.noRecent")
+								}
+							>
+							</Empty>
+						) : (
+							resultOptions.map((item) => (
+								<SearchPanel
+									key={item.key}
+									active={item.key === activeKey}
+									enter={handleEnter}
+									removeHistoryItem={removeHistoryItem}
+									setActiveKey={setActiveKey}
+									menuItem={item}
+									showCloseButton={keyword.length === 0}
+								/>
+							))
+						)}
 					</ul>
 				</Scrollbar>
 			</Modal>

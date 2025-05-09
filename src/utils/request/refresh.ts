@@ -17,7 +17,11 @@ let isRefreshing = false;
  * @returns 响应对象
  * @throws 刷新 token 失败时抛出异常
  */
-export async function refreshTokenAndRetry(request: Request, options: Options, refreshToken: string) {
+export async function refreshTokenAndRetry(
+	request: Request,
+	options: Options,
+	refreshToken: string
+) {
 	if (!isRefreshing) {
 		isRefreshing = true;
 		try {
@@ -63,7 +67,7 @@ export async function refreshTokenAndRetry(request: Request, options: Options, r
 					resolve(ky(request, options));
 				},
 				// 当 token 刷新失败时，拒绝当前 Promise
-				reject,
+				reject
 			});
 		});
 	}
@@ -84,7 +88,7 @@ let refreshSubscribers: Array<{
  * @param token 刷新后的令牌字符串
  */
 function onRefreshed(token: string) {
-	refreshSubscribers.forEach(subscriber => subscriber.resolve(token));
+	refreshSubscribers.forEach((subscriber) => subscriber.resolve(token));
 	refreshSubscribers = []; // 清空订阅者列表
 }
 
@@ -96,7 +100,7 @@ function onRefreshed(token: string) {
  * @param error 刷新失败时产生的错误信息
  */
 function onRefreshFailed(error: any) {
-	refreshSubscribers.forEach(subscriber => subscriber.reject(error));
+	refreshSubscribers.forEach((subscriber) => subscriber.reject(error));
 	refreshSubscribers = []; // 清空订阅者列表
 }
 

@@ -9,7 +9,7 @@ const initialState = {
 	 * @zh 全局加载动画是否显示
 	 * @en Whether the global spinning animation is shown
 	 */
-	globalSpin: false,
+	globalSpin: false
 };
 
 type GlobalState = typeof initialState;
@@ -17,21 +17,20 @@ type GlobalState = typeof initialState;
 interface GlobalAction {
 	openGlobalSpin: () => void
 	closeGlobalSpin: () => void
-};
+}
 
-export const useGlobalStore = create<GlobalState & GlobalAction>(set => ({
+export const useGlobalStore = create<GlobalState & GlobalAction>((set) => ({
 	...initialState,
 
 	openGlobalSpin: () => {
 		return set({
-			globalSpin: true,
+			globalSpin: true
 		});
 	},
 
 	closeGlobalSpin: () => {
 		return set({
-			globalSpin: false,
+			globalSpin: false
 		});
-	},
-
+	}
 }));

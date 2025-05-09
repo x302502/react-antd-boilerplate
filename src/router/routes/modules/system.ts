@@ -17,7 +17,7 @@ const routes: AppRouteRecordRaw[] = [
 			icon: "SettingOutlined",
 			title: "common.menu.system",
 			order: system,
-			roles: ["admin"],
+			roles: ["admin"]
 		},
 		children: [
 			{
@@ -30,9 +30,9 @@ const routes: AppRouteRecordRaw[] = [
 					permissions: [
 						"permission:button:add",
 						"permission:button:update",
-						"permission:button:delete",
-					],
-				},
+						"permission:button:delete"
+					]
+				}
 			},
 			{
 				path: "/system/role",
@@ -44,9 +44,9 @@ const routes: AppRouteRecordRaw[] = [
 					permissions: [
 						"permission:button:add",
 						"permission:button:update",
-						"permission:button:delete",
-					],
-				},
+						"permission:button:delete"
+					]
+				}
 			},
 			{
 				path: "/system/menu",
@@ -58,9 +58,9 @@ const routes: AppRouteRecordRaw[] = [
 					permissions: [
 						"permission:button:add",
 						"permission:button:update",
-						"permission:button:delete",
-					],
-				},
+						"permission:button:delete"
+					]
+				}
 			},
 			{
 				path: "/system/dept",
@@ -73,12 +73,12 @@ const routes: AppRouteRecordRaw[] = [
 					permissions: [
 						"permission:button:add",
 						"permission:button:update",
-						"permission:button:delete",
-					],
-				},
-			},
-		],
-	},
+						"permission:button:delete"
+					]
+				}
+			}
+		]
+	}
 ];
 
 export default routes;

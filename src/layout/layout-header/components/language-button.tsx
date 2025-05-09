@@ -23,16 +23,13 @@ export function LanguageButton({ ...restProps }: ButtonProps) {
 				items,
 				onClick,
 				selectable: true,
-				selectedKeys: [language],
+				selectedKeys: [language]
 			}}
 			trigger={["click"]}
 			arrow={false}
 			placement="bottom"
 		>
-			<BasicButton
-				type="text"
-				{...restProps}
-			>
+			<BasicButton type="text" {...restProps}>
 				<TranslationOutlined />
 			</BasicButton>
 		</Dropdown>

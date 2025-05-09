@@ -16,7 +16,7 @@ const routes: AppRouteRecordRaw[] = [
 		handle: {
 			order: personalCenter,
 			title: $t("common.menu.personalCenter"),
-			icon: createElement(UserCircleIcon),
+			icon: createElement(UserCircleIcon)
 		},
 		children: [
 			{
@@ -24,19 +24,19 @@ const routes: AppRouteRecordRaw[] = [
 				Component: MyProfile,
 				handle: {
 					title: $t("common.menu.profile"),
-					icon: createElement(ProfileIcon),
-				},
+					icon: createElement(ProfileIcon)
+				}
 			},
 			{
 				path: "/personal-center/settings",
 				Component: Settings,
 				handle: {
 					title: $t("common.menu.settings"),
-					icon: createElement(UserSettingsIcon),
-				},
-			},
-		],
-	},
+					icon: createElement(UserSettingsIcon)
+				}
+			}
+		]
+	}
 ];
 
 export default routes;

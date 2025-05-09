@@ -13,25 +13,25 @@ function menuItems(t: TFunction<"translation", undefined>) {
 		{
 			icon: <LayoutLeftIcon />,
 			label: t("authority.layout.alignLeft"),
-			key: "layout-left",
+			key: "layout-left"
 		},
 		{
 			icon: <LayoutCenterIcon />,
 			label: t("authority.layout.alignCenter"),
-			key: "layout-center",
+			key: "layout-center"
 		},
 		{
 			icon: <LayoutRightIcon />,
 			label: t("authority.layout.alignRight"),
-			key: "layout-right",
-		},
+			key: "layout-right"
+		}
 	];
 }
 
 export function useLayoutMenu() {
 	const { t } = useTranslation();
-	const pageLayout = usePreferencesStore(state => state.pageLayout);
-	const setPreferences = usePreferencesStore(state => state.setPreferences);
+	const pageLayout = usePreferencesStore((state) => state.pageLayout);
+	const setPreferences = usePreferencesStore((state) => state.setPreferences);
 
 	function setPageLayout(value: PageLayoutType) {
 		setPreferences({ pageLayout: value });
@@ -50,19 +50,22 @@ export function useLayoutMenu() {
 				selectable: true,
 
 				onClick,
-				selectedKeys: [pageLayout],
+				selectedKeys: [pageLayout]
 			}}
 			trigger={["click"]}
 			arrow={false}
 			placement="bottom"
 		>
-			<Button type="text" icon={dropdownItems.find(item => item.key === pageLayout)?.icon} />
+			<Button
+				type="text"
+				icon={dropdownItems.find((item) => item.key === pageLayout)?.icon}
+			/>
 		</Dropdown>
 	);
 
 	return {
 		pageLayout,
 		setPageLayout,
-		layoutButtonTrigger,
+		layoutButtonTrigger
 	};
 }

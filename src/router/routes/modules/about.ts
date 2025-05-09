@@ -15,7 +15,7 @@ const routes: AppRouteRecordRaw[] = [
 		handle: {
 			order: about,
 			title: $t("common.menu.about"),
-			icon: createElement(CopyrightOutlined),
+			icon: createElement(CopyrightOutlined)
 		},
 		children: [
 			{
@@ -28,11 +28,11 @@ const routes: AppRouteRecordRaw[] = [
 				handle: {
 					// roles: ["common"],
 					title: $t("common.menu.about"),
-					icon: createElement(CopyrightOutlined),
-				},
-			},
-		],
-	},
+					icon: createElement(CopyrightOutlined)
+				}
+			}
+		]
+	}
 ];
 
 export default routes;

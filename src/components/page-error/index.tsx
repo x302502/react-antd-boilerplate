@@ -15,7 +15,9 @@ const { VITE_BASE_HOME_PATH } = import.meta.env;
 export function PageError({ error, resetErrorBoundary }: FallbackProps) {
 	const navigate = useNavigate();
 	const { t } = useTranslation();
-	const enableDynamicTitle = usePreferencesStore(state => state.enableDynamicTitle);
+	const enableDynamicTitle = usePreferencesStore(
+		(state) => state.enableDynamicTitle
+	);
 
 	const goHome = () => {
 		resetErrorBoundary();
@@ -43,17 +45,10 @@ export function PageError({ error, resetErrorBoundary }: FallbackProps) {
 			// subTitle={error.stack}
 			extra={(
 				<Space size={20}>
-					<Button
-						icon={<ArrowLeftOutlined />}
-						type="primary"
-						onClick={goHome}
-					>
+					<Button icon={<ArrowLeftOutlined />} type="primary" onClick={goHome}>
 						{t("common.backHome")}
 					</Button>
-					<Button
-						icon={<ReloadOutlined rotate={90} />}
-						onClick={refresh}
-					>
+					<Button icon={<ReloadOutlined rotate={90} />} onClick={refresh}>
 						{t("common.refresh")}
 					</Button>
 				</Space>
@@ -62,7 +57,6 @@ export function PageError({ error, resetErrorBoundary }: FallbackProps) {
 			<Typography.Paragraph type="warning" className="text-center">
 				{error.stack}
 			</Typography.Paragraph>
-
 		</Result>
 	);
 }

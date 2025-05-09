@@ -32,19 +32,30 @@ export default function LayoutTabbar() {
 	const { t } = useTranslation();
 	const currentRoute = useCurrentRoute();
 
-	const { tabbarStyleType, tabbarShowMaximize, tabbarShowMore } = usePreferencesStore();
+	const { tabbarStyleType, tabbarShowMaximize, tabbarShowMore } =
+		usePreferencesStore();
 	const { flatRouteList } = useAccessStore();
-	const { activeKey, isRefresh, setActiveKey, setIsRefresh, openTabs, addTab, insertBeforeTab } = useTabsStore();
+	const {
+		activeKey,
+		isRefresh,
+		setActiveKey,
+		setIsRefresh,
+		openTabs,
+		addTab,
+		insertBeforeTab
+	} = useTabsStore();
 	const [items, onClickMenu] = useDropdownMenu();
 
-	const tabItems: TabItemProps[] = Array.from(openTabs.values()).map(item => ({
-		...item,
-		label: (
-			<div className="relative flex items-center gap-1">
-				{isString(item.label) ? t(item.label) : item.label}
-			</div>
-		),
-	}));
+	const tabItems: TabItemProps[] = Array.from(openTabs.values()).map(
+		(item) => ({
+			...item,
+			label: (
+				<div className="relative flex items-center gap-1">
+					{isString(item.label) ? t(item.label) : item.label}
+				</div>
+			)
+		})
+	);
 
 	/**
 	 * 自动重置刷新状态
@@ -63,21 +74,30 @@ export default function LayoutTabbar() {
 	 * 处理标签页切换
 	 * @param {string} key - 被选中的标签页的key
 	 */
-	const handleChangeTabs = useCallback((key: string) => {
-		const historyState = openTabs.get(key)?.historyState || { search: "", hash: "" };
-		navigate(key + historyState.search + historyState.hash);
-	}, [openTabs]);
+	const handleChangeTabs = useCallback(
+		(key: string) => {
+			const historyState = openTabs.get(key)?.historyState || {
+				search: "",
+				hash: ""
+			};
+			navigate(key + historyState.search + historyState.hash);
+		},
+		[openTabs]
+	);
 
 	/**
 	 * 处理标签页编辑（关闭）
 	 * @param {React.MouseEvent | React.KeyboardEvent | string} key - 被编辑的标签页的key
 	 * @param {string} action - 编辑动作，这里只处理 "remove"
 	 */
-	const handleEditTabs = useCallback<Required<TabsProps>["onEdit"]>((key, action) => {
-		if (action === "remove") {
-			onClickMenu(TabActionKeys.CLOSE, key as string);
-		}
-	}, [onClickMenu]);
+	const handleEditTabs = useCallback<Required<TabsProps>["onEdit"]>(
+		(key, action) => {
+			if (action === "remove") {
+				onClickMenu(TabActionKeys.CLOSE, key as string);
+			}
+		},
+		[onClickMenu]
+	);
 
 	/**
 	 * 自定义渲染标签栏，添加右键菜单功能
@@ -85,41 +105,56 @@ export default function LayoutTabbar() {
 	 * @param {React.ComponentType} DefaultTabBar - 默认标签栏组件
 	 * @returns {JSX.Element} 渲染的标签栏
 	 */
-	const renderTabBar = useCallback<Required<TabsProps>["renderTabBar"]>((tabBarProps, DefaultTabBar) => {
-		return (
-			<DraggableTabBar
-				DefaultTabBar={DefaultTabBar}
-				tabBarProps={tabBarProps}
-				items={items}
-				tabItems={tabItems}
-				onClickMenu={onClickMenu}
-			/>
-		);
-	}, [tabItems, items, onClickMenu]);
+	const renderTabBar = useCallback<Required<TabsProps>["renderTabBar"]>(
+		(tabBarProps, DefaultTabBar) => {
+			return (
+				<DraggableTabBar
+					DefaultTabBar={DefaultTabBar}
+					tabBarProps={tabBarProps}
+					items={items}
+					tabItems={tabItems}
+					onClickMenu={onClickMenu}
+				/>
+			);
+		},
+		[tabItems, items, onClickMenu]
+	);
 
 	/**
 	 * 生成标签栏额外内容
 	 */
-	const tabBarExtraContent = useMemo(() => ({
-		right: (
-			<div className="flex items-center" style={{ height: tabbarHeight }}>
-				<Button
-					icon={(
-						<RedoOutlined
-							rotate={270}
-							className={clsx({ "animate-spin": isRefresh })}
+	const tabBarExtraContent = useMemo(
+		() => ({
+			right: (
+				<div className="flex items-center" style={{ height: tabbarHeight }}>
+					<Button
+						icon={(
+							<RedoOutlined
+								rotate={270}
+								className={clsx({ "animate-spin": isRefresh })}
+							/>
+						)}
+						size="middle"
+						type="text"
+						className={clsx(
+							"rounded-none h-full border-l border-l-colorBorderSecondary"
+						)}
+						onClick={() => onClickMenu(TabActionKeys.REFRESH, activeKey)}
+					/>
+					{tabbarShowMaximize ? (
+						<TabMaximize className="h-full border-l rounded-none border-l-colorBorderSecondary" />
+					) : null}
+					{tabbarShowMore ? (
+						<TabOptions
+							activeKey={activeKey}
+							className="h-full border-l rounded-none border-l-colorBorderSecondary"
 						/>
-					)}
-					size="middle"
-					type="text"
-					className={clsx("rounded-none h-full border-l border-l-colorBorderSecondary")}
-					onClick={() => onClickMenu(TabActionKeys.REFRESH, activeKey)}
-				/>
-				{tabbarShowMaximize ? (<TabMaximize className="h-full border-l rounded-none border-l-colorBorderSecondary" />) : null}
-				{tabbarShowMore ? (<TabOptions activeKey={activeKey} className="h-full border-l rounded-none border-l-colorBorderSecondary" />) : null}
-			</div>
-		),
-	}), [isRefresh, activeKey, onClickMenu, tabbarShowMore, tabbarShowMaximize]);
+					) : null}
+				</div>
+			)
+		}),
+		[isRefresh, activeKey, onClickMenu, tabbarShowMore, tabbarShowMaximize]
+	);
 
 	/**
 	 * 活动标签页被关闭，自动导航到合适路由
@@ -140,7 +175,10 @@ export default function LayoutTabbar() {
 		 *
 		 * 初次进入应用，activeKey 值为空，不触发自动导航
 		 */
-		const historyState = openTabs.get(activeKey)?.historyState || { search: "", hash: "" };
+		const historyState = openTabs.get(activeKey)?.historyState || {
+			search: "",
+			hash: ""
+		};
 		const activeFullPath = activeKey + historyState.search + historyState.hash;
 		const currentFullpath = location.pathname + location.search + location.hash;
 		if (activeKey.length > 0 && activeFullPath !== currentFullpath) {
@@ -153,15 +191,20 @@ export default function LayoutTabbar() {
 	 */
 	useEffect(() => {
 		// 检查默认 Tab 是否缺失
-		const isDefaultTabMissing = !Array.from(openTabs.keys()).includes(import.meta.env.VITE_BASE_HOME_PATH);
+		const isDefaultTabMissing = !Array.from(openTabs.keys()).includes(
+			import.meta.env.VITE_BASE_HOME_PATH
+		);
 
 		if (isDefaultTabMissing) {
-			const routeTitle = flatRouteList[import.meta.env.VITE_BASE_HOME_PATH]?.handle?.title;
+			const routeTitle =
+				flatRouteList[import.meta.env.VITE_BASE_HOME_PATH]?.handle?.title;
 			insertBeforeTab(import.meta.env.VITE_BASE_HOME_PATH, {
 				key: import.meta.env.VITE_BASE_HOME_PATH,
-				label: isValidElement(routeTitle) ? routeTitle?.props?.children : routeTitle,
+				label: isValidElement(routeTitle)
+					? routeTitle?.props?.children
+					: routeTitle,
 				closable: false,
-				draggable: false,
+				draggable: false
 			});
 		}
 	}, [openTabs, insertBeforeTab, flatRouteList]);
@@ -181,11 +224,13 @@ export default function LayoutTabbar() {
 			addTab(normalizedPath, {
 				key: normalizedPath,
 				// 保证 label 为 string 类型，存储到 sessionStorage。
-				label: isValidElement(routeTitle) ? routeTitle?.props?.children : routeTitle,
+				label: isValidElement(routeTitle)
+					? routeTitle?.props?.children
+					: routeTitle,
 				historyState: { search: location.search, hash: location.hash },
 				/* 登录之后跳转的默认路由，不可以关闭和拖拽 */
 				closable: normalizedPath !== import.meta.env.VITE_BASE_HOME_PATH,
-				draggable: normalizedPath !== import.meta.env.VITE_BASE_HOME_PATH,
+				draggable: normalizedPath !== import.meta.env.VITE_BASE_HOME_PATH
 			});
 		}
 	}, [location, currentRoute, setActiveKey, addTab]);
@@ -198,7 +243,7 @@ export default function LayoutTabbar() {
 					tabbarStyleType === "brisk" ? classes.brisk : "",
 					tabbarStyleType === "plain" ? classes.plain : "",
 					tabbarStyleType === "chrome" ? classes.chrome : "",
-					tabbarStyleType === "card" ? classes.card : "",
+					tabbarStyleType === "card" ? classes.card : ""
 				)}
 				size="small"
 				hideAdd

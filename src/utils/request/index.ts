@@ -23,7 +23,7 @@ const defaultConfig: Options = {
 	timeout: API_TIMEOUT,
 	retry: {
 		// 当请求失败时，最多重试次数
-		limit: 3,
+		limit: 3
 	},
 	hooks: {
 		beforeRequest: [
@@ -33,14 +33,19 @@ const defaultConfig: Options = {
 					globalProgress.start();
 				}
 				// 不需要携带 token 的请求
-				const isWhiteRequest = requestWhiteList.some(url => request.url.endsWith(url));
+				const isWhiteRequest = requestWhiteList.some((url) =>
+					request.url.endsWith(url)
+				);
 				if (!isWhiteRequest) {
 					const { token } = useAuthStore.getState();
 					request.headers.set(AUTH_HEADER, `Bearer ${token}`);
 				}
 				// 语言等所有的接口都需要携带
-				request.headers.set(LANG_HEADER, usePreferencesStore.getState().language);
-			},
+				request.headers.set(
+					LANG_HEADER,
+					usePreferencesStore.getState().language
+				);
+			}
 		],
 		afterResponse: [
 			async (request, options, response) => {
@@ -52,7 +57,9 @@ const defaultConfig: Options = {
 				if (!response.ok) {
 					if (response.status === 401) {
 						// 防止刷新 refresh-token 继续接收到的 401 错误，出现死循环
-						if ([`/${refreshTokenPath}`].some(url => request.url.endsWith(url))) {
+						if (
+							[`/${refreshTokenPath}`].some((url) => request.url.endsWith(url))
+						) {
 							goLogin();
 							return response;
 						}
@@ -78,9 +85,9 @@ const defaultConfig: Options = {
 				}
 				// request success
 				return response;
-			},
-		],
-	},
+			}
+		]
+	}
 };
 
 export const request = ky.create(defaultConfig);

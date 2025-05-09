@@ -8,9 +8,7 @@ import {
 	ProFormDependency,
 	ProFormDigit,
 	ProFormRadio,
-	ProFormSelect,
-	ProFormText,
-	ProFormTreeSelect,
+	ProFormText
 } from "@ant-design/pro-components";
 import { Form } from "antd";
 import { useEffect } from "react";
@@ -33,7 +31,7 @@ export function Detail({
 	flatParentMenus,
 	onCloseChange,
 	detailData,
-	refreshTable,
+	refreshTable
 }: DetailProps) {
 	const { t } = useTranslation();
 	const [form] = Form.useForm<MenuItemType>();
@@ -76,23 +74,22 @@ export function Detail({
 			form={form}
 			autoFocusFirstInput
 			modalProps={{
-				destroyOnClose: true,
+				destroyOnClose: true
 			}}
 			grid
 			width={{
 				xl: 800,
-				md: 500,
+				md: 500
 			}}
 			onFinish={onFinish}
 			initialValues={{
 				menuType: 0,
-				status: 1,
+				status: 1
 			}}
 		>
-
 			<ProFormRadio.Group
 				fieldProps={{
-					buttonStyle: "solid",
+					buttonStyle: "solid"
 				}}
 				name="menuType"
 				label={t("system.menu.menuType")}
@@ -110,8 +107,8 @@ export function Detail({
 					fieldNames: {
 						label: "name",
 						value: "id",
-						children: "children",
-					},
+						children: "children"
+					}
 				}}
 				request={async () => {
 					return handleTree(flatParentMenus);
@@ -127,8 +124,8 @@ export function Detail({
 									allowClear
 									rules={[
 										{
-											required: true,
-										},
+											required: true
+										}
 									]}
 									labelCol={{ md: 5, xl: 6 }}
 									colProps={{ md: 24, xl: 12 }}
@@ -141,8 +138,8 @@ export function Detail({
 									allowClear
 									rules={[
 										{
-											required: true,
-										},
+											required: true
+										}
 									]}
 									labelCol={{ md: 5, xl: 6 }}
 									colProps={{ md: 24, xl: 12 }}
@@ -154,8 +151,8 @@ export function Detail({
 									allowClear
 									rules={[
 										{
-											required: true,
-										},
+											required: true
+										}
 									]}
 									labelCol={{ md: 5, xl: 6 }}
 									colProps={{ md: 24, xl: 12 }}
@@ -167,8 +164,8 @@ export function Detail({
 									allowClear
 									rules={[
 										{
-											required: true,
-										},
+											required: true
+										}
 									]}
 									labelCol={{ md: 5, xl: 6 }}
 									colProps={{ md: 24, xl: 12 }}
@@ -180,8 +177,8 @@ export function Detail({
 									allowClear
 									rules={[
 										{
-											required: true,
-										},
+											required: true
+										}
 									]}
 									labelCol={{ md: 5, xl: 6 }}
 									colProps={{ md: 24, xl: 12 }}
@@ -198,12 +195,12 @@ export function Detail({
 									options={[
 										{
 											label: t("common.enabled"),
-											value: 1,
+											value: 1
 										},
 										{
 											label: t("common.deactivated"),
-											value: 0,
-										},
+											value: 0
+										}
 									]}
 								/>
 
@@ -216,12 +213,12 @@ export function Detail({
 									options={[
 										{
 											label: t("common.enabled"),
-											value: 1,
+											value: 1
 										},
 										{
 											label: t("common.deactivated"),
-											value: 0,
-										},
+											value: 0
+										}
 									]}
 								/>
 
@@ -234,12 +231,12 @@ export function Detail({
 									options={[
 										{
 											label: t("common.enabled"),
-											value: 1,
+											value: 1
 										},
 										{
 											label: t("common.deactivated"),
-											value: 0,
-										},
+											value: 0
+										}
 									]}
 								/>
 
@@ -266,13 +263,11 @@ export function Detail({
 									name="externalLink"
 									label={t("system.menu.externalLink")}
 								/>
-
 							</>
 						);
 					}
 				}}
 			</ProFormDependency>
-
 		</ModalForm>
 	);
-};
+}

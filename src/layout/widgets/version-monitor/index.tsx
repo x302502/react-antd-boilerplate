@@ -15,7 +15,7 @@ interface AppVersionMonitorProps {
 
 export function AppVersionMonitor({
 	checkUpdatesInterval = 1,
-	checkUpdateUrl = import.meta.env.BASE_URL ?? "/",
+	checkUpdateUrl = import.meta.env.BASE_URL ?? "/"
 }: AppVersionMonitorProps) {
 	let isCheckingUpdates = false;
 	const { t } = useTranslation();
@@ -30,53 +30,51 @@ export function AppVersionMonitor({
 			description: t("widgets.versionMonitorContent"),
 			duration: 0,
 			btn: (() => {
-				return createElement(
-					Space,
-					{ size: 12 },
-					[
-						createElement(
-							Button,
+				return createElement(Space, { size: 12 }, [
+					createElement(
+						Button,
 
-							{
-								onClick() {
-									window.$notification?.destroy();
-								},
-								key: "cancel",
+						{
+							onClick() {
+								window.$notification?.destroy();
 							},
-							t("widgets.versionMonitorCancel"),
-						),
-						createElement(
-							Button,
-							{
-								type: "primary",
-								onClick() {
-									lastVersionTag.current = currentVersionTag.current;
-									location.reload();
-								},
-								key: "ok",
+							key: "cancel"
+						},
+						t("widgets.versionMonitorCancel")
+					),
+					createElement(
+						Button,
+						{
+							type: "primary",
+							onClick() {
+								lastVersionTag.current = currentVersionTag.current;
+								location.reload();
 							},
-							t("widgets.versionMonitorConfirm"),
-						),
-					],
-				);
-			})(),
+							key: "ok"
+						},
+						t("widgets.versionMonitorConfirm")
+					)
+				]);
+			})()
 		});
 	}
 
 	async function getVersionTag(isCache: boolean = false) {
 		try {
 			if (
-				location.hostname === "localhost"
-				|| location.hostname === "127.0.0.1"
+				location.hostname === "localhost" ||
+				location.hostname === "127.0.0.1"
 			) {
 				return null;
 			}
 			const response = await fetch(checkUpdateUrl, {
 				cache: !isCache ? "no-cache" : "default",
-				method: "HEAD",
+				method: "HEAD"
 			});
 
-			return response.headers.get("etag") || response.headers.get("last-modified");
+			return (
+				response.headers.get("etag") || response.headers.get("last-modified")
+			);
 		}
 		catch {
 			console.error("Failed to fetch version tag");
@@ -127,7 +125,7 @@ export function AppVersionMonitor({
 
 		timer.current = setInterval(
 			checkForUpdates,
-			checkUpdatesInterval * 60 * 1000,
+			checkUpdatesInterval * 60 * 1000
 		);
 	}
 

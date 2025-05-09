@@ -239,7 +239,7 @@ export default defineFakeRoute([
 					/**
 					 * @zh 通过接口获取路由时可见
 					 * @en Visible only when getting routes through the interface
-					*/
+					 */
 					{
 						path: "/access/access-mode",
 						handle: {

@@ -6,7 +6,7 @@ import {
 	SwapOutlined,
 	VerticalAlignBottomOutlined,
 	VerticalAlignMiddleOutlined,
-	VerticalAlignTopOutlined,
+	VerticalAlignTopOutlined
 } from "@ant-design/icons";
 import { useKeepAliveContext } from "keepalive-for-react";
 import { useCallback, useMemo } from "react";
@@ -31,10 +31,10 @@ export const TabActionKeys = {
 	CLOSE_RIGHT: "closeRight",
 	CLOSE_LEFT: "closeLeft",
 	CLOSE_OTHERS: "closeOthers",
-	CLOSE_ALL: "closeAll",
+	CLOSE_ALL: "closeAll"
 } as const;
 
-export type TabActionKey = typeof TabActionKeys[keyof typeof TabActionKeys];
+export type TabActionKey = (typeof TabActionKeys)[keyof typeof TabActionKeys];
 
 /**
  * 自定义钩子，用于处理标签页的下拉菜单
@@ -50,7 +50,7 @@ export function useDropdownMenu() {
 		closeRightTabs,
 		closeOtherTabs,
 		closeAllTabs,
-		setIsRefresh,
+		setIsRefresh
 	} = useTabsStore();
 	const { refresh } = useKeepAliveContext();
 	/**
@@ -58,79 +58,88 @@ export function useDropdownMenu() {
 	 * @param {string} tabKey - 当前标签页的键
 	 * @returns {MenuProps["items"]} 菜单项配置
 	 */
-	const items = useCallback((tabKey: string): MenuProps["items"] => {
-		const isOnlyTab = openTabs.size === 2 && openTabs.has(homePath);
-		const isLastTab = Array.from(openTabs.keys()).pop() === tabKey;
-		return [
-			{
-				key: TabActionKeys.REFRESH,
-				icon: <RedoOutlined rotate={270} />,
-				label: t("preferences.tabbar.contextMenu.refresh"),
-				disabled: activeKey !== tabKey,
-			},
-			{
-				key: TabActionKeys.CLOSE,
-				icon: <CloseOutlined />,
-				label: t("preferences.tabbar.contextMenu.close"),
-				disabled: tabKey === homePath,
-			},
-			{ type: "divider" },
-			{
-				key: TabActionKeys.CLOSE_LEFT,
-				icon: <VerticalAlignBottomOutlined rotate={90} />,
-				label: t("preferences.tabbar.contextMenu.closeLeft"),
-				disabled: tabKey === homePath || isOnlyTab,
-			},
-			{
-				key: TabActionKeys.CLOSE_RIGHT,
-				icon: <VerticalAlignTopOutlined rotate={90} />,
-				label: t("preferences.tabbar.contextMenu.closeRight"),
-				disabled: tabKey === homePath || isOnlyTab || isLastTab,
-			},
-			{ type: "divider" },
-			{
-				key: TabActionKeys.CLOSE_OTHERS,
-				icon: <VerticalAlignMiddleOutlined rotate={90} />,
-				label: t("preferences.tabbar.contextMenu.closeOthers"),
-				disabled: tabKey === homePath || isOnlyTab,
-			},
-			{
-				key: TabActionKeys.CLOSE_ALL,
-				icon: <SwapOutlined />,
-				label: t("preferences.tabbar.contextMenu.closeAll"),
-				disabled: tabKey === homePath,
-			},
-		];
-	}, [t, activeKey, homePath, openTabs]);
+	const items = useCallback(
+		(tabKey: string): MenuProps["items"] => {
+			const isOnlyTab = openTabs.size === 2 && openTabs.has(homePath);
+			const isLastTab = Array.from(openTabs.keys()).pop() === tabKey;
+			return [
+				{
+					key: TabActionKeys.REFRESH,
+					icon: <RedoOutlined rotate={270} />,
+					label: t("preferences.tabbar.contextMenu.refresh"),
+					disabled: activeKey !== tabKey
+				},
+				{
+					key: TabActionKeys.CLOSE,
+					icon: <CloseOutlined />,
+					label: t("preferences.tabbar.contextMenu.close"),
+					disabled: tabKey === homePath
+				},
+				{ type: "divider" },
+				{
+					key: TabActionKeys.CLOSE_LEFT,
+					icon: <VerticalAlignBottomOutlined rotate={90} />,
+					label: t("preferences.tabbar.contextMenu.closeLeft"),
+					disabled: tabKey === homePath || isOnlyTab
+				},
+				{
+					key: TabActionKeys.CLOSE_RIGHT,
+					icon: <VerticalAlignTopOutlined rotate={90} />,
+					label: t("preferences.tabbar.contextMenu.closeRight"),
+					disabled: tabKey === homePath || isOnlyTab || isLastTab
+				},
+				{ type: "divider" },
+				{
+					key: TabActionKeys.CLOSE_OTHERS,
+					icon: <VerticalAlignMiddleOutlined rotate={90} />,
+					label: t("preferences.tabbar.contextMenu.closeOthers"),
+					disabled: tabKey === homePath || isOnlyTab
+				},
+				{
+					key: TabActionKeys.CLOSE_ALL,
+					icon: <SwapOutlined />,
+					label: t("preferences.tabbar.contextMenu.closeAll"),
+					disabled: tabKey === homePath
+				}
+			];
+		},
+		[t, activeKey, homePath, openTabs]
+	);
 
 	/**
 	 * 定义菜单操作与对应的处理函数
 	 */
-	const actions = useMemo(() => ({
-		[TabActionKeys.REFRESH]: (currentPath: string) => {
-			// 刷新 KeepAlive 缓存的页面
-			refresh(currentPath);
-			// 重新渲染页面
-			setIsRefresh(true);
-		},
-		[TabActionKeys.CLOSE]: removeTab,
-		[TabActionKeys.CLOSE_RIGHT]: closeRightTabs,
-		[TabActionKeys.CLOSE_LEFT]: closeLeftTabs,
-		[TabActionKeys.CLOSE_OTHERS]: closeOtherTabs,
-		[TabActionKeys.CLOSE_ALL]: closeAllTabs,
-	}), [removeTab, closeRightTabs, closeLeftTabs, closeOtherTabs, closeAllTabs]);
+	const actions = useMemo(
+		() => ({
+			[TabActionKeys.REFRESH]: (currentPath: string) => {
+				// 刷新 KeepAlive 缓存的页面
+				refresh(currentPath);
+				// 重新渲染页面
+				setIsRefresh(true);
+			},
+			[TabActionKeys.CLOSE]: removeTab,
+			[TabActionKeys.CLOSE_RIGHT]: closeRightTabs,
+			[TabActionKeys.CLOSE_LEFT]: closeLeftTabs,
+			[TabActionKeys.CLOSE_OTHERS]: closeOtherTabs,
+			[TabActionKeys.CLOSE_ALL]: closeAllTabs
+		}),
+		[removeTab, closeRightTabs, closeLeftTabs, closeOtherTabs, closeAllTabs]
+	);
 
 	/**
 	 * 处理菜单点击事件
 	 * @param {string} menuKey - 被点击的菜单项键
 	 * @param {string} nodeKey - 当前标签页的键
 	 */
-	const onClickMenu = useCallback((menuKey: string, nodeKey: string) => {
-		const action = actions[menuKey as keyof typeof actions];
-		if (action) {
-			action(nodeKey);
-		}
-	}, [actions]);
+	const onClickMenu = useCallback(
+		(menuKey: string, nodeKey: string) => {
+			const action = actions[menuKey as keyof typeof actions];
+			if (action) {
+				action(nodeKey);
+			}
+		},
+		[actions]
+	);
 
 	return [items, onClickMenu] as const;
 }

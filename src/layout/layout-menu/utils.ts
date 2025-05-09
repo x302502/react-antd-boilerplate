@@ -9,18 +9,25 @@ import { cloneElement, isValidElement } from "react";
  * @param t Translation 函数
  * @returns 转换后的菜单数组
  */
-export function translateMenus(menus: MenuItemType[], t: (key: string) => string): MenuItemType[] {
+export function translateMenus(
+	menus: MenuItemType[],
+	t: (key: string) => string
+): MenuItemType[] {
 	return menus.map((menu) => {
 		let translatedLabel: React.ReactNode = menu.label;
 		if (isValidElement(menu.label)) {
-			translatedLabel = cloneElement(menu.label, {}, t(menu.label.props.children));
+			translatedLabel = cloneElement(
+				menu.label,
+				{},
+				t(menu.label.props.children)
+			);
 		}
 		if (isString(menu.label)) {
 			translatedLabel = t(menu.label);
 		}
 		const translatedMenu = {
 			...menu,
-			label: translatedLabel,
+			label: translatedLabel
 		};
 
 		if (menu.children && menu.children.length > 0) {
@@ -40,7 +47,7 @@ export function translateMenus(menus: MenuItemType[], t: (key: string) => string
  */
 export function findMenuByPath(
 	list: MenuItemType[],
-	path?: string,
+	path?: string
 ): MenuItemType | null {
 	for (const menu of list) {
 		if (menu.key === path) {
@@ -61,11 +68,14 @@ export function findMenuByPath(
  * @param path 菜单路径，可选
  * @returns 包含查找到的菜单、根菜单和根菜单路径的对象
  */
-export function findRootMenuByPath(menus: MenuItemType[], path?: string): {
-	findMenu: MenuItemType | null
-	rootMenu: MenuItemType | null
-	rootMenuPath: string | null
-} {
+export function findRootMenuByPath(
+	menus: MenuItemType[],
+	path?: string
+): {
+		findMenu: MenuItemType | null
+		rootMenu: MenuItemType | null
+		rootMenuPath: string | null
+	} {
 	// 初始化返回值
 	let findMenu: MenuItemType | null = null;
 	let rootMenu: MenuItemType | null = null;
@@ -76,7 +86,7 @@ export function findRootMenuByPath(menus: MenuItemType[], path?: string): {
 		return {
 			findMenu: null,
 			rootMenu: null,
-			rootMenuPath: null,
+			rootMenuPath: null
 		};
 	}
 
@@ -84,7 +94,7 @@ export function findRootMenuByPath(menus: MenuItemType[], path?: string): {
 	const find = (
 		list: MenuItemType[],
 		targetPath: string,
-		parents: MenuItemType[] = [],
+		parents: MenuItemType[] = []
 	): boolean => {
 		for (const menu of list) {
 			// 如果找到目标菜单
@@ -121,7 +131,7 @@ export function findRootMenuByPath(menus: MenuItemType[], path?: string): {
 	return {
 		findMenu,
 		rootMenu,
-		rootMenuPath,
+		rootMenuPath
 	};
 }
 
@@ -131,7 +141,9 @@ export function findRootMenuByPath(menus: MenuItemType[], path?: string): {
  * @param splitSideNavItems 菜单列表
  * @returns 找到的最深层级的第一个菜单项
  */
-export function findDeepestFirstItem(splitSideNavItems: MenuItemType[]): MenuItemType | null {
+export function findDeepestFirstItem(
+	splitSideNavItems: MenuItemType[]
+): MenuItemType | null {
 	// 如果列表为空，返回 null
 	if (!splitSideNavItems || splitSideNavItems.length === 0) {
 		return null;

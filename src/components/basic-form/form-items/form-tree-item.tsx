@@ -24,7 +24,7 @@ function getParentKey(key: React.Key, tree: TreeDataNodeWithId[]): React.Key {
 	for (let i = 0; i < tree.length; i++) {
 		const node = tree[i];
 		if (node.children) {
-			if (node.children.some(item => item.id === key)) {
+			if (node.children.some((item) => item.id === key)) {
 				parentKey = node.id;
 			}
 			else if (getParentKey(key, node.children)) {
@@ -80,7 +80,10 @@ export function FormTreeItem({ treeData, value, onChange }: FormTreeItemProps) {
 				}
 				return null;
 			})
-			.filter((item, i, self): item is React.Key => !!(item && self.indexOf(item) === i));
+			.filter(
+				(item, i, self): item is React.Key =>
+					!!(item && self.indexOf(item) === i)
+			);
 		setExpandedKeys(newExpandedKeys);
 		setSearchValue(value);
 		setAutoExpandParent(true);
@@ -92,13 +95,13 @@ export function FormTreeItem({ treeData, value, onChange }: FormTreeItemProps) {
 
 	useEffect(() => {
 		if (checkedOptions.includes("expandAll")) {
-			setExpandedKeys(flattenTreeData.map(item => item.id));
+			setExpandedKeys(flattenTreeData.map((item) => item.id));
 		}
 		else {
 			setExpandedKeys([]);
 		}
 		if (checkedOptions.includes("checkAll")) {
-			onChange?.(flattenTreeData.map(item => item.id));
+			onChange?.(flattenTreeData.map((item) => item.id));
 		}
 		else {
 			onChange?.([]);
@@ -115,8 +118,18 @@ export function FormTreeItem({ treeData, value, onChange }: FormTreeItemProps) {
 			/>
 			<Checkbox.Group
 				options={[
-					{ label: checkedOptions.includes("expandAll") ? t("common.collapseAll") : t("common.expandAll"), value: "expandAll" },
-					{ label: checkedOptions.includes("checkAll") ? t("common.cancelAll") : t("common.checkAll"), value: "checkAll" },
+					{
+						label: checkedOptions.includes("expandAll")
+							? t("common.collapseAll")
+							: t("common.expandAll"),
+						value: "expandAll"
+					},
+					{
+						label: checkedOptions.includes("checkAll")
+							? t("common.cancelAll")
+							: t("common.checkAll"),
+						value: "checkAll"
+					}
 				]}
 				value={checkedOptions}
 				rootClassName="flex justify-between items-center mb-3"
@@ -128,12 +141,12 @@ export function FormTreeItem({ treeData, value, onChange }: FormTreeItemProps) {
 				blockNode
 				defaultExpandAll
 				// checkStrictly
-				titleRender={node => t(node.title as string)}
+				titleRender={(node) => t(node.title as string)}
 				onExpand={onExpand}
 				expandedKeys={expandedKeys}
 				autoExpandParent={autoExpandParent}
 				fieldNames={{
-					key: "id",
+					key: "id"
 				}}
 				checkedKeys={value}
 				// onSelect={onSelect}

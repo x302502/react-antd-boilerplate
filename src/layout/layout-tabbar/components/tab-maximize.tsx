@@ -18,8 +18,12 @@ export function TabMaximize({ className }: TabMaximizeProps) {
 	 * useShallow - it may cause infinite loops in zustand v5
 	 * https://github.com/pmndrs/zustand/blob/v5.0.0/docs/migrations/migrating-to-v5.md#requiring-stable-selector-outputs
 	 */
-	const { isMaximize } = useTabsStore(useShallow(state => ({ isMaximize: state.isMaximize })));
-	const { toggleMaximize } = useTabsStore(useShallow(state => ({ toggleMaximize: state.toggleMaximize })));
+	const { isMaximize } = useTabsStore(
+		useShallow((state) => ({ isMaximize: state.isMaximize }))
+	);
+	const { toggleMaximize } = useTabsStore(
+		useShallow((state) => ({ toggleMaximize: state.toggleMaximize }))
+	);
 
 	/** 切换最大化 / 最小化 */
 	const onClick = () => {

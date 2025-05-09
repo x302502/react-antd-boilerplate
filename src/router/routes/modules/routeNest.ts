@@ -7,7 +7,7 @@ import { routeNest } from "#src/router/extra-info";
 import {
 	NodeExpandOutlined,
 	SisternodeOutlined,
-	SubnodeOutlined,
+	SubnodeOutlined
 } from "@ant-design/icons";
 import { createElement, lazy } from "react";
 
@@ -22,7 +22,7 @@ const routes: AppRouteRecordRaw[] = [
 		handle: {
 			order: routeNest,
 			title: $t("common.menu.nestMenus"),
-			icon: createElement(NodeExpandOutlined),
+			icon: createElement(NodeExpandOutlined)
 		},
 		children: [
 			{
@@ -30,7 +30,7 @@ const routes: AppRouteRecordRaw[] = [
 				Component: ParentLayout,
 				handle: {
 					title: $t("common.menu.menu1"),
-					icon: createElement(SisternodeOutlined),
+					icon: createElement(SisternodeOutlined)
 				},
 				children: [
 					{
@@ -38,29 +38,29 @@ const routes: AppRouteRecordRaw[] = [
 						Component: Menu1And1,
 						handle: {
 							title: $t("common.menu.menu1-1"),
-							icon: createElement(SubnodeOutlined),
-						},
+							icon: createElement(SubnodeOutlined)
+						}
 					},
 					{
 						path: "/route-nest/menu1/menu1-2",
 						Component: Menu1And2,
 						handle: {
 							title: $t("common.menu.menu1-2"),
-							icon: createElement(SubnodeOutlined),
-						},
-					},
-				],
+							icon: createElement(SubnodeOutlined)
+						}
+					}
+				]
 			},
 			{
 				path: "/route-nest/menu2",
 				Component: Menu2,
 				handle: {
 					title: $t("common.menu.menu2"),
-					icon: createElement(SubnodeOutlined),
-				},
-			},
-		],
-	},
+					icon: createElement(SubnodeOutlined)
+				}
+			}
+		]
+	}
 ];
 
 export default routes;

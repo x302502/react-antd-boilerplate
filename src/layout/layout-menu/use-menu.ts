@@ -9,10 +9,14 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 
 import { useLayout } from "../hooks";
-import { findDeepestFirstItem, findRootMenuByPath, translateMenus } from "./utils";
+import {
+	findDeepestFirstItem,
+	findRootMenuByPath,
+	translateMenus
+} from "./utils";
 
 export function useMenu() {
-	const wholeMenus = useAccessStore(state => state.wholeMenus);
+	const wholeMenus = useAccessStore((state) => state.wholeMenus);
 	const { isMixedNav, isTwoColumnNav } = useLayout();
 	const [rootMenuKey, setRootMenuKey] = useState("");
 	const navigate = useNavigate();
@@ -25,19 +29,16 @@ export function useMenu() {
 	 */
 	const shouldSplitMenuItems = useMemo(
 		() => isMixedNav || isTwoColumnNav,
-		[isMixedNav, isTwoColumnNav],
+		[isMixedNav, isTwoColumnNav]
 	);
 	/* 混合菜单模式下需要拆分 menu 的 items */
-	const splitSideNavItems = useMemo(
-		() => {
-			const foundMenu = translatedMenus.find(item => item?.key === rootMenuKey);
-			if (!foundMenu) {
-				return [];
-			}
-			return foundMenu?.children ?? [foundMenu];
-		},
-		[rootMenuKey, translatedMenus],
-	);
+	const splitSideNavItems = useMemo(() => {
+		const foundMenu = translatedMenus.find((item) => item?.key === rootMenuKey);
+		if (!foundMenu) {
+			return [];
+		}
+		return foundMenu?.children ?? [foundMenu];
+	}, [rootMenuKey, translatedMenus]);
 
 	/**
 	 * 头部菜单
@@ -50,7 +51,7 @@ export function useMenu() {
 			return {
 				...item,
 				/* children 为空数组，无法触发 menu 的 onSelect 事件 */
-				children: undefined,
+				children: undefined
 			};
 		});
 	}, [shouldSplitMenuItems, translatedMenus]);
@@ -81,7 +82,7 @@ export function useMenu() {
 		}
 		else {
 			/* 混合导航模式下的顶部导航 */
-			const rootMenu = translatedMenus.find(item => item?.key === key);
+			const rootMenu = translatedMenus.find((item) => item?.key === key);
 			const targetMenu = findDeepestFirstItem(rootMenu?.children ?? []);
 			/* 点击顶部的导航默认跳转到菜单下的第一个子项 */
 			if (!targetMenu) {
@@ -98,7 +99,10 @@ export function useMenu() {
 	 */
 	useEffect(() => {
 		if (shouldSplitMenuItems) {
-			const { rootMenuPath } = findRootMenuByPath(translatedMenus, removeTrailingSlash(pathname));
+			const { rootMenuPath } = findRootMenuByPath(
+				translatedMenus,
+				removeTrailingSlash(pathname)
+			);
 			if (rootMenuPath) {
 				setRootMenuKey(rootMenuPath);
 			}
@@ -108,6 +112,6 @@ export function useMenu() {
 	return {
 		handleMenuSelect,
 		topNavItems,
-		sideNavItems,
+		sideNavItems
 	};
 }

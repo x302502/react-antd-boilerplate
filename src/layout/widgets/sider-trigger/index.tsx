@@ -19,16 +19,17 @@ export function SiderTrigger({ className }: SiderTriggerProps) {
 			type="text"
 			style={{
 				boxShadow: "0px -3px 5px 0 rgb(29, 35, 41, 0.05)",
-				height: siderTriggerHeight,
+				height: siderTriggerHeight
 			}}
 			icon={sidebarCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
 			onClick={() => setPreferences("sidebarCollapsed", !sidebarCollapsed)}
 			className={cn(
 				"!w-full rounded-none border-t",
 				className,
-				sidebarTheme === "dark" ? "border-t-[#303030]" : "border-t-colorBorderSecondary",
+				sidebarTheme === "dark"
+					? "border-t-[#303030]"
+					: "border-t-colorBorderSecondary"
 			)}
 		/>
-
 	);
 }

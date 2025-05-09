@@ -32,7 +32,11 @@ export const FullscreenButton: React.FC<FullscreenButtonProps> = ({
 		<BasicButton
 			type="text"
 			{...restProps}
-			icon={!isFullscreen ? (fullscreenIcon ?? <FullscreenOutlined />) : (fullscreenExitIcon ?? <FullscreenExitOutlined />)}
+			icon={
+				!isFullscreen
+					? (fullscreenIcon ?? <FullscreenOutlined />)
+					: (fullscreenExitIcon ?? <FullscreenExitOutlined />)
+			}
 			onClick={toggleFullscreen}
 		/>
 	);

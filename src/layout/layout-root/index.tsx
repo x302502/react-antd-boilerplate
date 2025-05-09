@@ -19,8 +19,8 @@ export default function LayoutRoot() {
 	const { t } = useTranslation();
 	const location = useLocation();
 	const { language, isDark, enableDynamicTitle } = usePreferences();
-	const isLogin = useAuthStore(state => Boolean(state.token));
-	const isAuthorized = useUserStore(state => Boolean(state.id));
+	const isLogin = useAuthStore((state) => Boolean(state.token));
+	const isAuthorized = useUserStore((state) => Boolean(state.id));
 
 	/* document title */
 	useEffect(() => {
@@ -31,11 +31,16 @@ export default function LayoutRoot() {
 		 * @zh authGuardDependencies 为将要请求用户信息的 useEffect 的依赖项，如果为 true 当前路由为 404 路由，则不替换 document.title
 		 * @en authGuardDependencies is the dependency of useEffect that will request user information. If it's true,
 		 */
-		const authGuardDependencies = !whiteRouteNames.includes(location.pathname) && isLogin && !isAuthorized;
+		const authGuardDependencies =
+			!whiteRouteNames.includes(location.pathname) && isLogin && !isAuthorized;
 		if (!authGuardDependencies) {
 			const currentRoute = matches[matches.length - 1];
-			const documentTitle = currentRoute.handle?.title as React.ReactElement | string;
-			const newTitle = isString(documentTitle) ? documentTitle : documentTitle?.props?.children;
+			const documentTitle = currentRoute.handle?.title as
+			  | React.ReactElement
+			  | string;
+			const newTitle = isString(documentTitle)
+				? documentTitle
+				: documentTitle?.props?.children;
 			document.title = t(newTitle) || document.title;
 		}
 	}, [enableDynamicTitle, language, location]);

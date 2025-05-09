@@ -1,0 +1,42 @@
+{
+	"required": "Vui lòng nhập",
+	"length": "Chỉ hỗ trợ {{length}} ký tự",
+	"username": {
+		"required": "Vui lòng nhập tên đăng nhập",
+		"invalid": "Vui lòng nhập tên đăng nhập từ 4 đến 16 ký tự, hỗ trợ chữ cái, số, dấu gạch dưới và dấu gạch ngang"
+	},
+	"password": {
+		"required": "Vui lòng nhập mật khẩu",
+		"invalid": "Mật khẩu phải có 8-16 ký tự và phải chứa chữ cái và số"
+	},
+	"code": {
+		"required": "Vui lòng nhập mã bảo mật"
+	},
+	"mobile": {
+		"required": "Vui lòng nhập số điện thoại di động",
+		"invalid": "Định dạng số điện thoại không chính xác"
+	},
+	"telephone": {
+		"required": "Vui lòng nhập số điện thoại cố định",
+		"invalid": "Định dạng số điện thoại cố định không chính xác"
+	},
+	"email": {
+		"required": "Vui lòng nhập email",
+		"invalid": "Định dạng email không chính xác"
+	},
+	"confirmPassword": {
+		"required": "Vui lòng nhập lại mật khẩu",
+		"invalid": "Mật khẩu không khớp"
+	},
+	"agree": {
+		"required": "Vui lòng đồng ý với chính sách bảo mật và điều khoản dịch vụ"
+	},
+	"alphanumeric": {
+		"required": "Vui lòng nhập chữ cái hoặc số",
+		"invalid": "Vui lòng chỉ nhập chữ cái hoặc số"
+	},
+	"unifiedSocialCreditCode": {
+		"required": "Vui lòng nhập Mã Tín dụng Xã hội Thống nhất",
+		"invalid": "Vui lòng nhập Mã Tín dụng Xã hội Thống nhất hợp lệ"
+	}
+}

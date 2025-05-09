@@ -9,7 +9,8 @@ export function setupAntdThemeTokensToHtml(antdTokens: GlobalToken) {
 	const cssVariablesString = getCSSVariablesByTokens(antdTokens);
 
 	const styleId = "antd-theme-tokens";
-	const styleSheet = document.querySelector(`#${styleId}`) || document.createElement("style");
+	const styleSheet =
+		document.querySelector(`#${styleId}`) || document.createElement("style");
 	styleSheet.id = styleId;
 	styleSheet.textContent = `:root { ${cssVariablesString} }`;
 	document.head.appendChild(styleSheet);

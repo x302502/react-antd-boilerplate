@@ -5,11 +5,11 @@ export const useStyles = createUseStyles(({ token }) => {
 		tabsContainer: {
 			backgroundColor: token.colorBgContainer,
 			borderTop: `1px solid ${token.colorBorderSecondary}`,
-			borderBottom: `1px solid ${token.colorBorderSecondary}`,
+			borderBottom: `1px solid ${token.colorBorderSecondary}`
 		},
 		resetTabs: {
 			"& .ant-tabs-nav::before": {
-				display: "none",
+				display: "none"
 			},
 			"& .ant-tabs-nav": {
 				"margin": 0,
@@ -20,32 +20,32 @@ export const useStyles = createUseStyles(({ token }) => {
 					border: "none !important",
 					borderRadius: "0px !important",
 					paddingTop: "0.3em !important",
-					paddingBottom: "0.3em !important",
-				},
-			},
+					paddingBottom: "0.3em !important"
+				}
+			}
 		},
 		brisk: {
 			"& .ant-tabs-nav": {
 				"& .ant-tabs-tab": {
-					borderRight: `1px solid ${token.colorBorder} !important`,
-				},
+					borderRight: `1px solid ${token.colorBorder} !important`
+				}
 			},
 			"& .ant-tabs-ink-bar": {
 				backgroundColor: token.colorPrimary,
-				visibility: "visible !important",
-			},
+				visibility: "visible !important"
+			}
 		},
 		plain: {
 			"& .ant-tabs-nav": {
 				"& .ant-tabs-tab": {
-					borderRight: `1px solid ${token.colorBorder} !important`,
-				},
-			},
+					borderRight: `1px solid ${token.colorBorder} !important`
+				}
+			}
 		},
 		chrome: {
 			"& .ant-tabs-nav": {
 				"& .ant-tabs-nav-list": {
-					gap: "5px",
+					gap: "5px"
 				},
 				"& .ant-tabs-tab:not(.ant-tabs-tab-active)": {
 					"backgroundColor": token.colorBgContainer,
@@ -56,7 +56,7 @@ export const useStyles = createUseStyles(({ token }) => {
 					"marginBottom": "3px",
 					"&:hover": {
 						backgroundColor: token.colorBorder,
-						color: "inherit",
+						color: "inherit"
 					},
 					"&:hover::before": {
 						content: "' '",
@@ -64,10 +64,10 @@ export const useStyles = createUseStyles(({ token }) => {
 						width: "1px",
 						backgroundColor: token.colorBgContainer,
 						left: "-3px",
-						position: "absolute",
+						position: "absolute"
 					},
 					"&:hover::after": {
-						display: "none",
+						display: "none"
 					},
 					"&::after": {
 						content: "' '",
@@ -76,8 +76,8 @@ export const useStyles = createUseStyles(({ token }) => {
 						// top: "50%",
 						width: "1px",
 						height: "16px",
-						backgroundColor: token.colorBorder,
-					},
+						backgroundColor: token.colorBorder
+					}
 				},
 				"& .ant-tabs-tab-active": {
 					"marginTop": "3px",
@@ -96,7 +96,7 @@ export const useStyles = createUseStyles(({ token }) => {
 						backgroundColor: token.colorPrimaryBg,
 						transform: "rotate(-90deg)",
 						zIndex: 1,
-						clipPath: "path('M 0 0 A 7 7 0 0 0 7 7 L 0 7 Z')",
+						clipPath: "path('M 0 0 A 7 7 0 0 0 7 7 L 0 7 Z')"
 					},
 					"&>div::before": {
 						content: "' '",
@@ -104,7 +104,7 @@ export const useStyles = createUseStyles(({ token }) => {
 						width: "1px",
 						backgroundColor: token.colorBgContainer,
 						left: "-3px",
-						position: "absolute",
+						position: "absolute"
 					},
 					"&::after": {
 						content: "' '",
@@ -115,14 +115,14 @@ export const useStyles = createUseStyles(({ token }) => {
 						height: "7px",
 						zIndex: 1,
 						backgroundColor: token.colorPrimaryBg,
-						clipPath: "path('M 0 0 A 7 7 0 0 0 7 7 L 0 7 Z')",
-					},
-				},
-			},
+						clipPath: "path('M 0 0 A 7 7 0 0 0 7 7 L 0 7 Z')"
+					}
+				}
+			}
 		},
 		card: {
 			"& .ant-tabs-nav-list": {
-				gap: "5px",
+				gap: "5px"
 			},
 			"& .ant-tabs-nav": {
 				"& .ant-tabs-tab": {
@@ -135,13 +135,13 @@ export const useStyles = createUseStyles(({ token }) => {
 					"marginBottom": "3px",
 					"&:hover": {
 						backgroundColor: token.colorBorder,
-						color: "inherit",
-					},
+						color: "inherit"
+					}
 				},
 				"& .ant-tabs-tab-active": {
-					backgroundColor: token.colorBgTextActive,
-				},
-			},
-		},
+					backgroundColor: token.colorBgTextActive
+				}
+			}
+		}
 	};
 });

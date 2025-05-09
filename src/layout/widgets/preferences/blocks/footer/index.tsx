@@ -2,15 +2,20 @@ import { usePreferencesStore } from "#src/store";
 
 import { useTranslation } from "react-i18next";
 
-import { TextInput } from "../../text-input";
 import { SwitchItem } from "../../switch-item";
+import { TextInput } from "../../text-input";
 
 export function PreferencesFooter() {
 	const { t } = useTranslation();
 	const {
 		enableFooter,
-		fixedFooter, companyName, companyWebsite, copyrightDate, ICPNumber
-		, ICPLink, setPreferences,
+		fixedFooter,
+		companyName,
+		companyWebsite,
+		copyrightDate,
+		ICPNumber,
+		ICPLink,
+		setPreferences
 	} = usePreferencesStore();
 
 	return (

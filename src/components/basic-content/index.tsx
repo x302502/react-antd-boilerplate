@@ -22,9 +22,7 @@ export function BasicContent(props: Props) {
 			className={clsx("p-4 box-border", className)}
 			style={{ ...style }}
 		>
-			{
-				children
-			}
+			{children}
 		</div>
 	);
 }

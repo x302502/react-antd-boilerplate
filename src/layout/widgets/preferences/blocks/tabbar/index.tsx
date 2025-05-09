@@ -15,27 +15,27 @@ export function Tabbar() {
 		tabbarStyleType,
 		tabbarShowMore,
 		tabbarShowMaximize,
-		setPreferences,
+		setPreferences
 	} = usePreferencesStore();
 
 	const styleItems = [
 		{
 			label: t("preferences.tabbar.styleType.chrome"),
-			value: "chrome",
+			value: "chrome"
 		},
 		{
 			label: t("preferences.tabbar.styleType.plain"),
-			value: "plain",
+			value: "plain"
 		},
 		{
 			label: t("preferences.tabbar.styleType.card"),
-			value: "card",
+			value: "card"
 		},
 
 		{
 			label: t("preferences.tabbar.styleType.brisk"),
-			value: "brisk",
-		},
+			value: "brisk"
+		}
 	];
 
 	return (
@@ -95,7 +95,6 @@ export function Tabbar() {
 			>
 				{t("preferences.tabbar.styleType.title")}
 			</SelectItem>
-
 		</>
 	);
 }

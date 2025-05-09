@@ -20,7 +20,7 @@ export function NumberInputSpinner({
 	name,
 	onChange,
 	min,
-	max,
+	max
 }: NumberInputSpinnerProps) {
 	const isMax = value === max;
 	const isMin = value === min;

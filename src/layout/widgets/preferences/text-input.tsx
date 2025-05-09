@@ -13,7 +13,7 @@ export function TextInput({
 	disabled,
 	value,
 	name,
-	onChange,
+	onChange
 }: TextInputProps) {
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (event) {

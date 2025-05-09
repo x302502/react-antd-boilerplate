@@ -13,7 +13,7 @@ export function Sidebar() {
 		setPreferences,
 		sideCollapsedWidth,
 		sidebarTheme,
-		firstColumnWidthInTwoColumnNavigation,
+		firstColumnWidthInTwoColumnNavigation
 	} = usePreferencesStore();
 	const { t } = useTranslation();
 
@@ -22,14 +22,14 @@ export function Sidebar() {
 			label: t("preferences.sidebar.enable"),
 			name: "sidebarEnable",
 			value: sidebarEnable,
-			disabled: false,
+			disabled: false
 		},
 		{
 			label: t("preferences.sidebar.collapsed"),
 			name: "sidebarCollapsed",
 			value: sidebarCollapsed,
-			disabled: !sidebarEnable,
-		},
+			disabled: !sidebarEnable
+		}
 	] as const;
 
 	const handleChange = (name: string, value: unknown) => {
@@ -38,24 +38,23 @@ export function Sidebar() {
 
 	return (
 		<>
-			{
-				sidebarPreset.map((item) => {
-					return (
-						<SwitchItem
-							key={item.name}
-							name={item.name}
-							checked={item.value}
-							onChange={handleChange}
-							children={item.label}
-							disabled={item.disabled}
-						/>
-					);
-				})
-			}
+			{sidebarPreset.map((item) => {
+				return (
+					<SwitchItem
+						key={item.name}
+						name={item.name}
+						checked={item.value}
+						onChange={handleChange}
+						children={item.label}
+						disabled={item.disabled}
+					/>
+				);
+			})}
 			<SwitchItem
 				name="sidebarTheme"
 				checked={sidebarTheme === "light"}
-				onChange={(name, value) => setPreferences(name, value ? "light" : "dark")}
+				onChange={(name, value) =>
+					setPreferences(name, value ? "light" : "dark")}
 				children={t("preferences.sidebar.sidebarTheme")}
 				disabled={!sidebarEnable}
 				unCheckedChildren={<FollowSystemIcon />}

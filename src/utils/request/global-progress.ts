@@ -43,5 +43,5 @@ export const globalProgress = {
 		requestCount = 0;
 		// 隐藏全局加载动画
 		useGlobalStore.getState().closeGlobalSpin();
-	},
+	}
 };

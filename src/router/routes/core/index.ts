@@ -9,5 +9,5 @@ import fallbackRoute from "./fallback";
 /** 核心路由 */
 export const coreRoutes: any = [
 	...addRouteIdByPath([...authRoutes, ...exceptionRoutes]),
-	...fallbackRoute,
+	...fallbackRoute
 ] satisfies RouteObject[];

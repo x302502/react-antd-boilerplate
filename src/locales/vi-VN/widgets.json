@@ -1,0 +1,24 @@
+{
+	"document": "Tài liệu",
+	"qa": "Hỏi & Đáp",
+	"setting": "Cài đặt",
+	"logoutTip": "Bạn có muốn đăng xuất?",
+	"viewAll": "Xem tất cả tin nhắn",
+	"notifications": "Thông báo",
+	"markAllAsRead": "Đánh dấu tất cả đã đọc",
+	"clearNotifications": "Xóa",
+	"versionMonitorTitle": "Thông báo cập nhật phiên bản hệ thống",
+	"versionMonitorContent": "Đã phát hiện phiên bản mới của hệ thống, bạn có muốn làm mới trang ngay bây giờ?",
+	"versionMonitorConfirm": "Làm mới ngay",
+	"versionMonitorCancel": "Để sau",
+	"search": {
+		"placeholder": "Nhập từ khóa để tìm kiếm menu",
+		"title": "Tìm kiếm",
+		"select": "Chọn",
+		"navigate": "Điều hướng",
+		"close": "Đóng",
+		"noResults": "Không tìm thấy kết quả",
+		"noRecent": "Không có lịch sử tìm kiếm",
+		"total": "Tổng cộng {{total}} mục"
+	}
+}

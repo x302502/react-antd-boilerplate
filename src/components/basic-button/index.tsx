@@ -13,10 +13,7 @@ export function BasicButton(props: BasicButtonProps) {
 	const params: Partial<BasicButtonProps> = { ...props };
 
 	return (
-		<Button
-			type="primary"
-			{...params}
-		>
+		<Button type="primary" {...params}>
 			{children}
 		</Button>
 	);

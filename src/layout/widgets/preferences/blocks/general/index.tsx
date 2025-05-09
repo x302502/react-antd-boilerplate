@@ -16,16 +16,12 @@ export function General() {
 		watermarkContent,
 		enableCheckUpdates,
 		enableBackTopButton,
-		setPreferences,
+		setPreferences
 	} = usePreferencesStore();
 
 	return (
 		<>
-			<SelectItem
-				name="language"
-				value={language}
-				items={getLanguageItems()}
-			>
+			<SelectItem name="language" value={language} items={getLanguageItems()}>
 				{t("preferences.general.language")}
 			</SelectItem>
 

@@ -1,6 +1,15 @@
 import type { RoleItemType } from "#src/api/system";
-import type { ActionType, ProColumns, ProCoreActionType } from "@ant-design/pro-components";
-import { fetchDeleteRoleItem, fetchMenuByRoleId, fetchRoleList, fetchRoleMenu } from "#src/api/system";
+import type {
+	ActionType,
+	ProColumns,
+	ProCoreActionType
+} from "@ant-design/pro-components";
+import {
+	fetchDeleteRoleItem,
+	fetchMenuByRoleId,
+	fetchRoleList,
+	fetchRoleMenu
+} from "#src/api/system";
 import { BasicButton, BasicContent, BasicTable } from "#src/components";
 import { accessControlCodes, useAccess } from "#src/hooks";
 import { handleTree } from "#src/utils";
@@ -21,28 +30,35 @@ export default function Role() {
 		queryKey: ["role-menu"],
 		queryFn: async () => {
 			const responseData = await fetchRoleMenu();
-			return responseData?.result.map(item => ({
+			return responseData?.result.map((item) => ({
 				...item,
 				title: item.name,
-				key: item.id,
+				key: item.id
 			}));
 		},
-		initialData: [],
+		initialData: []
 	});
 	const deleteRoleItemMutation = useMutation({
-		mutationFn: fetchDeleteRoleItem,
+		mutationFn: fetchDeleteRoleItem
 	});
 	/* Detail Data */
 	const [isOpen, setIsOpen] = useState(false);
 	const [title, setTitle] = useState("");
-	const [detailData, setDetailData] = useState<Partial<RoleItemType> & { menus?: string[] }>({});
+	const [detailData, setDetailData] = useState<
+		Partial<RoleItemType> & { menus?: string[] }
+	>({});
 
 	const actionRef = useRef<ActionType>(null);
 
-	const handleDeleteRow = async (id: number, action?: ProCoreActionType<object>) => {
+	const handleDeleteRow = async (
+		id: number,
+		action?: ProCoreActionType<object>
+	) => {
 		const responseData = await deleteRoleItemMutation.mutateAsync(id);
 		await action?.reload?.();
-		window.$message?.success(`${t("common.deleteSuccess")} id = ${responseData.result}`);
+		window.$message?.success(
+			`${t("common.deleteSuccess")} id = ${responseData.result}`
+		);
 	};
 
 	const columns: ProColumns<RoleItemType>[] = [
@@ -77,11 +93,17 @@ export default function Role() {
 						okText={t("common.confirm")}
 						cancelText={t("common.cancel")}
 					>
-						<BasicButton type="link" size="small" disabled={!hasAccessByCodes(accessControlCodes.delete)}>{t("common.delete")}</BasicButton>
-					</Popconfirm>,
+						<BasicButton
+							type="link"
+							size="small"
+							disabled={!hasAccessByCodes(accessControlCodes.delete)}
+						>
+							{t("common.delete")}
+						</BasicButton>
+					</Popconfirm>
 				];
-			},
-		},
+			}
+		}
 	];
 
 	const onCloseChange = () => {
@@ -103,7 +125,7 @@ export default function Role() {
 					return {
 						...responseData,
 						data: responseData.result.list,
-						total: responseData.result.total,
+						total: responseData.result.total
 					};
 				}}
 				headerTitle={`${t("common.menu.role")} （${t("common.demoOnly")}）`}
@@ -119,7 +141,7 @@ export default function Role() {
 						}}
 					>
 						{t("common.add")}
-					</Button>,
+					</Button>
 				]}
 			/>
 			<Detail
@@ -132,4 +154,4 @@ export default function Role() {
 			/>
 		</BasicContent>
 	);
-};
+}
