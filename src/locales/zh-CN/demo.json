@@ -1,0 +1,10 @@
+{
+  "title": "演示页面",
+  "welcome": "欢迎来到演示页面",
+  "description": "这是一个展示React Antd Admin模板各种功能和组件的演示页面。您可以将此页面作为构建自己的自定义页面的参考。",
+  "features": "主要特点",
+  "infoTitle": "开始使用",
+  "infoDescription": "探索上面的功能，并使用此演示页面作为在管理面板中创建自己的自定义页面的模板。",
+  "primaryButton": "主要操作",
+  "secondaryButton": "次要操作"
+}

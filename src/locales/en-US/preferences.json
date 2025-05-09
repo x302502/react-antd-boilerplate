@@ -1,0 +1,113 @@
+{
+	"title": "Preferences",
+	"copyPreferences": "Copy Preferences",
+	"copyPreferencesSuccessTitle": "Copy successful",
+	"copyPreferencesSuccess": "Copy successful, please override in `src/store/preferences/index.ts`",
+	"clearAndLogout": "Clear Cache & Logout",
+	"theme": {
+		"title": "Theme",
+		"followSystem": "Follow System",
+		"light": "Light",
+		"dark": "Dark",
+		"colorBlindMode": "Color Blind Mode",
+		"grayMode": "Gray Mode",
+		"radius": "Radius",
+		"builtin": {
+			"title": "Built-in",
+			"red": "Dust Red",
+			"volcano": "Volcano",
+			"orange": "Sunset Orange",
+			"gold": "Calendula Gold",
+			"yellow": "Sunrise Yellow",
+			"lime": "Lime",
+			"green": "Polar Green",
+			"cyan": "Cyan",
+			"blue": "DayBreak Blue",
+			"geekblue": "Geek Blue",
+			"purple": "Golden Purple",
+			"magenta": "Magenta",
+			"gray": "Gray",
+			"custom": "Custom"
+		}
+	},
+	"layout": {
+		"title": "Layout",
+		"topNavigation": "Top Navigation",
+		"topNavigationTip": "Menu at the top position",
+		"sideNavigation": "Side Navigation",
+		"sideNavigationTip": "Menu at the side position",
+		"twoColumnNavigation": "Two Column Navigation",
+		"twoColumnNavigationTip": "Vertical two-column menu at the side position",
+		"mixedNavigation": "Mixed Navigation",
+		"mixedNavigationTip": "Primary navigation at the top, secondary navigation at the side"
+	},
+	"sidebar": {
+		"title": "Sidebar",
+		"width": "Width",
+		"enable": "Show Sidebar",
+		"collapsedWidth": "Collpase Menu Width",
+		"collapsed": "Collpase Menu",
+		"collapsedShowTitle": "Show Menu Title",
+		"firstColumnWidthInTwoColumnNavigation": "First Column Width in Two-Column Navigation",
+		"sidebarTheme": "Sidebar Theme",
+		"autoActivateChild": "Auto Activate SubMenu",
+		"autoActivateChildTip": "`Enabled` to automatically activate the submenu while click menu.",
+		"expandOnHover": "Expand On Hover",
+		"expandOnHoverTip": "When the mouse hovers over menu, \n `Enabled` to expand children menus \n `Disabled` to expand whole sidebar."
+	},
+	"tabbar": {
+		"title": "Tabbar",
+		"enable": "Enable Tab Bar",
+		"icon": "Show Tabbar Icon",
+		"showMore": "Show More Button",
+		"showMaximize": "Show Maximize Button",
+		"persist": "Persist Tabs",
+		"draggable": "Enable Draggable Sort",
+		"styleType": {
+			"title": "Tabs Style",
+			"chrome": "Chrome",
+			"card": "Card",
+			"plain": "Plain",
+			"brisk": "Brisk"
+		},
+		"contextMenu": {
+			"refresh": "Refresh",
+			"close": "Close",
+			"pin": "Pin",
+			"unpin": "Unpin",
+			"closeLeft": "Close Left Tabs",
+			"closeRight": "Close Right Tabs",
+			"closeOthers": "Close Other Tabs",
+			"closeAll": "Close All Tabs",
+			"openInNewWindow": "Open in New Window",
+			"maximize": "Maximize",
+			"restoreMaximize": "Restore"
+		}
+	},
+	"animation": {
+		"title": "Animation",
+		"loading": "Page Loading",
+		"transition": "Page Transition",
+		"progress": "Page Progress"
+	},
+	"general": {
+		"title": "General",
+		"language": "Language",
+		"dynamicTitle": "Dynamic Title",
+		"watermark": "Watermark",
+		"watermarkTip": "Watermark nickname website psoriasis, not recommended",
+		"watermarkContent": "Watermark Content",
+		"enableCheckUpdate": "Check Update",
+		"enableBackTopButton": "Back Top Button"
+	},
+	"footer": {
+		"title": "Footer",
+		"showFooter": "Show Footer",
+		"fixedFooter": "Fixed Footer",
+		"companyName": "Company Name",
+		"companyWebsite": "Company Website",
+		"copyrightDate": "Copyright Date",
+		"ICPNumber": "ICP Number",
+		"ICPLink": "ICP Link"
+	}
+}

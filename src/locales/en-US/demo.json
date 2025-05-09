@@ -1,0 +1,10 @@
+{
+  "title": "Demo Page",
+  "welcome": "Welcome to the Demo Page",
+  "description": "This is a demonstration page showcasing various features and components of the React Antd Admin template. You can use this page as a reference for building your own custom pages.",
+  "features": "Key Features",
+  "infoTitle": "Getting Started",
+  "infoDescription": "Explore the features above and use this demo page as a template for creating your own custom pages in the admin panel.",
+  "primaryButton": "Primary Action",
+  "secondaryButton": "Secondary Action"
+}

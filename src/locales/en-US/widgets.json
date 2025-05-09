@@ -1,0 +1,24 @@
+{
+	"document": "Document",
+	"qa": "Q&A",
+	"setting": "Settings",
+	"logoutTip": "Do you want to logout?",
+	"viewAll": "View All Messages",
+	"notifications": "Notifications",
+	"markAllAsRead": "Make All as Read",
+	"clearNotifications": "Clear",
+	"versionMonitorTitle": "System Version Update Notification",
+	"versionMonitorContent": "A new version of the system has been detected, do you want to refresh the page now?",
+	"versionMonitorConfirm": "Refresh Now",
+	"versionMonitorCancel": "Later",
+	"search": {
+		"placeholder": "Enter keyword to search menu",
+		"title": "Search",
+		"select": "Select",
+		"navigate": "Navigate",
+		"close": "Close",
+		"noResults": "No Search Results Found",
+		"noRecent": "No Search History",
+		"total": "Total {{total}} items"
+	}
+}

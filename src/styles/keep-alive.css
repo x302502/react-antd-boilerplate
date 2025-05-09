@@ -1,0 +1,41 @@
+/* For keepalive-for-react package */
+
+.keepalive-fade.active {
+	animation: fade-in 0.3s ease-in-out;
+}
+
+.keepalive-fade.inactive {
+	animation: fade-out 0.3s ease-in-out;
+}
+
+.keepalive-fade-slide.active {
+	animation: fade-in 0.3s ease-in-out, slide-in 0.3s ease-in-out;
+}
+
+.keepalive-fade-slide.inactive {
+	animation: fade-out 0.3s ease-in-out, slide-out 0.3s ease-in-out;
+}
+
+.keepalive-fade-up.active {
+	animation: fade-in 0.3s ease-in-out, slide-bottom-in 0.3s ease-in-out;
+}
+
+.keepalive-fade-up.inactive {
+	animation: fade-out 0.3s ease-in-out, slide-top-out 0.3s ease-in-out;
+}
+
+.keepalive-fade-down.active {
+	animation: fade-in 0.3s ease-in-out, slide-top-in 0.3s ease-in-out;
+}
+
+.keepalive-fade-down.inactive {
+	animation: fade-out 0.3s ease-in-out, slide-bottom-out 0.3s ease-in-out;
+}
+
+.keepalive-fade-zoom.active {
+	animation: zoom-in 0.3s ease-in-out, zoom-in 0.3s ease-in-out;
+}
+
+.keepalive-fade-zoom.inactive {
+	animation: zoom-out 0.3s ease-in-out, fade-out 0.3s ease-in-out;
+}

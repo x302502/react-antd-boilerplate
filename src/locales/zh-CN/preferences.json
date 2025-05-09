@@ -1,0 +1,113 @@
+{
+	"title": "偏好设置",
+	"copyPreferences": "复制偏好设置",
+	"copyPreferencesSuccessTitle": "复制成功",
+	"copyPreferencesSuccess": "复制成功，请在 `src/store/preferences/index.ts` 内进行覆盖",
+	"clearAndLogout": "清空缓存 & 退出登录",
+	"theme": {
+		"title": "主题",
+		"followSystem": "跟随系统",
+		"light": "浅色",
+		"dark": "深色",
+		"colorBlindMode": "色弱模式",
+		"grayMode": "灰色模式",
+		"radius": "圆角",
+		"builtin": {
+			"title": "内置主题",
+			"red": "薄暮",
+			"volcano": "火山",
+			"orange": "日暮",
+			"gold": "金盏花",
+			"yellow": "日出",
+			"lime": "青柠",
+			"green": "极光绿",
+			"cyan": "明青",
+			"blue": "拂晓蓝",
+			"geekblue": "极客蓝",
+			"purple": "酱紫",
+			"magenta": "法式洋红",
+			"gray": "中性灰",
+			"custom": "自定义"
+		}
+	},
+	"layout": {
+		"title": "布局",
+		"topNavigation": "顶部导航",
+		"topNavigationTip": "菜单在顶部位置",
+		"sideNavigation": "侧边导航",
+		"sideNavigationTip": "菜单在侧边位置",
+		"twoColumnNavigation": "双列导航",
+		"twoColumnNavigationTip": "垂直双列菜单在侧边位置",
+		"mixedNavigation": "混合导航",
+		"mixedNavigationTip": "一级导航在顶部，二级导航在侧边"
+	},
+	"sidebar": {
+		"title": "侧边栏",
+		"width": "宽度",
+		"enable": "显示侧边栏",
+		"collapsedWidth": "折叠菜单宽度",
+		"collapsed": "折叠菜单",
+		"collapsedShowTitle": "折叠显示菜单名",
+		"firstColumnWidthInTwoColumnNavigation": "双列导航第一列宽度",
+		"sidebarTheme": "侧边栏主题",
+		"autoActivateChild": "自动激活子菜单",
+		"autoActivateChildTip": "点击顶层菜单时,自动激活第一个子菜单或者上一次激活的子菜单",
+		"expandOnHover": "鼠标悬停展开",
+		"expandOnHoverTip": "鼠标在折叠区域悬浮时，`启用`则展开当前子菜单，`禁用`则展开整个侧边栏"
+	},
+	"tabbar": {
+		"title": "标签栏",
+		"enable": "启用标签栏",
+		"icon": "显示标签栏图标",
+		"showMore": "显示更多按钮",
+		"showMaximize": "显示最大化按钮",
+		"persist": "持久化标签页",
+		"draggable": "启动拖拽排序",
+		"styleType": {
+			"title": "标签页风格",
+			"chrome": "谷歌",
+			"card": "卡片",
+			"plain": "朴素",
+			"brisk": "轻快"
+		},
+		"contextMenu": {
+			"refresh": "重新加载",
+			"close": "关闭",
+			"pin": "固定",
+			"unpin": "取消固定",
+			"closeLeft": "关闭左侧标签页",
+			"closeRight": "关闭右侧标签页",
+			"closeOthers": "关闭其它标签页",
+			"closeAll": "关闭全部标签页",
+			"openInNewWindow": "在新窗口打开",
+			"maximize": "最大化",
+			"restoreMaximize": "还原"
+		}
+	},
+	"animation": {
+		"title": "动画",
+		"loading": "页面切换 Loading",
+		"transition": "页面切换动画",
+		"progress": "页面切换进度条"
+	},
+	"general": {
+		"title": "通用",
+		"language": "语言",
+		"dynamicTitle": "动态标题",
+		"watermark": "水印",
+		"watermarkTip": "水印外号网站牛皮癣，不推荐使用",
+		"watermarkContent": "水印内容",
+		"enableCheckUpdate": "定时检查更新",
+		"enableBackTopButton": "显示返回顶部按钮"
+	},
+	"footer": {
+		"title": "底栏",
+		"showFooter": "显示底栏",
+		"fixedFooter": "固定底栏",
+		"companyName": "公司名称",
+		"companyWebsite": "公司官网",
+		"copyrightDate": "版权年份",
+		"ICPNumber": "ICP 备案号",
+		"ICPLink": "ICP 备案链接"
+	}
+}
