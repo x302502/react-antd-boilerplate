@@ -20,7 +20,7 @@ import { cloneElement } from "react";
 
 interface DraggableTabPaneProps extends React.HTMLAttributes<HTMLElement> {
 	"data-node-key": string
-	"children": React.ReactElement
+	children: React.ReactElement
 }
 
 export function DraggableTabNode({

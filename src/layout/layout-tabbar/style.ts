@@ -12,7 +12,7 @@ export const useStyles = createUseStyles(({ token }) => {
 				display: "none"
 			},
 			"& .ant-tabs-nav": {
-				"margin": 0,
+				margin: 0,
 				"& .ant-tabs-tab": {
 					// antd 自带的动画和 DND 动画冲突
 					transition: "inherit",
@@ -48,12 +48,12 @@ export const useStyles = createUseStyles(({ token }) => {
 					gap: "5px"
 				},
 				"& .ant-tabs-tab:not(.ant-tabs-tab-active)": {
-					"backgroundColor": token.colorBgContainer,
-					"position": "relative",
-					"borderRadius": "7px !important",
-					"padding": "0px 12px !important",
-					"marginTop": "3px",
-					"marginBottom": "3px",
+					backgroundColor: token.colorBgContainer,
+					position: "relative",
+					borderRadius: "7px !important",
+					padding: "0px 12px !important",
+					marginTop: "3px",
+					marginBottom: "3px",
 					"&:hover": {
 						backgroundColor: token.colorBorder,
 						color: "inherit"
@@ -80,12 +80,12 @@ export const useStyles = createUseStyles(({ token }) => {
 					}
 				},
 				"& .ant-tabs-tab-active": {
-					"marginTop": "3px",
-					"padding": "0px 12px 3px !important",
-					"backgroundColor": token.colorPrimaryBg,
-					"borderTopLeftRadius": "7px !important",
-					"borderTopRightRadius": "7px !important",
-					"position": "relative",
+					marginTop: "3px",
+					padding: "0px 12px 3px !important",
+					backgroundColor: token.colorPrimaryBg,
+					borderTopLeftRadius: "7px !important",
+					borderTopRightRadius: "7px !important",
+					position: "relative",
 					"&::before": {
 						content: "' '",
 						position: "absolute",
@@ -126,13 +126,13 @@ export const useStyles = createUseStyles(({ token }) => {
 			},
 			"& .ant-tabs-nav": {
 				"& .ant-tabs-tab": {
-					"backgroundColor": token.colorBgContainer,
-					"border": `1px solid ${token.colorBorder} !important`,
-					"position": "relative",
-					"borderRadius": "7px !important",
-					"padding": "0px 12px !important",
-					"marginTop": "3px",
-					"marginBottom": "3px",
+					backgroundColor: token.colorBgContainer,
+					border: `1px solid ${token.colorBorder} !important`,
+					position: "relative",
+					borderRadius: "7px !important",
+					padding: "0px 12px !important",
+					marginTop: "3px",
+					marginBottom: "3px",
 					"&:hover": {
 						backgroundColor: token.colorBorder,
 						color: "inherit"

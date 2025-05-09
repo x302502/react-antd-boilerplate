@@ -79,7 +79,7 @@ export function Animation() {
 								"bg-gray-100 h-10 w-12 rounded-md text-xs flex items-center justify-center text-center",
 								{
 									"fade-slide": item === "fade-slide",
-									"fade": item === "fade",
+									fade: item === "fade",
 									"fade-up": item === "fade-up",
 									"fade-down": item === "fade-down",
 									"fade-zoom": item === "fade-zoom"

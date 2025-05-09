@@ -11,7 +11,7 @@ import { useMenu } from "../layout-menu/use-menu";
 const useStyles = createUseStyles({
 	drawerStyles: {
 		"& .ant-drawer-body": {
-			"padding": 0,
+			padding: 0,
 			"&>ul": {
 				paddingTop: "1em"
 			}

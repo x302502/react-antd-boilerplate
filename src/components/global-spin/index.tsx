@@ -14,7 +14,7 @@ export interface GlobalSpinProps {
 
 const useStyles = createUseStyles({
 	rootSpin: {
-		"height": "100%",
+		height: "100%",
 		"& .ant-spin-container": {
 			height: "100%"
 		},

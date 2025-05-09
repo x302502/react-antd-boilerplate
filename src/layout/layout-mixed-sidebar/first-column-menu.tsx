@@ -17,12 +17,12 @@ const useStyles = createUseStyles(({ token }) => {
 	return {
 		menu: {
 			"& .ant-menu-item": {
-				"gap": token.sizeXS,
-				"height": "60px",
-				"display": "flex",
-				"flexDirection": "column",
-				"alignItems": "center",
-				"justifyContent": "center",
+				gap: token.sizeXS,
+				height: "60px",
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center",
+				justifyContent: "center",
 				"& .ant-menu-title-content": {
 					lineHeight: "initial",
 					margin: "0px !important",

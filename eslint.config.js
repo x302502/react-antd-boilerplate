@@ -2,6 +2,8 @@ import antfu from "@antfu/eslint-config";
 
 export default antfu({
 	react: true,
+	markdown: false,
+	ignorePatterns: ["*.md", "*.mdx", "docs/**/*", "**/docs/**/*", "**/*.md"],
 	rules: {
 		// Style rules
 		"style/quotes": ["error", "double"],
@@ -15,6 +17,7 @@ export default antfu({
 		"style/multiline-ternary": "off",
 		"style/no-mixed-spaces-and-tabs": "off",
 		"style/operator-linebreak": "off",
+		"style/quote-props": "off",
 
 		// React hooks rules
 		"react-hooks/exhaustive-deps": "off",
