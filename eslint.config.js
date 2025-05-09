@@ -11,4 +11,5 @@ export default antfu({
 		"style/jsx-indent-props": ["error", "tab"],
 		"react-hooks/exhaustive-deps": "off",
 	},
+	ignorePatterns: ["docs/**/*", "*.md"],
 });
