@@ -24,6 +24,7 @@ export default antfu({
 		"style/member-delimiter-style": "off",
 		"perfectionist/sort-imports": "off",
 		"import/no-mutable-exports": "off",
+		"style/jsx-wrap-multilines": "warn",
 
 		// React hooks rules
 		"react-hooks/exhaustive-deps": "warn",
