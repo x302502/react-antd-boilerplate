@@ -11,9 +11,9 @@ import {
 } from "@ant-design/icons";
 import { createElement, lazy } from "react";
 
-const Menu1And1 = lazy(() => import("~/pages/route-nest/menu1/menu1-1"));
-const Menu1And2 = lazy(() => import("~/pages/route-nest/menu1/menu1-2"));
-const Menu2 = lazy(() => import("~/pages/route-nest/menu2"));
+const Menu1And1 = lazy(() => import("~/views/route-nest/menu1/menu1-1"));
+const Menu1And2 = lazy(() => import("~/views/route-nest/menu1/menu1-2"));
+const Menu2 = lazy(() => import("~/views/route-nest/menu2"));
 
 const routes: AppRouteRecordRaw[] = [
 	{

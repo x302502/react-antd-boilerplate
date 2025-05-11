@@ -20,11 +20,11 @@ import {
 } from "@ant-design/icons";
 import { createElement, lazy } from "react";
 
-const Exception403 = lazy(() => import("~/pages/exception/403"));
-const Exception404 = lazy(() => import("~/pages/exception/404"));
-const Exception500 = lazy(() => import("~/pages/exception/500"));
+const Exception403 = lazy(() => import("~/views/exception/403"));
+const Exception404 = lazy(() => import("~/views/exception/404"));
+const Exception500 = lazy(() => import("~/views/exception/500"));
 const ExceptionUnknownComponent = lazy(
-	() => import("~/pages/exception/unknown-component")
+	() => import("~/views/exception/unknown-component")
 );
 
 const routes: AppRouteRecordRaw[] = [

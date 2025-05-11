@@ -7,10 +7,10 @@ import { access } from "~/router/extra-info";
 
 import { lazy } from "react";
 
-const PageControl = lazy(() => import("~/pages/access/page-control"));
-const ButtonControl = lazy(() => import("~/pages/access/button-control"));
-const AdminVisible = lazy(() => import("~/pages/access/admin-visible"));
-const CommonVisible = lazy(() => import("~/pages/access/common-visible"));
+const PageControl = lazy(() => import("~/views/access/page-control"));
+const ButtonControl = lazy(() => import("~/views/access/button-control"));
+const AdminVisible = lazy(() => import("~/views/access/admin-visible"));
+const CommonVisible = lazy(() => import("~/views/access/common-visible"));
 
 const routes: AppRouteRecordRaw[] = [
 	{

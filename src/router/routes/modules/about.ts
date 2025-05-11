@@ -6,7 +6,7 @@ import { about } from "~/router/extra-info";
 import { CopyrightOutlined } from "@ant-design/icons";
 import { createElement, lazy } from "react";
 
-const About = lazy(() => import("~/pages/about"));
+const About = lazy(() => import("~/views/about"));
 
 const routes: AppRouteRecordRaw[] = [
 	{

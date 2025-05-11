@@ -6,7 +6,7 @@ import { Outlet } from "react-router";
 import { addRouteIdByPath } from "./add-route-id-by-path";
 
 const ExceptionUnknownComponent = lazy(
-	() => import("~/pages/exception/unknown-component")
+	() => import("~/views/exception/unknown-component")
 );
 
 /**
@@ -14,9 +14,9 @@ const ExceptionUnknownComponent = lazy(
  * @en Async load page components
  */
 const pageModules = import.meta.glob([
-	"/src/pages/**/*.tsx",
+	"/src/views/**/*.tsx",
 	// Exclude exception pages from lazy loading
-	"!/src/pages/exception/**/*.tsx"
+	"!/src/views/exception/**/*.tsx"
 ]);
 
 /**
@@ -27,8 +27,9 @@ export async function generateRoutesFromBackend(
 	backendRoutes: Array<AppRouteRecordRaw>
 ) {
 	const pageModulePaths = Object.keys(pageModules);
-	if (!backendRoutes?.length)
-return [];
+	if (!backendRoutes?.length) {
+		return [];
+	}
 
 	/**
 	 * @zh 动态加载并设置路由组件
@@ -40,7 +41,7 @@ return [];
 		route: AppRouteRecordRaw,
 		componentPath: string
 	) => {
-		const modulePath = `/src/pages${componentPath}/index.tsx`;
+		const modulePath = `/src/views${componentPath}/index.tsx`;
 		const moduleIndex = pageModulePaths.findIndex(
 			(path) => path === modulePath
 		);

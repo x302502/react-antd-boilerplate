@@ -6,8 +6,8 @@ import { personalCenter } from "~/router/extra-info";
 
 import { createElement, lazy } from "react";
 
-const MyProfile = lazy(() => import("~/pages/personal-center/my-profile"));
-const Settings = lazy(() => import("~/pages/personal-center/settings"));
+const MyProfile = lazy(() => import("~/views/personal-center/my-profile"));
+const Settings = lazy(() => import("~/views/personal-center/settings"));
 
 const routes: AppRouteRecordRaw[] = [
 	{

@@ -4,7 +4,7 @@ import { $t } from "~/locales";
 import { lazy } from "react";
 import { Outlet } from "react-router";
 
-const PrivacyPolicy = lazy(() => import("~/pages/privacy-policy"));
+const PrivacyPolicy = lazy(() => import("~/views/privacy-policy"));
 
 const routes: AppRouteRecordRaw[] = [
 	{

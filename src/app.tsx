@@ -64,7 +64,7 @@ export default function App() {
 	 */
 	useEffect(() => {
 		i18n.changeLanguage(language);
-	}, [language, i18n.changeLanguage]);
+	}, [language, i18n.changeLanguage, i18n]);
 
 	/**
 	 * Change theme when the system theme changes
@@ -103,7 +103,7 @@ export default function App() {
 	/**
 	 * 更新页面颜色模式（灰色、色弱）
 	 */
-	const updateColorMode = () => {
+	const updateColorMode = useCallback(() => {
 		const dom = document.documentElement;
 		const COLOR_BLIND = "color-blind-mode";
 		const COLOR_GRAY = "gray-mode";
@@ -113,11 +113,11 @@ export default function App() {
 		colorGrayMode
 			? dom.classList.add(COLOR_GRAY)
 			: dom.classList.remove(COLOR_GRAY);
-	};
+	}, [colorBlindMode, colorGrayMode]);
 
 	useEffect(() => {
 		updateColorMode();
-	}, [colorBlindMode, colorGrayMode]);
+	}, [updateColorMode]);
 
 	return (
 		<ConfigProvider

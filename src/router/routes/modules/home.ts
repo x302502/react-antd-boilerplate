@@ -6,7 +6,7 @@ import { home } from "~/router/extra-info";
 import { HomeOutlined } from "@ant-design/icons";
 import { createElement, lazy } from "react";
 
-const Home = lazy(() => import("~/pages/home"));
+const Home = lazy(() => import("~/views/home"));
 
 const routes: AppRouteRecordRaw[] = [
 	{
