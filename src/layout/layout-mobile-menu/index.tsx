@@ -1,6 +1,6 @@
-import { Scrollbar } from "#src/components";
-import { useDeviceType, usePreferences } from "#src/hooks";
-import { cn } from "#src/utils";
+import { Scrollbar } from "~/components";
+import { useDeviceType, usePreferences } from "~/hooks";
+import { cn } from "~/utils";
 
 import { theme as antdTheme, Drawer } from "antd";
 import { createUseStyles } from "react-jss";

@@ -121,8 +121,7 @@ export function PHONE_RULE(t: TFunction<"translation", undefined>) {
 
 			if (MOBILE_PHONE_REGEXP.test(value) || TELEPHONE_REGEXP.test(value)) {
 				return Promise.resolve();
-			}
-			else {
+			} else {
 				return Promise.reject(t("form.mobile.invalid"));
 			}
 		}

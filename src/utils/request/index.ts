@@ -1,8 +1,8 @@
 import type { Options } from "ky";
-import { refreshTokenPath } from "#src/api/user";
+import { refreshTokenPath } from "~/api/user";
 
-import { loginPath } from "#src/router/extra-info";
-import { useAuthStore, usePreferencesStore } from "#src/store";
+import { loginPath } from "~/router/extra-info";
+import { useAuthStore, usePreferencesStore } from "~/store";
 import ky from "ky";
 
 import { AUTH_HEADER, LANG_HEADER } from "./constants";
@@ -70,16 +70,14 @@ const defaultConfig: Options = {
 							// 如果页面的路由已经重定向到登录页，则不用跳转直接返回结果
 							if (location.pathname === loginPath) {
 								return response;
-							}
-							else {
+							} else {
 								goLogin();
 								return response;
 							}
 						}
 
 						return refreshTokenAndRetry(request, options, refreshToken);
-					}
-					else {
+					} else {
 						return handleErrorResponse(response);
 					}
 				}

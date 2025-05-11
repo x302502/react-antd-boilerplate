@@ -17,7 +17,7 @@ const queryClient = new QueryClient({
 });
 
 export interface TanstackQueryProps {
-	children: ReactNode
+	children: ReactNode;
 }
 
 export function TanstackQuery({ children }: TanstackQueryProps) {

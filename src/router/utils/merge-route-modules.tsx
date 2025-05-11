@@ -1,4 +1,4 @@
-import type { AppRouteRecordRaw, RouteFileModule } from "#src/router/types";
+import type { AppRouteRecordRaw, RouteFileModule } from "~/router/types";
 import { addRouteIdByPath } from "./add-route-id-by-path";
 
 export function mergeRouteModules(...routes: RouteFileModule[]) {

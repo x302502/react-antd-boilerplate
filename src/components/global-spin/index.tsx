@@ -1,15 +1,15 @@
 import type { ReactNode } from "react";
-import { useGlobalStore, usePreferencesStore } from "#src/store";
+import { useGlobalStore, usePreferencesStore } from "~/store";
 
-import { cn } from "#src/utils";
+import { cn } from "~/utils";
 import { Spin } from "antd";
 
 import { createUseStyles } from "react-jss";
 import { useSpinDelay } from "spin-delay";
 
 export interface GlobalSpinProps {
-	className?: string
-	children: ReactNode
+	className?: string;
+	children: ReactNode;
 }
 
 const useStyles = createUseStyles({

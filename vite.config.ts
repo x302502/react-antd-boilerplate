@@ -1,5 +1,6 @@
 /// <reference types="vitest/config" />
 
+import path from "node:path";
 import process from "node:process";
 import reactSWC from "@vitejs/plugin-react-swc";
 import { codeInspectorPlugin } from "code-inspector-plugin";
@@ -8,19 +9,18 @@ import { defineConfig } from "vite";
 import { checker } from "vite-plugin-checker";
 import { vitePluginFakeServer } from "vite-plugin-fake-server";
 import svgrPlugin from "vite-plugin-svgr";
-
 import {
 	author,
 	dependencies,
 	devDependencies,
 	license,
 	name,
-	version,
+	version
 } from "./package.json";
 
 const __APP_INFO__ = {
 	pkg: { dependencies, devDependencies, name, version, license, author },
-	lastBuildTime: dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss"),
+	lastBuildTime: dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss")
 };
 
 const isDev = process.env.NODE_ENV === "development";
@@ -33,7 +33,7 @@ export default defineConfig({
 		vitePluginFakeServer({
 			basename: "/api",
 			enableProd: true,
-			timeout: 1000,
+			timeout: 1000
 		}),
 		// https://github.com/pd4d10/vite-plugin-svgr#options
 		svgrPlugin({
@@ -41,14 +41,14 @@ export default defineConfig({
 			svgrOptions: {
 				plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
 				svgoConfig: {
-					floatPrecision: 2,
-				},
-			},
+					floatPrecision: 2
+				}
+			}
 		}),
 		checker({
 			typescript: true,
 			terminal: false,
-			enableBuild: false,
+			enableBuild: false
 		}),
 		/**
 		 * 点击页面 DOM 打开 IDE 并将光标自动定位到源代码位置
@@ -59,14 +59,19 @@ export default defineConfig({
 		 * 更多用法看 https://inspector.fe-dev.cn/guide/start.html
 		 */
 		codeInspectorPlugin({
-			bundler: "vite",
+			bundler: "vite"
 			// hideConsole: true,
-		}),
+		})
 	],
+	resolve: {
+		alias: {
+			"~": path.resolve(__dirname, "./src/")
+		}
+	},
 	test: {
 		globals: true,
 		environment: "happy-dom",
-		setupFiles: ["./src/setupTests.ts"],
+		setupFiles: ["./src/setupTests.ts"]
 	},
 	server: {
 		port: 3333,
@@ -77,10 +82,10 @@ export default defineConfig({
 			// 	changeOrigin: true,
 			// 	rewrite: path => isDev ? path.replace(/^\/api/, "") : path,
 			// },
-		},
+		}
 	},
 	define: {
-		__APP_INFO__: JSON.stringify(__APP_INFO__),
+		__APP_INFO__: JSON.stringify(__APP_INFO__)
 	},
 	build: {
 		outDir: "build",
@@ -90,9 +95,9 @@ export default defineConfig({
 				manualChunks: {
 					react: ["react", "react-dom", "react-router"],
 					antd: ["antd", "@ant-design/icons"],
-					faker: ["@faker-js/faker"],
-				},
-			},
-		},
-	},
+					faker: ["@faker-js/faker"]
+				}
+			}
+		}
+	}
 });

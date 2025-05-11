@@ -1,8 +1,8 @@
-import type { MenuItemType } from "#src/api/system";
+import type { MenuItemType } from "~/api/system";
 import type { ProColumns } from "@ant-design/pro-components";
 import type { TFunction } from "i18next";
 
-import { getYesNoOptions } from "#src/constants";
+import { getYesNoOptions } from "~/constants";
 
 import { Tag } from "antd";
 

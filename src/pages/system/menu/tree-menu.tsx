@@ -1,7 +1,7 @@
 import type { TreeDataNode } from "antd";
 
-import { BasicButton, BasicContent } from "#src/components";
-import { getAllExpandedKeys } from "#src/utils";
+import { BasicButton, BasicContent } from "~/components";
+import { getAllExpandedKeys } from "~/utils";
 
 import {
 	MinusCircleOutlined,
@@ -63,8 +63,7 @@ export default function Menu() {
 								const value = e.target.value;
 								if (value === "expand") {
 									setExpandedKeys(getAllExpandedKeys(treeData, "key"));
-								}
-								else {
+								} else {
 									setExpandedKeys([]);
 								}
 							}}

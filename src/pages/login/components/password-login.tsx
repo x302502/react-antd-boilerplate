@@ -1,6 +1,6 @@
-import { BasicButton } from "#src/components";
-import { PASSWORD_RULES, USERNAME_RULES } from "#src/constants";
-import { useAuthStore } from "#src/store";
+import { BasicButton } from "~/components";
+import { PASSWORD_RULES, USERNAME_RULES } from "~/constants";
+import { useAuthStore } from "~/store";
 
 import { Button, Form, Input, message, Space } from "antd";
 import { useContext, useState } from "react";
@@ -36,8 +36,7 @@ export function PasswordLogin() {
 				const redirect = searchParams.get("redirect");
 				if (redirect) {
 					navigate(`/${redirect.slice(1)}`);
-				}
-				else {
+				} else {
 					navigate(import.meta.env.VITE_BASE_HOME_PATH);
 				}
 			})

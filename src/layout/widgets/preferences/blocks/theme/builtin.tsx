@@ -1,8 +1,8 @@
-import type { BuiltinThemeType } from "#src/store/preferences/types";
+import type { BuiltinThemeType } from "~/store/preferences/types";
 import type { ColorPickerProps } from "antd";
 
-import { usePreferencesStore } from "#src/store";
-import { cn } from "#src/utils";
+import { usePreferencesStore } from "~/store";
+import { cn } from "~/utils";
 
 import { ColorPicker } from "antd";
 import { useState } from "react";
@@ -63,10 +63,10 @@ export function BuiltinTheme() {
 					<span>{t("preferences.theme.builtin.blue")}</span>
 					<br className="zh-CN:hidden" />
 					<span>
-						(
-						{t("preferences.theme.builtin.title")}
-						)
-					</span>
+(
+{t("preferences.theme.builtin.title")}
+)
+     </span>
 				</>
 			),
 			value: "blue",

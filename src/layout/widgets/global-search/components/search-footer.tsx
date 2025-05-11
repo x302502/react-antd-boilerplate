@@ -8,7 +8,7 @@ import { Divider } from "antd";
 import { useTranslation } from "react-i18next";
 
 interface SearchFooterProps {
-	searchItems: number
+	searchItems: number;
 }
 
 export function SearchFooter({ searchItems }: SearchFooterProps) {

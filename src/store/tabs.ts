@@ -1,5 +1,5 @@
 import type { TabPaneProps } from "antd";
-import { usePreferencesStore } from "#src/store/preferences";
+import { usePreferencesStore } from "~/store/preferences";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -7,22 +7,22 @@ import { persist } from "zustand/middleware";
  * 标签页项目属性接口
  */
 export interface TabItemProps extends Omit<TabPaneProps, "tab"> {
-	key: string
-	label: React.ReactNode
+	key: string;
+	label: React.ReactNode;
 	/**
 	 * 是否可拖拽
 	 */
-	draggable?: boolean
+	draggable?: boolean;
 	/**
 	 * 可选的历史状态值，如 search 和 hash，可存储于此
 	 * 在目标路由中可通过 useLocation 钩子访问该状态
 	 * @see {@link https://reactrouter.com/en/main/hooks/use-navigate#optionsstate | usenavigate - options state}
 	 */
-	historyState?: Record<string, any>
+	historyState?: Record<string, any>;
 }
 
 export interface TabStateType extends Omit<TabItemProps, "label"> {
-	label: string
+	label: string;
 }
 
 /**
@@ -45,18 +45,18 @@ type TabsState = typeof initialState;
  * 标签页操作接口
  */
 interface TabsAction {
-	setIsRefresh: (state: boolean) => void
-	addTab: (routePath: string, tabProps: TabStateType) => void
-	insertBeforeTab: (routePath: string, tabProps: TabStateType) => void
-	removeTab: (routePath: string) => void
-	closeRightTabs: (routePath: string) => void
-	closeLeftTabs: (routePath: string) => void
-	closeOtherTabs: (routePath: string) => void
-	closeAllTabs: () => void
-	setActiveKey: (routePath: string) => void
-	resetTabs: () => void
-	changeTabOrder: (from: number, to: number) => void
-	toggleMaximize: (state: boolean) => void
+	setIsRefresh: (state: boolean) => void;
+	addTab: (routePath: string, tabProps: TabStateType) => void;
+	insertBeforeTab: (routePath: string, tabProps: TabStateType) => void;
+	removeTab: (routePath: string) => void;
+	closeRightTabs: (routePath: string) => void;
+	closeLeftTabs: (routePath: string) => void;
+	closeOtherTabs: (routePath: string) => void;
+	closeAllTabs: () => void;
+	setActiveKey: (routePath: string) => void;
+	resetTabs: () => void;
+	changeTabOrder: (from: number, to: number) => void;
+	toggleMaximize: (state: boolean) => void;
 }
 
 /**
@@ -202,7 +202,7 @@ export const useTabsStore = create<TabsState & TabsAction>()(
 					// 遍历当前所有标签页
 					for (const [key, value] of state.openTabs) {
 						if (key === homePath)
-							continue; // 跳过首页，因为已经添加过了
+continue; // 跳过首页，因为已经添加过了
 
 						if (found || key === routePath) {
 							newTabs.set(key, value);
@@ -320,7 +320,7 @@ export const useTabsStore = create<TabsState & TabsAction>()(
 					// 是否开启持久化存储，如果未开启则在页面初次进入时返回 null 即可
 					const isPersist = usePreferencesStore.getState().tabbarPersist;
 					if (!str || !isPersist)
-						return null;
+return null;
 					const existingValue = JSON.parse(str);
 					return {
 						...existingValue,

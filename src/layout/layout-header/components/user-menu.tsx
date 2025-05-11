@@ -1,10 +1,10 @@
 import type { ButtonProps, MenuProps } from "antd";
 
-import { BasicButton } from "#src/components";
-import { UserCircleIcon } from "#src/icons";
-import { loginPath } from "#src/router/extra-info";
-import { useAuthStore, useUserStore } from "#src/store";
-import { cn, isWindowsOs } from "#src/utils";
+import { BasicButton } from "~/components";
+import { UserCircleIcon } from "~/icons";
+import { loginPath } from "~/router/extra-info";
+import { useAuthStore, useUserStore } from "~/store";
+import { cn, isWindowsOs } from "~/utils";
 
 import { LogoutOutlined } from "@ant-design/icons";
 import { useKeyPress } from "ahooks";

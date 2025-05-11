@@ -1,13 +1,13 @@
-import { AntdApp, JSSThemeProvider } from "#src/components";
-import { usePreferences, useScrollToHash } from "#src/hooks";
-import { AppVersionMonitor } from "#src/layout/widgets/version-monitor";
-import { ANT_DESIGN_LOCALE } from "#src/locales";
-
 import { theme as antdTheme, ConfigProvider } from "antd";
 import dayjs from "dayjs";
 import { Suspense, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { RouterProvider } from "react-router/dom";
+import { AntdApp, JSSThemeProvider } from "~/components";
+import { usePreferences, useScrollToHash } from "~/hooks";
+
+import { AppVersionMonitor } from "~/layout/widgets/version-monitor";
+import { ANT_DESIGN_LOCALE } from "~/locales";
 
 import { router } from "./router";
 import {
@@ -51,10 +51,8 @@ export default function App() {
 	useEffect(() => {
 		if (language === "en-US") {
 			dayjs.locale("en");
-		}
-		else if (language === "zh-CN") {
+		} else if (language === "zh-CN") {
 			dayjs.locale("zh-cn");
-			// eslint-disable-next-line style/brace-style
 		} else if (language === "vi-VN") {
 			dayjs.locale("vi");
 		}

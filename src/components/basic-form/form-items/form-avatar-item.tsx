@@ -4,8 +4,8 @@ import { Avatar, Button, Upload } from "antd";
 import ImgCrop from "antd-img-crop";
 
 interface FormAvatarItemProps {
-	value?: string
-	onChange?: (value: any) => void
+	value?: string;
+	onChange?: (value: any) => void;
 }
 
 export function FormAvatarItem({ value, onChange }: FormAvatarItemProps) {
@@ -43,8 +43,7 @@ export function FormAvatarItem({ value, onChange }: FormAvatarItemProps) {
 									`${info.file.name} file uploaded successfully`
 								);
 								onChange?.(info.file.response?.result);
-							}
-							else if (info.file.status === "error") {
+							} else if (info.file.status === "error") {
 								window.$message?.error(`${info.file.name} file upload failed.`);
 							}
 						}}

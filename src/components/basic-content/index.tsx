@@ -1,9 +1,9 @@
 import { clsx } from "clsx";
 
 interface Props {
-	style?: React.CSSProperties
-	className?: string
-	children: React.ReactNode
+	style?: React.CSSProperties;
+	className?: string;
+	children: React.ReactNode;
 }
 
 export function BasicContent(props: Props) {

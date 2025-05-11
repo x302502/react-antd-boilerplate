@@ -2,7 +2,7 @@
  * 通用的语言模块映射类型，表示可以嵌套的对象结构
  */
 interface LanguageModule<T> {
-	[key: string]: T | any
+	[key: string]: T | any;
 }
 
 /**
@@ -45,10 +45,10 @@ export function organizeLanguageFiles(files: LanguageFileMap) {
 		const fileArr = key?.split("/");
 		const fileName = fileArr[fileArr?.length - 1];
 		if (!fileName)
-			continue;
+continue;
 		const name = fileName.split(".json")[0];
 		if (name)
-			result[name] = data;
+result[name] = data;
 	}
 
 	return result;

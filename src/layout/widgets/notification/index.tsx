@@ -1,9 +1,9 @@
 import type { ButtonProps } from "antd";
 import type { NotificationItem } from "./types";
 
-import { BasicButton } from "#src/components";
-import { MailCheckIcon } from "#src/icons";
-import { cn } from "#src/utils";
+import { BasicButton } from "~/components";
+import { MailCheckIcon } from "~/icons";
+import { cn } from "~/utils";
 
 import { BellOutlined } from "@ant-design/icons";
 import { useToggle } from "ahooks";
@@ -37,15 +37,15 @@ interface Props extends ButtonProps {
 	onEventChange?: (
 		event: NotificationEventType,
 		item?: NotificationItem
-	) => void
+	) => void;
 	/**
 	 * 显示圆点
 	 */
-	dot?: boolean
+	dot?: boolean;
 	/**
 	 * 消息列表
 	 */
-	notifications?: NotificationItem[]
+	notifications?: NotificationItem[];
 }
 
 export const NotificationPopup: React.FC<Props> = ({

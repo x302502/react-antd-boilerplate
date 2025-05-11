@@ -1,4 +1,4 @@
-import type { AppRouteRecordRaw } from "#src/router/types";
+import type { AppRouteRecordRaw } from "~/router/types";
 
 /**
  * 为路由对象添加一个唯一的 ID，替代路由自动生成的 id，该 ID 默认为路由的路径（path）

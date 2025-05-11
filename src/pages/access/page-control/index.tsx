@@ -1,7 +1,7 @@
-import type { PasswordLoginFormType } from "#src/pages/login/components/password-login";
-import { BasicContent } from "#src/components";
-import { AccessControlRoles, usePreferences } from "#src/hooks";
-import { useAuthStore, useUserStore } from "#src/store";
+import type { PasswordLoginFormType } from "~/pages/login/components/password-login";
+import { BasicContent } from "~/components";
+import { AccessControlRoles, usePreferences } from "~/hooks";
+import { useAuthStore, useUserStore } from "~/store";
 import { Alert, Button, Card, Typography } from "antd";
 import { clsx } from "clsx";
 import { useTranslation } from "react-i18next";
@@ -82,7 +82,7 @@ export default function PageControl() {
 				message={t("access.pageControl.alertMessage")}
 				description={t("access.pageControl.alertDescription")}
 			>
-			</Alert>
+   </Alert>
 			<Card title={t("access.pageControl.cardTitle")}>
 				<Alert
 					type="warning"

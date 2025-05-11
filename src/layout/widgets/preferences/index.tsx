@@ -1,9 +1,9 @@
 import type { ButtonProps } from "antd";
 
-import { BasicButton } from "#src/components";
-import { useDeviceType, usePreferences } from "#src/hooks";
-import { loginPath } from "#src/router/extra-info";
-import { useAuthStore, usePreferencesStore } from "#src/store";
+import { BasicButton } from "~/components";
+import { useDeviceType, usePreferences } from "~/hooks";
+import { loginPath } from "~/router/extra-info";
+import { useAuthStore, usePreferencesStore } from "~/store";
 
 import {
 	CopyOutlined,
@@ -116,8 +116,8 @@ export function Preferences({ ...restProps }: ButtonProps) {
 					)}
 					{...(isMobile
 						? {
-							width: "100vw"
-						}
+								width: "100vw"
+							}
 						: {})}
 					open={isOpen}
 					id={preferencesContentId}
@@ -151,7 +151,8 @@ export function Preferences({ ...restProps }: ButtonProps) {
 						target={() =>
 							document.querySelector(
 								`#${preferencesContentId} .ant-drawer-body`
-							) as HTMLElement}
+							) as HTMLElement
+						}
 					/>
 				</Drawer>
 			</ConfigProvider>

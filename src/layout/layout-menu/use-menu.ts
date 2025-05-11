@@ -1,8 +1,8 @@
 import type { MenuProps } from "antd";
 
-import { useCurrentRoute } from "#src/hooks";
-import { removeTrailingSlash } from "#src/router/utils";
-import { useAccessStore } from "#src/store";
+import { useCurrentRoute } from "~/hooks";
+import { removeTrailingSlash } from "~/router/utils";
+import { useAccessStore } from "~/store";
 
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -75,20 +75,17 @@ export function useMenu() {
 			// eslint-disable-next-line regexp/no-unused-capturing-group
 			if (/http(s)?:/.test(key)) {
 				window.open(key);
-			}
-			else {
+			} else {
 				navigate(key);
 			}
-		}
-		else {
+		} else {
 			/* 混合导航模式下的顶部导航 */
 			const rootMenu = translatedMenus.find((item) => item?.key === key);
 			const targetMenu = findDeepestFirstItem(rootMenu?.children ?? []);
 			/* 点击顶部的导航默认跳转到菜单下的第一个子项 */
 			if (!targetMenu) {
 				navigate(key);
-			}
-			else {
+			} else {
 				navigate(targetMenu.key);
 			}
 		}

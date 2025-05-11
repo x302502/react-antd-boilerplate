@@ -6,15 +6,15 @@ import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 export interface TreeDataNodeWithId extends BasicDataNode {
-	id: string
-	title: string
-	children: TreeDataNodeWithId[]
+	id: string;
+	title: string;
+	children: TreeDataNodeWithId[];
 }
 
 interface FormTreeItemProps {
-	treeData: TreeDataNodeWithId[]
-	value?: React.Key[]
-	onChange?: (value: React.Key[]) => void
+	treeData: TreeDataNodeWithId[];
+	value?: React.Key[];
+	onChange?: (value: React.Key[]) => void;
 }
 
 const { Search } = Input;
@@ -26,8 +26,7 @@ function getParentKey(key: React.Key, tree: TreeDataNodeWithId[]): React.Key {
 		if (node.children) {
 			if (node.children.some((item) => item.id === key)) {
 				parentKey = node.id;
-			}
-			else if (getParentKey(key, node.children)) {
+			} else if (getParentKey(key, node.children)) {
 				parentKey = getParentKey(key, node.children);
 			}
 		}
@@ -56,7 +55,7 @@ export function FormTreeItem({ treeData, value, onChange }: FormTreeItemProps) {
 	};
 
 	const flattenTreeData = useMemo(() => {
-		const dataList: { id: React.Key, title: string }[] = [];
+		const dataList: { id: React.Key; title: string }[] = [];
 		const generateList = (data: TreeDataNodeWithId[]) => {
 			for (let i = 0; i < data.length; i++) {
 				const node = data[i];
@@ -96,14 +95,12 @@ export function FormTreeItem({ treeData, value, onChange }: FormTreeItemProps) {
 	useEffect(() => {
 		if (checkedOptions.includes("expandAll")) {
 			setExpandedKeys(flattenTreeData.map((item) => item.id));
-		}
-		else {
+		} else {
 			setExpandedKeys([]);
 		}
 		if (checkedOptions.includes("checkAll")) {
 			onChange?.(flattenTreeData.map((item) => item.id));
-		}
-		else {
+		} else {
 			onChange?.([]);
 		}
 	}, [checkedOptions, flattenTreeData]);

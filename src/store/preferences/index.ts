@@ -1,7 +1,7 @@
-import type { LanguageType } from "#src/locales";
+import type { LanguageType } from "~/locales";
 import type { PreferencesState, ThemeType } from "./types";
 
-import { SIDE_NAVIGATION } from "#src/layout/widgets/preferences/blocks/layout/constants";
+import { SIDE_NAVIGATION } from "~/layout/widgets/preferences/blocks/layout/constants";
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
@@ -72,15 +72,15 @@ export const DEFAULT_PREFERENCES = {
  * 偏好设置操作接口
  */
 interface PreferencesAction {
-	reset: () => void
-	changeSiteTheme: (theme: ThemeType) => void
-	changeLanguage: (language: LanguageType) => void
+	reset: () => void;
+	changeSiteTheme: (theme: ThemeType) => void;
+	changeLanguage: (language: LanguageType) => void;
 	setPreferences: {
 		// 单个 key-value 更新
-		<T>(key: string, value: T): void
+		<T>(key: string, value: T): void;
 		// 对象形式批量更新
-		<T extends Partial<PreferencesState>>(preferences: T): void
-	}
+		<T extends Partial<PreferencesState>>(preferences: T): void;
+	};
 }
 
 /**
@@ -102,8 +102,7 @@ export const usePreferencesStore = create<
 					set(() => {
 						return { ...preferences };
 					});
-				}
-				else if (args.length === 2) {
+				} else if (args.length === 2) {
 					const [key, value] = args;
 					set(() => {
 						return { [key]: value };

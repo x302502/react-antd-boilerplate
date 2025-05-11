@@ -4,10 +4,10 @@ import { QuestionCircleOutlined } from "@ant-design/icons";
 import { Switch, Tooltip } from "antd";
 
 export interface SwitchItemProps extends Omit<SwitchProps, "onChange"> {
-	children: React.ReactNode
-	name: string
-	onChange?: (a: string, b: unknown) => void
-	tooltip?: React.ReactNode
+	children: React.ReactNode;
+	name: string;
+	onChange?: (a: string, b: unknown) => void;
+	tooltip?: React.ReactNode;
 }
 
 export function SwitchItem({

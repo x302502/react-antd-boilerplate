@@ -3,9 +3,9 @@ import type {
 	SIDE_NAVIGATION,
 	TOP_NAVIGATION,
 	TWO_COLUMN_NAVIGATION
-} from "#src/layout/widgets/preferences/blocks/layout/constants";
+} from "~/layout/widgets/preferences/blocks/layout/constants";
 
-import type { LanguageType } from "#src/locales";
+import type { LanguageType } from "~/locales";
 import type { MenuProps } from "antd";
 
 /**
@@ -35,25 +35,25 @@ interface AnimationState {
 	 * @en Whether to enable transition animation
 	 * @default true
 	 */
-	transitionProgress: boolean
+	transitionProgress: boolean;
 	/**
 	 * @zh 是否启用加载动画
 	 * @en Whether to enable loading animation
 	 * @default true
 	 */
-	transitionLoading: boolean
+	transitionLoading: boolean;
 	/**
 	 * @zh 是否启用动画
 	 * @en Whether to enable animation
 	 * @default true
 	 */
-	transitionEnable: boolean
+	transitionEnable: boolean;
 	/**
 	 * @zh 过渡动画名称
 	 * @en Transition animation name
 	 * @default "fade-slide"
 	 */
-	transitionName: string
+	transitionName: string;
 }
 
 export type NavigationType =
@@ -78,7 +78,7 @@ export type BuiltinThemeType =
   | "custom";
 
 interface LayoutState {
-	navigationStyle: NavigationType
+	navigationStyle: NavigationType;
 }
 
 export interface GeneralState {
@@ -87,62 +87,62 @@ export interface GeneralState {
 	 * @en Whether to enable watermark
 	 * @default false
 	 */
-	watermark: boolean
+	watermark: boolean;
 	/**
 	 * @zh 水印内容
 	 * @en Watermark content
 	 * @default ""
 	 */
-	watermarkContent: string
+	watermarkContent: string;
 	/**
 	 * @zh 返回页面顶部的操作按钮
 	 * @en BackTop makes it easy to go back to the top of the page.
 	 * @default true
 	 */
-	enableBackTopButton: boolean
+	enableBackTopButton: boolean;
 	/**
 	 * @zh 登录页面的布局配置
 	 * @en Login page layout configuration
 	 * @default "layout-right"
 	 */
-	pageLayout: PageLayoutType
+	pageLayout: PageLayoutType;
 	/**
 	 * @zh 开启前端路由权限
 	 * @en Enable frontend route permissions
 	 * @default false
 	 */
-	enableFrontendAceess: boolean
+	enableFrontendAceess: boolean;
 	/**
 	 * @zh 开启后端路由权限
 	 * @en Enable backend route permissions
 	 * @default true
 	 */
-	enableBackendAccess: boolean
+	enableBackendAccess: boolean;
 
 	/**
 	 * @zh 当前语言
 	 * @en Current language
 	 * @default "zh-CN"
 	 */
-	language: LanguageType
+	language: LanguageType;
 	/**
 	 * @zh 是否开启动态标题
 	 * @en Whether to enable dynamic title
 	 * @default true
 	 */
-	enableDynamicTitle: boolean
+	enableDynamicTitle: boolean;
 	/**
 	 * @zh 是否开启更新检查
 	 * @en Whether to enable update check
 	 * @default true
 	 */
-	enableCheckUpdates: boolean
+	enableCheckUpdates: boolean;
 	/**
 	 * @zh 轮训时间，单位：分钟，默认 1 分钟
 	 * @en Polling time, unit: minute, default 1 minute
 	 * @default 1
 	 */
-	checkUpdatesInterval: number
+	checkUpdatesInterval: number;
 }
 
 export interface SidebarState {
@@ -150,97 +150,97 @@ export interface SidebarState {
 	 * 侧边栏是否可见
 	 * @default true
 	 */
-	sidebarEnable?: boolean
+	sidebarEnable?: boolean;
 	/**
 	 * 侧边菜单宽度
 	 * @default 210
 	 */
-	sidebarWidth: number
+	sidebarWidth: number;
 	/**
 	 * 侧边菜单折叠宽度
 	 * @default 56
 	 */
-	sideCollapsedWidth: number
+	sideCollapsedWidth: number;
 	/**
 	 * 侧边菜单折叠状态
 	 * @default false
 	 */
-	sidebarCollapsed: boolean
+	sidebarCollapsed: boolean;
 	/**
 	 * 侧边菜单是否折叠时，是否显示 title
 	 * @default true
 	 */
-	sidebarCollapseShowTitle: boolean
+	sidebarCollapseShowTitle: boolean;
 	/**
 	 * 侧边菜单折叠额外宽度
 	 * @default 48
 	 */
-	sidebarExtraCollapsedWidth: number
+	sidebarExtraCollapsedWidth: number;
 	/**
 	 * 两栏布局时，左侧菜单宽度
 	 * @default 80
 	 */
-	firstColumnWidthInTwoColumnNavigation: number
+	firstColumnWidthInTwoColumnNavigation: number;
 	/**
 	 * 侧边栏
 	 * @default dark
 	 */
-	sidebarTheme: MenuProps["theme"]
+	sidebarTheme: MenuProps["theme"];
 }
 
 export interface FooterState {
-	enableFooter: boolean
-	fixedFooter: boolean
-	companyName: string
-	companyWebsite: string
-	copyrightDate: string
-	ICPNumber: string
-	ICPLink: string
+	enableFooter: boolean;
+	fixedFooter: boolean;
+	companyName: string;
+	companyWebsite: string;
+	copyrightDate: string;
+	ICPNumber: string;
+	ICPLink: string;
 }
 
 export interface PreferencesState
 	extends AnimationState,
-	LayoutState,
-	GeneralState,
-	SidebarState,
-	FooterState {
+		LayoutState,
+		GeneralState,
+		SidebarState,
+		FooterState {
 	/* ================== Theme ================== */
 	/**
 	 * @zh 当前主题
 	 * @en Current theme
 	 * @default "auto"
 	 */
-	theme: ThemeType
+	theme: ThemeType;
 	/**
 	 * @zh 是否开启色弱模式
 	 * @en Whether to enable color-blind mode
 	 * @default false
 	 */
-	colorBlindMode: boolean
+	colorBlindMode: boolean;
 	/**
 	 * @zh 是否开启灰色模式
 	 * @en Whether to enable gray mode
 	 * @default false
 	 */
-	colorGrayMode: boolean
+	colorGrayMode: boolean;
 	/**
 	 * @zh 主题圆角值
 	 * @en Theme radius value
 	 * @default 6
 	 */
-	themeRadius: number
+	themeRadius: number;
 	/**
 	 * @zh 主题色
 	 * @en Theme color
 	 * @default "#1677ff" - blue
 	 */
-	themeColorPrimary: string
+	themeColorPrimary: string;
 	/**
 	 * @zh 内置主题
 	 * @en Builtin theme
 	 * @default "blue"
 	 */
-	builtinTheme: BuiltinThemeType
+	builtinTheme: BuiltinThemeType;
 	/* ================== Theme ================== */
 
 	/* ================== Tabbar ================== */
@@ -249,44 +249,44 @@ export interface PreferencesState
 	 * @en Tabbar style
 	 * @default "chrome"
 	 */
-	tabbarStyleType: TabsStyleType
+	tabbarStyleType: TabsStyleType;
 	/**
 	 * @zh 是否启用标签栏
 	 * @en Whether to enable tabbar
 	 * @default true
 	 */
-	tabbarEnable: boolean
+	tabbarEnable: boolean;
 	/**
 	 * @zh 是否显示标签栏图标
 	 * @en Whether to show tabbar icon
 	 * @default true
 	 * @todo 待实现
 	 */
-	tabbarShowIcon: boolean
+	tabbarShowIcon: boolean;
 	/**
 	 * @zh 是否持久化标签栏
 	 * @en Whether to persist tabbar
 	 * @default true
 	 */
-	tabbarPersist: boolean
+	tabbarPersist: boolean;
 	/**
 	 * @zh 是否可拖拽标签栏
 	 * @en Whether to drag tabbar
 	 * @default true
 	 * @todo 待实现
 	 */
-	tabbarDraggable: boolean
+	tabbarDraggable: boolean;
 	/**
 	 * @zh 是否显示更多
 	 * @en Whether to show more
 	 * @default true
 	 */
-	tabbarShowMore: boolean
+	tabbarShowMore: boolean;
 	/**
 	 * @zh 是否显示最大化
 	 * @en Whether to show maximize
 	 * @default true
 	 */
-	tabbarShowMaximize: boolean
+	tabbarShowMaximize: boolean;
 	/* ================== Tabbar ================== */
 }

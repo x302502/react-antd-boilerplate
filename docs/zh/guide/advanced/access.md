@@ -45,7 +45,7 @@ outline: [2, 6]
 ```ts
 export const DEFAULT_PREFERENCES = {
 	enableBackendAccess: false,
-	enableFrontendAceess: true,
+	enableFrontendAceess: true
 };
 ```
 
@@ -76,9 +76,7 @@ export const DEFAULT_PREFERENCES = {
 		"email": "<EMAIL>",
 		"phoneNumber": "1234567890",
 		"description": "manager",
-		"roles": [
-			"admin"
-		]
+		"roles": ["admin"]
 	},
 	"message": "ok",
 	"success": true
@@ -116,7 +114,7 @@ export const DEFAULT_PREFERENCES = {
 ```ts
 export const DEFAULT_PREFERENCES = {
 	enableBackendAccess: true,
-	enableFrontendAceess: false,
+	enableFrontendAceess: false
 };
 ```
 
@@ -132,15 +130,15 @@ const accessRouter = {
 	handle: {
 		icon: "SafetyOutlined",
 		title: "common.menu.access",
-		order: access,
+		order: access
 	},
 	children: [
 		{
 			path: "/access/page-control",
 			handle: {
 				icon: "FileTextOutlined",
-				title: "common.menu.pageControl",
-			},
+				title: "common.menu.pageControl"
+			}
 		},
 		{
 			path: "/access/button-control",
@@ -151,18 +149,18 @@ const accessRouter = {
 					"permission:button:get",
 					"permission:button:update",
 					"permission:button:delete",
-					"permission:button:add",
-				],
-			},
+					"permission:button:add"
+				]
+			}
 		},
 		{
 			path: "/access/common-visible",
 			handle: {
 				icon: "EyeOutlined",
-				title: "common.menu.commonVisible",
-			},
-		},
-	],
+				title: "common.menu.commonVisible"
+			}
+		}
+	]
 };
 ```
 
@@ -214,7 +212,7 @@ export const accessControlCodes = {
 	get: "permission:button:get",
 	update: "permission:button:update",
 	delete: "permission:button:delete",
-	add: "permission:button:add",
+	add: "permission:button:add"
 };
 ```
 
@@ -223,8 +221,8 @@ export const accessControlCodes = {
 引入 AccessControl 组件，需要呈现的内容作为组件的 children 传入，对应的权限码作为组件的 codes 属性传入。
 
 ```tsx
-import { AccessControl } from "#src/components";
-import { accessControlCodes } from "#src/hooks/use-access/constants";
+import { AccessControl } from "~/components";
+import { accessControlCodes } from "~/hooks/use-access/constants";
 
 import { Typography } from "antd";
 
@@ -232,27 +230,19 @@ export function AccessDemo() {
 	return (
 		<>
 			<AccessControl codes={accessControlCodes.get}>
-				<Typography.Text code>
-					{accessControlCodes.get}
-				</Typography.Text>
+				<Typography.Text code>{accessControlCodes.get}</Typography.Text>
 			</AccessControl>
 
 			<AccessControl codes={accessControlCodes.update}>
-				<Typography.Text code>
-					{accessControlCodes.update}
-				</Typography.Text>
+				<Typography.Text code>{accessControlCodes.update}</Typography.Text>
 			</AccessControl>
 
 			<AccessControl codes={accessControlCodes.delete}>
-				<Typography.Text code>
-					{accessControlCodes.delete}
-				</Typography.Text>
+				<Typography.Text code>{accessControlCodes.delete}</Typography.Text>
 			</AccessControl>
 
 			<AccessControl codes={accessControlCodes.add}>
-				<Typography.Text code>
-					{accessControlCodes.add}
-				</Typography.Text>
+				<Typography.Text code>{accessControlCodes.add}</Typography.Text>
 			</AccessControl>
 		</>
 	);
@@ -264,9 +254,9 @@ export function AccessDemo() {
 引入 useAccess 钩子，通过 hasAccessByCodes 方法来判断是否有权限。
 
 ```tsx
-import { AccessControl } from "#src/components";
-import { useAccess } from "#src/hooks";
-import { accessControlCodes } from "#src/hooks/use-access/constants";
+import { AccessControl } from "~/components";
+import { useAccess } from "~/hooks";
+import { accessControlCodes } from "~/hooks/use-access/constants";
 
 import { Typography } from "antd";
 
@@ -275,37 +265,21 @@ export function AccessDemo() {
 
 	return (
 		<>
-			{
-				hasAccessByCodes(accessControlCodes.get) && (
-					<Typography.Text code>
-						{accessControlCodes.get}
-					</Typography.Text>
-				)
-			}
+			{hasAccessByCodes(accessControlCodes.get) && (
+				<Typography.Text code>{accessControlCodes.get}</Typography.Text>
+			)}
 
-			{
-				hasAccessByCodes(accessControlCodes.update) && (
-					<Typography.Text code>
-						{accessControlCodes.update}
-					</Typography.Text>
-				)
-			}
+			{hasAccessByCodes(accessControlCodes.update) && (
+				<Typography.Text code>{accessControlCodes.update}</Typography.Text>
+			)}
 
-			{
-				hasAccessByCodes(accessControlCodes.delete) && (
-					<Typography.Text code>
-						{accessControlCodes.delete}
-					</Typography.Text>
-				)
-			}
+			{hasAccessByCodes(accessControlCodes.delete) && (
+				<Typography.Text code>{accessControlCodes.delete}</Typography.Text>
+			)}
 
-			{
-				hasAccessByCodes([accessControlCodes.add]) && (
-					<Typography.Text code>
-						{accessControlCodes.add}
-					</Typography.Text>
-				)
-			}
+			{hasAccessByCodes([accessControlCodes.add]) && (
+				<Typography.Text code>{accessControlCodes.add}</Typography.Text>
+			)}
 		</>
 	);
 }
@@ -320,7 +294,7 @@ export function AccessDemo() {
 ```ts
 export const AccessControlRoles = {
 	admin: "admin",
-	common: "common",
+	common: "common"
 };
 ```
 
@@ -329,9 +303,9 @@ export const AccessControlRoles = {
 引入 AccessControl 组件，需要呈现的内容作为组件的 children 传入，对应的权限码作为组件的 codes 属性传入，判断类型 type 属性设置为 `"role"`。
 
 ```tsx
-import { AccessControl } from "#src/components";
-import { useAccess } from "#src/hooks";
-import { AccessControlRoles } from "#src/hooks/use-access/constants";
+import { AccessControl } from "~/components";
+import { useAccess } from "~/hooks";
+import { AccessControlRoles } from "~/hooks/use-access/constants";
 
 import { Typography } from "antd";
 import { useTranslation } from "react-i18next";
@@ -342,7 +316,10 @@ export function AccessDemo() {
 
 	return (
 		<>
-			<AccessControl type="role" codes={[AccessControlRoles.admin, AccessControlRoles.common]}>
+			<AccessControl
+				type="role"
+				codes={[AccessControlRoles.admin, AccessControlRoles.common]}
+			>
 				<Typography.Text code>
 					{t("access.adminVisible.title")}
 					&nbsp;&&nbsp;
@@ -351,9 +328,7 @@ export function AccessDemo() {
 			</AccessControl>
 
 			<AccessControl type="role" codes={AccessControlRoles.admin}>
-				<Typography.Text code>
-					{t("access.adminVisible.title")}
-				</Typography.Text>
+				<Typography.Text code>{t("access.adminVisible.title")}</Typography.Text>
 			</AccessControl>
 
 			<AccessControl type="role" codes={AccessControlRoles.common}>
@@ -371,9 +346,9 @@ export function AccessDemo() {
 引入 useAccess 钩子，通过 hasAccessByRoles 方法来判断是否有权限。
 
 ```tsx
-import { AccessControl } from "#src/components";
-import { useAccess } from "#src/hooks";
-import { AccessControlRoles } from "#src/hooks/use-access/constants";
+import { AccessControl } from "~/components";
+import { useAccess } from "~/hooks";
+import { AccessControlRoles } from "~/hooks/use-access/constants";
 
 import { Typography } from "antd";
 import { useTranslation } from "react-i18next";
@@ -384,29 +359,24 @@ export function AccessDemo() {
 
 	return (
 		<>
-			{
-				hasAccessByRoles([AccessControlRoles.admin, AccessControlRoles.common]) && (
-					<Typography.Text code>
-						{t("access.adminVisible.title")}
-						&nbsp;&&nbsp;
-						{t("access.commonVisible.title")}
-					</Typography.Text>
-				)
-			}
-			{
-				hasAccessByRoles([AccessControlRoles.admin]) && (
-					<Typography.Text code>
-						{t("access.adminVisible.title")}
-					</Typography.Text>
-				)
-			}
-			{
-				hasAccessByRoles(AccessControlRoles.common) && (
-					<Typography.Text code>
-						{t("access.commonVisible.title")}
-					</Typography.Text>
-				)
-			}
+			{hasAccessByRoles([
+				AccessControlRoles.admin,
+				AccessControlRoles.common
+			]) && (
+				<Typography.Text code>
+					{t("access.adminVisible.title")}
+					&nbsp;&&nbsp;
+					{t("access.commonVisible.title")}
+				</Typography.Text>
+			)}
+			{hasAccessByRoles([AccessControlRoles.admin]) && (
+				<Typography.Text code>{t("access.adminVisible.title")}</Typography.Text>
+			)}
+			{hasAccessByRoles(AccessControlRoles.common) && (
+				<Typography.Text code>
+					{t("access.commonVisible.title")}
+				</Typography.Text>
+			)}
 		</>
 	);
 }

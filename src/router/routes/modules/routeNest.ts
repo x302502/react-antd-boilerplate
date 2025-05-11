@@ -1,9 +1,9 @@
-import type { AppRouteRecordRaw } from "#src/router/types";
-import { ContainerLayout, ParentLayout } from "#src/layout";
+import type { AppRouteRecordRaw } from "~/router/types";
+import { ContainerLayout, ParentLayout } from "~/layout";
 
-import { $t } from "#src/locales";
+import { $t } from "~/locales";
 
-import { routeNest } from "#src/router/extra-info";
+import { routeNest } from "~/router/extra-info";
 import {
 	NodeExpandOutlined,
 	SisternodeOutlined,
@@ -11,9 +11,9 @@ import {
 } from "@ant-design/icons";
 import { createElement, lazy } from "react";
 
-const Menu1And1 = lazy(() => import("#src/pages/route-nest/menu1/menu1-1"));
-const Menu1And2 = lazy(() => import("#src/pages/route-nest/menu1/menu1-2"));
-const Menu2 = lazy(() => import("#src/pages/route-nest/menu2"));
+const Menu1And1 = lazy(() => import("~/pages/route-nest/menu1/menu1-1"));
+const Menu1And2 = lazy(() => import("~/pages/route-nest/menu1/menu1-2"));
+const Menu2 = lazy(() => import("~/pages/route-nest/menu2"));
 
 const routes: AppRouteRecordRaw[] = [
 	{

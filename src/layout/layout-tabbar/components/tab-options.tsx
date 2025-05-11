@@ -1,7 +1,7 @@
 import type { MenuProps } from "antd";
 
-import { BasicButton } from "#src/components";
-import { cn } from "#src/utils";
+import { BasicButton } from "~/components";
+import { cn } from "~/utils";
 
 import { DownOutlined } from "@ant-design/icons";
 import { Dropdown } from "antd";
@@ -15,8 +15,8 @@ import { useDropdownMenu } from "../hooks/use-dropdown-menu";
  * @property {string} activeKey - 当前激活的标签页的key
  */
 interface TabOptionsProps {
-	activeKey: string
-	className?: string
+	activeKey: string;
+	className?: string;
 }
 
 /**

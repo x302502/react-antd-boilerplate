@@ -1,13 +1,13 @@
-import type { AppRouteRecordRaw } from "#src/router/types";
-import { ProfileIcon, UserCircleIcon, UserSettingsIcon } from "#src/icons";
-import { ContainerLayout } from "#src/layout";
-import { $t } from "#src/locales";
-import { personalCenter } from "#src/router/extra-info";
+import type { AppRouteRecordRaw } from "~/router/types";
+import { ProfileIcon, UserCircleIcon, UserSettingsIcon } from "~/icons";
+import { ContainerLayout } from "~/layout";
+import { $t } from "~/locales";
+import { personalCenter } from "~/router/extra-info";
 
 import { createElement, lazy } from "react";
 
-const MyProfile = lazy(() => import("#src/pages/personal-center/my-profile"));
-const Settings = lazy(() => import("#src/pages/personal-center/settings"));
+const MyProfile = lazy(() => import("~/pages/personal-center/my-profile"));
+const Settings = lazy(() => import("~/pages/personal-center/settings"));
 
 const routes: AppRouteRecordRaw[] = [
 	{

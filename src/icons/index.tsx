@@ -1,5 +1,5 @@
 import type { GetProps } from "antd";
-import { cn } from "#src/utils";
+import { cn } from "~/utils";
 
 import Icon from "@ant-design/icons";
 

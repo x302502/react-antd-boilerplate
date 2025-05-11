@@ -1,4 +1,4 @@
-import logo from "#src/assets/svg/logo.svg?url";
+import logo from "~/assets/svg/logo.svg?url";
 
 import { Typography } from "antd";
 import { clsx } from "clsx";
@@ -9,8 +9,8 @@ import { headerHeight } from "../../constants";
 const { Title } = Typography;
 
 export interface LogoProps {
-	sidebarCollapsed: boolean
-	className?: string
+	sidebarCollapsed: boolean;
+	className?: string;
 }
 
 /**

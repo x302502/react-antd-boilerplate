@@ -1,9 +1,9 @@
 interface DemoItem {
-	key: number
-	title: string
-	description: string
-	tag: string
-	color: string
+	key: number;
+	title: string;
+	description: string;
+	tag: string;
+	color: string;
 }
 
 export const demoItems: DemoItem[] = [

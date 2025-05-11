@@ -1,6 +1,6 @@
-import { FollowSystemIcon, MoonIcon } from "#src/icons";
-import { NumberInputSpinner } from "#src/layout/widgets/preferences/number-input-spinner";
-import { usePreferencesStore } from "#src/store";
+import { FollowSystemIcon, MoonIcon } from "~/icons";
+import { NumberInputSpinner } from "~/layout/widgets/preferences/number-input-spinner";
+import { usePreferencesStore } from "~/store";
 
 import { useTranslation } from "react-i18next";
 import { SwitchItem } from "../../switch-item";
@@ -54,7 +54,8 @@ export function Sidebar() {
 				name="sidebarTheme"
 				checked={sidebarTheme === "light"}
 				onChange={(name, value) =>
-					setPreferences(name, value ? "light" : "dark")}
+					setPreferences(name, value ? "light" : "dark")
+				}
 				children={t("preferences.sidebar.sidebarTheme")}
 				disabled={!sidebarEnable}
 				unCheckedChildren={<FollowSystemIcon />}

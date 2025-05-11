@@ -1,12 +1,12 @@
-import type { AppRouteRecordRaw } from "#src/router/types";
-import { ContainerLayout } from "#src/layout";
-import { $t } from "#src/locales";
-import { about } from "#src/router/extra-info";
+import type { AppRouteRecordRaw } from "~/router/types";
+import { ContainerLayout } from "~/layout";
+import { $t } from "~/locales";
+import { about } from "~/router/extra-info";
 
 import { CopyrightOutlined } from "@ant-design/icons";
 import { createElement, lazy } from "react";
 
-const About = lazy(() => import("#src/pages/about"));
+const About = lazy(() => import("~/pages/about"));
 
 const routes: AppRouteRecordRaw[] = [
 	{
@@ -22,7 +22,7 @@ const routes: AppRouteRecordRaw[] = [
 				index: true,
 				Component: About,
 				// lazy: async () => {
-				// 	const About = await import("#src/pages/about");
+				// 	const About = await import("~/pages/about");
 				// 	return { Component: About.default };
 				// },
 				handle: {

@@ -1,24 +1,24 @@
-import { fetchAsyncRoutes } from "#src/api/user";
-import { useCurrentRoute } from "#src/hooks";
-import { hideLoading, setupLoading } from "#src/plugins";
+import { fetchAsyncRoutes } from "~/api/user";
+import { useCurrentRoute } from "~/hooks";
+import { hideLoading, setupLoading } from "~/plugins";
 import {
 	exception403Path,
 	exception404Path,
 	exception500Path,
 	loginPath
-} from "#src/router/extra-info";
-import { accessRoutes, whiteRouteNames } from "#src/router/routes";
-import { isSendRoutingRequest } from "#src/router/routes/config";
+} from "~/router/extra-info";
+import { accessRoutes, whiteRouteNames } from "~/router/routes";
+import { isSendRoutingRequest } from "~/router/routes/config";
 import {
 	generateRoutesByFrontend,
 	generateRoutesFromBackend
-} from "#src/router/utils";
+} from "~/router/utils";
 import {
 	useAccessStore,
 	useAuthStore,
 	usePreferencesStore,
 	useUserStore
-} from "#src/store";
+} from "~/store";
 
 import { useEffect } from "react";
 import {
@@ -41,7 +41,7 @@ const noLoginWhiteList = Array.from(whiteRouteNames).filter(
 );
 
 interface AuthGuardProps {
-	children?: React.ReactNode
+	children?: React.ReactNode;
 }
 
 /**

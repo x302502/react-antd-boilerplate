@@ -1,6 +1,6 @@
-import { system } from "#/src/router/extra-info";
-
 import { defineFakeRoute } from "vite-plugin-fake-server/client";
+
+import { system } from "~/router/extra-info";
 import { resultSuccess } from "./utils";
 
 const systemMenu = [
@@ -8,50 +8,50 @@ const systemMenu = [
 	{
 		id: system,
 		menuType: 0, // 菜单类型（0 代表菜单、1 代表 iframe、2 代表外链、3 代表按钮）
-		name: "common.menu.system",
+		name: "common.menu.system"
 	},
 	{
 		parentId: system,
 		id: system + 1,
 		menuType: 0,
-		name: "common.menu.user",
+		name: "common.menu.user"
 	},
 	{
 		parentId: system,
 		id: system + 2,
 		menuType: 0,
-		name: "common.menu.role",
+		name: "common.menu.role"
 	},
 	{
 		parentId: system,
 		id: system + 3,
 		menuType: 0,
-		name: "common.menu.menu",
+		name: "common.menu.menu"
 	},
 	{
 		parentId: system,
 		id: system + 4,
 		menuType: 0,
-		name: "common.menu.dept",
+		name: "common.menu.dept"
 	},
 	{
 		parentId: system + 4,
 		id: system + 4 + 1,
 		menuType: 3,
-		name: "common.add",
+		name: "common.add"
 	},
 	{
 		parentId: system + 4,
 		id: system + 4 + 2,
 		menuType: 3,
-		name: "common.edit",
+		name: "common.edit"
 	},
 	{
 		parentId: system + 4,
 		id: system + 4 + 3,
 		menuType: 3,
-		name: "common.delete",
-	},
+		name: "common.delete"
+	}
 ];
 
 export default defineFakeRoute([
@@ -68,7 +68,7 @@ export default defineFakeRoute([
 					name: "超级管理员",
 					code: "admin",
 					status: 1, // 状态 1 启用 0 停用
-					remark: "超级管理员拥有最高权限",
+					remark: "超级管理员拥有最高权限"
 				},
 				{
 					createTime: 1729752330782,
@@ -77,22 +77,23 @@ export default defineFakeRoute([
 					name: "普通角色",
 					code: "common",
 					status: 1,
-					remark: "普通角色拥有部分权限",
-				},
+					remark: "普通角色拥有部分权限"
+				}
 			];
 			// list = Array.from({ length: 10000 }).flatMap(() => list);
-			list = list.filter(item =>
-				item.name.includes(body?.name ?? "")
-				&& String(item.status).includes(String(body?.status ?? ""))
-				&& (!body?.code || item.code === body?.code),
+			list = list.filter(
+				(item) =>
+					item.name.includes(body?.name ?? "") &&
+					String(item.status).includes(String(body?.status ?? "")) &&
+					(!body?.code || item.code === body?.code)
 			);
 			return resultSuccess({
 				list,
 				total: list.length, // 总条目数
 				pageSize: 10, // 每页显示条目个数
-				current: 1, // 当前页数
+				current: 1 // 当前页数
 			});
-		},
+		}
 	},
 	// 角色管理-新增角色
 	{
@@ -100,7 +101,7 @@ export default defineFakeRoute([
 		method: "post",
 		response: ({ body }) => {
 			return resultSuccess(body);
-		},
+		}
 	},
 	// 角色管理-修改角色
 	{
@@ -108,7 +109,7 @@ export default defineFakeRoute([
 		method: "put",
 		response: ({ body }) => {
 			return resultSuccess(body);
-		},
+		}
 	},
 	// 角色管理-删除角色
 	{
@@ -116,7 +117,7 @@ export default defineFakeRoute([
 		method: "delete",
 		response: ({ body }) => {
 			return resultSuccess(body);
-		},
+		}
 	},
 	// 角色管理-权限-菜单权限
 	{
@@ -124,7 +125,7 @@ export default defineFakeRoute([
 		method: "get",
 		response: () => {
 			return resultSuccess(systemMenu);
-		},
+		}
 	},
 	// 角色管理-权限-菜单权限，根据角色 id 查对应菜单
 	{
@@ -132,13 +133,12 @@ export default defineFakeRoute([
 		method: "get",
 		response: ({ query }) => {
 			if (query.id === "1") {
-				return resultSuccess(systemMenu.map(item => item.id));
-			}
-			else if (query.id === "2") {
+				return resultSuccess(systemMenu.map((item) => item.id));
+			} else if (query.id === "2") {
 				return resultSuccess([]);
 			}
 			return resultSuccess([]);
-		},
+		}
 	},
 	// 菜单管理
 	{
@@ -164,7 +164,7 @@ export default defineFakeRoute([
 					ignoreAccess: false, // 是否忽略权限
 					status: 1, // 状态（0 停用、1 启用）
 					createTime: 1737023155965,
-					updateTime: 1737023164653,
+					updateTime: 1737023164653
 				},
 				{
 					parentId: system,
@@ -183,7 +183,7 @@ export default defineFakeRoute([
 					ignoreAccess: false, // 是否忽略权限
 					status: 1, // 状态（0 停用、1 启用）
 					createTime: 1737023155965,
-					updateTime: 1737023164653,
+					updateTime: 1737023164653
 				},
 				{
 					parentId: system,
@@ -202,7 +202,7 @@ export default defineFakeRoute([
 					ignoreAccess: false, // 是否忽略权限
 					status: 1, // 状态（0 停用、1 启用）
 					createTime: 1737023155965,
-					updateTime: 1737023164653,
+					updateTime: 1737023164653
 				},
 				{
 					parentId: system,
@@ -221,7 +221,7 @@ export default defineFakeRoute([
 					ignoreAccess: false, // 是否忽略权限
 					status: 1, // 状态（0 停用、1 启用）
 					createTime: 1737023155965,
-					updateTime: 1737023164653,
+					updateTime: 1737023164653
 				},
 				{
 					parentId: system,
@@ -240,7 +240,7 @@ export default defineFakeRoute([
 					ignoreAccess: false, // 是否忽略权限
 					status: 1, // 状态（0 停用、1 启用）
 					createTime: 1737023155965,
-					updateTime: 1737023164653,
+					updateTime: 1737023164653
 				},
 				{
 					parentId: system + 4,
@@ -249,7 +249,7 @@ export default defineFakeRoute([
 					name: "common.add",
 					status: 1, // 状态（0 停用、1 启用）
 					createTime: 1737023155965,
-					updateTime: 1737023164653,
+					updateTime: 1737023164653
 				},
 				{
 					parentId: system + 4,
@@ -258,7 +258,7 @@ export default defineFakeRoute([
 					name: "common.edit",
 					status: 1, // 状态（0 停用、1 启用）
 					createTime: 1737023155965,
-					updateTime: 1737023164653,
+					updateTime: 1737023164653
 				},
 				{
 					parentId: system + 4,
@@ -267,36 +267,36 @@ export default defineFakeRoute([
 					name: "common.delete",
 					status: 1, // 状态（0 停用、1 启用）
 					createTime: 1737023155965,
-					updateTime: 1737023164653,
-				},
+					updateTime: 1737023164653
+				}
 			];
 			return resultSuccess({
 				list: menuList,
 				total: menuList.length, // 总条目数
 				pageSize: 10, // 每页显示条目个数
-				current: 1, // 当前页数
+				current: 1 // 当前页数
 			});
-		},
+		}
 	},
 	{
 		url: "/menu-item",
 		method: "post",
 		response: () => {
 			return resultSuccess({});
-		},
+		}
 	},
 	{
 		url: "/menu-item",
 		method: "delete",
 		response: () => {
 			return resultSuccess({});
-		},
+		}
 	},
 	{
 		url: "/menu-item",
 		method: "put",
 		response: () => {
 			return resultSuccess({});
-		},
-	},
+		}
+	}
 ]);

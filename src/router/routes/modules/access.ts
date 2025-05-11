@@ -1,16 +1,16 @@
-import type { AppRouteRecordRaw } from "#src/router/types";
+import type { AppRouteRecordRaw } from "~/router/types";
 
-import { accessControlCodes } from "#src/hooks/use-access/constants";
-import { ContainerLayout } from "#src/layout";
-import { $t } from "#src/locales";
-import { access } from "#src/router/extra-info";
+import { accessControlCodes } from "~/hooks/use-access/constants";
+import { ContainerLayout } from "~/layout";
+import { $t } from "~/locales";
+import { access } from "~/router/extra-info";
 
 import { lazy } from "react";
 
-const PageControl = lazy(() => import("#src/pages/access/page-control"));
-const ButtonControl = lazy(() => import("#src/pages/access/button-control"));
-const AdminVisible = lazy(() => import("#src/pages/access/admin-visible"));
-const CommonVisible = lazy(() => import("#src/pages/access/common-visible"));
+const PageControl = lazy(() => import("~/pages/access/page-control"));
+const ButtonControl = lazy(() => import("~/pages/access/button-control"));
+const AdminVisible = lazy(() => import("~/pages/access/admin-visible"));
+const CommonVisible = lazy(() => import("~/pages/access/common-visible"));
 
 const routes: AppRouteRecordRaw[] = [
 	{

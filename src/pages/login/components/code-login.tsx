@@ -1,5 +1,5 @@
-import { BasicButton } from "#src/components";
-import { MOBILE_PHONE_RULES } from "#src/constants";
+import { BasicButton } from "~/components";
+import { MOBILE_PHONE_RULES } from "~/constants";
 
 import { LeftOutlined } from "@ant-design/icons";
 import { ProFormCaptcha } from "@ant-design/pro-components";

@@ -1,4 +1,4 @@
-import type { AppRouteRecordRaw } from "#src/router/types";
+import type { AppRouteRecordRaw } from "~/router/types";
 
 /**
  * 将路由扁平化为一个对象，键为路由的 path，值为路由对象

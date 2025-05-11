@@ -9,12 +9,12 @@ declare module "ky" {
 		/**
 		 * 设置忽略全局加载动画
 		 */
-		ignoreLoading?: boolean
+		ignoreLoading?: boolean;
 	}
 	interface NormalizedOptions {
 		/**
 		 * 设置忽略全局加载动画
 		 */
-		ignoreLoading?: boolean
+		ignoreLoading?: boolean;
 	}
 }

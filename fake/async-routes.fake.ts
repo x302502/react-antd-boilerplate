@@ -1,5 +1,14 @@
-import { about, access, demo, home, outside, personalCenter, routeNest, system } from "#/src/router/extra-info";
 import { defineFakeRoute } from "vite-plugin-fake-server/client";
+import {
+	about,
+	access,
+	demo,
+	home,
+	outside,
+	personalCenter,
+	routeNest,
+	system
+} from "~/router/extra-info";
 import { ADMIN_TOKEN } from "./constants";
 import { resultSuccess } from "./utils";
 
@@ -15,7 +24,7 @@ const systemManagementRouter = {
 		icon: "SettingOutlined",
 		title: "common.menu.system",
 		order: system,
-		roles: ["admin"],
+		roles: ["admin"]
 	},
 	children: [
 		{
@@ -27,9 +36,9 @@ const systemManagementRouter = {
 				permissions: [
 					"permission:button:add",
 					"permission:button:update",
-					"permission:button:delete",
-				],
-			},
+					"permission:button:delete"
+				]
+			}
 		},
 		{
 			path: "/system/role",
@@ -40,9 +49,9 @@ const systemManagementRouter = {
 				permissions: [
 					"permission:button:add",
 					"permission:button:update",
-					"permission:button:delete",
-				],
-			},
+					"permission:button:delete"
+				]
+			}
 		},
 		{
 			path: "/system/menu",
@@ -53,9 +62,9 @@ const systemManagementRouter = {
 				permissions: [
 					"permission:button:add",
 					"permission:button:update",
-					"permission:button:delete",
-				],
-			},
+					"permission:button:delete"
+				]
+			}
 		},
 		{
 			path: "/system/dept",
@@ -67,11 +76,11 @@ const systemManagementRouter = {
 				permissions: [
 					"permission:button:add",
 					"permission:button:update",
-					"permission:button:delete",
-				],
-			},
-		},
-	],
+					"permission:button:delete"
+				]
+			}
+		}
+	]
 };
 
 const homeRouter = {
@@ -79,8 +88,8 @@ const homeRouter = {
 	handle: {
 		icon: "HomeOutlined",
 		title: "common.menu.home",
-		order: home,
-	},
+		order: home
+	}
 };
 
 const aboutRouter = {
@@ -88,8 +97,8 @@ const aboutRouter = {
 	handle: {
 		icon: "CopyrightOutlined",
 		title: "common.menu.about",
-		order: about,
-	},
+		order: about
+	}
 };
 
 const outsideRouter = {
@@ -97,14 +106,14 @@ const outsideRouter = {
 	handle: {
 		icon: "OutsidePageIcon",
 		title: "common.menu.outside",
-		order: outside,
+		order: outside
 	},
 	children: [
 		{
 			path: "/outside/embedded",
 			handle: {
 				icon: "EmbeddedIcon",
-				title: "common.menu.embedded",
+				title: "common.menu.embedded"
 			},
 			children: [
 				{
@@ -112,24 +121,25 @@ const outsideRouter = {
 					handle: {
 						icon: "AntDesignOutlined",
 						title: "common.menu.antd",
-						iframeLink: "https://ant.design/",
-					},
+						iframeLink: "https://ant.design/"
+					}
 				},
 				{
 					path: "/outside/embedded/project-docs",
 					handle: {
 						icon: "ContainerOutlined",
 						title: "common.menu.projectDocs",
-						iframeLink: "https://condorheroblog.github.io/react-antd-admin/docs/",
-					},
-				},
-			],
+						iframeLink:
+							"https://condorheroblog.github.io/react-antd-admin/docs/"
+					}
+				}
+			]
 		},
 		{
 			path: "/outside/external-link",
 			handle: {
 				icon: "ExternalIcon",
-				title: "common.menu.externalLink",
+				title: "common.menu.externalLink"
 			},
 			children: [
 				{
@@ -137,12 +147,12 @@ const outsideRouter = {
 					handle: {
 						icon: "ReactLogoIcon",
 						title: "common.menu.reactDocs",
-						externalLink: "https://react.dev/",
-					},
-				},
-			],
-		},
-	],
+						externalLink: "https://react.dev/"
+					}
+				}
+			]
+		}
+	]
 };
 
 const personalCenterRouter = {
@@ -150,24 +160,24 @@ const personalCenterRouter = {
 	handle: {
 		order: personalCenter,
 		title: "common.menu.personalCenter",
-		icon: "UserCircleIcon",
+		icon: "UserCircleIcon"
 	},
 	children: [
 		{
 			path: "/personal-center/my-profile",
 			handle: {
 				title: "common.menu.profile",
-				icon: "ProfileIcon",
-			},
+				icon: "ProfileIcon"
+			}
 		},
 		{
 			path: "/personal-center/settings",
 			handle: {
 				title: "common.menu.settings",
-				icon: "UserSettingsIcon",
-			},
-		},
-	],
+				icon: "UserSettingsIcon"
+			}
+		}
+	]
 };
 
 const routeNestRouter = {
@@ -175,40 +185,40 @@ const routeNestRouter = {
 	handle: {
 		order: routeNest,
 		title: "common.menu.nestMenus",
-		icon: "NodeExpandOutlined",
+		icon: "NodeExpandOutlined"
 	},
 	children: [
 		{
 			path: "/route-nest/menu1",
 			handle: {
 				title: "common.menu.menu1",
-				icon: "SisternodeOutlined",
+				icon: "SisternodeOutlined"
 			},
 			children: [
 				{
 					path: "/route-nest/menu1/menu1-1",
 					handle: {
 						title: "common.menu.menu1-1",
-						icon: ("SubnodeOutlined"),
-					},
+						icon: "SubnodeOutlined"
+					}
 				},
 				{
 					path: "/route-nest/menu1/menu1-2",
 					handle: {
 						title: "common.menu.menu1-2",
-						icon: ("SubnodeOutlined"),
-					},
-				},
-			],
+						icon: "SubnodeOutlined"
+					}
+				}
+			]
 		},
 		{
 			path: "/route-nest/menu2",
 			handle: {
 				title: "common.menu.menu2",
-				icon: "SubnodeOutlined",
-			},
-		},
-	],
+				icon: "SubnodeOutlined"
+			}
+		}
+	]
 };
 
 const demoRouter = {
@@ -216,8 +226,8 @@ const demoRouter = {
 	handle: {
 		icon: "ExperimentOutlined",
 		title: "common.menu.demo",
-		order: demo,
-	},
+		order: demo
+	}
 };
 
 export default defineFakeRoute([
@@ -233,7 +243,7 @@ export default defineFakeRoute([
 				handle: {
 					icon: "SafetyOutlined",
 					title: "common.menu.access",
-					order: access,
+					order: access
 				},
 				children: [
 					/**
@@ -244,15 +254,15 @@ export default defineFakeRoute([
 						path: "/access/access-mode",
 						handle: {
 							icon: "CloudOutlined",
-							title: "common.menu.accessMode",
-						},
+							title: "common.menu.accessMode"
+						}
 					},
 					{
 						path: "/access/page-control",
 						handle: {
 							icon: "FileTextOutlined",
-							title: "common.menu.pageControl",
-						},
+							title: "common.menu.pageControl"
+						}
 					},
 					{
 						path: "/access/button-control",
@@ -261,45 +271,41 @@ export default defineFakeRoute([
 							title: "common.menu.buttonControl",
 							permissions: isAdmin
 								? [
-									"permission:button:get",
-									"permission:button:update",
-									"permission:button:delete",
-									"permission:button:add",
-								]
-								: [
-									"permission:button:get",
-								],
-						},
+										"permission:button:get",
+										"permission:button:update",
+										"permission:button:delete",
+										"permission:button:add"
+									]
+								: ["permission:button:get"]
+						}
 					},
 					isAdmin
 						? {
-							path: "/access/admin-visible",
-							handle: {
-								icon: "EyeOutlined",
-								title: "common.menu.adminVisible",
-							},
-						}
+								path: "/access/admin-visible",
+								handle: {
+									icon: "EyeOutlined",
+									title: "common.menu.adminVisible"
+								}
+							}
 						: {
-							path: "/access/common-visible",
-							handle: {
-								icon: "EyeOutlined",
-								title: "common.menu.commonVisible",
-							},
-						},
-				],
+								path: "/access/common-visible",
+								handle: {
+									icon: "EyeOutlined",
+									title: "common.menu.commonVisible"
+								}
+							}
+				]
 			};
-			return resultSuccess(
-				[
-					homeRouter,
-					accessRouter,
-					demoRouter,
-					aboutRouter,
-					systemManagementRouter,
-					outsideRouter,
-					personalCenterRouter,
-					routeNestRouter,
-				],
-			);
-		},
-	},
+			return resultSuccess([
+				homeRouter,
+				accessRouter,
+				demoRouter,
+				aboutRouter,
+				systemManagementRouter,
+				outsideRouter,
+				personalCenterRouter,
+				routeNestRouter
+			]);
+		}
+	}
 ]);

@@ -1,6 +1,6 @@
-import type { PieDataType } from "#src/api/home";
+import type { PieDataType } from "~/api/home";
 import type { EChartsOption } from "echarts";
-import { fetchPie } from "#src/api/home";
+import { fetchPie } from "~/api/home";
 import { Card, Segmented } from "antd";
 import ReactECharts from "echarts-for-react";
 

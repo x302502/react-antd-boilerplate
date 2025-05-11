@@ -1,10 +1,10 @@
-import type { ThemeType } from "#src/store/preferences/types";
+import type { ThemeType } from "~/store/preferences/types";
 import type { InputNumberProps } from "antd";
 
-import { FollowSystemIcon, MoonIcon, SunIcon } from "#src/icons";
-import { usePreferencesStore } from "#src/store";
+import { FollowSystemIcon, MoonIcon, SunIcon } from "~/icons";
+import { usePreferencesStore } from "~/store";
 
-import { cn } from "#src/utils";
+import { cn } from "~/utils";
 import { InputNumber, Slider } from "antd";
 import { useTranslation } from "react-i18next";
 

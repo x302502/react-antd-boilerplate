@@ -1,5 +1,5 @@
-import { useUserStore } from "#src/store";
-import { isString } from "#src/utils";
+import { useUserStore } from "~/store";
+import { isString } from "~/utils";
 
 import { useMatches } from "react-router";
 import { accessControlCodes, AccessControlRoles } from "./constants";
@@ -23,7 +23,7 @@ export function useAccess() {
 	 */
 	const hasAccessByCodes = (permission?: string | Array<string>) => {
 		if (!permission)
-			return false;
+return false;
 		/** 从当前路由的 `handle` 字段里获取按钮级别的所有自定义 `code` 值 */
 		const metaAuth = currentRoute?.handle?.permissions;
 		if (!metaAuth) {

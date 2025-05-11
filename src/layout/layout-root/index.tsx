@@ -1,9 +1,9 @@
-import { PageError } from "#src/components";
-import { usePreferences } from "#src/hooks";
-import { AuthGuard } from "#src/router/guard";
-import { whiteRouteNames } from "#src/router/routes";
-import { useAuthStore, useUserStore } from "#src/store";
-import { isString, NProgress, toggleHtmlClass } from "#src/utils";
+import { PageError } from "~/components";
+import { usePreferences } from "~/hooks";
+import { AuthGuard } from "~/router/guard";
+import { whiteRouteNames } from "~/router/routes";
+import { useAuthStore, useUserStore } from "~/store";
+import { isString, NProgress, toggleHtmlClass } from "~/utils";
 
 import { useEffect } from "react";
 import { ErrorBoundary } from "react-error-boundary";
@@ -49,8 +49,7 @@ export default function LayoutRoot() {
 	useEffect(() => {
 		if (isDark) {
 			toggleHtmlClass("dark").add();
-		}
-		else {
+		} else {
 			toggleHtmlClass("dark").remove();
 		}
 	}, [isDark]);

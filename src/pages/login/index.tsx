@@ -1,11 +1,11 @@
 import type { FormComponentMapType } from "./form-mode-context";
-// import hero from "#src/assets/svg/hero.svg?url";
-import Banner from "#src/assets/svg/banner.svg?react";
-import logo from "#src/assets/svg/logo.svg?url";
-import { useLayoutMenu } from "#src/hooks";
-import { LayoutFooter } from "#src/layout";
-import { LanguageButton } from "#src/layout/layout-header/components/language-button";
-import { ThemeButton } from "#src/layout/layout-header/components/theme-button";
+// import hero from "~/assets/svg/hero.svg?url";
+import Banner from "~/assets/svg/banner.svg?react";
+import logo from "~/assets/svg/logo.svg?url";
+import { useLayoutMenu } from "~/hooks";
+import { LayoutFooter } from "~/layout";
+import { LanguageButton } from "~/layout/layout-header/components/language-button";
+import { ThemeButton } from "~/layout/layout-header/components/theme-button";
 
 import { Col, Grid, Row, theme } from "antd";
 import { clsx } from "clsx";
@@ -83,8 +83,8 @@ export default function Login() {
 						style={
 							isAlignCenter || (!screens.xl && !screens.xxl && !screens.lg)
 								? {
-									backgroundImage: `radial-gradient(${token.colorBgContainer}, ${token.colorPrimaryBg})`
-								}
+										backgroundImage: `radial-gradient(${token.colorBgContainer}, ${token.colorPrimaryBg})`
+									}
 								: {}
 						}
 					>

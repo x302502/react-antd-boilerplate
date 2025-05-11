@@ -1,4 +1,4 @@
-import type { RouteMeta } from "#src/router/types";
+import type { RouteMeta } from "~/router/types";
 import type { UIMatch } from "react-router";
 
 import "react-router";

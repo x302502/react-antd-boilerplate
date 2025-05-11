@@ -1,29 +1,29 @@
 import type { dependencies, devDependencies } from "#package.json";
 
-import type { ThemeType } from "#src/store";
 import type { GlobalToken } from "antd";
+import type { ThemeType } from "~/store";
 
 declare global {
 	const __APP_INFO__: {
 		pkg: {
-			name: string
-			version: string
-			license: string
-			author: string
-			dependencies: typeof dependencies
-			devDependencies: typeof devDependencies
-		}
-		lastBuildTime: string
+			name: string;
+			version: string;
+			license: string;
+			author: string;
+			dependencies: typeof dependencies;
+			devDependencies: typeof devDependencies;
+		};
+		lastBuildTime: string;
 	};
 
 	/* Inspired by https://github.com/soybeanjs/soybean-admin/blob/v1.3.8/src/typings/global.d.ts */
 	interface Window {
 		/** ant design message instance */
-		$message?: import("antd/es/message/interface").MessageInstance
+		$message?: import("antd/es/message/interface").MessageInstance;
 		/** ant design modal instance */
-		$modal?: Omit<import("antd/es/modal/confirm").ModalStaticFunctions, "warn">
+		$modal?: Omit<import("antd/es/modal/confirm").ModalStaticFunctions, "warn">;
 		/** ant design notification instance */
-		$notification?: import("antd/es/notification/interface").NotificationInstance
+		$notification?: import("antd/es/notification/interface").NotificationInstance;
 	}
 
 	/**
@@ -45,7 +45,7 @@ declare global {
 			 * @zh 当前应用的主题类型，可能是"dark"、"light"或空字符串
 			 * @en The current theme type of the application, which can be "dark", "light", or an empty string
 			 */
-			theme: ThemeType
+			theme: ThemeType;
 
 			/**
 			 * antd 的 token
@@ -53,7 +53,7 @@ declare global {
 			 * @zh antd 样式令牌
 			 * @en antd style token
 			 */
-			token: GlobalToken
+			token: GlobalToken;
 
 			/**
 			 * 指示当前是否为暗色主题
@@ -61,7 +61,7 @@ declare global {
 			 * @zh 如果当前主题为"dark"，则为true；否则为false
 			 * @en Indicates whether the current theme is dark. True if the theme is "dark", otherwise false.
 			 */
-			isDark: boolean
+			isDark: boolean;
 
 			/**
 			 * 指示当前是否为亮色主题
@@ -69,7 +69,7 @@ declare global {
 			 * @zh 如果当前主题为"light"，则为true；否则为false
 			 * @en Indicates whether the current theme is light. True if the theme is "light", otherwise false.
 			 */
-			isLight: boolean
+			isLight: boolean;
 			/**
 			 * ant design 组件的类名前缀
 			 *
@@ -77,7 +77,7 @@ declare global {
 			 * @en Component class name prefix
 			 * @default "ant"
 			 */
-			prefixCls: string
+			prefixCls: string;
 		}
 	}
 }

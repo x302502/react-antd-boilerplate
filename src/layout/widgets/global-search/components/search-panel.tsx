@@ -1,4 +1,4 @@
-import type { MenuItemType } from "#src/layout/layout-menu/types";
+import type { MenuItemType } from "~/layout/layout-menu/types";
 
 import { CloseOutlined } from "@ant-design/icons";
 import { Button } from "antd";
@@ -7,12 +7,12 @@ import { cloneElement, isValidElement } from "react";
 import { useTranslation } from "react-i18next";
 
 interface SearchPanelProps {
-	menuItem: MenuItemType
-	setActiveKey: (activeKey: string) => void
-	enter: (isLink?: boolean) => void
-	removeHistoryItem: (key: string) => void
-	active: boolean
-	showCloseButton: boolean
+	menuItem: MenuItemType;
+	setActiveKey: (activeKey: string) => void;
+	enter: (isLink?: boolean) => void;
+	removeHistoryItem: (key: string) => void;
+	active: boolean;
+	showCloseButton: boolean;
 }
 
 export function SearchPanel({
@@ -51,10 +51,10 @@ export function SearchPanel({
 						<span>
 							{isValidElement(menuItem?.label)
 								? cloneElement(
-									menuItem.label,
-									{},
-									t(menuItem.label.props.children)
-								)
+										menuItem.label,
+										{},
+										t(menuItem.label.props.children)
+									)
 								: t(`${menuItem?.label}`)}
 						</span>
 					</div>

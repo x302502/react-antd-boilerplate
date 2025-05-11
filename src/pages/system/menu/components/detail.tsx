@@ -1,6 +1,6 @@
-import type { MenuItemType } from "#src/api/system";
-import { fetchAddMenuItem, fetchUpdateMenuItem } from "#src/api/system";
-import { handleTree } from "#src/utils";
+import type { MenuItemType } from "~/api/system";
+import { fetchAddMenuItem, fetchUpdateMenuItem } from "~/api/system";
+import { handleTree } from "~/utils";
 
 import {
 	ModalForm,
@@ -17,12 +17,12 @@ import { useTranslation } from "react-i18next";
 import { getMenuTypeOptions } from "../constants";
 
 interface DetailProps {
-	title: React.ReactNode
-	flatParentMenus: MenuItemType[]
-	open: boolean
-	detailData: Partial<MenuItemType>
-	onCloseChange: () => void
-	refreshTable?: () => void
+	title: React.ReactNode;
+	flatParentMenus: MenuItemType[];
+	open: boolean;
+	detailData: Partial<MenuItemType>;
+	onCloseChange: () => void;
+	refreshTable?: () => void;
 }
 
 export function Detail({
@@ -42,8 +42,7 @@ export function Detail({
 		if (detailData.id) {
 			await fetchUpdateMenuItem(values);
 			window.$message?.success(t("common.updateSuccess"));
-		}
-		else {
+		} else {
 			await fetchAddMenuItem(values);
 			window.$message?.success(t("common.addSuccess"));
 		}

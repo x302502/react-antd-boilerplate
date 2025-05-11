@@ -1,5 +1,5 @@
 import type { RoleItemType } from "./types";
-import { request } from "#src/utils";
+import { request } from "~/utils";
 
 export * from "./types";
 
@@ -7,8 +7,8 @@ export * from "./types";
 export function fetchRoleList(data: any) {
 	return request
 		.get<
-		ApiListResponse<RoleItemType>
-	>("role-list", { searchParams: data, ignoreLoading: true })
+			ApiListResponse<RoleItemType>
+		>("role-list", { searchParams: data, ignoreLoading: true })
 		.json();
 }
 
@@ -44,7 +44,7 @@ export function fetchRoleMenu() {
 export function fetchMenuByRoleId(data: { id: number }) {
 	return request
 		.get<
-		ApiResponse<string[]>
-	>("menu-by-role-id", { searchParams: data, ignoreLoading: false })
+			ApiResponse<string[]>
+		>("menu-by-role-id", { searchParams: data, ignoreLoading: false })
 		.json();
 }

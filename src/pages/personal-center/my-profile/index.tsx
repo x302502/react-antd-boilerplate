@@ -1,5 +1,5 @@
-import { BasicContent, FormAvatarItem } from "#src/components";
-import { useUserStore } from "#src/store";
+import { BasicContent, FormAvatarItem } from "~/components";
+import { useUserStore } from "~/store";
 
 import {
 	ProForm,

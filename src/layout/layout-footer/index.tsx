@@ -1,8 +1,8 @@
-import { usePreferencesStore } from "#src/store";
-import { cn } from "#src/utils";
+import { usePreferencesStore } from "~/store";
+import { cn } from "~/utils";
 
 interface LayoutFooterProps {
-	className?: string
+	className?: string;
 }
 export default function LayoutFooter({ className }: LayoutFooterProps) {
 	const {
@@ -14,7 +14,7 @@ export default function LayoutFooter({ className }: LayoutFooterProps) {
 		ICPLink
 	} = usePreferencesStore();
 	if (!enableFooter)
-		return null;
+return null;
 
 	return (
 		<footer

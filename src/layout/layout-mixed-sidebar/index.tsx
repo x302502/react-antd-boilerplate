@@ -1,8 +1,8 @@
 import type { MenuProps } from "antd";
 import type { MenuItemType } from "../layout-menu/types";
 
-import { Scrollbar } from "#src/components";
-import { usePreferences } from "#src/hooks";
+import { Scrollbar } from "~/components";
+import { usePreferences } from "~/hooks";
 
 import { theme as antdTheme, ConfigProvider, Typography } from "antd";
 
@@ -12,10 +12,10 @@ import { SiderTrigger } from "../widgets";
 import FirstColumnMenu from "./first-column-menu";
 
 interface LayoutMixedSidebarProps {
-	computedSidebarWidth?: number
-	topNavItems?: MenuItemType[]
-	sideNavItems?: MenuItemType[]
-	handleMenuSelect?: (key: string, mode: MenuProps["mode"]) => void
+	computedSidebarWidth?: number;
+	topNavItems?: MenuItemType[];
+	sideNavItems?: MenuItemType[];
+	handleMenuSelect?: (key: string, mode: MenuProps["mode"]) => void;
 }
 
 const emptyArray: MenuItemType[] = [];

@@ -1,7 +1,7 @@
-import type { RoleItemType } from "#src/api/system";
-import type { TreeDataNodeWithId } from "#src/components";
-import { fetchAddRoleItem, fetchUpdateRoleItem } from "#src/api/system";
-import { FormTreeItem } from "#src/components";
+import type { RoleItemType } from "~/api/system";
+import type { TreeDataNodeWithId } from "~/components";
+import { fetchAddRoleItem, fetchUpdateRoleItem } from "~/api/system";
+import { FormTreeItem } from "~/components";
 
 import {
 	DrawerForm,
@@ -15,12 +15,12 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 interface DetailProps {
-	treeData: TreeDataNodeWithId[]
-	title: React.ReactNode
-	open: boolean
-	detailData: Partial<RoleItemType>
-	onCloseChange: () => void
-	refreshTable?: () => void
+	treeData: TreeDataNodeWithId[];
+	title: React.ReactNode;
+	open: boolean;
+	detailData: Partial<RoleItemType>;
+	onCloseChange: () => void;
+	refreshTable?: () => void;
 }
 
 export function Detail({
@@ -47,8 +47,7 @@ export function Detail({
 		if (detailData.id) {
 			await updateRoleItemMutation.mutateAsync(values);
 			window.$message?.success(t("common.updateSuccess"));
-		}
-		else {
+		} else {
 			await addRoleItemMutation.mutateAsync(values);
 			window.$message?.success(t("common.addSuccess"));
 		}

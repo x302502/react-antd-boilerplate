@@ -1,13 +1,13 @@
-import type { MenuItemType } from "#src/api/system";
+import type { MenuItemType } from "~/api/system";
 import type {
 	ActionType,
 	ProColumns,
 	ProCoreActionType
 } from "@ant-design/pro-components";
-import { fetchDeleteMenuItem, fetchMenuList } from "#src/api/system/menu";
-import { BasicButton, BasicContent, BasicTable } from "#src/components";
-import { accessControlCodes, useAccess } from "#src/hooks";
-import { handleTree } from "#src/utils";
+import { fetchDeleteMenuItem, fetchMenuList } from "~/api/system/menu";
+import { BasicButton, BasicContent, BasicTable } from "~/components";
+import { accessControlCodes, useAccess } from "~/hooks";
+import { handleTree } from "~/utils";
 
 import { PlusCircleOutlined } from "@ant-design/icons";
 import { Button, Popconfirm } from "antd";

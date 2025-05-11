@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { usePreferences } from "#src/hooks";
+import { usePreferences } from "~/hooks";
 
 import { ConfigProvider, theme } from "antd";
 import { useContext } from "react";
@@ -19,7 +19,7 @@ export interface JSSThemeProviderProps {
 	 * @zh 子组件，该组件将接收JSS主题
 	 * @en Children components, which will receive the JSS theme
 	 */
-	children: ReactNode
+	children: ReactNode;
 }
 
 const { useToken } = theme;

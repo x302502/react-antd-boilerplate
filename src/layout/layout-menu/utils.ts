@@ -1,6 +1,6 @@
 import type { MenuItemType } from "./types";
 
-import { isString } from "#src/utils";
+import { isString } from "~/utils";
 import { cloneElement, isValidElement } from "react";
 
 /**
@@ -72,10 +72,10 @@ export function findRootMenuByPath(
 	menus: MenuItemType[],
 	path?: string
 ): {
-		findMenu: MenuItemType | null
-		rootMenu: MenuItemType | null
-		rootMenuPath: string | null
-	} {
+	findMenu: MenuItemType | null;
+	rootMenu: MenuItemType | null;
+	rootMenuPath: string | null;
+} {
 	// 初始化返回值
 	let findMenu: MenuItemType | null = null;
 	let rootMenu: MenuItemType | null = null;
@@ -104,8 +104,7 @@ export function findRootMenuByPath(
 				if (parents.length === 0) {
 					rootMenu = menu;
 					rootMenuPath = menu.key;
-				}
-				else {
+				} else {
 					// 获取最顶层的父级菜单
 					rootMenu = parents[0];
 					rootMenuPath = parents[0].key;

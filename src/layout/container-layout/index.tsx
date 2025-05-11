@@ -1,10 +1,10 @@
-import { useDeviceType } from "#src/hooks";
-import { usePreferencesStore, useTabsStore } from "#src/store";
-import { cn } from "#src/utils";
-
 import { RocketOutlined } from "@ant-design/icons";
 import { FloatButton, Grid, Watermark } from "antd";
 import { useEffect, useMemo } from "react";
+
+import { useDeviceType } from "~/hooks";
+import { usePreferencesStore, useTabsStore } from "~/store";
+import { cn } from "~/utils";
 
 import { ELEMENT_ID_MAIN_CONTENT } from "../constants";
 import { useLayout } from "../hooks";
@@ -26,10 +26,10 @@ const { useBreakpoint } = Grid;
  * 请不要通过 lazy 使用这个组件，否则切换路由页面会发生闪动。
  *
  * NO:
- * const ContainerLayout = lazy(() => import("#src/layout/container-layout"));
+ * const ContainerLayout = lazy(() => import("~/layout/container-layout"));
  *
  * YES:
- * import { ContainerLayout } from "#src/layout";
+ * import { ContainerLayout } from "~/layout";
  */
 export default function ContainerLayout() {
 	const screens = useBreakpoint();
@@ -60,12 +60,10 @@ export default function ContainerLayout() {
 		/* iPad */
 		if (screens.lg && !screens.xl) {
 			setPreferences("sidebarCollapsed", true);
-		}
-		else if (screens.xl) {
+		} else if (screens.xl) {
 			/* PC */
 			setPreferences("sidebarCollapsed", false);
-		}
-		else if (screens.xs || (screens.sm && !screens.md)) {
+		} else if (screens.xs || (screens.sm && !screens.md)) {
 			/* Mobile */
 			setPreferences("sidebarCollapsed", false);
 		}
@@ -161,7 +159,8 @@ export default function ContainerLayout() {
 						target={() =>
 							(document.querySelector(
 								`#${ELEMENT_ID_MAIN_CONTENT} .simplebar-content-wrapper`
-							) as HTMLElement) || document}
+							) as HTMLElement) || document
+						}
 					/>
 				) : null}
 			</section>

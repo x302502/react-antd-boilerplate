@@ -1,5 +1,5 @@
 import type { MenuItemType } from "./types";
-import { request } from "#src/utils";
+import { request } from "~/utils";
 
 export * from "./types";
 
@@ -7,8 +7,8 @@ export * from "./types";
 export function fetchMenuList(data: any) {
 	return request
 		.get<
-		ApiListResponse<MenuItemType>
-	>("menu-list", { searchParams: data, ignoreLoading: true })
+			ApiListResponse<MenuItemType>
+		>("menu-list", { searchParams: data, ignoreLoading: true })
 		.json();
 }
 

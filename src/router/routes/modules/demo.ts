@@ -1,12 +1,12 @@
-import type { AppRouteRecordRaw } from "#src/router/types";
-import { ContainerLayout } from "#src/layout";
-import { $t } from "#src/locales";
-import { demo } from "#src/router/extra-info";
+import type { AppRouteRecordRaw } from "~/router/types";
+import { ContainerLayout } from "~/layout";
+import { $t } from "~/locales";
+import { demo } from "~/router/extra-info";
 
 import { ExperimentOutlined } from "@ant-design/icons";
 import { createElement, lazy } from "react";
 
-const Demo = lazy(() => import("#src/pages/demo"));
+const Demo = lazy(() => import("~/pages/demo"));
 
 const routes: AppRouteRecordRaw[] = [
 	{

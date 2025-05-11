@@ -15,8 +15,8 @@ const initialState = {
 type GlobalState = typeof initialState;
 
 interface GlobalAction {
-	openGlobalSpin: () => void
-	closeGlobalSpin: () => void
+	openGlobalSpin: () => void;
+	closeGlobalSpin: () => void;
 }
 
 export const useGlobalStore = create<GlobalState & GlobalAction>((set) => ({

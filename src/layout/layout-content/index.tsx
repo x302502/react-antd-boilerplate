@@ -1,7 +1,7 @@
-import { GlobalSpin, Scrollbar } from "#src/components";
-import { LayoutFooter } from "#src/layout";
-import { ELEMENT_ID_MAIN_CONTENT } from "#src/layout/constants";
-import { useAccessStore, usePreferencesStore, useTabsStore } from "#src/store";
+import { GlobalSpin, Scrollbar } from "~/components";
+import { LayoutFooter } from "~/layout";
+import { ELEMENT_ID_MAIN_CONTENT } from "~/layout/constants";
+import { useAccessStore, usePreferencesStore, useTabsStore } from "~/store";
 
 import { theme } from "antd";
 import KeepAlive, { useKeepAliveRef } from "keepalive-for-react";

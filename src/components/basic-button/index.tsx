@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { Button } from "antd";
 
 interface BasicButtonProps extends ButtonProps {
-	children?: ReactNode
+	children?: ReactNode;
 }
 
 export function BasicButton(props: BasicButtonProps) {

@@ -8,9 +8,9 @@ interface AppVersionMonitorProps {
 	 * @en Polling time, unit: minute, default 1 minute
 	 * @default 1
 	 */
-	checkUpdatesInterval?: number
+	checkUpdatesInterval?: number;
 	// 检查更新的地址
-	checkUpdateUrl?: string
+	checkUpdateUrl?: string;
 }
 
 export function AppVersionMonitor({
@@ -75,8 +75,7 @@ export function AppVersionMonitor({
 			return (
 				response.headers.get("etag") || response.headers.get("last-modified")
 			);
-		}
-		catch {
+		} catch {
 			console.error("Failed to fetch version tag");
 			return null;
 		}
@@ -97,8 +96,7 @@ export function AppVersionMonitor({
 	function handleVisibilitychange() {
 		if (document.hidden) {
 			stop();
-		}
-		else {
+		} else {
 			if (!isCheckingUpdates) {
 				isCheckingUpdates = true;
 				checkForUpdates().finally(() => {

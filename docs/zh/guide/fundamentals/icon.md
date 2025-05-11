@@ -17,11 +17,7 @@
 想要使用 [Ant Design Icons](https://github.com/ant-design/ant-design-icons) 提供的图标，在项目中可以直接使用：
 
 ```tsx
-import {
-	HomeOutlined,
-	SettingFilled,
-	SmileOutlined,
-} from "@ant-design/icons";
+import { HomeOutlined, SettingFilled, SmileOutlined } from "@ant-design/icons";
 // <HomeOutlined />
 // <SettingFilled />
 // <SmileOutlined />
@@ -54,7 +50,7 @@ export function MoonIcon(props: Partial<CustomIconComponentProps>) {
 其他文件中使用这个图标：
 
 ```tsx
-import { FollowSystemIcon, MoonIcon, SunIcon } from "#src/icons";
+import { FollowSystemIcon, MoonIcon, SunIcon } from "~/icons";
 // 图标自动响应设置的字体和文字颜色
 // <MoonIcon className="text-xl" />
 ```
@@ -66,14 +62,14 @@ import { FollowSystemIcon, MoonIcon, SunIcon } from "#src/icons";
 ### 作为组件使用
 
 ```tsx
-import Logo from "#src/assets/svg/logo.svg?react";
+import Logo from "~/assets/svg/logo.svg?react";
 // <Logo />
 ```
 
 ### 作为 img 标签的地址
 
 ```tsx
-import logo from "#src/assets/svg/logo.svg?url";
+import logo from "~/assets/svg/logo.svg?url";
 // <img src={logo} alt="logo" />
 ```
 

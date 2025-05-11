@@ -1,8 +1,8 @@
-import type { AppRouteRecordRaw, RouteFileModule } from "#src/router/types";
+import type { AppRouteRecordRaw, RouteFileModule } from "~/router/types";
 
-import { loginPath } from "#src/router/extra-info";
-import { ascending, mergeRouteModules } from "#src/router/utils";
-import { traverseTreeValues } from "#src/utils";
+import { loginPath } from "~/router/extra-info";
+import { ascending, mergeRouteModules } from "~/router/utils";
+import { traverseTreeValues } from "~/utils";
 import { coreRoutes } from "./core";
 
 // 外部路由文件

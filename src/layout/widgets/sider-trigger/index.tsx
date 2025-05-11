@@ -1,14 +1,14 @@
-import { BasicButton } from "#src/components";
+import { BasicButton } from "~/components";
 
-import { usePreferences } from "#src/hooks";
-import { cn } from "#src/utils";
+import { usePreferences } from "~/hooks";
+import { cn } from "~/utils";
 
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 
 import { siderTriggerHeight } from "../../constants";
 
 interface SiderTriggerProps {
-	className?: string
+	className?: string;
 }
 
 export function SiderTrigger({ className }: SiderTriggerProps) {

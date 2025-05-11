@@ -1,16 +1,16 @@
-import { isNumber } from "#src/utils";
+import { isNumber } from "~/utils";
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 
 import { Button, InputNumber } from "antd";
 
 export interface NumberInputSpinnerProps {
-	children: React.ReactNode
-	name: string
-	min: number
-	max: number
-	value?: number
-	disabled?: boolean
-	onChange?: (a: string, b: number) => void
+	children: React.ReactNode;
+	name: string;
+	min: number;
+	max: number;
+	value?: number;
+	disabled?: boolean;
+	onChange?: (a: string, b: number) => void;
 }
 
 export function NumberInputSpinner({

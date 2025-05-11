@@ -1,7 +1,7 @@
 import type { MenuProps } from "antd";
 import type { MenuItemType } from "./types";
 
-import { useDeviceType, usePreferences } from "#src/hooks";
+import { useDeviceType, usePreferences } from "~/hooks";
 
 import { Menu } from "antd";
 import { useEffect, useMemo, useState } from "react";
@@ -10,13 +10,13 @@ import { useMatches } from "react-router";
 import { findChildrenLen } from "./utils";
 
 interface LayoutMenuProps {
-	mode?: MenuProps["mode"]
+	mode?: MenuProps["mode"];
 	/**
 	 * 是否自动展开菜单，用于解决水平菜单下子菜单展开自动关闭的问题
 	 */
-	autoOpenMenu?: boolean
-	menus?: MenuItemType[]
-	handleMenuSelect?: (key: string, mode: MenuProps["mode"]) => void
+	autoOpenMenu?: boolean;
+	menus?: MenuItemType[];
+	handleMenuSelect?: (key: string, mode: MenuProps["mode"]) => void;
 }
 
 const emptyArray: MenuItemType[] = [];

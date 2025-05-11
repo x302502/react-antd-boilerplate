@@ -1,8 +1,8 @@
 import type { ButtonProps } from "antd";
 
-import { BasicButton } from "#src/components";
-import { usePreferences } from "#src/hooks";
-import { MoonIcon, SunIcon } from "#src/icons";
+import { BasicButton } from "~/components";
+import { usePreferences } from "~/hooks";
+import { MoonIcon, SunIcon } from "~/icons";
 import { useEffect } from "react";
 import { flushSync } from "react-dom";
 

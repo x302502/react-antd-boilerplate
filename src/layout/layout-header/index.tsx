@@ -1,10 +1,10 @@
 import type { ButtonProps } from "antd";
-import { useDeviceType, usePreferences } from "#src/hooks";
-import { useLayout } from "#src/layout/hooks/use-layout";
-import { GlobalSearch, Preferences } from "#src/layout/widgets";
-import { NotificationContainer } from "#src/layout/widgets/notification/notification-container";
-import { useTabsStore } from "#src/store";
-import { cn } from "#src/utils";
+import { useDeviceType, usePreferences } from "~/hooks";
+import { useLayout } from "~/layout/hooks/use-layout";
+import { GlobalSearch, Preferences } from "~/layout/widgets";
+import { NotificationContainer } from "~/layout/widgets/notification/notification-container";
+import { useTabsStore } from "~/store";
+import { cn } from "~/utils";
 
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { theme as antdTheme, Button, ConfigProvider, theme } from "antd";
@@ -16,8 +16,8 @@ import { ThemeButton } from "./components/theme-button";
 import { UserMenu } from "./components/user-menu";
 
 export interface LayoutHeaderProps {
-	className?: string
-	children?: React.ReactNode
+	className?: string;
+	children?: React.ReactNode;
 }
 
 const buttonProps: ButtonProps = {
@@ -66,7 +66,8 @@ export default function LayoutHeader({
 							sidebarCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />
 						}
 						onClick={() =>
-							setPreferences("sidebarCollapsed", !sidebarCollapsed)}
+							setPreferences("sidebarCollapsed", !sidebarCollapsed)
+						}
 						className="h-full"
 					/>
 				) : null}

@@ -1,7 +1,7 @@
-import type { AuthType } from "#src/api/user/types";
-import type { PasswordLoginFormType } from "#src/pages/login/components/password-login";
-import { fetchLogin, fetchLogout } from "#src/api/user";
-import { useAccessStore, useTabsStore, useUserStore } from "#src/store";
+import type { AuthType } from "~/api/user/types";
+import type { PasswordLoginFormType } from "~/pages/login/components/password-login";
+import { fetchLogin, fetchLogout } from "~/api/user";
+import { useAccessStore, useTabsStore, useUserStore } from "~/store";
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
@@ -14,9 +14,9 @@ const initialState = {
 type AuthState = AuthType;
 
 interface AuthAction {
-	login: (loginPayload: PasswordLoginFormType) => Promise<void>
-	logout: () => Promise<void>
-	reset: () => void
+	login: (loginPayload: PasswordLoginFormType) => Promise<void>;
+	logout: () => Promise<void>;
+	reset: () => void;
 }
 
 export const useAuthStore = create<AuthState & AuthAction>()(

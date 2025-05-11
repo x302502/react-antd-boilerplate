@@ -1,10 +1,10 @@
-import type { AppRouteRecordRaw } from "#src/router/types";
+import type { AppRouteRecordRaw } from "~/router/types";
 
-import { Iframe } from "#src/components/iframe";
-import { ReactLogoIcon } from "#src/icons";
-import { ContainerLayout } from "#src/layout";
-import { $t } from "#src/locales";
-import { outside } from "#src/router/extra-info";
+import { Iframe } from "~/components/iframe";
+import { ReactLogoIcon } from "~/icons";
+import { ContainerLayout } from "~/layout";
+import { $t } from "~/locales";
+import { outside } from "~/router/extra-info";
 
 import { AntDesignOutlined, ContainerOutlined } from "@ant-design/icons";
 import { createElement } from "react";

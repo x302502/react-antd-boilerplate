@@ -1,13 +1,13 @@
-import type { AppRouteRecordRaw } from "#src/router/types";
-import { ContainerLayout } from "#src/layout";
-import { system } from "#src/router/extra-info";
+import type { AppRouteRecordRaw } from "~/router/types";
+import { ContainerLayout } from "~/layout";
+import { system } from "~/router/extra-info";
 
 import { lazy } from "react";
 
-const User = lazy(() => import("#src/pages/system/user"));
-const Dept = lazy(() => import("#src/pages/system/dept"));
-const Role = lazy(() => import("#src/pages/system/role"));
-const Menu = lazy(() => import("#src/pages/system/menu"));
+const User = lazy(() => import("~/pages/system/user"));
+const Dept = lazy(() => import("~/pages/system/dept"));
+const Role = lazy(() => import("~/pages/system/role"));
+const Menu = lazy(() => import("~/pages/system/menu"));
 
 const routes: AppRouteRecordRaw[] = [
 	{

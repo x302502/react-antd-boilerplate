@@ -113,17 +113,7 @@ export const neutralColors = [
 ];
 export const productLevelColorSystem = [...brandColors, ...functionalColors];
 export const colorPaletteNumbers = [
-	50,
-	100,
-	200,
-	300,
-	400,
-	500,
-	600,
-	700,
-	800,
-	900,
-	950
+	50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950
 ];
 export const colorVariantsCount = 10;
 

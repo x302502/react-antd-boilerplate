@@ -1,9 +1,9 @@
 import type { MenuProps } from "antd";
 import type { MenuItemType } from "../layout-menu/types";
-import { Scrollbar } from "#src/components";
-import { useCurrentRoute, usePreferences } from "#src/hooks";
-import { removeTrailingSlash } from "#src/router/utils";
-import { useAccessStore } from "#src/store";
+import { Scrollbar } from "~/components";
+import { useCurrentRoute, usePreferences } from "~/hooks";
+import { removeTrailingSlash } from "~/router/utils";
+import { useAccessStore } from "~/store";
 
 import { ConfigProvider, Menu } from "antd";
 import { clsx } from "clsx";
@@ -34,8 +34,8 @@ const useStyles = createUseStyles(({ token }) => {
 });
 
 interface FirstColumnMenuProps {
-	menus?: MenuItemType[]
-	handleMenuSelect?: (key: string, mode: MenuProps["mode"]) => void
+	menus?: MenuItemType[];
+	handleMenuSelect?: (key: string, mode: MenuProps["mode"]) => void;
 }
 
 const emptyArray: MenuItemType[] = [];

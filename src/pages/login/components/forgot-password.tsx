@@ -1,4 +1,4 @@
-import { BasicButton } from "#src/components";
+import { BasicButton } from "~/components";
 
 import { LeftOutlined } from "@ant-design/icons";
 import { useCountDown } from "ahooks";
@@ -79,8 +79,8 @@ export function ForgotPassword() {
 					>
 						{countdown > 0
 							? t("authority.retryAfterText", {
-								count: Math.floor(countdown / 1000)
-							})
+									count: Math.floor(countdown / 1000)
+								})
 							: t("authority.sendResetLink")}
 					</Button>
 				</Form.Item>

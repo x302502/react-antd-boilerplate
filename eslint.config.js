@@ -8,7 +8,6 @@ export default antfu({
 		// Style rules
 		"style/quotes": ["error", "double"],
 		"style/semi": "off",
-		"style/indent": ["error", "tab"],
 		"jsonc/indent": ["error", "tab"],
 		"style/no-tabs": "off",
 		"style/arrow-parens": "off",
@@ -18,6 +17,12 @@ export default antfu({
 		"style/no-mixed-spaces-and-tabs": "off",
 		"style/operator-linebreak": "off",
 		"style/quote-props": "off",
+		"style/brace-style": "off",
+		"style/jsx-curly-newline": "off",
+		"antfu/consistent-list-newline": "off",
+		"style/indent": "off",
+		"style/member-delimiter-style": "off",
+		"perfectionist/sort-imports": "off",
 
 		// React hooks rules
 		"react-hooks/exhaustive-deps": "off",

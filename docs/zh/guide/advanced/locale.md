@@ -89,11 +89,7 @@ import { useTranslation } from "react-i18next";
 export default function About() {
 	const { t } = useTranslation();
 
-	return (
-		<div>
-			{t("about.aboutProject")}
-		</div>
-	);
+	return <div>{t("about.aboutProject")}</div>;
 }
 ```
 
@@ -131,11 +127,7 @@ function About() {
 import { useTranslation } from "react-i18next";
 export default function Login() {
 	const { t } = useTranslation();
-	return (
-		<div>
-			{t("common.sendText", { second: 60 })}
-		</div>
-	);
+	return <div>{t("common.sendText", { second: 60 })}</div>;
 }
 ```
 
@@ -155,7 +147,7 @@ export default function Login() {
 			i18nKey="authority.agree"
 			components={[
 				<Link key={0} to="/terms-of-service" target="_blank" />,
-				<Link key={1} to="/privacy-policy" target="_blank" />,
+				<Link key={1} to="/privacy-policy" target="_blank" />
 			]}
 		/>
 	);
@@ -179,7 +171,7 @@ export function $t(path: string) {
 可以看到 `$t` 就是简单的返回传入的路径字符串，本函数主要用于 `lokalise.i18n-ally` 插件提供类型提示。
 
 ```js
-import { $t } from "#src/locales";
+import { $t } from "~/locales";
 const title = $t("common.menu.about");
 // 在 VSCode 中，`$t("common.menu.about")` 渲染为 $t(关于),
 ```

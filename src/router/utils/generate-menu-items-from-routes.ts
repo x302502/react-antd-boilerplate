@@ -1,8 +1,8 @@
-import type { MenuItemType } from "#src/layout/layout-menu/types";
-import type { AppRouteRecordRaw } from "#src/router/types";
+import type { MenuItemType } from "~/layout/layout-menu/types";
+import type { AppRouteRecordRaw } from "~/router/types";
 
-import * as basicIcons from "#src/icons";
-import { isString } from "#src/utils";
+import * as basicIcons from "~/icons";
+import { isString } from "~/utils";
 
 import * as antdIcons from "@ant-design/icons";
 import { createElement } from "react";
@@ -27,18 +27,18 @@ export function generateMenuItemsFromRoutes(routeList: AppRouteRecordRaw[]) {
 			key: item.path!,
 			label: externalLink
 				? createElement(
-					Link,
-					{
-						// 阻止事件冒泡，防止触发菜单的点击事件
-						onClick: (e) => {
-							e.stopPropagation();
+						Link,
+						{
+							// 阻止事件冒泡，防止触发菜单的点击事件
+							onClick: (e) => {
+								e.stopPropagation();
+							},
+							to: externalLink,
+							target: "_blank",
+							rel: "noopener noreferrer"
 						},
-						to: externalLink,
-						target: "_blank",
-						rel: "noopener noreferrer"
-					},
-					label
-				)
+						label
+					)
 				: label
 		};
 		if (iconName) {
@@ -46,11 +46,9 @@ export function generateMenuItemsFromRoutes(routeList: AppRouteRecordRaw[]) {
 			if (isString(iconName)) {
 				if (allAntdIcons[iconName]) {
 					menuItem.icon = createElement(allAntdIcons[iconName]);
-				}
-				else if (allBasicIcons[iconName]) {
+				} else if (allBasicIcons[iconName]) {
 					menuItem.icon = createElement(allBasicIcons[iconName]);
-				}
-				else {
+				} else {
 					console.warn(
 						`iconName: ${iconName} is not found in allAntdIcons or allBasicIcons`
 					);

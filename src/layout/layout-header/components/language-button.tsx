@@ -1,9 +1,9 @@
-import type { LanguageType } from "#src/locales";
+import type { LanguageType } from "~/locales";
 import type { ButtonProps, MenuProps } from "antd";
 
-import { BasicButton } from "#src/components";
-import { useLanguage } from "#src/hooks";
-import { getLanguageItems } from "#src/layout/widgets/preferences/blocks/general/utils";
+import { BasicButton } from "~/components";
+import { useLanguage } from "~/hooks";
+import { getLanguageItems } from "~/layout/widgets/preferences/blocks/general/utils";
 
 import { TranslationOutlined } from "@ant-design/icons";
 import { Dropdown } from "antd";

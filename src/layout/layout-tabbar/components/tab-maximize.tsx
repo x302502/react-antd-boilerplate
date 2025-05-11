@@ -1,12 +1,12 @@
-import { BasicButton } from "#src/components";
-import { useTabsStore } from "#src/store";
-import { cn } from "#src/utils";
+import { BasicButton } from "~/components";
+import { useTabsStore } from "~/store";
+import { cn } from "~/utils";
 
 import { FullscreenExitOutlined, FullscreenOutlined } from "@ant-design/icons";
 import { useShallow } from "zustand/shallow";
 
 interface TabMaximizeProps {
-	className?: string
+	className?: string;
 }
 /**
  * 切换标签页最大化 / 最小化

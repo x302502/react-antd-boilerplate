@@ -1,4 +1,4 @@
-import type { AppRouteRecordRaw } from "#src/router/types";
+import type { AppRouteRecordRaw } from "~/router/types";
 
 export function searchRoute(
 	routes: AppRouteRecordRaw[],

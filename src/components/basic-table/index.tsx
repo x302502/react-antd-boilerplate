@@ -2,7 +2,7 @@ import type { ParamsType, ProTableProps } from "@ant-design/pro-components";
 
 import type { TablePaginationConfig } from "antd";
 
-import { cn } from "#src/utils/cn";
+import { cn } from "~/utils/cn";
 import { LoadingOutlined } from "@ant-design/icons";
 import { ProTable } from "@ant-design/pro-components";
 import { useSize } from "ahooks";
@@ -17,12 +17,12 @@ export interface BasicTableProps<D, U, V> extends ProTableProps<D, U, V> {
 	 * @description 是否填充父元素
 	 * @default true
 	 */
-	autoHeight?: boolean
+	autoHeight?: boolean;
 	/**
 	 * @description 表格底部的偏移量
 	 * @default 0
 	 */
-	offsetBottom?: number
+	offsetBottom?: number;
 }
 
 /**
@@ -55,7 +55,7 @@ export function BasicTable<
 			)[0];
 
 			if (!basicTable)
-				return;
+return;
 
 			const tableWrapperRect = tableWrapperRef.current.getBoundingClientRect();
 
@@ -68,7 +68,7 @@ export function BasicTable<
 			const tableBody = basicTable.querySelector("div.ant-table-body");
 
 			if (!tableBody)
-				return;
+return;
 
 			// 获取元素的边界框
 			const tableBodyRect = tableBody.getBoundingClientRect();

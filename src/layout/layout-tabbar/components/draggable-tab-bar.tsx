@@ -1,7 +1,7 @@
-import type { TabItemProps } from "#src/store";
+import type { TabItemProps } from "~/store";
 import type { DragEndEvent } from "@dnd-kit/core";
 import type { MenuProps, TabsProps } from "antd";
-import { useTabsStore } from "#src/store";
+import { useTabsStore } from "~/store";
 import {
 	closestCenter,
 	DndContext,
@@ -19,8 +19,8 @@ import { Dropdown } from "antd";
 import { cloneElement } from "react";
 
 interface DraggableTabPaneProps extends React.HTMLAttributes<HTMLElement> {
-	"data-node-key": string
-	children: React.ReactElement
+	"data-node-key": string;
+	children: React.ReactElement;
 }
 
 export function DraggableTabNode({
@@ -63,11 +63,11 @@ export function DraggableTabNode({
 	});
 }
 interface DraggableTabBarProps {
-	tabBarProps: Parameters<Required<TabsProps>["renderTabBar"]>[0]
-	DefaultTabBar: Parameters<Required<TabsProps>["renderTabBar"]>[1]
-	tabItems: TabItemProps[]
-	items: (tabKey: string) => MenuProps["items"]
-	onClickMenu: (menuKey: string, nodeKey: string) => void
+	tabBarProps: Parameters<Required<TabsProps>["renderTabBar"]>[0];
+	DefaultTabBar: Parameters<Required<TabsProps>["renderTabBar"]>[1];
+	tabItems: TabItemProps[];
+	items: (tabKey: string) => MenuProps["items"];
+	onClickMenu: (menuKey: string, nodeKey: string) => void;
 }
 
 export function DraggableTabBar({
@@ -117,10 +117,10 @@ export function DraggableTabBar({
 									(tabItem) =>
 										tabItem.key === node.key && tabItem.draggable === false
 								) ? (
-										node
-									) : (
-										<DraggableTabNode {...node.props}>{node}</DraggableTabNode>
-									)}
+									node
+								) : (
+									<DraggableTabNode {...node.props}>{node}</DraggableTabNode>
+								)}
 							</Dropdown>
 						);
 					}}

@@ -108,9 +108,9 @@ export const About = () => <div>About</div>;
 ::: details 路由懒加载，加载默认导出的文件
 
 ```ts
-import type { AppRouteRecordRaw } from "#src/router/types";
-import { $t } from "#src/locales";
-import { about } from "#src/router/extra-info";
+import type { AppRouteRecordRaw } from "~/router/types";
+import { $t } from "~/locales";
+import { about } from "~/router/extra-info";
 
 import { UserOutlined } from "@ant-design/icons";
 import { createElement } from "react";
@@ -120,15 +120,15 @@ const routes: AppRouteRecordRaw[] = [
 		path: "/about",
 		lazy: async () => {
 			// [!code focus:1]
-			const About = await import("#src/pages/about"); // [!code focus:1]
+			const About = await import("~/pages/about"); // [!code focus:1]
 			return { Component: About.default }; // [!code focus:1]
 		}, // [!code focus:1]
 		handle: {
 			order: about,
 			title: $t("common.menu.about"),
-			icon: createElement(UserOutlined),
-		},
-	},
+			icon: createElement(UserOutlined)
+		}
+	}
 ];
 
 export default routes;
@@ -141,15 +141,15 @@ export default routes;
 ::: details 推荐使用路由懒加载的方式
 
 ```ts
-import type { AppRouteRecordRaw } from "#src/router/types";
-import { ContainerLayout } from "#src/layout";
-import { $t } from "#src/locales";
-import { about } from "#src/router/extra-info";
+import type { AppRouteRecordRaw } from "~/router/types";
+import { ContainerLayout } from "~/layout";
+import { $t } from "~/locales";
+import { about } from "~/router/extra-info";
 
 import { UserOutlined } from "@ant-design/icons";
 import { createElement, lazy } from "react";
 
-const About = lazy(() => import("#src/pages/about")); // [!code ++]
+const About = lazy(() => import("~/pages/about")); // [!code ++]
 
 const routes: AppRouteRecordRaw[] = [
 	{
@@ -158,9 +158,9 @@ const routes: AppRouteRecordRaw[] = [
 		handle: {
 			order: about,
 			title: $t("common.menu.about"),
-			icon: createElement(UserOutlined),
-		},
-	},
+			icon: createElement(UserOutlined)
+		}
+	}
 ];
 
 export default routes;
@@ -175,15 +175,15 @@ export default routes;
 ::: details 索引路由示例代码
 
 ```ts
-import type { AppRouteRecordRaw } from "#src/router/types";
-import { ContainerLayout } from "#src/layout";
+import type { AppRouteRecordRaw } from "~/router/types";
+import { ContainerLayout } from "~/layout";
 
-import { $t } from "#src/locales";
-import { home } from "#src/router/extra-info";
+import { $t } from "~/locales";
+import { home } from "~/router/extra-info";
 import { HomeOutlined } from "@ant-design/icons";
 import { createElement, lazy } from "react";
 
-const Home = lazy(() => import("#src/pages/home"));
+const Home = lazy(() => import("~/pages/home"));
 
 const routes: AppRouteRecordRaw[] = [
 	{
@@ -192,7 +192,7 @@ const routes: AppRouteRecordRaw[] = [
 		handle: {
 			order: home,
 			title: $t("common.menu.home"),
-			icon: createElement(HomeOutlined),
+			icon: createElement(HomeOutlined)
 		},
 		children: [
 			{
@@ -200,11 +200,11 @@ const routes: AppRouteRecordRaw[] = [
 				Component: Home,
 				handle: {
 					title: $t("common.menu.home"), // [!code ++]
-					icon: createElement(HomeOutlined), // [!code ++]
-				},
-			},
-		],
-	},
+					icon: createElement(HomeOutlined) // [!code ++]
+				}
+			}
+		]
+	}
 ];
 
 export default routes;
@@ -219,15 +219,15 @@ export default routes;
 ::: details 路由的排序示例代码
 
 ```ts
-import type { AppRouteRecordRaw } from "#src/router/types";
-import { ContainerLayout } from "#src/layout";
+import type { AppRouteRecordRaw } from "~/router/types";
+import { ContainerLayout } from "~/layout";
 
-import { $t } from "#src/locales";
-import { home } from "#src/router/extra-info";
+import { $t } from "~/locales";
+import { home } from "~/router/extra-info";
 import { HomeOutlined } from "@ant-design/icons";
 import { createElement, lazy } from "react";
 
-const Home = lazy(() => import("#src/pages/home"));
+const Home = lazy(() => import("~/pages/home"));
 
 const routes: AppRouteRecordRaw[] = [
 	{
@@ -236,7 +236,7 @@ const routes: AppRouteRecordRaw[] = [
 		handle: {
 			order: home, // [!code ++]
 			title: $t("common.menu.home"),
-			icon: createElement(HomeOutlined),
+			icon: createElement(HomeOutlined)
 		},
 		children: [
 			{
@@ -244,11 +244,11 @@ const routes: AppRouteRecordRaw[] = [
 				Component: Home,
 				handle: {
 					title: $t("common.menu.home"),
-					icon: createElement(HomeOutlined),
-				},
-			},
-		],
-	},
+					icon: createElement(HomeOutlined)
+				}
+			}
+		]
+	}
 ];
 
 export default routes;
@@ -270,15 +270,15 @@ export default routes;
 > 需要登录才能访问的路由中，必须在根路由中使用 ContainerLayout 组件，否则会导致菜单无法正常显示。**所以一级路由需要嵌套在 children 中，并设定 index = true**
 
 ```ts
-import type { AppRouteRecordRaw } from "#src/router/types";
-import { ContainerLayout } from "#src/layout";
+import type { AppRouteRecordRaw } from "~/router/types";
+import { ContainerLayout } from "~/layout";
 
-import { $t } from "#src/locales";
-import { home } from "#src/router/extra-info";
+import { $t } from "~/locales";
+import { home } from "~/router/extra-info";
 import { HomeOutlined } from "@ant-design/icons";
 import { createElement, lazy } from "react";
 
-const Home = lazy(() => import("#src/pages/home"));
+const Home = lazy(() => import("~/pages/home"));
 
 const routes: AppRouteRecordRaw[] = [
 	{
@@ -287,7 +287,7 @@ const routes: AppRouteRecordRaw[] = [
 		handle: {
 			order: home,
 			title: $t("common.menu.home"),
-			icon: createElement(HomeOutlined),
+			icon: createElement(HomeOutlined)
 		},
 		children: [
 			{
@@ -295,11 +295,11 @@ const routes: AppRouteRecordRaw[] = [
 				Component: Home,
 				handle: {
 					title: $t("common.menu.home"),
-					icon: createElement(HomeOutlined),
-				},
-			},
-		],
-	},
+					icon: createElement(HomeOutlined)
+				}
+			}
+		]
+	}
 ];
 
 export default routes;
@@ -341,9 +341,9 @@ const routes = [
 		handle: {
 			order: home,
 			title: $t("common.menu.home"),
-			icon: createElement(HomeOutlined),
-		},
-	},
+			icon: createElement(HomeOutlined)
+		}
+	}
 ];
 ```
 
@@ -354,64 +354,64 @@ export interface RouteMeta {
 	/**
 	 * 路由标题，通常用于页面标题或者侧边栏菜单显示
 	 */
-	title: ReactNode
+	title: ReactNode;
 
 	/**
 	 * 设置页面是否开启缓存，开启后页面会缓存，不会重新加载，仅在标签页启用时有效。
 	 * @default true
 	 */
-	keepAlive?: boolean
+	keepAlive?: boolean;
 
 	/**
 	 * 是否在菜单中隐藏，用于控制某些路由不在侧边栏菜单中显示
 	 */
-	hideInMenu?: boolean
+	hideInMenu?: boolean;
 
 	/**
 	 * 菜单图标，用于侧边栏菜单项的图标显示
 	 */
-	icon?: ReactNode
+	icon?: ReactNode;
 
 	/**
 	 * 菜单排序，用于控制侧边栏菜单的显示顺序
 	 */
-	order?: number
+	order?: number;
 
 	/**
 	 * 用于配置页面的权限，只有拥有对应权限的用户才能访问页面，不配置则不需要权限。
 	 */
-	roles?: string[]
+	roles?: string[];
 
 	/**
 	 * 页面内按钮级别的权限，用于控制页面内按钮的显示和隐藏
 	 */
-	permissions?: string[]
+	permissions?: string[];
 
 	/**
 	 * iframe链接，如果路由需要在iframe中加载外部页面时使用
 	 */
-	iframeLink?: string
+	iframeLink?: string;
 
 	/**
 	 * 外部链接，点击后直接在新标签页中打开
 	 */
-	externalLink?: string
+	externalLink?: string;
 
 	/**
 	 * 用于配置页面是否忽略权限，直接可以访问
 	 */
-	ignoreAccess?: boolean
+	ignoreAccess?: boolean;
 
 	/**
 	 * @description 指定当前激活的菜单，适用于动态路由情景下激活父菜单
 	 * @example 从父路由 '/user/info' 导航到子路由 '/user/info/1' 时，可以手动手动指定以高亮显示父菜单 '/user/info'
 	 */
-	currentActiveMenu?: string
+	currentActiveMenu?: string;
 
 	/**
 	 * 当前路由为请求后端接口得到的
 	 */
-	backstage?: boolean
+	backstage?: boolean;
 }
 ```
 

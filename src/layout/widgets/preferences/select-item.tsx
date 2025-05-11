@@ -1,14 +1,14 @@
 import type { SelectProps } from "antd";
 
-import { usePreferencesStore } from "#src/store";
+import { usePreferencesStore } from "~/store";
 import { Select } from "antd";
 
 export interface SelectItemProps {
-	children: React.ReactNode
-	name: string
-	value?: string
-	disabled?: boolean
-	items: SelectProps["options"]
+	children: React.ReactNode;
+	name: string;
+	value?: string;
+	disabled?: boolean;
+	items: SelectProps["options"];
 }
 
 export function SelectItem({

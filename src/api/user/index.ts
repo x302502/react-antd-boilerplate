@@ -1,7 +1,7 @@
-import type { PasswordLoginFormType } from "#src/pages/login/components/password-login";
-import type { AppRouteRecordRaw } from "#src/router/types";
+import type { PasswordLoginFormType } from "~/pages/login/components/password-login";
+import type { AppRouteRecordRaw } from "~/router/types";
 import type { AuthType, UserInfoType } from "./types";
-import { request } from "#src/utils";
+import { request } from "~/utils";
 
 export * from "./types";
 
@@ -24,8 +24,8 @@ export function fetchUserInfo() {
 }
 
 export interface RefreshTokenResult {
-	token: string
-	refreshToken: string
+	token: string;
+	refreshToken: string;
 }
 
 export const refreshTokenPath = "refresh-token";

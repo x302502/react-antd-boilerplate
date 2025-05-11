@@ -1,14 +1,14 @@
 import type { ButtonProps } from "antd";
 import type { RefObject } from "react";
-import { BasicButton } from "#src/components";
+import { BasicButton } from "~/components";
 import { FullscreenExitOutlined, FullscreenOutlined } from "@ant-design/icons";
 
 import { useFullscreen } from "ahooks";
 
 export interface FullscreenButtonProps extends Omit<ButtonProps, "target"> {
-	target: HTMLElement | (() => Element) | RefObject<Element>
-	fullscreenIcon?: React.ReactNode
-	fullscreenExitIcon?: React.ReactNode
+	target: HTMLElement | (() => Element) | RefObject<Element>;
+	fullscreenIcon?: React.ReactNode;
+	fullscreenExitIcon?: React.ReactNode;
 }
 
 /**

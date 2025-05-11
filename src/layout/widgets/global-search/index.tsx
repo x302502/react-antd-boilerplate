@@ -1,10 +1,10 @@
-import type { MenuItemType } from "#src/layout/layout-menu/types";
+import type { MenuItemType } from "~/layout/layout-menu/types";
 import type { InputRef } from "antd";
 
-import { Scrollbar } from "#src/components";
-import { useDeviceType } from "#src/hooks";
-import { useAccessStore } from "#src/store";
-import { isString } from "#src/utils";
+import { Scrollbar } from "~/components";
+import { useDeviceType } from "~/hooks";
+import { useAccessStore } from "~/store";
+import { isString } from "~/utils";
 
 import { SearchOutlined } from "@ant-design/icons";
 import { useDebounceFn, useKeyPress, useLocalStorageState } from "ahooks";
@@ -26,7 +26,7 @@ function transformMenuToFlatMenu(
 	flatMap: MenuItemType[] = []
 ) {
 	if (menus && menus.length === 0)
-		return [];
+return [];
 	return menus.reduce((acc, cur) => {
 		if (!cur.children) {
 			acc.push(cur);
@@ -103,11 +103,11 @@ export function GlobalSearch() {
 	function handleKeyPress(direction: 1 | -1) {
 		const { length } = resultOptions;
 		if (length === 0)
-			return;
+return;
 
 		const index = getActivePathIndex();
 		if (index === -1)
-			return;
+return;
 
 		const activeIndex = (index + direction + length) % length; // 确保 index 在范围内循环
 		const activeNameKey = resultOptions[activeIndex].key;
@@ -175,15 +175,14 @@ export function GlobalSearch() {
 	/** key enter */
 	function handleEnter(isExternalLink?: boolean) {
 		if (resultOptions.length === 0 || activeKey === "")
-			return;
+return;
 		if (!searchHistory?.includes(activeKey)) {
 			setSearchHistory([...(searchHistory ?? []), activeKey]);
 		}
 		handleClose();
 		if (isExternalLink) {
 			window.open(activeKey);
-		}
-		else {
+		} else {
 			navigate(activeKey);
 		}
 	}
@@ -291,7 +290,7 @@ export function GlobalSearch() {
 										: t("widgets.search.noRecent")
 								}
 							>
-							</Empty>
+       </Empty>
 						) : (
 							resultOptions.map((item) => (
 								<SearchPanel

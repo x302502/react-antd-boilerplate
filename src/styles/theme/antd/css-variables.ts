@@ -4,8 +4,8 @@ import {
 	neutralColorPalettes,
 	neutralColors,
 	productLevelColorSystem
-} from "#src/components/antd-app/constants";
-import { hexToRGB } from "#src/components/antd-app/utils";
+} from "../../../components/antd-app/constants";
+import { hexToRGB } from "../../../components/antd-app/utils";
 
 /**
  * @zh 使用 antd 的颜色变量覆盖 tailwind.css 中的颜色变量。

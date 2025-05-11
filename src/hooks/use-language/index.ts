@@ -1,5 +1,5 @@
-import type { LanguageType } from "#src/locales";
-import { usePreferencesStore } from "#src/store";
+import type { LanguageType } from "~/locales";
+import { usePreferencesStore } from "~/store";
 
 import { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";

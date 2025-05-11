@@ -15,9 +15,6 @@
 	"bugs": {
 		"url": "https://github.com/condorheroblog/react-antd-admin/issues"
 	},
-	"imports": {
-		"#*": "./*"
-	},
 	"scripts": {
 		"dev": "vite --host",
 		"build": "NODE_OPTIONS=--max-old-space-size=8192 vite build",

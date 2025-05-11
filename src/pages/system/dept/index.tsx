@@ -1,4 +1,4 @@
-import { BasicContent } from "#src/components";
+import { BasicContent } from "~/components";
 
 import { useState } from "react";
 

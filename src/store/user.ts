@@ -1,5 +1,5 @@
-import type { UserInfoType } from "#src/api/user/types";
-import { fetchUserInfo } from "#src/api/user";
+import type { UserInfoType } from "~/api/user/types";
+import { fetchUserInfo } from "~/api/user";
 
 import { create } from "zustand";
 
@@ -17,8 +17,8 @@ const initialState = {
 type UserState = UserInfoType;
 
 interface UserAction {
-	getUserInfo: () => Promise<UserInfoType>
-	reset: () => void
+	getUserInfo: () => Promise<UserInfoType>;
+	reset: () => void;
 }
 
 export const useUserStore = create<UserState & UserAction>()((set) => ({

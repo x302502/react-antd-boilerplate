@@ -1,5 +1,5 @@
-import { BasicButton } from "#src/components";
-import { PASSWORD_RULES, USERNAME_RULES } from "#src/constants";
+import { BasicButton } from "~/components";
+import { PASSWORD_RULES, USERNAME_RULES } from "~/constants";
 
 import { Button, Checkbox, Form, Input, Space, Typography } from "antd";
 import { useContext, useState } from "react";

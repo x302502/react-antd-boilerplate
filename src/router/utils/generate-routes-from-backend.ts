@@ -1,12 +1,12 @@
-import type { AppRouteRecordRaw } from "#src/router/types";
-import { Iframe } from "#src/components/iframe";
-import { ContainerLayout } from "#src/layout";
+import type { AppRouteRecordRaw } from "~/router/types";
+import { Iframe } from "~/components/iframe";
+import { ContainerLayout } from "~/layout";
 import { lazy } from "react";
 import { Outlet } from "react-router";
 import { addRouteIdByPath } from "./add-route-id-by-path";
 
 const ExceptionUnknownComponent = lazy(
-	() => import("#src/pages/exception/unknown-component")
+	() => import("~/pages/exception/unknown-component")
 );
 
 /**
@@ -28,7 +28,7 @@ export async function generateRoutesFromBackend(
 ) {
 	const pageModulePaths = Object.keys(pageModules);
 	if (!backendRoutes?.length)
-		return [];
+return [];
 
 	/**
 	 * @zh 动态加载并设置路由组件
@@ -48,8 +48,7 @@ export async function generateRoutesFromBackend(
 		if (moduleIndex !== -1) {
 			const lazyComponent = pageModules[pageModulePaths[moduleIndex]];
 			route.Component = lazy(lazyComponent as any);
-		}
-		else {
+		} else {
 			console.warn(`[Frontend component not found]: ${componentPath}`);
 			route.Component = ExceptionUnknownComponent;
 		}

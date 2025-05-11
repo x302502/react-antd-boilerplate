@@ -1,11 +1,11 @@
 import { Input } from "antd";
 
 export interface TextInputProps {
-	children: React.ReactNode
-	name: string
-	value?: string
-	disabled?: boolean
-	onChange?: (name: string, value: string) => void
+	children: React.ReactNode;
+	name: string;
+	value?: string;
+	disabled?: boolean;
+	onChange?: (name: string, value: string) => void;
 }
 
 export function TextInput({

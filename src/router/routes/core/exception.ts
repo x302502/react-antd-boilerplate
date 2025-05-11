@@ -1,8 +1,8 @@
-import type { AppRouteRecordRaw } from "#src/router/types";
+import type { AppRouteRecordRaw } from "~/router/types";
 
-import { ServerErrorIcon } from "#src/icons";
-import { ContainerLayout } from "#src/layout";
-import { $t } from "#src/locales";
+import { ServerErrorIcon } from "~/icons";
+import { ContainerLayout } from "~/layout";
+import { $t } from "~/locales";
 import {
 	exception,
 	exception403Path,
@@ -10,7 +10,7 @@ import {
 	exception500Path,
 	exceptionPath,
 	exceptionUnknownComponentPath
-} from "#src/router/extra-info";
+} from "~/router/extra-info";
 
 import {
 	AppstoreOutlined,
@@ -20,11 +20,11 @@ import {
 } from "@ant-design/icons";
 import { createElement, lazy } from "react";
 
-const Exception403 = lazy(() => import("#src/pages/exception/403"));
-const Exception404 = lazy(() => import("#src/pages/exception/404"));
-const Exception500 = lazy(() => import("#src/pages/exception/500"));
+const Exception403 = lazy(() => import("~/pages/exception/403"));
+const Exception404 = lazy(() => import("~/pages/exception/404"));
+const Exception500 = lazy(() => import("~/pages/exception/500"));
 const ExceptionUnknownComponent = lazy(
-	() => import("#src/pages/exception/unknown-component")
+	() => import("~/pages/exception/unknown-component")
 );
 
 const routes: AppRouteRecordRaw[] = [

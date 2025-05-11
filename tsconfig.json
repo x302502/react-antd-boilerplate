@@ -2,11 +2,12 @@
 	"compilerOptions": {
 		"target": "ESNext",
 		"jsx": "react-jsx",
+		"baseUrl": "./",
 		"module": "ESNext",
 		"moduleResolution": "bundler",
 		"paths": {
-			"#*": [
-				"./*"
+			"~/*": [
+				"./src/*"
 			]
 		},
 		"resolveJsonModule": true,

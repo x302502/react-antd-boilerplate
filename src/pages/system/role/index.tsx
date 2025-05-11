@@ -1,4 +1,4 @@
-import type { RoleItemType } from "#src/api/system";
+import type { RoleItemType } from "~/api/system";
 import type {
 	ActionType,
 	ProColumns,
@@ -9,10 +9,10 @@ import {
 	fetchMenuByRoleId,
 	fetchRoleList,
 	fetchRoleMenu
-} from "#src/api/system";
-import { BasicButton, BasicContent, BasicTable } from "#src/components";
-import { accessControlCodes, useAccess } from "#src/hooks";
-import { handleTree } from "#src/utils";
+} from "~/api/system";
+import { BasicButton, BasicContent, BasicTable } from "~/components";
+import { accessControlCodes, useAccess } from "~/hooks";
+import { handleTree } from "~/utils";
 
 import { PlusCircleOutlined } from "@ant-design/icons";
 import { useMutation, useQuery } from "@tanstack/react-query";

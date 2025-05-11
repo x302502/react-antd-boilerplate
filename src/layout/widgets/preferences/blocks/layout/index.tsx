@@ -1,18 +1,18 @@
-import type { NavigationType } from "#src/store/preferences/types";
+import type { NavigationType } from "~/store/preferences/types";
 import {
 	MixedNavigationIcon,
 	SideNavigationIcon,
 	TopNavigationIcon,
 	TwoColumnNavigationIcon
-} from "#src/icons";
+} from "~/icons";
 import {
 	MIXED_NAVIGATION,
 	SIDE_NAVIGATION,
 	TOP_NAVIGATION,
 	TWO_COLUMN_NAVIGATION
-} from "#src/layout/widgets/preferences/blocks/layout/constants";
-import { usePreferencesStore } from "#src/store";
-import { cn } from "#src/utils";
+} from "~/layout/widgets/preferences/blocks/layout/constants";
+import { usePreferencesStore } from "~/store";
+import { cn } from "~/utils";
 
 import { QuestionCircleOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";

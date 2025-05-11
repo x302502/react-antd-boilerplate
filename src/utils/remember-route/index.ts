@@ -1,4 +1,4 @@
-import { loginPath } from "#src/router/extra-info";
+import { loginPath } from "~/router/extra-info";
 
 export function rememberRoute() {
 	const { pathname, search } = window.location;

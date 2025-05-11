@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { StaticAntd } from "#src/utils";
+import { StaticAntd } from "~/utils";
 
 import { theme as antdTheme, App } from "antd";
 import { useEffect } from "react";
@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { setupAntdThemeTokensToHtml } from "./setup-antd-theme";
 
 export interface AntdAppProps {
-	children: ReactNode
+	children: ReactNode;
 }
 
 export function AntdApp({ children }: AntdAppProps) {

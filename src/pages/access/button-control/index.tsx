@@ -1,7 +1,7 @@
-import type { PasswordLoginFormType } from "#src/pages/login/components/password-login";
-import { AccessControl, BasicContent } from "#src/components";
-import { accessControlCodes, AccessControlRoles, useAccess } from "#src/hooks";
-import { useAuthStore, useUserStore } from "#src/store";
+import type { PasswordLoginFormType } from "~/pages/login/components/password-login";
+import { AccessControl, BasicContent } from "~/components";
+import { accessControlCodes, AccessControlRoles, useAccess } from "~/hooks";
+import { useAuthStore, useUserStore } from "~/store";
 
 import { Alert, Button, Card, Typography } from "antd";
 import { useTranslation } from "react-i18next";
@@ -50,7 +50,7 @@ export default function ButtonControl() {
 				message={t("access.buttonControl.alertMessage")}
 				description={t("access.buttonControl.alertDescription")}
 			>
-			</Alert>
+   </Alert>
 			<Card
 				title={(
 					<>
