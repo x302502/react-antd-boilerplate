@@ -23,9 +23,10 @@ export default antfu({
 		"style/indent": "off",
 		"style/member-delimiter-style": "off",
 		"perfectionist/sort-imports": "off",
+		"import/no-mutable-exports": "off",
 
 		// React hooks rules
-		"react-hooks/exhaustive-deps": "off",
+		"react-hooks/exhaustive-deps": "warn",
 		"react-hooks-extra/no-direct-set-state-in-use-effect": "off",
 		"react-hooks-extra/prefer-use-state-lazy-initialization": "off",
 
