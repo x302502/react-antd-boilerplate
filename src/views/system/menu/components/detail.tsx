@@ -46,9 +46,9 @@ export function Detail({
 			await fetchAddMenuItem(values);
 			window.$message?.success(t("common.addSuccess"));
 		}
-		/* 刷新表格 */
+		/* Refresh table */
 		refreshTable?.();
-		// 不返回不会关闭弹框
+		// Must return true to close the modal
 		return true;
 	};
 

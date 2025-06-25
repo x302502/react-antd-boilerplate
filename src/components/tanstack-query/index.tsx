@@ -6,12 +6,12 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
-			refetchOnWindowFocus: false, // 窗口聚焦时是否重新获取数据
-			refetchOnReconnect: false, // 网络恢复时是否重新获取数据
-			retry: 0 // 重试次数
+			refetchOnWindowFocus: false, // Whether to refetch data when window is focused
+			refetchOnReconnect: false, // Whether to refetch data when network connection is restored
+			retry: 0 // Number of retry attempts
 		},
 		mutations: {
-			retry: 0 // 重试次数
+			retry: 0 // Number of retry attempts
 		}
 	}
 });

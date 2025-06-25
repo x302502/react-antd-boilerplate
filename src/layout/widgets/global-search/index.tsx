@@ -109,7 +109,7 @@ return;
 		if (index === -1)
 return;
 
-		const activeIndex = (index + direction + length) % length; // 确保 index 在范围内循环
+		const activeIndex = (index + direction + length) % length; // Ensure index cycles within range
 		const activeNameKey = resultOptions[activeIndex].key;
 
 		setActiveKey(activeNameKey);
@@ -154,12 +154,12 @@ return;
 
 	/** key up */
 	function handleUp() {
-		handleKeyPress(-1); // 方向 -1 表示向上
+		handleKeyPress(-1); // Direction -1 means up
 	}
 
 	/** key down */
 	function handleDown() {
-		handleKeyPress(1); // 方向 1 表示向下
+		handleKeyPress(1); // Direction 1 means down
 	}
 
 	/**

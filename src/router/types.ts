@@ -19,64 +19,64 @@ export type AppRouteRecordRaw = IndexRouteMeta | NonIndexRouteMeta;
 
 export interface RouteMeta {
 	/**
-	 * 路由标题，通常用于页面标题或者侧边栏菜单显示
+	 * Route title, typically used for page title or sidebar menu display
 	 */
 	title: ReactNode;
 
 	/**
-	 * 菜单图标，用于侧边栏菜单项的图标显示
+	 * Menu icon, used for displaying icons in sidebar menu items
 	 */
 	icon?: ReactNode;
 
 	/**
-	 * 菜单排序，用于控制侧边栏菜单的显示顺序
+	 * Menu ordering, used to control the display order of sidebar menu
 	 */
 	order?: number;
 
 	/**
-	 * 用于配置页面的权限，只有拥有对应权限的用户才能访问页面，不配置则不需要权限。
+	 * Used to configure page permissions, only users with corresponding permissions can access the page. If not configured, no permissions are required.
 	 */
 	roles?: string[];
 
 	/**
-	 * 页面内按钮级别的权限，用于控制页面内按钮的显示和隐藏
+	 * Button-level permissions within the page, used to control the display and hiding of buttons within the page
 	 */
 	permissions?: string[];
 
 	/**
-	 * 设置页面是否开启缓存，开启后页面会缓存，不会重新加载，仅在标签页启用时有效。
+	 * Set whether the page enables caching. When enabled, the page will be cached and not reloaded. Only effective when tabs are enabled.
 	 * @default true
 	 */
 	keepAlive?: boolean;
 
 	/**
-	 * 是否在菜单中隐藏，用于控制某些路由不在侧边栏菜单中显示
+	 * Whether to hide in menu, used to control certain routes not to be displayed in the sidebar menu
 	 */
 	hideInMenu?: boolean;
 
 	/**
-	 * iframe链接，如果路由需要在iframe中加载外部页面时使用
+	 * iframe link, used when a route needs to load an external page in an iframe
 	 */
 	iframeLink?: string;
 
 	/**
-	 * 外部链接，点击后直接在新标签页中打开
+	 * External link, opens directly in a new tab when clicked
 	 */
 	externalLink?: string;
 
 	/**
-	 * 用于配置页面是否忽略权限，直接可以访问
+	 * Used to configure whether the page ignores permissions, allowing direct access
 	 */
 	ignoreAccess?: boolean;
 
 	/**
-	 * @description 指定当前激活的菜单，适用于动态路由情景下激活父菜单
-	 * @example 从父路由 '/user/info' 导航到子路由 '/user/info/1' 时，可以手动手动指定以高亮显示父菜单 '/user/info'
+	 * @description Specifies the currently active menu, suitable for activating parent menu in dynamic routing scenarios
+	 * @example When navigating from parent route '/user/info' to child route '/user/info/1', you can manually specify to highlight the parent menu '/user/info'
 	 */
 	currentActiveMenu?: string;
 
 	/**
-	 * 当前路由为请求后端接口得到的
+	 * The current route is obtained from a backend API request
 	 */
 	backstage?: boolean;
 }
@@ -86,5 +86,5 @@ export type RouterSubscriber = Parameters<ReactRouterType["subscribe"]>[0];
 export type RouterState = ReactRouterType["state"];
 export type RouterNavigate = ReactRouterType["navigate"];
 
-// 使用类型别名提取公共类型
+// Using type aliases to extract common types
 export type RouteFileModule = Record<string, { default: AppRouteRecordRaw[] }>;

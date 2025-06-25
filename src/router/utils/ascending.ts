@@ -1,13 +1,13 @@
 import type { AppRouteRecordRaw } from "~/router/types";
 
-/** 按照路由中 order 升序来排序路由 */
+/** Sort routes in ascending order based on the 'order' property in routes */
 export function ascending(arr: AppRouteRecordRaw[]) {
 	return arr
 		.map((routeItem, routeIndex) => ({
 			...routeItem,
 			handle: {
 				...routeItem.handle,
-				// 当 order 不存在时，根据顺序自动创建
+				// When order doesn't exist, automatically create it based on sequence
 				order: routeItem?.handle?.order || routeIndex + 2
 			}
 		}))

@@ -1,23 +1,23 @@
-## api 目录介绍
+## API Directory Introduction
 
-> api 目录存放所有请求接口文件，按照页面划分目录，一个页面对应一个目录，目录可以嵌套，但目录下的文件需要包含请求接口文件和类型定义文件。
+> The api directory stores all request interface files, organized by pages. Each page corresponds to a directory. Directories can be nested, but files under directories need to include request interface files and type definition files.
 
-下面是一个典型的目录结构 [`src/api/user`](https://github.com/condorheroblog/react-antd-admin/tree/main/src/api/user)：
+Below is a typical directory structure [`src/api/user`](https://github.com/condorheroblog/react-antd-admin/tree/main/src/api/user):
 
 ```zsh
 ├── api
-│   └── user                  # 用户页面, 按照页面划分 api
-│       ├── index.ts          # 请求接口文件
-│       └── types.ts          # 类型定义文件
+│   └── user                  # User page, API organized by page
+│       ├── index.ts          # Request interface file
+│       └── types.ts          # Type definition file
 ```
 
-如果页面下有页面，则可以继续嵌套目录，例如：[`src/api/system`](https://github.com/condorheroblog/react-antd-admin/tree/main/src/api/system)。
+If there are pages under a page, you can continue nesting directories, for example: [`src/api/system`](https://github.com/condorheroblog/react-antd-admin/tree/main/src/api/system).
 
-## 文件说明
+## File Description
 
-### 类型定义文件
+### Type Definition Files
 
-类型变量名一般以对应的页面名作为开始，以 `Type` 结尾，例如：
+Type variable names generally start with the corresponding page name and end with `Type`, for example:
 
 ```ts
 export interface RoleItemType {
@@ -31,16 +31,16 @@ export interface RoleItemType {
 }
 ```
 
-### 请求接口文件
+### Request Interface Files
 
-一个经典的请求接口文件如下所示：
+A classic request interface file is shown below:
 
-> 请求充分利用了 HTTP 方法，request.get、request.post 等，忽略加载动画通过 `ignoreLoading` 参数实现。
+> Requests fully utilize HTTP methods, such as request.get, request.post, etc. Ignoring loading animations is implemented through the `ignoreLoading` parameter.
 
-特别注意：
+Special notes:
 
-1. GET 请求的参数放在 `searchParams` 对象中，POST、PUT 等请求的参数放在 `json` 对象中。
-2. 请求的路径不能以 `/` 开头。
+1. GET request parameters are placed in the `searchParams` object, while POST, PUT, and other request parameters are placed in the `json` object.
+2. The request path cannot start with `/`.
 
 ```ts
 import type { RoleItemType } from "./types";
@@ -48,7 +48,7 @@ import { request } from "~/utils";
 
 export * from "./types";
 
-/* 获取角色列表 */
+/* Get role list */
 export function fetchRoleList(data: any) {
 	return request
 		.get<
@@ -57,21 +57,21 @@ export function fetchRoleList(data: any) {
 		.json();
 }
 
-/* 新增角色 */
+/* Add role */
 export function fetchAddRoleItem(data: RoleItemType) {
 	return request
 		.post<ApiResponse<string>>("role-item", { json: data, ignoreLoading: true })
 		.json();
 }
 
-/* 修改角色 */
+/* Update role */
 export function fetchUpdateRoleItem(data: RoleItemType) {
 	return request
 		.put<ApiResponse<string>>("role-item", { json: data, ignoreLoading: true })
 		.json();
 }
 
-/* 删除角色 */
+/* Delete role */
 export function fetchDeleteRoleItem(id: number) {
 	return request
 		.delete<ApiResponse<string>>("role-item", { json: id, ignoreLoading: true })
@@ -79,6 +79,6 @@ export function fetchDeleteRoleItem(id: number) {
 }
 ```
 
-## `request.ts` 介绍
+## `request.ts` Introduction
 
-`request.ts` 是封装了 `[Ky](https://github.com/sindresorhus/ky)` 的请求库，代码实现请看 `[src/utils/request](https://github.com/condorheroblog/react-antd-admin/tree/main/src/utils/request)`。
+`request.ts` is a request library that encapsulates `[Ky](https://github.com/sindresorhus/ky)`. For code implementation, please see `[src/utils/request](https://github.com/condorheroblog/react-antd-admin/tree/main/src/utils/request)`.

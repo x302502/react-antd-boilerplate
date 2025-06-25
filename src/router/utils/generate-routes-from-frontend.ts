@@ -3,13 +3,13 @@ import type { AppRouteRecordRaw } from "~/router/types";
 import { filterTree } from "~/utils";
 
 /**
- * 动态生成路由 - 前端方式
+ * Dynamically generate routes - Frontend approach
  */
 export function generateRoutesByFrontend(
 	routes: AppRouteRecordRaw[],
 	roles: string[]
 ) {
-	// 根据角色标识过滤路由表，判断当前用户是否拥有指定权限
+	// Filter route table based on role identifiers, determine if the current user has the specified permissions
 	const finalRoutes = filterTree(routes, (route) => {
 		return hasAuthority(route, roles);
 	});
@@ -18,7 +18,7 @@ export function generateRoutesByFrontend(
 }
 
 /**
- * 判断路由是否有权限访问
+ * Determine if a route has permission to access
  * @param route
  * @param accesses
  */

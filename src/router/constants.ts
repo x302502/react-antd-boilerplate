@@ -1,2 +1,2 @@
-// 根路由 id
+// Root route id
 export const ROOT_ROUTE_ID = "root-route";

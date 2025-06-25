@@ -10,7 +10,7 @@ const ExceptionUnknownComponent = lazy(
 );
 
 /**
- * @zh 异步获取页面组件
+ * @zh Asynchronously get page components
  * @en Async load page components
  */
 const pageModules = import.meta.glob([
@@ -20,7 +20,7 @@ const pageModules = import.meta.glob([
 ]);
 
 /**
- * @zh 根据后端路由配置生成前端路由
+ * @zh Generate frontend routes based on backend route configuration
  * @en Generate frontend routes based on backend route configurations
  */
 export async function generateRoutesFromBackend(
@@ -32,10 +32,10 @@ export async function generateRoutesFromBackend(
 	}
 
 	/**
-	 * @zh 动态加载并设置路由组件
+	 * @zh Dynamically load and set route components
 	 * @en Dynamically load and set route components
-	 * @param route 路由配置对象
-	 * @param componentPath 组件文件路径
+	 * @param route Route configuration object
+	 * @param componentPath Component file path
 	 */
 	const loadRouteComponent = async (
 		route: AppRouteRecordRaw,
@@ -56,10 +56,10 @@ export async function generateRoutesFromBackend(
 	};
 
 	/**
-	 * 转换路由配置
-	 * @param route 原始路由配置
-	 * @param parentPath 父级路径（用于嵌套路由）
-	 * @returns 转换后的路由配置
+	 * Convert route configuration
+	 * @param route Original route configuration
+	 * @param parentPath Parent path (for nested routes)
+	 * @returns Converted route configuration
 	 */
 	const transformRoute = async (
 		route: AppRouteRecordRaw,
@@ -73,28 +73,28 @@ export async function generateRoutesFromBackend(
 			}
 		};
 
-		// 处理 index 路由（继承父级路径）
+		// Handle index routes (inherit parent path)
 		if (transformedRoute.index === true && parentPath) {
 			await loadRouteComponent(transformedRoute, parentPath);
 		}
-		// 处理 iframe 路由
+		// Handle iframe routes
 		else if (transformedRoute.handle?.iframeLink) {
 			transformedRoute.Component = Iframe;
 		}
-		// 处理外部链接路由
+		// Handle external link routes
 		else if (transformedRoute.handle?.externalLink) {
-			// 外部链接不需要组件
+			// External links don't need components
 		}
-		// 处理有子路由的情况
+		// Handle cases with child routes
 		else if (transformedRoute.children?.length) {
 			transformedRoute.Component = parentPath ? Outlet : ContainerLayout;
 		}
-		// 处理普通路由
+		// Handle normal routes
 		else {
 			await loadRouteComponent(transformedRoute, transformedRoute.path!);
 		}
 
-		// 递归处理子路由
+		// Recursively process child routes
 		if (transformedRoute.children?.length) {
 			transformedRoute.children = await Promise.all(
 				transformedRoute.children.map((child) =>
@@ -107,7 +107,7 @@ export async function generateRoutesFromBackend(
 	};
 
 	/**
-	 * 标准化路由配置，确保每个路由都有子路由
+	 * Standardize route configuration, ensure each route has child routes
 	 */
 	const normalizeRouteStructure = (
 		route: AppRouteRecordRaw
@@ -126,7 +126,7 @@ export async function generateRoutesFromBackend(
 		return route;
 	};
 
-	// 处理路由配置
+	// Process route configuration
 	const normalizedRoutes = backendRoutes.map(normalizeRouteStructure);
 	const transformedRoutes = await Promise.all(
 		normalizedRoutes.map((route) => transformRoute(route))

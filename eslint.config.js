@@ -20,6 +20,7 @@ export default antfu({
 		"style/brace-style": "off",
 		"style/jsx-curly-newline": "off",
 		"antfu/consistent-list-newline": "off",
+		"antfu/if-newline": "off",
 		"style/indent": "off",
 		"style/member-delimiter-style": "off",
 		"perfectionist/sort-imports": "off",

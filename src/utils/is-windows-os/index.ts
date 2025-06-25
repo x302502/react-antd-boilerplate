@@ -1,7 +1,7 @@
 /**
- * 检查当前运行环境是否为 Windows OS。
+ * Check if the current operating environment is Windows OS.
  *
- * 通过检查 navigator.userAgent 字符串来判断当前运行环境。
+ * Determines the current operating environment by checking the navigator.userAgent string.
  */
 export function isWindowsOs() {
 	const windowsRegex = /windows|win32/i;

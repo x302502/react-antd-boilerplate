@@ -7,14 +7,14 @@ export default function Dept() {
 
 	return (
 		<BasicContent>
-			<h1>计数器</h1>
+			<h1>Counter</h1>
 			<p>
-				当前计数:
+				Current count:
 				{count}
 			</p>
 			<div className="flex gap-5">
-				<button onClick={() => setCount(count + 1)}>增加</button>
-				<button onClick={() => setCount(count - 1)}>减少</button>
+				<button onClick={() => setCount(count + 1)}>Increase</button>
+				<button onClick={() => setCount(count - 1)}>Decrease</button>
 			</div>
 		</BasicContent>
 	);

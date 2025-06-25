@@ -59,7 +59,7 @@ return;
 
 			const tableWrapperRect = tableWrapperRef.current.getBoundingClientRect();
 
-			// 如果表格超出屏幕高度，不进行高度自适应
+			// If the table exceeds the screen height, do not perform height adaptation
 			if (tableWrapperRect.top > window.innerHeight) {
 				setScrollY(undefined);
 				return;
@@ -70,9 +70,9 @@ return;
 			if (!tableBody)
 return;
 
-			// 获取元素的边界框
+			// Get the element's bounding box
 			const tableBodyRect = tableBody.getBoundingClientRect();
-			// 表格表头的高度
+			// Height of the table header
 			const tableHeaderHeight = tableBodyRect.top - tableWrapperRect.top;
 			/**
 			 * 表格分页的高度
@@ -143,7 +143,7 @@ return;
 				}}
 				rootClassName={cn(BASIC_TABLE_ROOT_CLASS_NAME, props.rootClassName)}
 				className={cn(classes.basicTable, props.className)}
-				// 设置 y 为 0，保证 tableBodyRect.height 小于 bodyHeight
+				// Set y to 0 to ensure tableBodyRect.height is less than bodyHeight
 				scroll={{ y: scrollY, ...props.scroll }}
 				loading={getLoadingProps()}
 				pagination={getPaginationProps()}

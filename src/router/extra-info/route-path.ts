@@ -1,6 +1,6 @@
 /**
- * 如果在其他地方用到了路由跳转，将路由的 path 抽离出来，在此方便维护
- * 防止修改 path 时忘记修改其他地方的 path
+ * If route navigation is used in other places, extract the route path here for easier maintenance
+ * This prevents forgetting to modify paths in other places when changing a path
  */
 
 export const loginPath = "/login";

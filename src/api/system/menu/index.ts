@@ -3,7 +3,7 @@ import { request } from "~/utils";
 
 export * from "./types";
 
-/* 获取菜单列表 */
+/* Get menu list */
 export function fetchMenuList(data: any) {
 	return request
 		.get<
@@ -12,21 +12,21 @@ export function fetchMenuList(data: any) {
 		.json();
 }
 
-/* 新增菜单 */
+/* Add menu */
 export function fetchAddMenuItem(data: MenuItemType) {
 	return request
 		.post<ApiResponse<string>>("menu-item", { json: data, ignoreLoading: true })
 		.json();
 }
 
-/* 修改菜单 */
+/* Update menu */
 export function fetchUpdateMenuItem(data: MenuItemType) {
 	return request
 		.put<ApiResponse<string>>("menu-item", { json: data, ignoreLoading: true })
 		.json();
 }
 
-/* 删除菜单 */
+/* Delete menu */
 export function fetchDeleteMenuItem(id: number) {
 	return request
 		.delete<ApiResponse<string>>("menu-item", { json: id, ignoreLoading: true })

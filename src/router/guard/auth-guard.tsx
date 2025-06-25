@@ -32,8 +32,7 @@ import {
 import { removeDuplicateRoutes } from "./utils";
 
 /**
- * @zh 路由白名单 1. 不进行权限校验， 2. 不会触发请求，例如用户信息接口
- * @en Routes whitelist 1. No permission verification, 2. Will not trigger requests, such as user information interface
+ * Routes whitelist 1. No permission verification, 2. Will not trigger requests, such as user information interface
  * @example "privacy-policy", "terms-of-service" and so on.
  */
 const noLoginWhiteList = Array.from(whiteRouteNames).filter(
@@ -45,8 +44,7 @@ interface AuthGuardProps {
 }
 
 /**
- * @zh AuthGuard 组件，用于权限验证，代码的顺序很重要，不要随意调整
- * @en AuthGuard component, used for permission verification. The order of the code is important and should not be arbitrarily adjusted
+ * AuthGuard component, used for permission verification. The order of the code is important and should not be arbitrarily adjusted
  */
 export function AuthGuard({ children }: AuthGuardProps) {
 	const navigate = useNavigate();
@@ -65,32 +63,27 @@ export function AuthGuard({ children }: AuthGuardProps) {
 	const isPathInNoLoginWhiteList = noLoginWhiteList.includes(pathname);
 
 	/**
-	 * @zh 异步获取用户信息和路由配置
-	 * @en Fetch user information and route configuration asynchronously
+	 * Fetch user information and route configuration asynchronously
 	 */
 	useEffect(() => {
 		async function fetchUserInfoAndRoutes() {
 			/**
-			 * @zh 登录跳转，防止闪烁
-			 * @en Login redirect, prevent flicker
+			 * Login redirect, prevent flicker
 			 */
 			setupLoading();
 
 			/**
-			 * @zh 初始化一个空数组来存放 Promise 对象
-			 * @en Initialize an empty array to hold Promise objects
+			 * Initialize an empty array to hold Promise objects
 			 */
 			const promises = [];
 
 			/**
-			 * @zh 获取用户信息
-			 * @en Fetch user information
+			 * Fetch user information
 			 */
 			promises.push(getUserInfo());
 
 			/**
-			 * @zh 启用了后端路由，且路由从单独接口中获取，则发起请求
-			 * @en If backend routing is enabled and the route is obtained from a separate interface, then initiate a request
+			 * If backend routing is enabled and the route is obtained from a separate interface, then initiate a request
 			 */
 			if (enableBackendAccess && isSendRoutingRequest) {
 				promises.push(fetchAsyncRoutes());
@@ -101,7 +94,7 @@ export function AuthGuard({ children }: AuthGuardProps) {
 			const routes = [];
 			const latestRoles = [];
 			/**
-			 * @zh 从用户接口中获取角色信息
+			 * @zh Fetch role information from the user interface
 			 * @en Fetch role information from the user interface
 			 */
 			if (
@@ -111,8 +104,7 @@ export function AuthGuard({ children }: AuthGuardProps) {
 				latestRoles.push(...(userInfoResult.value?.roles ?? []));
 			}
 			/**
-			 * @zh 启用了后端路由且路由从用户接口中获取
-			 * @en If backend routing is enabled and the route is obtained from the user interface
+			 * If backend routing is enabled and the route is obtained from the user interface
 			 */
 			if (
 				enableBackendAccess &&
@@ -127,8 +119,7 @@ export function AuthGuard({ children }: AuthGuardProps) {
 				);
 			}
 			/**
-			 * @zh 启用了后端路由且路由从单独接口中获取
-			 * @en If backend routing is enabled and the route is obtained from a separate interface
+			 * If backend routing is enabled and the route is obtained from a separate interface
 			 */
 			if (
 				enableBackendAccess &&
@@ -142,8 +133,7 @@ export function AuthGuard({ children }: AuthGuardProps) {
 			}
 
 			/**
-			 * @zh 启用了前端路由
-			 * @en If frontend routing is enabled
+			 * If frontend routing is enabled
 			 */
 			if (enableFrontendAceess) {
 				routes.push(...generateRoutesByFrontend(accessRoutes, latestRoles));
@@ -154,8 +144,7 @@ export function AuthGuard({ children }: AuthGuardProps) {
 
 			const hasError = results.some((result) => result.status === "rejected");
 			/**
-			 * @zh 网络请求失败，跳转到 500 页面
-			 * @en Network request failed, redirect to 500 page
+			 * Network request failed, redirect to 500 page
 			 */
 			if (hasError) {
 				const unAuthorized = results.some(
@@ -168,34 +157,24 @@ export function AuthGuard({ children }: AuthGuardProps) {
 
 			/**
 			 *
-			 * @zh 开启动态路由条件下需要替换当前路由？
-			 * 1. 浏览器导航进入动态路由地址，例如 /system/user
-			 * 2. 动态路由未添加到路由，所以地址栏中依然是 /system/user 但匹配到的路由是 fallback (path = "*") 路由
-			 * 3. 添加完动态路由后，使用 replace 替换当前路由，触发程序重新匹配到 /system/user 路由
-			 *
-			 * Refer：https://router.vuejs.org/guide/advanced/dynamic-routing#Adding-routes
-			 *
-			 * @en Under the condition of dynamic routing, do you need to replace the current route?
+			 * Under the condition of dynamic routing, do you need to replace the current route?
 			 * 1. Browser navigation into a dynamic routing address, such as /system/user
 			 * 2. The dynamic route is not added to the route, so the address bar is still /system/user but the matched route is the fallback (path = "*") route
 			 * 3. After adding the dynamic route, use replace to replace the current route and trigger the program to match /system/user again
+			 *
+			 * Refer: https://router.vuejs.org/guide/advanced/dynamic-routing#Adding-routes
+			 *
 			 */
 			navigate(`${pathname}${search}`, {
 				replace: true,
 				/**
-				 * @zh 保证替换路由前不会显示 404 页面（登录页面，网速切换为 3G 会闪烁显示 404 页面）
-				 * @en Ensure that the 404 page will not be displayed before replacing the route
+				 * Ensure that the 404 page will not be displayed before replacing the route (login page, when switching network speed to 3G, the 404 page will flash)
 				 */
 				flushSync: true
 			});
 		}
 		/**
-		 * @zh 只有在以下条件下才执行获取用户信息和路由的逻辑
-		 * 1. 非路由白名单
-		 * 2. 已登录
-		 * 3. 未获取到用户信息和路由信息
-		 *
-		 * @en The logic of obtaining user information and routes is only executed under the following conditions
+		 * The logic of obtaining user information and routes is only executed under the following conditions
 		 * 1. Not in the route whitelist
 		 * 2. Logged in
 		 * 3. Unable to obtain user information and route information
@@ -207,7 +186,7 @@ export function AuthGuard({ children }: AuthGuardProps) {
 	}, [pathname, isLogin, isAuthorized]);
 
 	/**
-	 * @zh 路由白名单
+	 * @zh Route whitelist
 	 * @en Route whitelist
 	 * @see {noLoginWhiteList}
 	 */
@@ -217,22 +196,22 @@ export function AuthGuard({ children }: AuthGuardProps) {
 	}
 
 	/**
-	 * @zh 未登录条件下的处理逻辑
+	 * @zh Processing logic under unlogged conditions
 	 * @en Processing logic under unlogged conditions
 	 */
 	/* --------------- Start ------------------ */
 	if (!isLogin) {
 		hideLoading();
-		// 未登录且目标页不是登录页，则跳转到登录页
+		// Not logged in and the target page is not the login page, redirect to the login page
 		if (pathname !== loginPath) {
-			// pathname 长度大于 1，则携带当前路径跳转登录页，否则直接跳转登录页
+			// If pathname length is greater than 1, redirect to login page with current path, otherwise redirect directly to login page
 			const redirectPath =
 				pathname.length > 1
 					? `${loginPath}?redirect=${pathname}${search}`
 					: loginPath;
 			return <Navigate to={redirectPath} replace />;
 		}
-		// 未登录且目标页是登录页，保留登录页
+		// Not logged in and the target page is the login page, keep the login page
 		else {
 			return children;
 		}
@@ -240,14 +219,14 @@ export function AuthGuard({ children }: AuthGuardProps) {
 	/* --------------- End ------------------ */
 
 	/**
-	 * @zh 登录条件下的处理逻辑
+	 * @zh Processing logic under logged conditions
 	 * @en Processing logic under logged conditions
 	 */
 	/* --------------- Start ------------------ */
 
 	/**
-	 * @zh 已登录条件下，匹配 login 路由，跳转到首页
-	 * 放到用户信息前，因为 login 路由不会请求用户信息，所以放在前面判断
+	 * @zh Under logged conditions, match the login route and jump to the home page
+	 * Put it before user information, because the login route will not request user information, so put it in front to judge
 	 *
 	 * @en Under logged conditions, match the login route and jump to the home page
 	 * Put it before user information, because the login route will not request user information, so put it in front to judge
@@ -264,14 +243,14 @@ export function AuthGuard({ children }: AuthGuardProps) {
 	}
 
 	/**
-	 * @zh 等待获取用户信息
+	 * @zh Waiting for user information to be obtained
 	 * @en  Waiting for user information to be obtained
 	 */
 	if (!isAuthorized) {
 		return null;
 	}
 	/**
-	 * @zh 等待获取路由信息
+	 * @zh Waiting for route information to be obtained
 	 * @en Waiting for route information to be obtained
 	 */
 	if (!isAccessChecked) {
@@ -279,15 +258,15 @@ export function AuthGuard({ children }: AuthGuardProps) {
 	}
 
 	/**
-	 * @zh 隐藏加载动画
+	 * @zh Hide loading animation
 	 * @en Hide loading animation
 	 */
 	hideLoading();
 
 	/**
-	 * @zh 如果是根路由则跳转到首页（获取完用户信息之后跳转到默认首页，防止请求两次用户信息接口）
+	 * @zh If it's the root route, redirect to the home page (redirect to the default home page after getting user information, to prevent requesting the user information interface twice)
 	 * @en If it is the root route, jump to the home page (jump to the default home page after obtaining user information to prevent requesting twice for user information interface)
-	 * @zh pathname 返回的是相对 import.meta.env.BASE_URL 的路径，所以这里是相对于 BASE_URL 的根路由 "/"
+	 * @zh pathname returns a path relative to import.meta.env.BASE_URL, so this is the root route "/" relative to BASE_URL
 	 * @en pathname returns the path relative to import.meta.env.BASE_URL, so here is the root route "/" relative to BASE_URL
 	 */
 	if (pathname === "/") {
@@ -297,14 +276,14 @@ export function AuthGuard({ children }: AuthGuardProps) {
 	/* --------------- End ------------------ */
 
 	/**
-	 * @zh 路由权限校验逻辑
+	 * @zh Route permission verification logic
 	 * @en Route permission verification logic
 	 */
 	const routeRoles = currentRoute?.handle?.roles;
 	const ignoreAccess = currentRoute?.handle?.ignoreAccess;
 
 	/**
-	 * @zh 忽略权限校验
+	 * @zh Ignore permission verification
 	 * @en Ignore permission verification
 	 */
 	if (ignoreAccess === true) {
@@ -316,7 +295,7 @@ export function AuthGuard({ children }: AuthGuardProps) {
 			routeList,
 			pathname
 			/**
-			 * @zh pathname 返回的是相对 import.meta.env.BASE_URL 的路径，所以不需要指定第三个参数 basename 了
+			 * @zh pathname returns a path relative to import.meta.env.BASE_URL, so there's no need to specify the third parameter basename
 			 * @en pathname returns the path relative to import.meta.env.BASE_URL, so there is no need to specify the third parameter basename
 			 */
 		) ?? [];
@@ -325,26 +304,20 @@ export function AuthGuard({ children }: AuthGuardProps) {
 		(item) => !item.index
 	)?.length;
 	/**
-	 * @zh 如果当前路由有子路由，则跳转到 404 页面
-	 * @en If the current route has sub-routes, jump to the 404 page
+	 * If the current route has sub-routes, jump to the 404 page
 	 */
 	if (hasChildren && hasChildren > 0) {
 		return <Navigate to={exception404Path} replace />;
 	}
 
 	/**
-	 * @zh 角色权限校验
-	 * @en Role permission verification
+	 * Role permission verification
 	 */
 	const hasRoutePermission = userRoles.some((role) =>
 		routeRoles?.includes(role)
 	);
 	/**
-	 * @zh 权限校验逻辑：
-	 * 1. 如果路由上没有携带 roles，视为无权限路由，等同于 ignoreAccess 为 true
-	 * 2. 未通过权限校验的路由，取消当前路由导航，并转到 403 页面
-	 *
-	 * @en Role permission verification logic:
+	 * Role permission verification logic:
 	 * 1. If there is no role on the route, it is considered as a permissionless route, equivalent to ignoreAccess being true
 	 * 2. For routes that do not pass permission verification, cancel the current route navigation and jump to the 403 page
 	 */
@@ -355,14 +328,14 @@ export function AuthGuard({ children }: AuthGuardProps) {
 	return children;
 }
 /**
- * 验证路由跳转是否正确的步骤：
- * 1. 未登录情况下，输入 login 路由
- * 2. 未登录情况下，输入非 login 路由
- * 3. 已登录情况下，使用系统的退出登录，然后再次登录
- * 4. 任选一个非 home 页面，使用开发者工具清除 localStorage，刷新页面之后进行登录
- * 5. 已登录情况下，输入 login 路由
- * 6. 已登录情况下，输入非 login 路由
- * 7. 已登录情况下，输入 http://localhost:3333 跳转到 /home 路由，用户接口发送一次
- * 8. 已登录情况下，输入 http://localhost:3333/ 跳转到 /home 路由，用户接口发送一次
- * 9. 已登录情况下，输入 http://localhost:3333/home 跳转到 /home 路由，用户接口发送一次
+ * Steps to verify if route navigation is correct:
+ * 1. When not logged in, enter login route
+ * 2. When not logged in, enter a non-login route
+ * 3. When logged in, use the system's logout function, then login again
+ * 4. Choose any non-home page, use developer tools to clear localStorage, refresh the page and then login
+ * 5. When logged in, enter login route
+ * 6. When logged in, enter a non-login route
+ * 7. When logged in, enter http://localhost:3333 to redirect to /home route, user API is sent once
+ * 8. When logged in, enter http://localhost:3333/ to redirect to /home route, user API is sent once
+ * 9. When logged in, enter http://localhost:3333/home to redirect to /home route, user API is sent once
  */

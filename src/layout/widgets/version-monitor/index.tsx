@@ -9,7 +9,7 @@ interface AppVersionMonitorProps {
 	 * @default 1
 	 */
 	checkUpdatesInterval?: number;
-	// 检查更新的地址
+	// URL for checking updates
 	checkUpdateUrl?: string;
 }
 
@@ -112,7 +112,7 @@ export function AppVersionMonitor({
 			return;
 		}
 
-		// 首次运行时，获取当前版本号（防止 Nginx 缓存了 index.html）
+		// When running for the first time, get the current version number (to prevent Nginx from caching index.html)
 		if (!lastVersionTag.current) {
 			const currentVersionTag = await getVersionTag(true);
 			if (!currentVersionTag) {

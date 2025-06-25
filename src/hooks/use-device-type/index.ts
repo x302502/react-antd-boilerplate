@@ -5,7 +5,7 @@ import { useResponsive } from "ahooks";
  *
  */
 export function useDeviceType() {
-	// 如果使用 useBreakpoint，注意 useResponsive 和 antd 的 useBreakpoint xs 的表现行为不一致
+	// If using useBreakpoint, note that the behavior of useResponsive and antd's useBreakpoint xs is inconsistent
 	/**
 	 * useResponsive 默认的断点为：
 	 * @see https://ahooks.js.org/hooks/use-responsive

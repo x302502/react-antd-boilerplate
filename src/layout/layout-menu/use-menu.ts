@@ -25,13 +25,13 @@ export function useMenu() {
 
 	const { pathname } = useCurrentRoute();
 	/**
-	 * 混合菜单模式下需要拆分 menu 的 items
+	 * In mixed menu mode, menu items need to be split
 	 */
 	const shouldSplitMenuItems = useMemo(
 		() => isMixedNav || isTwoColumnNav,
 		[isMixedNav, isTwoColumnNav]
 	);
-	/* 混合菜单模式下需要拆分 menu 的 items */
+	/* In mixed menu mode, menu items need to be split */
 	const splitSideNavItems = useMemo(() => {
 		const foundMenu = translatedMenus.find((item) => item?.key === rootMenuKey);
 		if (!foundMenu) {
@@ -41,7 +41,7 @@ export function useMenu() {
 	}, [rootMenuKey, translatedMenus]);
 
 	/**
-	 * 头部菜单
+	 * Top navigation menu
 	 */
 	const topNavItems = useMemo(() => {
 		if (!shouldSplitMenuItems) {

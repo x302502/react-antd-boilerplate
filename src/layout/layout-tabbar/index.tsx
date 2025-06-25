@@ -190,7 +190,7 @@ export default function LayoutTabbar() {
 	 * 用户刷新当前页面，但不是默认 Tab 页面时，需要添加默认 Tab
 	 */
 	useEffect(() => {
-		// 检查默认 Tab 是否缺失
+		// Check if the default Tab is missing
 		const isDefaultTabMissing = !Array.from(openTabs.keys()).includes(
 			import.meta.env.VITE_BASE_HOME_PATH
 		);
@@ -223,7 +223,7 @@ export default function LayoutTabbar() {
 
 			addTab(normalizedPath, {
 				key: normalizedPath,
-				// 保证 label 为 string 类型，存储到 sessionStorage。
+				// Ensure label is a string type for storage in sessionStorage.
 				label: isValidElement(routeTitle)
 					? routeTitle?.props?.children
 					: routeTitle,

@@ -7,7 +7,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 /**
- * 默认偏好设置
+ * Default preferences
  */
 export const DEFAULT_PREFERENCES = {
 	/* ================== General ================== */
@@ -69,22 +69,22 @@ export const DEFAULT_PREFERENCES = {
 } satisfies PreferencesState;
 
 /**
- * 偏好设置操作接口
+ * Preferences operation interface
  */
 interface PreferencesAction {
 	reset: () => void;
 	changeSiteTheme: (theme: ThemeType) => void;
 	changeLanguage: (language: LanguageType) => void;
 	setPreferences: {
-		// 单个 key-value 更新
+		// Single key-value update
 		<T>(key: string, value: T): void;
-		// 对象形式批量更新
+		// Batch update in object form
 		<T extends Partial<PreferencesState>>(preferences: T): void;
 	};
 }
 
 /**
- * 偏好设置状态管理
+ * Preferences state management
  */
 export const usePreferencesStore = create<
 	PreferencesState & PreferencesAction
@@ -94,7 +94,7 @@ export const usePreferencesStore = create<
 			...DEFAULT_PREFERENCES,
 
 			/**
-			 * 更新偏好设置
+			 * Update preferences
 			 */
 			setPreferences: (...args: any[]) => {
 				if (args.length === 1) {
@@ -111,7 +111,7 @@ export const usePreferencesStore = create<
 			},
 
 			/**
-			 * 更新主题
+			 * Update theme
 			 */
 			changeSiteTheme: (theme) => {
 				set(() => {
@@ -120,7 +120,7 @@ export const usePreferencesStore = create<
 			},
 
 			/**
-			 * 更新语言
+			 * Update language
 			 */
 			changeLanguage: (language) => {
 				set(() => {
@@ -129,7 +129,7 @@ export const usePreferencesStore = create<
 			},
 
 			/**
-			 * 重置状态
+			 * Reset state
 			 */
 			reset: () => {
 				set(() => {

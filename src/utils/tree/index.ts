@@ -60,7 +60,7 @@ export function handleTree(
 }
 
 export interface TreeConfigOptions {
-	// 子属性的名称，默认为'children'
+	// Name of the child property, defaults to 'children'
 	childProps: string;
 }
 

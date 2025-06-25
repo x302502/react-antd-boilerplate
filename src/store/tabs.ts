@@ -4,18 +4,18 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 /**
- * 标签页项目属性接口
+ * Tab item properties interface
  */
 export interface TabItemProps extends Omit<TabPaneProps, "tab"> {
 	key: string;
 	label: React.ReactNode;
 	/**
-	 * 是否可拖拽
+	 * Whether it can be dragged
 	 */
 	draggable?: boolean;
 	/**
-	 * 可选的历史状态值，如 search 和 hash，可存储于此
-	 * 在目标路由中可通过 useLocation 钩子访问该状态
+	 * Optional history state values, such as search and hash, can be stored here
+	 * This state can be accessed in the target route through the useLocation hook
 	 * @see {@link https://reactrouter.com/en/main/hooks/use-navigate#optionsstate | usenavigate - options state}
 	 */
 	historyState?: Record<string, any>;
@@ -26,23 +26,23 @@ export interface TabStateType extends Omit<TabItemProps, "label"> {
 }
 
 /**
- * 初始状态
+ * Initial state
  */
 const initialState = {
-	// 打开的标签页
+	// Open tabs
 	openTabs: new Map<string, TabStateType>([]),
-	// 当前激活的标签页
+	// Current active tab
 	activeKey: "",
-	// 标签页是否处于刷新状态
+	// Whether the tab is in refresh state
 	isRefresh: false,
-	// 是否处于最大化
+	// Whether it is maximized
 	isMaximize: false
 };
 
 type TabsState = typeof initialState;
 
 /**
- * 标签页操作接口
+ * Tab operation interface
  */
 interface TabsAction {
 	setIsRefresh: (state: boolean) => void;
@@ -60,7 +60,7 @@ interface TabsAction {
 }
 
 /**
- * 标签页状态管理
+ * Tab state management
  */
 export const useTabsStore = create<TabsState & TabsAction>()(
 	persist(
@@ -68,7 +68,7 @@ export const useTabsStore = create<TabsState & TabsAction>()(
 			...initialState,
 
 			/**
-			 * 设置标签页是否处于刷新状态
+			 * Set whether the tab is in refresh state
 			 */
 			setIsRefresh: (state: boolean) => {
 				set({ isRefresh: state });
@@ -82,7 +82,7 @@ export const useTabsStore = create<TabsState & TabsAction>()(
 			},
 
 			/**
-			 * 在最前面插入标签页
+			 * Insert tab at the front
 			 */
 			insertBeforeTab: (routePath: string, tabProps: TabStateType) => {
 				set((state) => {
@@ -98,15 +98,15 @@ export const useTabsStore = create<TabsState & TabsAction>()(
 			},
 
 			/**
-			 * 添加标签页
+			 * Add tab
 			 */
 			addTab: (routePath: string, tabProps: TabStateType) => {
 				set((state) => {
 					if (routePath.length) {
 						const newTabs = new Map(state.openTabs);
 						/**
-						 * 1. 如果 tab 已经存在，则更新 historyState 属性，所以不去重，且 ...newTabs.get(routePath) 是为了保证首页的 closable 属性不被覆盖
-						 * 2. 如果 tab 不存在，则添加到 Map 中
+						 * 1. If the tab already exists, update the historyState property, so don't deduplicate, and ...newTabs.get(routePath) is to ensure that the closable property of the home page is not overwritten
+						 * 2. If the tab does not exist, add it to the Map
 						 */
 						newTabs.set(routePath, { ...newTabs.get(routePath), ...tabProps });
 						return { openTabs: newTabs };
@@ -116,13 +116,13 @@ export const useTabsStore = create<TabsState & TabsAction>()(
 			},
 
 			/**
-			 * 移除标签页
+			 * Remove tab
 			 */
 			removeTab: (routePath: string) => {
 				set((state) => {
 					const homePath = import.meta.env.VITE_BASE_HOME_PATH;
 
-					// 如果是首页，不允许关闭
+					// If it's the home page, don't allow closing
 					if (routePath === homePath) {
 						return state;
 					}
@@ -131,13 +131,13 @@ export const useTabsStore = create<TabsState & TabsAction>()(
 					newTabs.delete(routePath);
 					let newActiveKey = state.activeKey;
 
-					// 移除当前激活的标签页，则选择最后一个标签页
+					// If removing the currently active tab, select the last tab
 					if (routePath === state.activeKey) {
 						const tabsArray = Array.from(newTabs.keys());
 						newActiveKey = tabsArray.at(-1) || homePath;
 					}
 
-					// 确保至少保留首页标签
+					// Ensure at least the home page tab is retained
 					if (newTabs.size === 0) {
 						newTabs.set(homePath, state.openTabs.get(homePath)!);
 						newActiveKey = homePath;
@@ -148,7 +148,7 @@ export const useTabsStore = create<TabsState & TabsAction>()(
 			},
 
 			/**
-			 * 关闭右侧标签页
+			 * Close tabs to the right
 			 */
 			closeRightTabs: (routePath: string) => {
 				set((state) => {
@@ -159,23 +159,23 @@ export const useTabsStore = create<TabsState & TabsAction>()(
 
 					// 遍历当前所有标签页
 					for (const [key, value] of state.openTabs) {
-						// 如果已找到指定路径，停止遍历
+						// If the specified path is found, stop iterating
 						if (found) {
 							break;
 						}
-						// 将当前标签页添加到新的Map中
+						// Add the current tab to the new Map
 						newTabs.set(key, value);
-						// 如果当前key等于指定路径，标记为已找到
+						// If the current key equals the specified path, mark as found
 						if (key === routePath) {
 							found = true;
 						}
-						// 如果当前key等于当前激活的标签页，标记activeKey已找到
+						// If the current key equals the currently active tab, mark activeKey as found
 						if (key === state.activeKey) {
 							activeKeyFound = true;
 						}
 					}
 
-					// 如果当前激活的标签页被关闭，将新的激活标签页设置为指定路径
+					// If the currently active tab is closed, set the new active tab to the specified path
 					if (!activeKeyFound) {
 						newActiveKey = routePath;
 					}
@@ -186,7 +186,7 @@ export const useTabsStore = create<TabsState & TabsAction>()(
 			},
 
 			/**
-			 * 关闭左侧标签页
+			 * Close tabs to the left
 			 */
 			closeLeftTabs: (routePath: string) => {
 				set((state) => {
@@ -196,13 +196,12 @@ export const useTabsStore = create<TabsState & TabsAction>()(
 					let newActiveKey = state.activeKey;
 					let activeKeyOnRight = false;
 
-					// 首先添加首页标签，因为它不能被删除
+					// First add the home page tab, because it cannot be deleted
 					newTabs.set(homePath, state.openTabs.get(homePath)!);
 
 					// 遍历当前所有标签页
 					for (const [key, value] of state.openTabs) {
-						if (key === homePath)
-continue; // 跳过首页，因为已经添加过了
+						if (key === homePath) continue; // Skip the home page, because it has already been added
 
 						if (found || key === routePath) {
 							newTabs.set(key, value);
@@ -214,7 +213,7 @@ continue; // 跳过首页，因为已经添加过了
 						}
 					}
 
-					// 如果当前激活的标签页在左侧被关闭，将新的激活标签页设置为指定路径
+					// If the currently active tab is closed on the left, set the new active tab to the specified path
 					if (!activeKeyOnRight) {
 						newActiveKey = routePath;
 					}
@@ -225,22 +224,22 @@ continue; // 跳过首页，因为已经添加过了
 			},
 
 			/**
-			 * 关闭其他标签页
+			 * Close other tabs
 			 */
 			closeOtherTabs: (routePath: string) => {
 				set((state) => {
 					const newTabs = new Map();
 					const homePath = import.meta.env.VITE_BASE_HOME_PATH;
 
-					// 保留首页标签
+					// Keep the home page tab
 					newTabs.set(homePath, state.openTabs.get(homePath)!);
 
-					// 保留指定的标签页
+					// Keep the specified tab
 					if (routePath !== homePath && state.openTabs.has(routePath)) {
 						newTabs.set(routePath, state.openTabs.get(routePath)!);
 					}
 
-					// 更新激活的标签页
+					// Update the active tab
 					let newActiveKey = state.activeKey;
 					if (!newTabs.has(state.activeKey)) {
 						newActiveKey = routePath;
@@ -251,7 +250,7 @@ continue; // 跳过首页，因为已经添加过了
 			},
 
 			/**
-			 * 关闭所有标签页
+			 * Close all tabs
 			 */
 			closeAllTabs: () => {
 				set((state) => {
@@ -263,30 +262,30 @@ continue; // 跳过首页，因为已经添加过了
 			},
 
 			/**
-			 * 更改标签页顺序
+			 * Change tab order
 			 */
 			changeTabOrder: (from: number, to: number) => {
 				set((state) => {
-					// 也可以使用 import { arrayMove } from "@dnd-kit/sortable"; 来交换位置
+					// You can also use import { arrayMove } from "@dnd-kit/sortable"; to swap positions
 					const newTabs = Array.from(state.openTabs.entries());
-					const [movedTab] = newTabs.splice(from, 1); // 直接解构获取移动的标签
-					newTabs.splice(to, 0, movedTab); // 插入到新位置
+					const [movedTab] = newTabs.splice(from, 1); // Directly destructure to get the moved tab
+					newTabs.splice(to, 0, movedTab); // Insert at the new position
 
-					const newOpenTabs = new Map(newTabs); // 直接使用 Map 构造函数
+					const newOpenTabs = new Map(newTabs); // Directly use the Map constructor
 					return { openTabs: newOpenTabs };
 				});
 			},
 
 			/**
-			 * 切换标签页最大化状态
-			 * @param {boolean} state - 最大化状态
+			 * Toggle tab maximize state
+			 * @param {boolean} state - Maximize state
 			 */
 			toggleMaximize: (state: boolean) => {
 				set({ isMaximize: state });
 			},
 
 			/**
-			 * 重置标签页状态
+			 * Reset tab state
 			 */
 			resetTabs: () => {
 				set(() => {
@@ -297,11 +296,11 @@ continue; // 跳过首页，因为已经添加过了
 		{
 			name: "tabbar",
 			/**
-			 * activeKey 不需要持久化存储
+			 * activeKey does not need persistent storage
 			 *
-			 * 假如页面路由为 /home
-			 * 手动在地址栏输入 /about
-			 * activeKey 仍为 /home 导致 src/layout/layout-tabbar/index.tsx 的自动导航功能失效
+			 * For example, if the page route is /home
+			 * Manually enter /about in the address bar
+			 * activeKey is still /home, causing the automatic navigation function of src/layout/layout-tabbar/index.tsx to fail
 			 * @see https://github.com/condorheroblog/react-antd-admin/issues/1
 			 */
 			partialize: (state) => {
@@ -310,17 +309,16 @@ continue; // 跳过首页，因为已经添加过了
 				);
 			},
 			/**
-			 * openTabs 是一个 Map，持久化存储需要手动管理
+			 * openTabs is a Map, persistent storage needs to be managed manually
 			 * How do I use it with Map and Set
 			 * @see https://github.com/pmndrs/zustand/blob/v5.0.1/docs/integrations/persisting-store-data.md#how-do-i-use-it-with-map-and-set
 			 */
 			storage: {
 				getItem: (name) => {
 					const str = sessionStorage.getItem(name);
-					// 是否开启持久化存储，如果未开启则在页面初次进入时返回 null 即可
+					// Whether to enable persistent storage, if not enabled, return null when the page is first entered
 					const isPersist = usePreferencesStore.getState().tabbarPersist;
-					if (!str || !isPersist)
-return null;
+					if (!str || !isPersist) return null;
 					const existingValue = JSON.parse(str);
 					return {
 						...existingValue,

@@ -11,10 +11,10 @@ import {
  * @see https://tailwindcss.com/docs/customizing-colors#using-css-variables
  */
 export function hexToRGB(hex: string) {
-	// 移除可能存在的 # 号
+	// Remove the possible # symbol
 	hex = hex.replace("#", "");
 
-	// 获取 R、G、B 的值
+	// Get the R, G, B values
 	const r = Number.parseInt(hex.substring(0, 2), 16);
 	const g = Number.parseInt(hex.substring(2, 4), 16);
 	const b = Number.parseInt(hex.substring(4, 6), 16);
@@ -22,26 +22,26 @@ export function hexToRGB(hex: string) {
 	return `${r} ${g} ${b}`;
 }
 
-// 判断是否是 RGB 颜色值
+// Determine if it's an RGB color value
 export function isRGBColor(color: string) {
 	return color.trim().startsWith("rgb");
 }
 
 export function getCSSVariablesByTokens(tokens: GlobalToken) {
 	return Object.entries(tokens).reduce((acc, [key, value]): string => {
-		// 功能色系，不包含中性色系
+		// Functional color system, not including neutral colors
 		if (productLevelColorSystem.includes(key)) {
 			const rgb = hexToRGB(value);
 			return `${acc}--${prefix}-${key}:${rgb};`;
 		}
 
-		// 中性色系
+		// Neutral color system
 		if (neutralColors.includes(key)) {
-			// 如果颜色值是 rgb 格式，则直接使用
+			// If the color value is in rgb format, use it directly
 			const rgb = isRGBColor(value) ? value : `rgb(${hexToRGB(value)})`;
 			return `${acc}--${prefix}-${key}:${rgb};`;
 		}
-		// 色板
+		// Color palette
 		return baseColorPalettes.includes(key)
 			? `${acc}--${prefix}-${key}:${hexToRGB(value)};`
 			: acc;

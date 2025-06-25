@@ -1,7 +1,7 @@
 /**
- * 完整版菜单比较多，将 sort 抽离出来，在此方便维护
+ * The complete version has many menu items, extract the sort values here for easier maintenance
  *
- * 菜单排序，越小越靠前，最好以 10 为基数递增
+ * Menu sorting, smaller values appear first, best to increment by 10 as a base
  */
 
 export const home = 1;

@@ -13,9 +13,9 @@ import { ADMIN_TOKEN } from "./constants";
 import { resultSuccess } from "./utils";
 
 /**
- * roles：页面级别权限，这里模拟二种 "admin"、"common"
- * admin：管理员角色
- * common：普通角色
+ * roles: Page-level permissions, here we simulate two types: "admin" and "common"
+ * admin: Administrator role
+ * common: Regular user role
  */
 
 const systemManagementRouter = {

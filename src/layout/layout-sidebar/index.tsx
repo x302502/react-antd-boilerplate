@@ -32,7 +32,7 @@ export default function LayoutSidebar({
 		>
 			<aside
 				style={{
-					// 一个像素的 border
+					// One pixel border
 					width: computedSidebarWidth + 1,
 					backgroundColor: isFixedDarkTheme ? Menu?.darkItemBg : Menu?.itemBg,
 					boxShadow: "3px 0 5px 0 rgb(29, 35, 41, 0.05)"

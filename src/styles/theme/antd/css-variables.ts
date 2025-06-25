@@ -58,7 +58,7 @@ function createColorPalettes() {
 	 * @en Neutrals
 	 */
 	neutralColors.forEach((key) => {
-		// 让这个 key 直接是带 rgb 函数的颜色值
+		// Make this key directly use the color value with rgb function
 		colorPaletteVar[key] = `var(--oo-${key})`;
 	});
 

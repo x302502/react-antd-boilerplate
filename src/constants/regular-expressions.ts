@@ -7,10 +7,10 @@
 
 /* ================ Divider ================== */
 
-// 用户名校验，4 到 16 位（字母，数字，下划线，减号）
+// Username validation, 4 to 16 characters (letters, numbers, underscores, hyphens)
 export const USERNAME_REGEXP = /^[\w-]{4,16}$/;
 
-// 仅包含大写字母、小写字母和数字
+// Only contains uppercase letters, lowercase letters and numbers
 export const ALPHA_NUMERIC_ONLY_REGEXP = /^[A-Z0-9]+$/i;
 
 /**

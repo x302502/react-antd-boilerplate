@@ -1,5 +1,5 @@
-## 静态文件目录
+## Static Files Directory
 
-- images 文件夹用于存放 JPG, PNG 等图片文件，如果图片过多，可以增加子文件夹分类存放
-- svg 文件夹用于存放 SVG 文件
-……
+- The 'images' folder is used to store JPG, PNG and other image files. If there are too many images, you can add sub-folders to categorize them
+- The 'svg' folder is used to store SVG files
+...

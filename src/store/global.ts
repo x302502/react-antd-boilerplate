@@ -1,13 +1,11 @@
 import { create } from "zustand";
 
 /**
- * @zh 应用的初始状态
- * @en Initial state of the application
+ * Initial state of the application
  */
 const initialState = {
 	/**
-	 * @zh 全局加载动画是否显示
-	 * @en Whether the global spinning animation is shown
+	 * Whether the global spinning animation is shown
 	 */
 	globalSpin: false
 };

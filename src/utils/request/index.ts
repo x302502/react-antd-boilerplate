@@ -11,10 +11,10 @@ import { globalProgress } from "./global-progress";
 import { goLogin } from "./go-login";
 import { refreshTokenAndRetry } from "./refresh";
 
-// 请求白名单, 请求白名单内的接口不需要携带 token
+// Request whitelist, APIs in this whitelist do not need to carry a token
 const requestWhiteList = [loginPath];
 
-// 请求超时时间
+// Request timeout
 const API_TIMEOUT = Number(import.meta.env.VITE_API_TIMEOUT) || 10000;
 
 const defaultConfig: Options = {
@@ -22,7 +22,7 @@ const defaultConfig: Options = {
 	prefixUrl: import.meta.env.VITE_API_BASE_URL,
 	timeout: API_TIMEOUT,
 	retry: {
-		// 当请求失败时，最多重试次数
+		// Maximum number of retries when a request fails
 		limit: 3
 	},
 	hooks: {
@@ -32,7 +32,7 @@ const defaultConfig: Options = {
 				if (!ignoreLoading) {
 					globalProgress.start();
 				}
-				// 不需要携带 token 的请求
+				// Requests that don't need to carry a token
 				const isWhiteRequest = requestWhiteList.some((url) =>
 					request.url.endsWith(url)
 				);
@@ -40,7 +40,7 @@ const defaultConfig: Options = {
 					const { token } = useAuthStore.getState();
 					request.headers.set(AUTH_HEADER, `Bearer ${token}`);
 				}
-				// 语言等所有的接口都需要携带
+				// Language needs to be carried by all API interfaces
 				request.headers.set(
 					LANG_HEADER,
 					usePreferencesStore.getState().language
@@ -53,10 +53,10 @@ const defaultConfig: Options = {
 				if (!ignoreLoading) {
 					globalProgress.done();
 				}
-				// request error
+				// Request error
 				if (!response.ok) {
 					if (response.status === 401) {
-						// 防止刷新 refresh-token 继续接收到的 401 错误，出现死循环
+						// Prevent infinite loop caused by continuing to receive 401 errors when refreshing the refresh-token
 						if (
 							[`/${refreshTokenPath}`].some((url) => request.url.endsWith(url))
 						) {
@@ -67,7 +67,7 @@ const defaultConfig: Options = {
 						const { refreshToken } = useAuthStore.getState();
 						// If there is no refresh token, it means that the user has not logged in.
 						if (!refreshToken) {
-							// 如果页面的路由已经重定向到登录页，则不用跳转直接返回结果
+							// If the page route has already been redirected to the login page, return the result directly without redirecting
 							if (location.pathname === loginPath) {
 								return response;
 							} else {
@@ -81,7 +81,7 @@ const defaultConfig: Options = {
 						return handleErrorResponse(response);
 					}
 				}
-				// request success
+				// Request success
 				return response;
 			}
 		]

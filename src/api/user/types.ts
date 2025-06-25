@@ -13,7 +13,7 @@ export interface UserInfoType {
 	phoneNumber: string;
 	description: string;
 	roles: Array<string>;
-	// 路由可以在此处动态添加
+	// Routes can be dynamically added here
 	menus?: AppRouteRecordRaw[];
 }
 

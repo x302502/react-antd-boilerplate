@@ -1,5 +1,5 @@
 /**
- * @zh 将字符串的首字母转换为大写
+ * @zh Convert the first letter of a string to uppercase
  * @en Convert the first letter of a string to uppercase
  *
  * @example

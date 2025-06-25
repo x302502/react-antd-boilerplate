@@ -112,9 +112,9 @@ export function useDropdownMenu() {
 	const actions = useMemo(
 		() => ({
 			[TabActionKeys.REFRESH]: (currentPath: string) => {
-				// 刷新 KeepAlive 缓存的页面
+				// Refresh the page cached by KeepAlive
 				refresh(currentPath);
-				// 重新渲染页面
+				// Re-render the page
 				setIsRefresh(true);
 			},
 			[TabActionKeys.CLOSE]: removeTab,

@@ -8,7 +8,7 @@ import {
 	USERNAME_REGEXP
 } from "./regular-expressions";
 
-export const FORM_REQUIRED = [{ required: true }]; // 表单必填校验
+export const FORM_REQUIRED = [{ required: true }]; // Form required validation
 
 /**
  * 用户名规则验证函数
@@ -114,7 +114,7 @@ export function TELEPHONE_RULES(t: TFunction<"translation", undefined>) {
 export function PHONE_RULE(t: TFunction<"translation", undefined>) {
 	return {
 		validator: (_: unknown, value: string) => {
-			// 空值不校验
+			// Don't validate empty values
 			if (!value) {
 				return Promise.resolve();
 			}

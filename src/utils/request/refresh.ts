@@ -9,13 +9,13 @@ import { goLogin } from "./go-login";
 let isRefreshing = false;
 
 /**
- * 刷新token并重新发起请求
+ * Refresh token and retry request
  *
- * @param request 请求对象
- * @param options 请求选项
- * @param refreshToken 刷新token
- * @returns 响应对象
- * @throws 刷新 token 失败时抛出异常
+ * @param request Request object
+ * @param options Request options
+ * @param refreshToken Refresh token
+ * @returns Response object
+ * @throws Exception when token refresh fails
  */
 export async function refreshTokenAndRetry(
 	request: Request,
@@ -25,91 +25,91 @@ export async function refreshTokenAndRetry(
 	if (!isRefreshing) {
 		isRefreshing = true;
 		try {
-			// 调用 fetchRefreshToken 函数，使用传入的 refreshToken 获取新的 token 和 refreshToken
+			// Call fetchRefreshToken function to get new token and refreshToken using the provided refreshToken
 			const freshResponse = await fetchRefreshToken({ refreshToken });
-			// 从响应中提取新的 token
+			// Extract new token from response
 			const newToken = freshResponse.result.token;
-			// 从响应中提取新的 refreshToken
+			// Extract new refreshToken from response
 			const newRefreshToken = freshResponse.result.refreshToken;
-			// 将新的 token 和 refreshToken 保存到 userStore 中
+			// Save new token and refreshToken to userStore
 			useAuthStore.setState({ token: newToken, refreshToken: newRefreshToken });
-			// 调用 onRefreshed 函数，传入新的 token
+			// Call onRefreshed function with the new token
 			onRefreshed(newToken);
 
-			// 设置请求的 Authorization 头部为新的 token
-			// 重试当前请求
+			// Set the request's Authorization header with the new token
+			// Retry the current request
 			request.headers.set(AUTH_HEADER, `Bearer ${newToken}`);
-			// 使用新的 token 重新发起请求
+			// Use the new token to resend the request
 			return ky(request, options);
 		} catch (error) {
-			// 调用 onRefreshFailed 函数，传入错误对象
-			// refreshToken 认证未通过，拒绝所有等待的请求
+			// Call onRefreshFailed function with the error object
+			// refreshToken authentication failed, reject all pending requests
 			onRefreshFailed(error);
-			// 跳转到登录页
+			// Redirect to login page
 			goLogin();
-			// 抛出错误
+			// Throw error
 			throw error;
 		} finally {
-			// 无论是否发生错误，都将 isRefreshing 设置为 false
+			// Whether an error occurs or not, set isRefreshing to false
 			isRefreshing = false;
 		}
 	} else {
-		// 等待 token 刷新完成
+		// Wait for token refresh to complete
 		return new Promise<KyResponse>((resolve, reject) => {
-			// 添加刷新订阅者
+			// Add refresh subscriber
 			addRefreshSubscriber({
-				// 当 token 刷新成功后，将新的 token 设置到请求的 Authorization 头部，并重新发起请求
+				// When token refresh succeeds, set the new token to the request's Authorization header and resend the request
 				resolve: async (newToken) => {
 					request.headers.set(AUTH_HEADER, `Bearer ${newToken}`);
 					resolve(ky(request, options));
 				},
-				// 当 token 刷新失败时，拒绝当前 Promise
+				// When token refresh fails, reject the current Promise
 				reject
 			});
 		});
 	}
 }
 
-// 定义一个数组，用于存储所有等待 token 刷新的订阅者
-// 每个订阅者对象包含 resolve 和 reject 方法，分别用于在 token 刷新成功或失败时调用
+// Define an array to store all subscribers waiting for token refresh
+// Each subscriber object contains resolve and reject methods, used when token refresh succeeds or fails
 let refreshSubscribers: Array<{
-	resolve: (token: string) => void; // 当 token 刷新成功时调用的函数，传入新的 token
-	reject: (error: any) => void; // 当 token 刷新失败时调用的函数，传入错误信息
+	resolve: (token: string) => void; // Function called when token refresh succeeds, passing the new token
+	reject: (error: any) => void; // Function called when token refresh fails, passing the error information
 }> = [];
 
 /**
- * 当 token 刷新成功时，通知所有等待的订阅者。
- * 遍历所有订阅者，调用其 resolve 方法，并传入新的 token。
- * 然后清空订阅者列表，准备下一次 token 刷新。
+ * When token refresh succeeds, notify all waiting subscribers.
+ * Iterate through all subscribers, call their resolve method, and pass in the new token.
+ * Then clear the subscriber list, preparing for the next token refresh.
  *
- * @param token 刷新后的令牌字符串
+ * @param token The refreshed token string
  */
 function onRefreshed(token: string) {
 	refreshSubscribers.forEach((subscriber) => subscriber.resolve(token));
-	refreshSubscribers = []; // 清空订阅者列表
+	refreshSubscribers = []; // Clear the subscriber list
 }
 
 /**
- * 当 token 刷新失败时，通知所有等待的订阅者。
- * 遍历所有订阅者，调用其 reject 方法，并传入错误信息。
- * 然后清空订阅者列表。
+ * When token refresh fails, notify all waiting subscribers.
+ * Iterate through all subscribers, call their reject method, and pass in the error information.
+ * Then clear the subscriber list.
  *
- * @param error 刷新失败时产生的错误信息
+ * @param error Error information generated when refresh fails
  */
 function onRefreshFailed(error: any) {
 	refreshSubscribers.forEach((subscriber) => subscriber.reject(error));
-	refreshSubscribers = []; // 清空订阅者列表
+	refreshSubscribers = []; // Clear the subscriber list
 }
 
 /**
- * 添加一个新的订阅者到列表中。
- * 订阅者对象应包含 resolve 和 reject 方法。
+ * Add a new subscriber to the list.
+ * The subscriber object should contain resolve and reject methods.
  *
- * @param subscriber 订阅者对象，包含 resolve 和 reject 方法
+ * @param subscriber Subscriber object containing resolve and reject methods
  */
 function addRefreshSubscriber(subscriber: {
-	resolve: (token: string) => void; // 当 token 刷新成功时调用的函数
-	reject: (error: any) => void; // 当 token 刷新失败时调用的函数
+	resolve: (token: string) => void; // Function called when token refresh succeeds
+	reject: (error: any) => void; // Function called when token refresh fails
 }) {
-	refreshSubscribers.push(subscriber); // 将新的订阅者添加到列表中
+	refreshSubscribers.push(subscriber); // Add the new subscriber to the list
 }

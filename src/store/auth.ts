@@ -33,12 +33,12 @@ export const useAuthStore = create<AuthState & AuthAction>()(
 
 			logout: async () => {
 				/**
-				 * 1. 退出登录
+				 * 1. Logout
 				 */
 
 				await fetchLogout();
 				/**
-				 * 2. 清空 token 等其他信息
+				 * 2. Clear token and other information
 				 */
 
 				get().reset();
@@ -46,31 +46,31 @@ export const useAuthStore = create<AuthState & AuthAction>()(
 
 			reset: () => {
 				/**
-				 * 清空 token
+				 * Clear token
 				 */
 				set({
 					...initialState
 				});
 				/**
-				 * 清空用户信息
+				 * Clear user information
 				 * @see {@link https://github.com/pmndrs/zustand?tab=readme-ov-file#read-from-state-in-actions | Read from state in actions}
 				 */
 				useUserStore.getState().reset();
 
 				/**
-				 * 清空权限信息
+				 * Clear permission information
 				 * @see https://github.com/pmndrs/zustand?tab=readme-ov-file#readingwriting-state-and-reacting-to-changes-outside-of-components
 				 */
 				useAccessStore.getState().reset();
 
 				/**
-				 * 清空标签页
+				 * Clear tabs
 				 */
 				useTabsStore.getState().resetTabs();
 
 				/**
-				 * 清空 keepAlive 缓存
-				 * 在 container-layout 组件中，根据 openTabs 自动刷新 keepAlive 缓存
+				 * Clear keepAlive cache
+				 * In the container-layout component, automatically refresh the keepAlive cache based on openTabs
 				 */
 			}
 		}),

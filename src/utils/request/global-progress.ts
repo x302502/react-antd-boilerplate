@@ -1,47 +1,47 @@
 import { useGlobalStore } from "~/store";
 
-// 定义一个全局变量用于追踪当前有多少请求正在进行中
+// Define a global variable to track how many requests are currently in progress
 let requestCount = 0;
 
 export const globalProgress = {
 	/**
-	 * 启动请求
+	 * Start request
 	 *
-	 * 如果请求计数为 0，则显示全局加载动画，并将请求计数加 1。
+	 * If the request count is 0, show the global loading animation and increment the request count by 1.
 	 */
 	start() {
 		if (requestCount === 0) {
-			// 显示全局加载动画
+			// Show global loading animation
 			useGlobalStore.getState().openGlobalSpin();
 		}
-		// 请求计数加 1
+		// Increment request count by 1
 		requestCount++;
 	},
 
 	/**
-	 * 请求完成后的回调函数
+	 * Callback function after request completion
 	 *
-	 * @description 将请求计数减 1，并保证请求计数不会小于 0；
-	 *              如果请求计数为 0，则隐藏全局加载动画
+	 * @description Decrements the request count by 1, and ensures the request count is not less than 0;
+	 *              If the request count is 0, hide the global loading animation
 	 */
 	done() {
-		// 请求计数减 1，但保证请求计数不会小于 0
+		// Decrement request count by 1, but ensure the request count is not less than 0
 		requestCount = Math.max(requestCount - 1, 0);
 		if (requestCount === 0) {
-			// 隐藏全局加载动画
+			// Hide global loading animation
 			useGlobalStore.getState().closeGlobalSpin();
 		}
 	},
 
 	/**
-	 * 强制完成请求
+	 * Force complete all requests
 	 *
-	 * 将请求计数直接设置为0，并隐藏全局加载动画
+	 * Set the request count directly to 0 and hide the global loading animation
 	 */
 	forceFinish() {
-		// 直接将请求计数设置为 0
+		// Set the request count directly to 0
 		requestCount = 0;
-		// 隐藏全局加载动画
+		// Hide global loading animation
 		useGlobalStore.getState().closeGlobalSpin();
 	}
 };

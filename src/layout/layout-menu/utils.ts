@@ -76,12 +76,12 @@ export function findRootMenuByPath(
 	rootMenu: MenuItemType | null;
 	rootMenuPath: string | null;
 } {
-	// 初始化返回值
+	// Initialize return values
 	let findMenu: MenuItemType | null = null;
 	let rootMenu: MenuItemType | null = null;
 	let rootMenuPath: string | null = null;
 
-	// 如果没有提供路径，返回默认值
+	// If no path is provided, return default values
 	if (!path) {
 		return {
 			findMenu: null,
@@ -90,31 +90,31 @@ export function findRootMenuByPath(
 		};
 	}
 
-	// 递归查找函数
+	// Recursive search function
 	const find = (
 		list: MenuItemType[],
 		targetPath: string,
 		parents: MenuItemType[] = []
 	): boolean => {
 		for (const menu of list) {
-			// 如果找到目标菜单
+			// If target menu is found
 			if (menu.key === targetPath) {
 				findMenu = menu;
-				// 如果没有父级菜单，说明当前菜单就是根菜单
+				// If there are no parent menus, the current menu is the root menu
 				if (parents.length === 0) {
 					rootMenu = menu;
 					rootMenuPath = menu.key;
 				} else {
-					// 获取最顶层的父级菜单
+					// Get the top-level parent menu
 					rootMenu = parents[0];
 					rootMenuPath = parents[0].key;
 				}
 				return true;
 			}
 
-			// 如果有子菜单，继续递归查找
+			// If there are submenus, continue recursive search
 			if (menu.children && menu.children.length > 0) {
-				// 将当前菜单加入父级菜单数组
+				// Add current menu to the parent menu array
 				const found = find(menu.children, targetPath, [...parents, menu]);
 				if (found) {
 					return true;
@@ -124,7 +124,7 @@ export function findRootMenuByPath(
 		return false;
 	};
 
-	// 开始查找
+	// Start searching
 	find(menus, path);
 
 	return {
@@ -143,20 +143,20 @@ export function findRootMenuByPath(
 export function findDeepestFirstItem(
 	splitSideNavItems: MenuItemType[]
 ): MenuItemType | null {
-	// 如果列表为空，返回 null
+	// If the list is empty, return null
 	if (!splitSideNavItems || splitSideNavItems.length === 0) {
 		return null;
 	}
 
-	// 获取第一个菜单项
+	// Get the first menu item
 	const firstItem = splitSideNavItems[0];
 
-	// 如果当前项有子菜单，继续递归查找
+	// If the current item has submenus, continue recursive search
 	if (firstItem.children && firstItem.children.length > 0) {
 		return findDeepestFirstItem(firstItem.children);
 	}
 
-	// 如果没有子菜单了，说明到达最底层，返回当前项
+	// If there are no more submenus, we've reached the deepest level, return the current item
 	return firstItem;
 }
 

@@ -12,7 +12,7 @@ export function usePreferences() {
 	const preferences = usePreferencesStore();
 	const { theme } = preferences;
 
-	// 是否为默认的用户偏好设置
+	// Whether it's the default user preference settings
 	const isDefault = useMemo(() => {
 		return Object.entries(DEFAULT_PREFERENCES).every(([key, value]) => {
 			return preferences[key as keyof typeof preferences] === value;

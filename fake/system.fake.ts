@@ -4,10 +4,10 @@ import { system } from "~/router/extra-info";
 import { resultSuccess } from "./utils";
 
 const systemMenu = [
-	// 系统管理
+	// System Management
 	{
 		id: system,
-		menuType: 0, // 菜单类型（0 代表菜单、1 代表 iframe、2 代表外链、3 代表按钮）
+		menuType: 0, // Menu type (0 represents menu, 1 represents iframe, 2 represents external link, 3 represents button)
 		name: "common.menu.system"
 	},
 	{
@@ -55,29 +55,29 @@ const systemMenu = [
 ];
 
 export default defineFakeRoute([
-	// 角色管理
+	// Role Management
 	{
 		url: "/role-list",
 		method: "get",
 		response: ({ body }) => {
 			let list = [
 				{
-					createTime: 1729752330782, // 时间戳（毫秒ms）
+					createTime: 1729752330782, // Timestamp (milliseconds)
 					updateTime: 1729752330782,
 					id: 1,
-					name: "超级管理员",
+					name: "Super Administrator",
 					code: "admin",
-					status: 1, // 状态 1 启用 0 停用
-					remark: "超级管理员拥有最高权限"
+					status: 1, // Status: 1 enabled, 0 disabled
+					remark: "Super Administrator has the highest permissions"
 				},
 				{
 					createTime: 1729752330782,
 					updateTime: 1729752330782,
 					id: 2,
-					name: "普通角色",
+					name: "Regular Role",
 					code: "common",
 					status: 1,
-					remark: "普通角色拥有部分权限"
+					remark: "Regular Role has partial permissions"
 				}
 			];
 			// list = Array.from({ length: 10000 }).flatMap(() => list);
@@ -89,13 +89,13 @@ export default defineFakeRoute([
 			);
 			return resultSuccess({
 				list,
-				total: list.length, // 总条目数
-				pageSize: 10, // 每页显示条目个数
-				current: 1 // 当前页数
+				total: list.length, // Total number of items
+				pageSize: 10, // Number of items displayed per page
+				current: 1 // Current page number
 			});
 		}
 	},
-	// 角色管理-新增角色
+	// Role Management - Add Role
 	{
 		url: "/role-item",
 		method: "post",
@@ -103,7 +103,7 @@ export default defineFakeRoute([
 			return resultSuccess(body);
 		}
 	},
-	// 角色管理-修改角色
+	// Role Management - Edit Role
 	{
 		url: "/role-item",
 		method: "put",
@@ -111,7 +111,7 @@ export default defineFakeRoute([
 			return resultSuccess(body);
 		}
 	},
-	// 角色管理-删除角色
+	// Role Management - Delete Role
 	{
 		url: "/role-item",
 		method: "delete",
@@ -119,7 +119,7 @@ export default defineFakeRoute([
 			return resultSuccess(body);
 		}
 	},
-	// 角色管理-权限-菜单权限
+	// Role Management - Permissions - Menu Permissions
 	{
 		url: "/role-menu",
 		method: "get",
@@ -127,7 +127,7 @@ export default defineFakeRoute([
 			return resultSuccess(systemMenu);
 		}
 	},
-	// 角色管理-权限-菜单权限，根据角色 id 查对应菜单
+	// Role Management - Permissions - Menu Permissions, query corresponding menus based on role id
 	{
 		url: "/menu-by-role-id",
 		method: "get",
@@ -140,29 +140,29 @@ export default defineFakeRoute([
 			return resultSuccess([]);
 		}
 	},
-	// 菜单管理
+	// Menu Management
 	{
 		url: "/menu-list",
 		method: "get",
 		response: () => {
 			const menuList = [
-				// 系统管理
+				// System Management
 				{
-					parentId: "", // 上级菜单 id
-					id: system, // 菜单 id
-					menuType: 0, // 菜单类型（0 代表菜单、1 代表 iframe、2 代表外链、3 代表按钮）
-					name: "common.menu.system", // 菜单名称
-					path: "/system", // 路由路径
-					component: "/system", // 组件路径
-					order: system, // 菜单顺序
-					icon: "SettingOutlined", // 菜单图标
-					currentActiveMenu: "", // 激活路径
-					iframeLink: "", // iframe 链接
-					keepAlive: true, // 是否缓存页面
-					externalLink: "", // 外链地址
-					hideInMenu: false, // 是否在菜单中隐藏
-					ignoreAccess: false, // 是否忽略权限
-					status: 1, // 状态（0 停用、1 启用）
+					parentId: "", // Parent menu id
+					id: system, // Menu id
+					menuType: 0, // Menu type (0 represents menu, 1 represents iframe, 2 represents external link, 3 represents button)
+					name: "common.menu.system", // Menu name
+					path: "/system", // Route path
+					component: "/system", // Component path
+					order: system, // Menu order
+					icon: "SettingOutlined", // Menu icon
+					currentActiveMenu: "", // Active path
+					iframeLink: "", // iframe link
+					keepAlive: true, // Whether to cache the page
+					externalLink: "", // External link address
+					hideInMenu: false, // Whether to hide in menu
+					ignoreAccess: false, // Whether to ignore permissions
+					status: 1, // Status (0 disabled, 1 enabled)
 					createTime: 1737023155965,
 					updateTime: 1737023164653
 				},
@@ -171,17 +171,17 @@ export default defineFakeRoute([
 					id: system + 1,
 					menuType: 0,
 					name: "common.menu.user",
-					path: "/system/user", // 路由路径
-					component: "/system/user", // 组件路径
-					order: undefined, // 菜单顺序
-					icon: "UserOutlined", // 菜单图标
-					currentActiveMenu: "", // 激活路径
-					iframeLink: "", // iframe 链接
-					keepAlive: true, // 是否缓存页面
-					externalLink: "", // 外链地址
-					hideInMenu: false, // 是否在菜单中隐藏
-					ignoreAccess: false, // 是否忽略权限
-					status: 1, // 状态（0 停用、1 启用）
+					path: "/system/user", // Route path
+					component: "/system/user", // Component path
+					order: undefined, // Menu order
+					icon: "UserOutlined", // Menu icon
+					currentActiveMenu: "", // Active path
+					iframeLink: "", // iframe link
+					keepAlive: true, // Whether to cache the page
+					externalLink: "", // External link address
+					hideInMenu: false, // Whether to hide in menu
+					ignoreAccess: false, // Whether to ignore permissions
+					status: 1, // Status (0 disabled, 1 enabled)
 					createTime: 1737023155965,
 					updateTime: 1737023164653
 				},
@@ -190,17 +190,17 @@ export default defineFakeRoute([
 					id: system + 2,
 					menuType: 0,
 					name: "common.menu.role",
-					path: "/system/role", // 路由路径
-					component: "/system/role", // 组件路径
-					order: undefined, // 菜单顺序
-					icon: "TeamOutlined", // 菜单图标
-					currentActiveMenu: "", // 激活路径
-					iframeLink: "", // iframe 链接
-					keepAlive: true, // 是否缓存页面
-					externalLink: "", // 外链地址
-					hideInMenu: false, // 是否在菜单中隐藏
-					ignoreAccess: false, // 是否忽略权限
-					status: 1, // 状态（0 停用、1 启用）
+					path: "/system/role", // Route path
+					component: "/system/role", // Component path
+					order: undefined, // Menu order
+					icon: "TeamOutlined", // Menu icon
+					currentActiveMenu: "", // Active path
+					iframeLink: "", // iframe link
+					keepAlive: true, // Whether to cache the page
+					externalLink: "", // External link address
+					hideInMenu: false, // Whether to hide in menu
+					ignoreAccess: false, // Whether to ignore permissions
+					status: 1, // Status (0 disabled, 1 enabled)
 					createTime: 1737023155965,
 					updateTime: 1737023164653
 				},
@@ -209,17 +209,17 @@ export default defineFakeRoute([
 					id: system + 3,
 					menuType: 0,
 					name: "common.menu.menu",
-					path: "/system/menu", // 路由路径
-					component: "/system/menu", // 组件路径
-					order: undefined, // 菜单顺序
-					icon: "MenuOutlined", // 菜单图标
-					currentActiveMenu: "", // 激活路径
-					iframeLink: "", // iframe 链接
-					keepAlive: true, // 是否缓存页面
-					externalLink: "", // 外链地址
-					hideInMenu: false, // 是否在菜单中隐藏
-					ignoreAccess: false, // 是否忽略权限
-					status: 1, // 状态（0 停用、1 启用）
+					path: "/system/menu", // Route path
+					component: "/system/menu", // Component path
+					order: undefined, // Menu order
+					icon: "MenuOutlined", // Menu icon
+					currentActiveMenu: "", // Active path
+					iframeLink: "", // iframe link
+					keepAlive: true, // Whether to cache the page
+					externalLink: "", // External link address
+					hideInMenu: false, // Whether to hide in menu
+					ignoreAccess: false, // Whether to ignore permissions
+					status: 1, // Status (0 disabled, 1 enabled)
 					createTime: 1737023155965,
 					updateTime: 1737023164653
 				},
@@ -228,17 +228,17 @@ export default defineFakeRoute([
 					id: system + 4,
 					menuType: 0,
 					name: "common.menu.dept",
-					path: "/system/dept", // 路由路径
-					component: "/system/dept", // 组件路径
-					order: undefined, // 菜单顺序
-					icon: "ApartmentOutlined", // 菜单图标
-					currentActiveMenu: "", // 激活路径
-					iframeLink: "", // iframe 链接
-					keepAlive: true, // 是否缓存页面
-					externalLink: "", // 外链地址
-					hideInMenu: false, // 是否在菜单中隐藏
-					ignoreAccess: false, // 是否忽略权限
-					status: 1, // 状态（0 停用、1 启用）
+					path: "/system/dept", // Route path
+					component: "/system/dept", // Component path
+					order: undefined, // Menu order
+					icon: "ApartmentOutlined", // Menu icon
+					currentActiveMenu: "", // Active path
+					iframeLink: "", // iframe link
+					keepAlive: true, // Whether to cache the page
+					externalLink: "", // External link address
+					hideInMenu: false, // Whether to hide in menu
+					ignoreAccess: false, // Whether to ignore permissions
+					status: 1, // Status (0 disabled, 1 enabled)
 					createTime: 1737023155965,
 					updateTime: 1737023164653
 				},
@@ -247,7 +247,7 @@ export default defineFakeRoute([
 					id: system + 4 + 1,
 					menuType: 3,
 					name: "common.add",
-					status: 1, // 状态（0 停用、1 启用）
+					status: 1, // Status (0 disabled, 1 enabled)
 					createTime: 1737023155965,
 					updateTime: 1737023164653
 				},
@@ -256,7 +256,7 @@ export default defineFakeRoute([
 					id: system + 4 + 2,
 					menuType: 3,
 					name: "common.edit",
-					status: 1, // 状态（0 停用、1 启用）
+					status: 1, // Status (0 disabled, 1 enabled)
 					createTime: 1737023155965,
 					updateTime: 1737023164653
 				},
@@ -265,16 +265,16 @@ export default defineFakeRoute([
 					id: system + 4 + 3,
 					menuType: 3,
 					name: "common.delete",
-					status: 1, // 状态（0 停用、1 启用）
+					status: 1, // Status (0 disabled, 1 enabled)
 					createTime: 1737023155965,
 					updateTime: 1737023164653
 				}
 			];
 			return resultSuccess({
 				list: menuList,
-				total: menuList.length, // 总条目数
-				pageSize: 10, // 每页显示条目个数
-				current: 1 // 当前页数
+				total: menuList.length, // Total number of items
+				pageSize: 10, // Number of items displayed per page
+				current: 1 // Current page number
 			});
 		}
 	},

@@ -9,7 +9,7 @@ import type { LanguageType } from "~/locales";
 import type { MenuProps } from "antd";
 
 /**
- * @zh 登录页面布局
+ * @en Login page layout
  * @en Login page layout
  */
 export type PageLayoutType = "layout-left" | "layout-center" | "layout-right";
@@ -20,36 +20,36 @@ export type PageLayoutType = "layout-left" | "layout-center" | "layout-right";
 export type TabsStyleType = "brisk" | "card" | "chrome" | "plain";
 
 /**
- * @zh 主题类型
+ * @en Theme type
  * @en Theme type
  */
 export type ThemeType = "dark" | "light" | "auto";
 
 /**
- * @zh 动画类型
+ * @en Animation type
  * @en Animation type
  */
 interface AnimationState {
 	/**
-	 * @zh 是否启用过渡动画
+	 * @en Whether to enable transition animations
 	 * @en Whether to enable transition animation
 	 * @default true
 	 */
 	transitionProgress: boolean;
 	/**
-	 * @zh 是否启用加载动画
+	 * @en Whether to enable loading animations
 	 * @en Whether to enable loading animation
 	 * @default true
 	 */
 	transitionLoading: boolean;
 	/**
-	 * @zh 是否启用动画
+	 * @en Whether to enable animations
 	 * @en Whether to enable animation
 	 * @default true
 	 */
 	transitionEnable: boolean;
 	/**
-	 * @zh 过渡动画名称
+	 * @en Transition animation name
 	 * @en Transition animation name
 	 * @default "fade-slide"
 	 */
@@ -83,37 +83,37 @@ interface LayoutState {
 
 export interface GeneralState {
 	/**
-	 * @zh 是否开启水印
+	 * @en Whether to enable watermark
 	 * @en Whether to enable watermark
 	 * @default false
 	 */
 	watermark: boolean;
 	/**
-	 * @zh 水印内容
+	 * @en Watermark content
 	 * @en Watermark content
 	 * @default ""
 	 */
 	watermarkContent: string;
 	/**
-	 * @zh 返回页面顶部的操作按钮
+	 * @en Back to top action button
 	 * @en BackTop makes it easy to go back to the top of the page.
 	 * @default true
 	 */
 	enableBackTopButton: boolean;
 	/**
-	 * @zh 登录页面的布局配置
+	 * @en Login page layout configuration
 	 * @en Login page layout configuration
 	 * @default "layout-right"
 	 */
 	pageLayout: PageLayoutType;
 	/**
-	 * @zh 开启前端路由权限
+	 * @en Enable frontend route permissions
 	 * @en Enable frontend route permissions
 	 * @default false
 	 */
 	enableFrontendAceess: boolean;
 	/**
-	 * @zh 开启后端路由权限
+	 * @en Enable backend route permissions
 	 * @en Enable backend route permissions
 	 * @default true
 	 */
@@ -147,42 +147,42 @@ export interface GeneralState {
 
 export interface SidebarState {
 	/**
-	 * 侧边栏是否可见
+	 * Whether the sidebar is visible
 	 * @default true
 	 */
 	sidebarEnable?: boolean;
 	/**
-	 * 侧边菜单宽度
+	 * Sidebar menu width
 	 * @default 210
 	 */
 	sidebarWidth: number;
 	/**
-	 * 侧边菜单折叠宽度
+	 * Collapsed sidebar menu width
 	 * @default 56
 	 */
 	sideCollapsedWidth: number;
 	/**
-	 * 侧边菜单折叠状态
+	 * Sidebar menu collapse state
 	 * @default false
 	 */
 	sidebarCollapsed: boolean;
 	/**
-	 * 侧边菜单是否折叠时，是否显示 title
+	 * Whether to show title when sidebar menu is collapsed
 	 * @default true
 	 */
 	sidebarCollapseShowTitle: boolean;
 	/**
-	 * 侧边菜单折叠额外宽度
+	 * Extra width for collapsed sidebar menu
 	 * @default 48
 	 */
 	sidebarExtraCollapsedWidth: number;
 	/**
-	 * 两栏布局时，左侧菜单宽度
+	 * Left menu width in two-column layout
 	 * @default 80
 	 */
 	firstColumnWidthInTwoColumnNavigation: number;
 	/**
-	 * 侧边栏
+	 * Sidebar theme
 	 * @default dark
 	 */
 	sidebarTheme: MenuProps["theme"];

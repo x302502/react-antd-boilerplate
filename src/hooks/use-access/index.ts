@@ -31,7 +31,7 @@ return false;
 		}
 		permission = isString(permission) ? [permission] : permission;
 		permission = permission.map((item) => item.toLowerCase());
-		// 校验权限代码是否合法，不合法的权限代码会打印警告信息
+		// Validate if the permission code is valid, invalid permission codes will print warning messages
 		for (const code of permission) {
 			if (!Object.values(accessControlCodes).includes(code)) {
 				console.warn(
@@ -57,7 +57,7 @@ return false;
 		}
 		roles = isString(roles) ? [roles] : roles;
 		roles = roles.map((item) => item.toLowerCase());
-		// 校验角色是否合法，不合法的角色会打印警告信息
+		// Validate if the role is valid, invalid roles will print warning messages
 		for (const roleItem of roles) {
 			if (!Object.values(AccessControlRoles).includes(roleItem)) {
 				console.warn(`[hasAccessByRoles]: '${roleItem}' is not a valid role`);

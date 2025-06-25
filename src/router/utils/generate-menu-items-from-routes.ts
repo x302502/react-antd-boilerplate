@@ -12,10 +12,10 @@ const allAntdIcons: { [key: string]: any } = antdIcons;
 const allBasicIcons: { [key: string]: any } = basicIcons;
 
 /**
- * 根据路由列表生成菜单项数组
+ * Generate menu items array based on route list
  *
- * @param routeList 路由列表，类型为 AppRouteRecordRaw 数组
- * @returns 返回菜单项数组，数组元素类型为 MenuItemType
+ * @param routeList Route list, type is AppRouteRecordRaw array
+ * @returns Returns menu items array, array element type is MenuItemType
  */
 export function generateMenuItemsFromRoutes(routeList: AppRouteRecordRaw[]) {
 	return routeList.reduce<MenuItemType[]>((acc, item) => {
@@ -29,7 +29,7 @@ export function generateMenuItemsFromRoutes(routeList: AppRouteRecordRaw[]) {
 				? createElement(
 						Link,
 						{
-							// 阻止事件冒泡，防止触发菜单的点击事件
+							// Prevent event bubbling to avoid triggering the menu's click event
 							onClick: (e) => {
 								e.stopPropagation();
 							},
@@ -56,7 +56,7 @@ export function generateMenuItemsFromRoutes(routeList: AppRouteRecordRaw[]) {
 			}
 		}
 		if (Array.isArray(item.children) && item.children.length > 0) {
-			// 过滤掉非首页，且不显示在菜单中的路由
+			// Filter out non-home pages and routes that should not be displayed in the menu
 			const noIndexRoute = item.children.filter(
 				(route) => !route.index && !route?.handle?.hideInMenu
 			);

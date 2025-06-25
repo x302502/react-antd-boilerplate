@@ -6,7 +6,7 @@ import authRoutes from "./auth";
 import exceptionRoutes from "./exception";
 import fallbackRoute from "./fallback";
 
-/** 核心路由 */
+/** Core routes */
 export const coreRoutes: any = [
 	...addRouteIdByPath([...authRoutes, ...exceptionRoutes]),
 	...fallbackRoute

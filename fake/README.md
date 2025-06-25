@@ -1,21 +1,21 @@
-## Fake 目录介绍
+## Fake Directory Introduction
 
-模拟后端数据，主要用于前端开发调试。
+Simulates backend data, mainly used for frontend development and debugging.
 
-| 文件                   | 说明                   |
+| File                   | Description                   |
 |------------------------|------------------------|
-| `utils.ts`             | 接口响应工具函数       |
-| `auth.fake.ts`         | 权限接口（登录和登出等） |
-| `user.fake.ts`         | 用户信息接口           |
-| `async-routes.fake.ts` | 动态路由接口           |
-| `constants.ts`         | 常量化数据             |
+| `utils.ts`             | API response utility functions       |
+| `auth.fake.ts`         | Authentication APIs (login and logout, etc.) |
+| `user.fake.ts`         | User information APIs           |
+| `async-routes.fake.ts` | Dynamic routing APIs           |
+| `constants.ts`         | Constant data             |
 | ...                    | ...                    |
 
-## fake 文件说明
+## Fake File Description
 
-一个经典的 fake 文件如下所示：
+A classic fake file is shown below:
 
-> 文件名：`auth.fake.ts`文件名的中间缀(`.fake.`)是必须的。
+> Filename: `auth.fake.ts` - the middle infix (`.fake.`) is required.
 
 ```ts
 import { defineFakeRoute } from "vite-plugin-fake-server/client";
@@ -32,6 +32,6 @@ export default defineFakeRoute([
 ]);
 ```
 
-## 项目中使用 Fake 的建议
+## Recommendations for Using Fake in Projects
 
-推荐一个页面新建一个 fake 文件即可，文件名与页面同名。
+It is recommended to create one fake file per page, with the filename matching the page name.

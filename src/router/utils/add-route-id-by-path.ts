@@ -1,12 +1,12 @@
 import type { AppRouteRecordRaw } from "~/router/types";
 
 /**
- * 为路由对象添加一个唯一的 ID，替代路由自动生成的 id，该 ID 默认为路由的路径（path）
+ * Add a unique ID to the route object, replacing the automatically generated route id. This ID defaults to the route's path
  * {
  *   path: '/dashboard',
  * }
  *
- * 转化后
+ * After transformation
  *
  * {
  *   path: '/dashboard',
@@ -15,7 +15,7 @@ import type { AppRouteRecordRaw } from "~/router/types";
  */
 export function addRouteIdByPath(routes: AppRouteRecordRaw[], parentId = "") {
 	return routes.map((route) => {
-		// 如何是 index 路由，则 id 为父级路径 + "/"
+		// If it's an index route, the id will be the parent path + "/"
 		const newRoute = {
 			...route,
 			id: route.index ? `${parentId}/` : route.path

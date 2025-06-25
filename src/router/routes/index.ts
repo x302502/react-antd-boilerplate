@@ -5,19 +5,19 @@ import { ascending, mergeRouteModules } from "~/router/utils";
 import { traverseTreeValues } from "~/utils";
 import { coreRoutes } from "./core";
 
-// 外部路由文件
+// External route files
 export const externalRouteFiles: RouteFileModule = import.meta.glob(
 	"./external/**/*.ts",
 	{ eager: true }
 );
-// 前端静态路由文件
+// Frontend static route files
 export const staticRouteFiles: RouteFileModule = import.meta.glob(
 	"./static/**/*.ts",
 	{ eager: true }
 );
 
 /**
- * 后端动态路由文件
+ * Backend dynamic route files
  */
 export const dynamicRouteFiles: RouteFileModule = import.meta.glob(
 	"./modules/**/*.ts",
@@ -25,31 +25,31 @@ export const dynamicRouteFiles: RouteFileModule = import.meta.glob(
 );
 
 /**
- * 外部路由 1. 不进行权限校验， 2. 不会触发请求，例如用户信息接口
- * @example "privacy-policy", "terms-of-service" 等
+ * External routes 1. No permission verification, 2. Will not trigger requests, such as user information API
+ * @example "privacy-policy", "terms-of-service", etc.
  */
 export const externalRoutes: AppRouteRecordRaw[] =
 	mergeRouteModules(externalRouteFiles);
 
-/** 动态路由 */
+/** Dynamic routes */
 export const dynamicRoutes: AppRouteRecordRaw[] =
 	mergeRouteModules(dynamicRouteFiles);
 
-/** 静态路由 */
+/** Static routes */
 export const staticRoutes: AppRouteRecordRaw[] =
 	mergeRouteModules(staticRouteFiles);
 
 /**
- * 基本路由列表，由核心路由、外部路由组成，会一直存在系统中
+ * Basic route list, composed of core routes and external routes, will always exist in the system
  */
 const baseRoutes = ascending([...coreRoutes, ...externalRoutes]);
 
-/** 权限路由列表，包含动态路由和静态路由 */
+/** Permission route list, including dynamic routes and static routes */
 const accessRoutes = [...dynamicRoutes, ...staticRoutes];
 
 /**
- * 路由白名单 1. 不进行权限校验， 2. 不会触发请求，例如用户信息接口
- * @example "privacy-policy", "terms-of-service" 等
+ * Route whitelist 1. No permission verification, 2. Will not trigger requests, such as user information API
+ * @example "privacy-policy", "terms-of-service", etc.
  */
 const whiteRouteNames = [
 	loginPath,
