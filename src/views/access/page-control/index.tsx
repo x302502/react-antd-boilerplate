@@ -1,4 +1,4 @@
-import type { PasswordLoginFormType } from "~/views/login/components/password-login";
+import type { PasswordLoginFormType } from "~/views/auth/login/components/password-login";
 import { BasicContent } from "~/components";
 import { AccessControlRoles, usePreferences } from "~/hooks";
 import { useAuthStore, useUserStore } from "~/store";

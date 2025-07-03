@@ -1,4 +1,4 @@
-import type { PasswordLoginFormType } from "~/views/login/components/password-login";
+import type { PasswordLoginFormType } from "~/views/auth/login/components/password-login";
 import type { AppRouteRecordRaw } from "~/router/types";
 import type { AuthType, UserInfoType } from "./types";
 import { request } from "~/utils";

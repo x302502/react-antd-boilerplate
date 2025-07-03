@@ -1,5 +1,5 @@
 import type { AuthType } from "~/api/user/types";
-import type { PasswordLoginFormType } from "~/views/login/components/password-login";
+import type { PasswordLoginFormType } from "~/views/auth/login/components/password-login";
 import { fetchLogin, fetchLogout } from "~/api/user";
 import { useAccessStore, useTabsStore, useUserStore } from "~/store";
 

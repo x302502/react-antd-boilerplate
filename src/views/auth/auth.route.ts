@@ -5,7 +5,7 @@ import { loginPath } from "~/router/extra-info";
 
 import { lazy } from "react";
 
-const Login = lazy(() => import("~/views/login"));
+const Login = lazy(() => import("~/views/auth/login"));
 
 const routes: AppRouteRecordRaw[] = [
 	{
