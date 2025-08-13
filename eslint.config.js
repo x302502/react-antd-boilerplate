@@ -6,7 +6,7 @@ export default antfu({
 	ignorePatterns: ["*.md", "*.mdx", "docs/**/*", "**/docs/**/*", "**/*.md"],
 	rules: {
 		// Style rules
-		"style/quotes": ["error", "double"],
+		"style/quotes": "off",
 		"style/semi": "off",
 		"jsonc/indent": ["error", "tab"],
 		"style/no-tabs": "off",

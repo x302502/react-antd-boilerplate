@@ -20,7 +20,7 @@ export const staticRouteFiles: RouteFileModule = import.meta.glob(
  * Backend dynamic route files
  */
 export const dynamicRouteFiles: RouteFileModule = import.meta.glob(
-	"./modules/**/*.ts",
+	"../../views/**/*.route.ts",
 	{ eager: true }
 );
 

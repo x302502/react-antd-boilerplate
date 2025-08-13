@@ -29,6 +29,8 @@ export default function LayoutContent() {
 	const enableFooter = usePreferencesStore((state) => state.enableFooter);
 	const fixedFooter = usePreferencesStore((state) => state.fixedFooter);
 
+	console.log(`=====flatRouteList=====`, flatRouteList);
+
 	/**
 	 * to distinguish different pages to cache
 	 */

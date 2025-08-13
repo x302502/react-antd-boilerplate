@@ -30,6 +30,8 @@ const initialState: AccessState = {
 	isAccessChecked: false
 };
 
+console.log(`=====initialState=====`, initialState);
+
 interface AccessAction {
 	setAccessStore: (routes: AppRouteRecordRaw[]) => AccessState;
 	reset: () => void;
