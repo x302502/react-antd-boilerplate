@@ -26,6 +26,7 @@ export default antfu({
 		"perfectionist/sort-imports": "off",
 		"import/no-mutable-exports": "off",
 		"style/jsx-wrap-multilines": "warn",
+		"no-console": "warn",
 
 		// React hooks rules
 		"react-hooks/exhaustive-deps": "warn",

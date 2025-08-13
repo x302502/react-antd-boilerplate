@@ -10,14 +10,14 @@ import { usePreferencesStore } from "~/store";
 import { useMemo } from "react";
 
 /**
- * 获取当前页面的布局类型信息
+ * Get the layout type information of the current page
  *
- * @returns 返回包含当前布局类型信息的对象，包含：
- * - currentLayout: 当前导航类型
- * - isSideNav: 是否为侧边导航
- * - isTopNav: 是否为顶部导航
- * - isMixedNav: 是否为混合导航
- * - isTwoColumnNav: 是否为双列导航
+ * @returns Returns an object containing the current layout type information, including:
+ * - currentLayout: Current navigation type
+ * - isSideNav: Whether it is a side navigation
+ * - isTopNav: Whether it is a top navigation
+ * - isMixedNav: Whether it is a mixed navigation
+ * - isTwoColumnNav: Whether it is a double column navigation
  */
 export function useLayout() {
 	const { isMobile } = useDeviceType();
@@ -32,7 +32,7 @@ export function useLayout() {
 	);
 
 	/**
-	 * 当前导航类型
+	 * Current navigation type
 	 */
 	const currentLayout = useMemo(
 		() => (isMobile ? SIDE_NAVIGATION : navigationStyle),
@@ -40,7 +40,7 @@ export function useLayout() {
 	);
 
 	/**
-	 * 是否为侧边导航
+	 * Whether it is a side navigation
 	 */
 	const isSideNav = useMemo(
 		() => currentLayout === SIDE_NAVIGATION,
@@ -48,7 +48,7 @@ export function useLayout() {
 	);
 
 	/**
-	 * 是否为顶部导航
+	 * Whether it is a top navigation
 	 */
 	const isTopNav = useMemo(
 		() => currentLayout === TOP_NAVIGATION,
@@ -56,7 +56,7 @@ export function useLayout() {
 	);
 
 	/**
-	 * 是否为双列导航
+	 * Whether it is a double column navigation
 	 */
 	const isTwoColumnNav = useMemo(
 		() => currentLayout === TWO_COLUMN_NAVIGATION,
@@ -64,7 +64,7 @@ export function useLayout() {
 	);
 
 	/**
-	 * 是否为混合导航
+	 * Whether it is a mixed navigation
 	 */
 	const isMixedNav = useMemo(
 		() => currentLayout === MIXED_NAVIGATION,
