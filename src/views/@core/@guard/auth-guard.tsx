@@ -12,17 +12,12 @@ import { matchRoutes, Navigate, useLocation, useNavigate, useSearchParams } from
 
 import { removeDuplicateRoutes } from './utils';
 
-/**
- * Routes whitelist 1. No permission verification, 2. Will not trigger requests, such as user information interface
- * @example "privacy-policy", "terms-of-service" and so on.
- */
 const noLoginWhiteList = Array.from(whiteRouteNames).filter(item => item !== LOGIN_PATH);
 
 interface AuthGuardProps {
   children?: React.ReactNode;
 }
 
-const { VITE_BASE_HOME_PATH } = import.meta.env;
 /**
  * AuthGuard component, used for permission verification. The order of the code is important and should not be arbitrarily adjusted
  */
@@ -92,12 +87,7 @@ export function AuthGuard({ children }: AuthGuardProps) {
       /**
        * If backend routing is enabled and the route is obtained from a separate interface
        */
-      if (
-        enableBackendAccess &&
-        isSendRoutingRequest &&
-        routeResult.status === 'fulfilled' &&
-        'result' in routeResult.value
-      ) {
+      if (enableBackendAccess && isSendRoutingRequest && routeResult.status === 'fulfilled') {
         routes.push(...(await generateRoutesFromBackend(routeResult.value ?? [])));
       }
 
@@ -150,7 +140,17 @@ export function AuthGuard({ children }: AuthGuardProps) {
     if (!whiteRouteNames.includes(pathname) && isLogin && !isAuthorized) {
       fetchUserInfoAndRoutes();
     }
-  }, [pathname, isLogin, isAuthorized]);
+  }, [
+    pathname,
+    isLogin,
+    isAuthorized,
+    getUserInfo,
+    enableBackendAccess,
+    enableFrontendAceess,
+    setAccessStore,
+    navigate,
+    search,
+  ]);
 
   /**
    * @zh Route whitelist
@@ -203,7 +203,7 @@ export function AuthGuard({ children }: AuthGuardProps) {
     if (redirectPath?.length && redirectPath !== pathname) {
       return <Navigate to={redirectPath} replace />;
     }
-    return <Navigate to={VITE_BASE_HOME_PATH} replace />;
+    return <Navigate to={import.meta.env.VITE_BASE_HOME_PATH} replace />;
   }
 
   /**
@@ -234,7 +234,7 @@ export function AuthGuard({ children }: AuthGuardProps) {
    * @en pathname returns the path relative to import.meta.env.BASE_URL, so here is the root route "/" relative to BASE_URL
    */
   if (pathname === '/') {
-    return <Navigate to={VITE_BASE_HOME_PATH} replace />;
+    return <Navigate to={import.meta.env.VITE_BASE_HOME_PATH} replace />;
   }
 
   /* --------------- End ------------------ */
