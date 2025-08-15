@@ -6,7 +6,7 @@
  * @returns 如果给定的值是函数类型，则返回true；否则返回false / Returns true if the given value is a function type, otherwise returns false
  */
 export function isFunction(value: unknown) {
-	return typeof value === "function";
+  return typeof value === 'function';
 }
 
 /**
@@ -17,7 +17,7 @@ export function isFunction(value: unknown) {
  * @returns 如果给定的值是有限数字，则返回true；否则返回false / Returns true if the given value is a finite number, otherwise returns false
  */
 export function isNumber(value: unknown) {
-	return typeof value === "number" && Number.isFinite(value);
+  return typeof value === 'number' && Number.isFinite(value);
 }
 
 /**
@@ -28,7 +28,7 @@ export function isNumber(value: unknown) {
  * @returns 返回布尔值，表示该值是否为字符串类型 / Returns a boolean value indicating whether the value is of the string type
  */
 export function isString(value: unknown) {
-	return typeof value === "string";
+  return typeof value === 'string';
 }
 
 /**
@@ -39,7 +39,7 @@ export function isString(value: unknown) {
  * @returns 如果给定的值是布尔值，则返回true；否则返回false / Returns true if the given value is a boolean value, otherwise returns false
  */
 export function isBoolean(value: unknown) {
-	return typeof value === "boolean";
+  return typeof value === 'boolean';
 }
 
 /**
@@ -50,7 +50,7 @@ export function isBoolean(value: unknown) {
  * @returns 返回布尔值，表示是否为对象类型 / Returns a boolean value indicating whether the value is of the object type
  */
 export function isObject(value: unknown) {
-	return typeof value === "object" && value !== null;
+  return typeof value === 'object' && value !== null;
 }
 
 /**
@@ -61,7 +61,7 @@ export function isObject(value: unknown) {
  * @returns 如果值为 null，则返回 true；否则返回 false / Returns true if the value is null, otherwise returns false
  */
 export function isNull(value: unknown) {
-	return value === null;
+  return value === null;
 }
 
 /**
@@ -72,5 +72,5 @@ export function isNull(value: unknown) {
  * @returns 如果值为 undefined，则返回 true；否则返回 false / Returns true if the value is undefined, otherwise returns false
  */
 export function isUndefined(value: unknown) {
-	return value === undefined;
+  return value === undefined;
 }

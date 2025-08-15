@@ -1,19 +1,19 @@
-import { usePreferencesStore } from "~/store/preferences";
-import { isDarkTheme } from "~/utils";
+import { usePreferencesStore } from '~/store/preferences/preferences.store';
+import { isDarkTheme } from '~/utils';
 
-export const loadingId = "loading-e8a3a985";
-export const loadingContainerId = "loading-container-e8a3a985";
+export const loadingId = 'loading-e8a3a985';
+export const loadingContainerId = 'loading-container-e8a3a985';
 /**
  * Preview loading page.
  * https://github.com/user-attachments/assets/110701a8-2cf4-4e5f-a07e-b832da4e1586
  */
 export function setupLoading() {
-	/**
-	 * @see https://github.com/pure-admin/vue-pure-admin/blob/cd21f1e050011d8f761094bf8a1e110fb8a33959/index.html#L20-L81
-	 * This CSS code from https://github.com/pure-admin/vue-pure-admin
-	 * @author pure-admin
-	 */
-	const loading = `
+  /**
+   * @see https://github.com/pure-admin/vue-pure-admin/blob/cd21f1e050011d8f761094bf8a1e110fb8a33959/index.html#L20-L81
+   * This CSS code from https://github.com/pure-admin/vue-pure-admin
+   * @author pure-admin
+   */
+  const loading = `
 <style>
 #${loadingContainerId} {
 	position: fixed;
@@ -24,7 +24,7 @@ export function setupLoading() {
 	justify-content: center;
 	height: 100vh;
 	width: 100vw;
-	background-color: ${isDarkTheme(usePreferencesStore.getState().theme) ? "#181818" : "transparent"};
+	background-color: ${isDarkTheme(usePreferencesStore.getState().theme) ? '#181818' : 'transparent'};
 	overflow: hidden;
 }
 #${loadingId},
@@ -79,16 +79,16 @@ export function setupLoading() {
 </style>
 <div id="${loadingId}"></div>
 `;
-	const loadingContainerElement = document.getElementById(loadingContainerId);
-	if (!loadingContainerElement) {
-		const loadingDiv = document.createElement("div");
-		loadingDiv.id = loadingContainerId;
-		loadingDiv.innerHTML = `<!-- A loading animation displayed before code loads, driven by setupLoading function -->${loading}`;
+  const loadingContainerElement = document.getElementById(loadingContainerId);
+  if (!loadingContainerElement) {
+    const loadingDiv = document.createElement('div');
+    loadingDiv.id = loadingContainerId;
+    loadingDiv.innerHTML = `<!-- A loading animation displayed before code loads, driven by setupLoading function -->${loading}`;
 
-		const app = document.getElementById("root");
+    const app = document.getElementById('root');
 
-		if (app) {
-			app.before(loadingDiv);
-		}
-	}
+    if (app) {
+      app.before(loadingDiv);
+    }
+  }
 }

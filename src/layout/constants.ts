@@ -22,4 +22,4 @@ export const tabbarHeight = 35;
  * @zh 主内容区域的元素 ID
  * @en Main content element ID
  */
-export const ELEMENT_ID_MAIN_CONTENT = "__react-antd-admin_main_content";
+export const ELEMENT_ID_MAIN_CONTENT = '__react-antd-admin_main_content';

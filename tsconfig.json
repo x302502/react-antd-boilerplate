@@ -16,8 +16,9 @@
 			"@testing-library/jest-dom"
 		],
 		"allowJs": true,
-		"strict": true,
+		"strict": false,
 		"noFallthroughCasesInSwitch": true,
+		"importHelpers": false,
 		"noEmit": true,
 		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": true,

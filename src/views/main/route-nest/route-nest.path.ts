@@ -1,0 +1,6 @@
+export const ROUTE_NEST_PATH = '/route-nest';
+export const ROUTE_NEST_MENU1_PATH = `${ROUTE_NEST_PATH}/menu1`;
+export const ROUTE_NEST_MENU2_PATH = `${ROUTE_NEST_PATH}/menu2`;
+export const ROUTE_NEST_MENU1_MENU11_PATH = `${ROUTE_NEST_MENU1_PATH}/menu1-1`;
+export const ROUTE_NEST_MENU1_MENU12_PATH = `${ROUTE_NEST_MENU1_PATH}/menu1-2`;
+export const ROUTE_NEST_MENU2_MENU2_PATH = `${ROUTE_NEST_MENU2_PATH}/menu2`;

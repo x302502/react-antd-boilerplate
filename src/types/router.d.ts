@@ -1,7 +1,7 @@
-import type { RouteMeta } from "~/router/types";
-import type { UIMatch } from "react-router";
+import type { RouteMeta } from '~/router/types';
+import type { UIMatch } from 'react-router';
 
-import "react-router";
+import 'react-router';
 
 /**
  * Matches the given routes to a location and returns the match data.
@@ -9,6 +9,6 @@ import "react-router";
  * @see https://reactrouter.com/utils/match-routes
  */
 
-declare module "react-router" {
-	function useMatches(): UIMatch<unknown, RouteMeta>[];
+declare module 'react-router' {
+  function useMatches(): UIMatch<unknown, RouteMeta>[];
 }

@@ -1,1 +1,1 @@
-export * from "./use-table-scroll";
+export * from './use-table-scroll';

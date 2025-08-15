@@ -1,23 +1,23 @@
-import { RocketOutlined } from "@ant-design/icons";
-import { FloatButton, Grid, Watermark } from "antd";
-import { useEffect, useMemo } from "react";
+import { RocketOutlined } from '@ant-design/icons';
+import { FloatButton, Grid, Watermark } from 'antd';
+import { useEffect, useMemo } from 'react';
 
-import { useDeviceType } from "~/hooks";
-import { usePreferencesStore, useTabsStore } from "~/store";
-import { cn } from "~/utils";
+import { useDeviceType } from '~/hooks';
+import { usePreferencesStore, useTabsStore } from '~/store';
+import { cn } from '~/utils';
 
-import { ELEMENT_ID_MAIN_CONTENT } from "../constants";
-import { useLayout } from "../hooks";
-import LayoutContent from "../layout-content";
-import LayoutFooter from "../layout-footer";
-import LayoutHeader from "../layout-header";
-import LayoutMenu from "../layout-menu";
-import { useMenu } from "../layout-menu/use-menu";
-import LayoutMixedSidebar from "../layout-mixed-sidebar";
-import LayoutMobileMenu from "../layout-mobile-menu";
-import LayoutSidebar from "../layout-sidebar";
-import LayoutTabbar from "../layout-tabbar";
-import { BreadcrumbViews, Logo } from "../widgets";
+import { ELEMENT_ID_MAIN_CONTENT } from '../constants';
+import { useLayout } from '../hooks';
+import LayoutContent from '../layout-content';
+import LayoutFooter from '../layout-footer';
+import LayoutHeader from '../layout-header';
+import LayoutMenu from '../layout-menu';
+import { useMenu } from '../layout-menu/use-menu';
+import LayoutMixedSidebar from '../layout-mixed-sidebar';
+import LayoutMobileMenu from '../layout-mobile-menu';
+import LayoutSidebar from '../layout-sidebar';
+import LayoutTabbar from '../layout-tabbar';
+import { BreadcrumbViews, Logo } from '../widgets';
 
 const { useBreakpoint } = Grid;
 
@@ -32,138 +32,120 @@ const { useBreakpoint } = Grid;
  * import { ContainerLayout } from "~/layout";
  */
 export default function ContainerLayout() {
-	const screens = useBreakpoint();
-	const {
-		isTopNav,
-		isTwoColumnNav,
-		isMixedNav,
-		sidebarWidth,
-		sideCollapsedWidth,
-		firstColumnWidthInTwoColumnNavigation
-	} = useLayout();
-	const isMaximize = useTabsStore((state) => state.isMaximize);
-	const {
-		watermark,
-		watermarkContent,
-		enableFooter,
-		fixedFooter,
-		enableBackTopButton,
-		tabbarEnable,
-		sidebarEnable,
-		sidebarCollapsed,
-		setPreferences
-	} = usePreferencesStore();
-	const { isMobile } = useDeviceType();
-	const { sideNavItems, topNavItems, handleMenuSelect } = useMenu();
+  const screens = useBreakpoint();
+  const {
+    isTopNav,
+    isTwoColumnNav,
+    isMixedNav,
+    sidebarWidth,
+    sideCollapsedWidth,
+    firstColumnWidthInTwoColumnNavigation,
+  } = useLayout();
+  const isMaximize = useTabsStore(state => state.isMaximize);
+  const {
+    watermark,
+    watermarkContent,
+    enableFooter,
+    fixedFooter,
+    enableBackTopButton,
+    tabbarEnable,
+    sidebarEnable,
+    sidebarCollapsed,
+    setPreferences,
+  } = usePreferencesStore();
+  const { isMobile } = useDeviceType();
+  const { sideNavItems, topNavItems, handleMenuSelect } = useMenu();
 
-	useEffect(() => {
-		/* iPad */
-		if (screens.lg && !screens.xl) {
-			setPreferences("sidebarCollapsed", true);
-		} else if (screens.xl) {
-			/* PC */
-			setPreferences("sidebarCollapsed", false);
-		} else if (screens.xs || (screens.sm && !screens.md)) {
-			/* Mobile */
-			setPreferences("sidebarCollapsed", false);
-		}
-	}, [screens]);
+  useEffect(() => {
+    /* iPad */
+    if (screens.lg && !screens.xl) {
+      setPreferences('sidebarCollapsed', true);
+    } else if (screens.xl) {
+      /* PC */
+      setPreferences('sidebarCollapsed', false);
+    } else if (screens.xs || (screens.sm && !screens.md)) {
+      /* Mobile */
+      setPreferences('sidebarCollapsed', false);
+    }
+  }, [screens]);
 
-	const sidebarEnableState = useMemo(
-		() => !isTopNav && sidebarEnable,
-		[isTopNav, sidebarEnable]
-	);
-	const computedSidebarWidth = useMemo(() => {
-		if (isMaximize || isMobile) {
-			return 0;
-		}
-		const currentSidebarWidth = sidebarCollapsed
-			? sideCollapsedWidth
-			: sidebarWidth;
-		if (isTwoColumnNav) {
-			/* 双列导航，第一列默认宽度 */
-			return currentSidebarWidth + (firstColumnWidthInTwoColumnNavigation ?? 0);
-		}
-		if (sidebarEnableState) {
-			return currentSidebarWidth;
-		}
-		return 0;
-	}, [
-		// Mobile
-		isMobile,
-		isMaximize,
-		isTwoColumnNav,
-		sidebarEnableState,
-		sidebarWidth,
-		sidebarCollapsed,
-		sideCollapsedWidth,
-		firstColumnWidthInTwoColumnNavigation
-	]);
+  const sidebarEnableState = useMemo(() => !isTopNav && sidebarEnable, [isTopNav, sidebarEnable]);
+  const computedSidebarWidth = useMemo(() => {
+    if (isMaximize || isMobile) {
+      return 0;
+    }
+    const currentSidebarWidth = sidebarCollapsed ? sideCollapsedWidth : sidebarWidth;
+    if (isTwoColumnNav) {
+      /* 双列导航，第一列默认宽度 */
+      return currentSidebarWidth + (firstColumnWidthInTwoColumnNavigation ?? 0);
+    }
+    if (sidebarEnableState) {
+      return currentSidebarWidth;
+    }
+    return 0;
+  }, [
+    // Mobile
+    isMobile,
+    isMaximize,
+    isTwoColumnNav,
+    sidebarEnableState,
+    sidebarWidth,
+    sidebarCollapsed,
+    sideCollapsedWidth,
+    firstColumnWidthInTwoColumnNavigation,
+  ]);
 
-	return (
-		<Watermark content={watermark ? watermarkContent : ""}>
-			<section
-				style={{
-					paddingLeft: computedSidebarWidth
-				}}
-				className={cn("transition-all flex flex-col h-screen")}
-			>
-				<LayoutHeader>
-					{isTopNav || isMixedNav ? (
-						<>
-							{isTopNav ? (
-								<Logo sidebarCollapsed={false} className="mr-8" />
-							) : null}
-							<LayoutMenu
-								mode="horizontal"
-								menus={topNavItems}
-								handleMenuSelect={handleMenuSelect}
-							/>
-						</>
-					) : (
-						<BreadcrumbViews />
-					)}
-				</LayoutHeader>
-				{tabbarEnable ? <LayoutTabbar /> : null}
+  return (
+    <Watermark content={watermark ? watermarkContent : ''}>
+      <section
+        style={{
+          paddingLeft: computedSidebarWidth,
+        }}
+        className={cn('transition-all flex flex-col h-screen')}
+      >
+        <LayoutHeader>
+          {isTopNav || isMixedNav ? (
+            <>
+              {isTopNav ? <Logo sidebarCollapsed={false} className="mr-8" /> : null}
+              <LayoutMenu mode="horizontal" menus={topNavItems} handleMenuSelect={handleMenuSelect} />
+            </>
+          ) : (
+            <BreadcrumbViews />
+          )}
+        </LayoutHeader>
+        {tabbarEnable ? <LayoutTabbar /> : null}
 
-				{/* Mobile Menu */}
-				<LayoutMobileMenu />
+        {/* Mobile Menu */}
+        <LayoutMobileMenu />
 
-				{/* PC */}
-				{sidebarEnableState && !isTwoColumnNav ? (
-					<LayoutSidebar computedSidebarWidth={computedSidebarWidth}>
-						<LayoutMenu
-							autoOpenMenu
-							menus={sideNavItems}
-							handleMenuSelect={handleMenuSelect}
-						/>
-					</LayoutSidebar>
-				) : null}
-				{isTwoColumnNav ? (
-					<LayoutMixedSidebar
-						computedSidebarWidth={computedSidebarWidth}
-						sideNavItems={sideNavItems}
-						topNavItems={topNavItems}
-						handleMenuSelect={handleMenuSelect}
-					/>
-				) : null}
+        {/* PC */}
+        {sidebarEnableState && !isTwoColumnNav ? (
+          <LayoutSidebar computedSidebarWidth={computedSidebarWidth}>
+            <LayoutMenu autoOpenMenu menus={sideNavItems} handleMenuSelect={handleMenuSelect} />
+          </LayoutSidebar>
+        ) : null}
+        {isTwoColumnNav ? (
+          <LayoutMixedSidebar
+            computedSidebarWidth={computedSidebarWidth}
+            sideNavItems={sideNavItems}
+            topNavItems={topNavItems}
+            handleMenuSelect={handleMenuSelect}
+          />
+        ) : null}
 
-				<LayoutContent />
+        <LayoutContent />
 
-				{enableFooter && fixedFooter ? (
-					<LayoutFooter className="bg-colorBgContainer" />
-				) : null}
-				{enableBackTopButton ? (
-					<FloatButton.BackTop
-						icon={<RocketOutlined />}
-						target={() =>
-							(document.querySelector(
-								`#${ELEMENT_ID_MAIN_CONTENT} .simplebar-content-wrapper`
-							) as HTMLElement) || document
-						}
-					/>
-				) : null}
-			</section>
-		</Watermark>
-	);
+        {enableFooter && fixedFooter ? <LayoutFooter className="bg-colorBgContainer" /> : null}
+        {enableBackTopButton ? (
+          <FloatButton.BackTop
+            icon={<RocketOutlined />}
+            target={() =>
+              (document.querySelector(`#${ELEMENT_ID_MAIN_CONTENT} .simplebar-content-wrapper`) as HTMLElement) ||
+              document
+            }
+          />
+        ) : null}
+      </section>
+    </Watermark>
+  );
 }

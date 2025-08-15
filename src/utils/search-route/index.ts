@@ -1,19 +1,16 @@
-import type { AppRouteRecordRaw } from "~/router/types";
+import type { AppRouteRecordRaw } from '~/router/types';
 
-export function searchRoute(
-	routes: AppRouteRecordRaw[],
-	path: string
-): AppRouteRecordRaw | null {
-	for (const routeItem of routes) {
-		if (routeItem.path === path) {
-			return routeItem;
-		}
-		if (routeItem.children) {
-			const findItem = searchRoute(routeItem.children, path);
-			if (findItem) {
-				return findItem;
-			}
-		}
-	}
-	return null;
+export function searchRoute(routes: AppRouteRecordRaw[], path: string): AppRouteRecordRaw | null {
+  for (const routeItem of routes) {
+    if (routeItem.path === path) {
+      return routeItem;
+    }
+    if (routeItem.children) {
+      const findItem = searchRoute(routeItem.children, path);
+      if (findItem) {
+        return findItem;
+      }
+    }
+  }
+  return null;
 }

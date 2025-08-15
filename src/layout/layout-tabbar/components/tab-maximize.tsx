@@ -1,12 +1,12 @@
-import { BasicButton } from "~/components";
-import { useTabsStore } from "~/store";
-import { cn } from "~/utils";
+import { BasicButton } from '~/components';
+import { useTabsStore } from '~/store';
+import { cn } from '~/utils';
 
-import { FullscreenExitOutlined, FullscreenOutlined } from "@ant-design/icons";
-import { useShallow } from "zustand/shallow";
+import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons';
+import { useShallow } from 'zustand/shallow';
 
 interface TabMaximizeProps {
-	className?: string;
+  className?: string;
 }
 /**
  * 切换标签页最大化 / 最小化
@@ -14,29 +14,25 @@ interface TabMaximizeProps {
  * @returns 返回标签页最大化 / 最小化的按钮组件
  */
 export function TabMaximize({ className }: TabMaximizeProps) {
-	/**
-	 * useShallow - it may cause infinite loops in zustand v5
-	 * https://github.com/pmndrs/zustand/blob/v5.0.0/docs/migrations/migrating-to-v5.md#requiring-stable-selector-outputs
-	 */
-	const { isMaximize } = useTabsStore(
-		useShallow((state) => ({ isMaximize: state.isMaximize }))
-	);
-	const { toggleMaximize } = useTabsStore(
-		useShallow((state) => ({ toggleMaximize: state.toggleMaximize }))
-	);
+  /**
+   * useShallow - it may cause infinite loops in zustand v5
+   * https://github.com/pmndrs/zustand/blob/v5.0.0/docs/migrations/migrating-to-v5.md#requiring-stable-selector-outputs
+   */
+  const { isMaximize } = useTabsStore(useShallow(state => ({ isMaximize: state.isMaximize })));
+  const { toggleMaximize } = useTabsStore(useShallow(state => ({ toggleMaximize: state.toggleMaximize })));
 
-	/** 切换最大化 / 最小化 */
-	const onClick = () => {
-		toggleMaximize(!isMaximize);
-	};
+  /** 切换最大化 / 最小化 */
+  const onClick = () => {
+    toggleMaximize(!isMaximize);
+  };
 
-	return (
-		<BasicButton
-			className={cn(className)}
-			type="text"
-			size="middle"
-			icon={isMaximize ? <FullscreenExitOutlined /> : <FullscreenOutlined />}
-			onClick={onClick}
-		/>
-	);
+  return (
+    <BasicButton
+      className={cn(className)}
+      type="text"
+      size="middle"
+      icon={isMaximize ? <FullscreenExitOutlined /> : <FullscreenOutlined />}
+      onClick={onClick}
+    />
+  );
 }

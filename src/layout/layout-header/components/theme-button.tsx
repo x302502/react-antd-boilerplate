@@ -1,19 +1,19 @@
-import type { ButtonProps } from "antd";
+import type { ButtonProps } from 'antd';
 
-import { BasicButton } from "~/components";
-import { usePreferences } from "~/hooks";
-import { MoonIcon, SunIcon } from "~/icons";
-import { useEffect } from "react";
-import { flushSync } from "react-dom";
+import { BasicButton } from '~/components';
+import { usePreferences } from '~/hooks';
+import { MoonIcon, SunIcon } from '~/assets/icons';
+import { useEffect } from 'react';
+import { flushSync } from 'react-dom';
 
-const isBrowser = typeof window !== "undefined";
+const isBrowser = typeof window !== 'undefined';
 function injectViewTransitionStyles() {
-	if (isBrowser) {
-		const styleId = "theme-switch-view-transition-styles";
-		if (!document.getElementById(styleId)) {
-			const style = document.createElement("style");
-			style.id = styleId;
-			style.textContent = `
+  if (isBrowser) {
+    const styleId = 'theme-switch-view-transition-styles';
+    if (!document.getElementById(styleId)) {
+      const style = document.createElement('style');
+      style.id = styleId;
+      style.textContent = `
         html.stop-transition * {
           transition: none !important;
         }
@@ -32,9 +32,9 @@ function injectViewTransitionStyles() {
         }
       `;
 
-			document.head.appendChild(style);
-		}
-	}
+      document.head.appendChild(style);
+    }
+  }
 }
 
 /**
@@ -45,61 +45,52 @@ function injectViewTransitionStyles() {
  * Allows users to toggle between light and dark themes of the website via a button
  */
 export function ThemeButton({ ...restProps }: ButtonProps) {
-	const { isDark, changeSiteTheme } = usePreferences();
+  const { isDark, changeSiteTheme } = usePreferences();
 
-	useEffect(() => {
-		injectViewTransitionStyles();
-	}, []);
+  useEffect(() => {
+    injectViewTransitionStyles();
+  }, []);
 
-	function toggleTheme(event: React.PointerEvent<HTMLElement>) {
-		const isAppearanceTransition =
-			!!document.startViewTransition &&
-			!window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-		if (!isAppearanceTransition || !event) {
-			changeSiteTheme(isDark ? "light" : "dark");
-			return;
-		}
-		const x = event.clientX;
-		const y = event.clientY;
-		const endRadius = Math.hypot(
-			Math.max(x, innerWidth - x),
-			Math.max(y, innerHeight - y)
-		);
-		const transition = document.startViewTransition(() => {
-			// eslint-disable-next-line react-dom/no-flush-sync
-			flushSync(() => {
-				changeSiteTheme(isDark ? "light" : "dark");
-			});
-		});
-		transition.ready.then(() => {
-			const clipPath = [
-				`circle(0px at ${x}px ${y}px)`,
-				`circle(${endRadius}px at ${x}px ${y}px)`
-			];
-			document.documentElement.animate(
-				{
-					clipPath: isDark ? [...clipPath].reverse() : clipPath
-				},
-				{
-					duration: 500,
-					easing: "ease-in",
-					pseudoElement: isDark
-						? "::view-transition-old(root)"
-						: "::view-transition-new(root)"
-				}
-			);
-		});
-	}
+  function toggleTheme(event: React.PointerEvent<HTMLElement>) {
+    const isAppearanceTransition =
+      !!document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!isAppearanceTransition || !event) {
+      changeSiteTheme(isDark ? 'light' : 'dark');
+      return;
+    }
+    const x = event.clientX;
+    const y = event.clientY;
+    const endRadius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    const transition = document.startViewTransition(() => {
+      // eslint-disable-next-line react-dom/no-flush-sync
+      flushSync(() => {
+        changeSiteTheme(isDark ? 'light' : 'dark');
+      });
+    });
+    transition.ready.then(() => {
+      const clipPath = [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`];
+      document.documentElement.animate(
+        {
+          clipPath: isDark ? [...clipPath].reverse() : clipPath,
+        },
+        {
+          duration: 500,
+          easing: 'ease-in',
+          pseudoElement: isDark ? '::view-transition-old(root)' : '::view-transition-new(root)',
+        },
+      );
+    });
+  }
 
-	return (
-		<BasicButton
-			type="text"
-			{...restProps}
-			icon={isDark ? <SunIcon /> : <MoonIcon />}
-			onPointerDown={(e) => {
-				restProps?.onPointerDown?.(e);
-				toggleTheme(e);
-			}}
-		/>
-	);
+  return (
+    <BasicButton
+      type="text"
+      {...restProps}
+      icon={isDark ? <SunIcon /> : <MoonIcon />}
+      onPointerDown={e => {
+        restProps?.onPointerDown?.(e);
+        toggleTheme(e);
+      }}
+    />
+  );
 }

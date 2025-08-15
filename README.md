@@ -11,7 +11,7 @@
 ![GitHub stars](https://img.shields.io/github/stars/condorheroblog/react-antd-admin?color=fa6470&style=flat)
 ![GitHub forks](https://img.shields.io/github/forks/condorheroblog/react-antd-admin?style=flat)
 
-**English** | [中文](./README.zh-CN.md)
+**English**
 
 ## Introduction
 
@@ -43,32 +43,18 @@ react-antd-admin is a middle and back-office solution based on React Hooks, Vite
 
 [Create a repository using this template](https://github.com/new?template_name=react-antd-admin&template_owner=condorheroblog)
 
-### Clone the project
-
-If you prefer a template without git history, manually execute the following:
-
-```bash
-npx degit condorheroblog/react-antd-admin react-antd-admin
-# or npx giget@latest gh:condorheroblog/react-antd-admin react-antd-admin
-cd react-antd-admin
-corepack enable
-pnpm i # If you haven't installed pnpm before, run: npm install -g pnpm
-```
-
 ## Development
 
 ### Install
 
 ```bash
-corepack enable
-
-pnpm install
+bun install
 ```
 
 ### Run
 
 ```bash
-pnpm run dev
+bun dev
 ```
 
 Open your browser and enter [http://localhost:3333](http://localhost:3333) to see the page.
@@ -76,7 +62,7 @@ Open your browser and enter [http://localhost:3333](http://localhost:3333) to se
 ## Build
 
 ```bash
-pnpm build
+bun run build
 ```
 
 The build output is by default in the build folder.
@@ -84,14 +70,14 @@ The build output is by default in the build folder.
 ## Preview
 
 ```bash
-pnpm preview
+bun run preview
 ```
 
 ## Credits
 
 Thanks to the following excellent projects for providing inspiration:
 
-- [vue-vben-admin](https://github.com/vbenjs/vue-vben-admin)  for design inspiration
+- [vue-vben-admin](https://github.com/vbenjs/vue-vben-admin) for design inspiration
 - [vue-pure-admin](https://github.com/pure-admin/vue-pure-admin) for business logic inspiration
 
 ## Star History

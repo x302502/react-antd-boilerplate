@@ -7,67 +7,67 @@
  * 4. ...
  */
 
-import type { RouteObject } from "react-router";
-import { LayoutRoot } from "~/layout";
-import { usePreferencesStore } from "~/store";
-import { NProgress } from "~/utils";
+import type { RouteObject } from 'react-router';
+import { LayoutRoot } from '~/layout';
+import { usePreferencesStore } from '~/store';
+import { NProgress } from '~/utils';
 
-import { createBrowserRouter, createHashRouter } from "react-router";
-import { ROOT_ROUTE_ID } from "./constants";
-import { baseRoutes } from "./routes";
+import { createBrowserRouter, createHashRouter } from 'react-router';
+import { ROOT_ROUTE_ID } from './config/constants';
+import { baseRoutes } from './app.routes';
 
 // Record already loaded pages
 const loadedPaths = new Set<string>();
 
 export const rootRoute: RouteObject[] = [
-	{
-		path: "/",
-		id: ROOT_ROUTE_ID,
-		Component: LayoutRoot,
-		children: baseRoutes,
-		loader: ({ request }) => {
-			/**
-			 * Start the progress bar animation when loading routes for the first time
-			 */
-			const { transitionProgress } = usePreferencesStore.getState();
-			if (transitionProgress) {
-				NProgress.start();
-				const relativePath = new URL(request.url).pathname;
-				loadedPaths.add(relativePath);
-			}
-			return null;
-		},
-		shouldRevalidate: ({ nextUrl, currentUrl }) => {
-			if (nextUrl.pathname === currentUrl.pathname) {
-				return false;
-			}
-			/**
-			 * Start the progress bar animation when the route is updated
-			 */
-			const { transitionProgress } = usePreferencesStore.getState();
-			const isLoaded = loadedPaths.has(nextUrl.pathname);
-			if (transitionProgress && !isLoaded) {
-				NProgress.start();
-				loadedPaths.add(nextUrl.pathname);
-			}
-			return false;
-		}
-	}
+  {
+    path: '/',
+    id: ROOT_ROUTE_ID,
+    Component: LayoutRoot,
+    children: baseRoutes,
+    loader: ({ request }) => {
+      /**
+       * Start the progress bar animation when loading routes for the first time
+       */
+      const { transitionProgress } = usePreferencesStore.getState();
+      if (transitionProgress) {
+        NProgress.start();
+        const relativePath = new URL(request.url).pathname;
+        loadedPaths.add(relativePath);
+      }
+      return null;
+    },
+    shouldRevalidate: ({ nextUrl, currentUrl }) => {
+      if (nextUrl.pathname === currentUrl.pathname) {
+        return false;
+      }
+      /**
+       * Start the progress bar animation when the route is updated
+       */
+      const { transitionProgress } = usePreferencesStore.getState();
+      const isLoaded = loadedPaths.has(nextUrl.pathname);
+      if (transitionProgress && !isLoaded) {
+        NProgress.start();
+        loadedPaths.add(nextUrl.pathname);
+      }
+      return false;
+    },
+  },
 ];
 
 function createRouter() {
-	if (import.meta.env.VITE_ROUTER_MODE === "hash") {
-		return createHashRouter(rootRoute, {
-			/**
-			 * When the routing mode is hash, you don't need to set the basename property. If you set it as `/app`, the root route `/` will become `/#/app`.
-			 * @see https://reactrouter.com/6.30.0/router-components/hash-router#basename
-			 */
-			// basename: import.meta.env.BASE_URL,
-		});
-	}
-	return createBrowserRouter(rootRoute, {
-		basename: import.meta.env.BASE_URL
-	});
+  if (import.meta.env.VITE_ROUTER_MODE === 'hash') {
+    return createHashRouter(rootRoute, {
+      /**
+       * When the routing mode is hash, you don't need to set the basename property. If you set it as `/app`, the root route `/` will become `/#/app`.
+       * @see https://reactrouter.com/6.30.0/router-components/hash-router#basename
+       */
+      // basename: import.meta.env.BASE_URL,
+    });
+  }
+  return createBrowserRouter(rootRoute, {
+    basename: import.meta.env.BASE_URL,
+  });
 }
 
 export const router = createRouter();

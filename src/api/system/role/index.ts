@@ -1,50 +1,50 @@
-import type { RoleItemType } from "./types";
-import { request } from "~/utils";
+import type { RoleItemType } from './types';
+import { fakeApiConnector } from '~/connectors';
 
-export * from "./types";
+export * from './types';
 
-/* Get role list */
-export function fetchRoleList(data: any) {
-	return request
-		.get<
-			ApiListResponse<RoleItemType>
-		>("role-list", { searchParams: data, ignoreLoading: true })
-		.json();
+const ENDPOINT = {
+  LIST: 'api/role-list',
+  ADD: 'api/role-item',
+  UPDATE: 'api/role-item',
+  DELETE: 'api/role-item',
+  LIST_ROLE_MENU: 'api/role-menu',
+  MENU_BY_ROLE_ID: 'api/menu-by-role-id',
+};
+class RoleApi {
+  /* Get role list */
+  list(data: any) {
+    return fakeApiConnector.get<ApiListResponse<RoleItemType>>(ENDPOINT.LIST, { searchParams: data });
+  }
+
+  /* Add role */
+  add(body: RoleItemType) {
+    return fakeApiConnector.post<string>(ENDPOINT.ADD, body);
+  }
+
+  /* Update role */
+  update(body: RoleItemType) {
+    return fakeApiConnector.put<string>(ENDPOINT.UPDATE, body);
+  }
+
+  /* Delete role */
+  delete(id: number) {
+    return fakeApiConnector.delete<string>(ENDPOINT.DELETE, {
+      params: { id },
+    });
+  }
+
+  /* Get menus */
+  listRoleMenu() {
+    return fakeApiConnector.get<RoleItemType[]>(ENDPOINT.LIST_ROLE_MENU);
+  }
+
+  /* Menu IDs bound to role */
+  menuByRoleId(params: { id: number }) {
+    return fakeApiConnector.get<string[]>(ENDPOINT.MENU_BY_ROLE_ID, {
+      searchParams: params,
+    });
+  }
 }
 
-/* Add role */
-export function fetchAddRoleItem(data: RoleItemType) {
-	return request
-		.post<ApiResponse<string>>("role-item", { json: data, ignoreLoading: true })
-		.json();
-}
-
-/* Update role */
-export function fetchUpdateRoleItem(data: RoleItemType) {
-	return request
-		.put<ApiResponse<string>>("role-item", { json: data, ignoreLoading: true })
-		.json();
-}
-
-/* Delete role */
-export function fetchDeleteRoleItem(id: number) {
-	return request
-		.delete<ApiResponse<string>>("role-item", { json: id, ignoreLoading: true })
-		.json();
-}
-
-/* Get menus */
-export function fetchRoleMenu() {
-	return request
-		.get<ApiResponse<RoleItemType[]>>("role-menu", { ignoreLoading: true })
-		.json();
-}
-
-/* Menu IDs bound to role */
-export function fetchMenuByRoleId(data: { id: number }) {
-	return request
-		.get<
-			ApiResponse<string[]>
-		>("menu-by-role-id", { searchParams: data, ignoreLoading: false })
-		.json();
-}
+export const roleApi = new RoleApi();

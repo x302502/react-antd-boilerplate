@@ -110,7 +110,7 @@ export const About = () => <div>About</div>;
 ```ts
 import type { AppRouteRecordRaw } from "~/router/types";
 import { $t } from "~/locales";
-import { about } from "~/router/extra-info";
+import { about } from "~/router/config/order";
 
 import { UserOutlined } from "@ant-design/icons";
 import { createElement } from "react";
@@ -144,7 +144,7 @@ export default routes;
 import type { AppRouteRecordRaw } from "~/router/types";
 import { ContainerLayout } from "~/layout";
 import { $t } from "~/locales";
-import { about } from "~/router/extra-info";
+import { about } from "~/router/config/order";
 
 import { UserOutlined } from "@ant-design/icons";
 import { createElement, lazy } from "react";
@@ -179,7 +179,7 @@ import type { AppRouteRecordRaw } from "~/router/types";
 import { ContainerLayout } from "~/layout";
 
 import { $t } from "~/locales";
-import { home } from "~/router/extra-info";
+import { home } from "~/router/config/order";
 import { HomeOutlined } from "@ant-design/icons";
 import { createElement, lazy } from "react";
 
@@ -223,7 +223,7 @@ import type { AppRouteRecordRaw } from "~/router/types";
 import { ContainerLayout } from "~/layout";
 
 import { $t } from "~/locales";
-import { home } from "~/router/extra-info";
+import { home } from "~/router/config/order";
 import { HomeOutlined } from "@ant-design/icons";
 import { createElement, lazy } from "react";
 
@@ -274,7 +274,7 @@ import type { AppRouteRecordRaw } from "~/router/types";
 import { ContainerLayout } from "~/layout";
 
 import { $t } from "~/locales";
-import { home } from "~/router/extra-info";
+import { home } from "~/router/config/order";
 import { HomeOutlined } from "@ant-design/icons";
 import { createElement, lazy } from "react";
 

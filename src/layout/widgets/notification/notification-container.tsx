@@ -1,19 +1,18 @@
-import type { ButtonProps } from "antd";
-import type { NotificationItem } from "./types";
+import type { ButtonProps } from 'antd';
+import type { NotificationItem } from '~/api/notifications/types';
 
-import { fetchNotifications } from "~/api/notifications";
-
-import { useEffect, useState } from "react";
-import { NotificationPopup } from "./index";
+import { useEffect, useState } from 'react';
+import { NotificationPopup } from './index';
+import { notificationApi } from '~/api/notifications';
 
 export function NotificationContainer({ ...restProps }: ButtonProps) {
-	const [notifications, setNotifications] = useState<NotificationItem[]>([]);
+  const [notifications, setNotifications] = useState<NotificationItem[]>([]);
 
-	useEffect(() => {
-		fetchNotifications().then((res) => {
-			setNotifications(Array.from({ length: 20 }).flatMap(() => res.result));
-		});
-	}, []);
+  useEffect(() => {
+    notificationApi.list().then(res => {
+      setNotifications(Array.from({ length: 20 }).flatMap(() => res));
+    });
+  }, []);
 
-	return <NotificationPopup notifications={notifications} {...restProps} />;
+  return <NotificationPopup notifications={notifications} {...restProps} />;
 }

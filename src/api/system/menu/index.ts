@@ -1,34 +1,35 @@
-import type { MenuItemType } from "./types";
-import { request } from "~/utils";
+import type { MenuItemType } from './types';
+import { fakeApiConnector } from '~/connectors';
 
-export * from "./types";
+export * from './types';
 
-/* Get menu list */
-export function fetchMenuList(data: any) {
-	return request
-		.get<
-			ApiListResponse<MenuItemType>
-		>("menu-list", { searchParams: data, ignoreLoading: true })
-		.json();
+const ENDPOINT = {
+  LIST: 'api/menu-list',
+  ADD: 'api/menu-item',
+  UPDATE: 'api/menu-item',
+  DELETE: 'api/menu-item',
+};
+
+class MenuApi {
+  /* Get menu list */
+  list(data: any) {
+    return fakeApiConnector.get<ApiListResponse<MenuItemType>>(ENDPOINT.LIST, { searchParams: data });
+  }
+
+  /* Add menu */
+  add(body: MenuItemType) {
+    return fakeApiConnector.post<string>(ENDPOINT.ADD, body);
+  }
+
+  /* Update menu */
+  update(body: MenuItemType) {
+    return fakeApiConnector.put<string>(ENDPOINT.UPDATE, body);
+  }
+
+  /* Delete menu */
+  delete(id: number) {
+    return fakeApiConnector.delete<string>(ENDPOINT.DELETE, { params: { id } });
+  }
 }
 
-/* Add menu */
-export function fetchAddMenuItem(data: MenuItemType) {
-	return request
-		.post<ApiResponse<string>>("menu-item", { json: data, ignoreLoading: true })
-		.json();
-}
-
-/* Update menu */
-export function fetchUpdateMenuItem(data: MenuItemType) {
-	return request
-		.put<ApiResponse<string>>("menu-item", { json: data, ignoreLoading: true })
-		.json();
-}
-
-/* Delete menu */
-export function fetchDeleteMenuItem(id: number) {
-	return request
-		.delete<ApiResponse<string>>("menu-item", { json: id, ignoreLoading: true })
-		.json();
-}
+export const menuApi = new MenuApi();

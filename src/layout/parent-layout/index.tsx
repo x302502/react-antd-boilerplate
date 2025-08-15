@@ -1,8 +1,8 @@
-import { Suspense } from "react";
-import { useOutlet } from "react-router";
+import { Suspense } from 'react';
+import { useOutlet } from 'react-router';
 
 export default function ParentLayout() {
-	const currentOutlet = useOutlet();
+  const currentOutlet = useOutlet();
 
-	return <Suspense>{currentOutlet}</Suspense>;
+  return <Suspense>{currentOutlet}</Suspense>;
 }

@@ -1,17 +1,13 @@
-import { request } from "~/utils";
+import { fakeApiConnector } from '~/connectors';
 
 export interface PieDataType {
-	value: number;
-	code: string;
+  value: number;
+  code: string;
 }
-export function fetchPie(data: { by: string | number }) {
-	return request
-		.get("home/pie", { searchParams: data })
-		.json<ApiResponse<PieDataType[]>>();
-}
+export const fetchPie = (data: { by: string | number }) => {
+  return fakeApiConnector.get<PieDataType[]>('api/home/pie', { searchParams: data });
+};
 
-export function fetchLine(data: { range: string }) {
-	return request
-		.post("home/line", { json: data })
-		.json<ApiResponse<string[]>>();
-}
+export const fetchLine = (body: { range: string }) => {
+  return fakeApiConnector.post<string[]>('api/home/line', body);
+};

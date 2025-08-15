@@ -1,6 +1,14 @@
-import type { NotificationItem } from "~/layout/widgets/notification/types";
-import { request } from "~/utils";
+import type { NotificationItem } from '~/api/notifications/types';
+import { fakeApiConnector } from '~/connectors';
 
-export function fetchNotifications() {
-	return request.get("notifications").json<ApiResponse<NotificationItem[]>>();
+const ENDPOINT = {
+  LIST: 'api/notifications',
+};
+
+class NotificationApi {
+  list() {
+    return fakeApiConnector.get<NotificationItem[]>(ENDPOINT.LIST);
+  }
 }
+
+export const notificationApi = new NotificationApi();

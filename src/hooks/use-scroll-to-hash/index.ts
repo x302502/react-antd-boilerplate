@@ -1,8 +1,8 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 interface ScrollToHashOptions {
-	behavior?: ScrollBehavior;
-	interval?: number;
+  behavior?: ScrollBehavior;
+  interval?: number;
 }
 
 /**
@@ -13,25 +13,22 @@ interface ScrollToHashOptions {
  * @param {string} options.behavior - The scroll behavior. Possible values are "auto", "smooth", or "instant". Default is "smooth".
  * @param {number} options.interval - The interval (in milliseconds) between consecutive scroll actions when scrolling is triggered. Default is 200ms.
  */
-export function useScrollToHash(
-	trigger?: unknown,
-	{ behavior = "smooth", interval = 200 }: ScrollToHashOptions = {}
-) {
-	useEffect(() => {
-		const { hash } = window.location;
-		const id = decodeURIComponent(hash.slice(1));
+export function useScrollToHash(trigger?: unknown, { behavior = 'smooth', interval = 200 }: ScrollToHashOptions = {}) {
+  useEffect(() => {
+    const { hash } = window.location;
+    const id = decodeURIComponent(hash.slice(1));
 
-		const scrollToHash = () => {
-			const element = document.getElementById(id);
-			if (element) {
-				element.scrollIntoView({
-					behavior
-				});
-			}
-		};
+    const scrollToHash = () => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({
+          behavior,
+        });
+      }
+    };
 
-		const delayScroll = setTimeout(scrollToHash, interval);
+    const delayScroll = setTimeout(scrollToHash, interval);
 
-		return () => clearTimeout(delayScroll);
-	}, [trigger]);
+    return () => clearTimeout(delayScroll);
+  }, [trigger]);
 }
